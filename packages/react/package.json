@@ -1,0 +1,32 @@
+{
+    "name": "@jiangweiye/eslint-config-react",
+    "version": "0.0.1",
+    "description": "eslint react config",
+    "author": "jiangwy <jiangweiye@outlook.com> (https://github.com/jwyGithub)",
+    "homepage": "https://github.com/jwyGithub/eslint-config",
+    "license": "MIT",
+    "keywords": [
+        "eslint-config"
+    ],
+    "main": "index.js",
+    "files": [
+        "index.js"
+    ],
+    "scripts": {
+        "lint": "eslint . --config=index.js"
+    },
+    "peerDependencies": {
+        "eslint": ">=7.4.0"
+    },
+    "dependencies": {
+        "@jiangweiye/eslint-config-ts": "workspace:*",
+        "eslint-plugin-react": "^7.31.11",
+        "eslint-plugin-react-hooks": "^4.6.0"
+    },
+    "devDependencies": {
+        "eslint": "^8.30.0"
+    },
+    "publishConfig": {
+        "access": "public"
+    }
+}

@@ -1,0 +1,28 @@
+{
+    "name": "@jiangweiye/eslint-config-ts",
+    "version": "0.0.1",
+    "description": "eslint ts config",
+    "author": "jiangweiye <jiangweiye@outlook.com> (https://github.com/jwyGithub)",
+    "license": "MIT",
+    "homepage": "https://github.com/jwyGithub/eslint-config",
+    "keywords": [
+        "eslint-config"
+    ],
+    "main": "index.js",
+    "files": [
+        "index.js"
+    ],
+    "peerDependencies": {
+        "eslint": ">=7.4.0",
+        "typescript": ">=3.9"
+    },
+    "dependencies": {
+        "@jiangweiye/eslint-config-basic": "workspace:*",
+        "@typescript-eslint/eslint-plugin": "^5.46.0",
+        "@typescript-eslint/parser": "^5.46.0",
+        "eslint-plugin-jest": "^27.1.6"
+    },
+    "publishConfig": {
+        "access": "public"
+    }
+}

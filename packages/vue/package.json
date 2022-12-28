@@ -1,0 +1,30 @@
+{
+    "name": "@jiangweiye/eslint-config-vue",
+    "version": "0.0.1",
+    "description": "eslint vue config",
+    "author": "jiangweiye <jiangweiye@outlook.com> (https://github.com/jwyGithub)",
+    "homepage": "https://github.com/jwyGithub/eslint-config",
+    "license": "MIT",
+    "keywords": [
+        "eslint-config"
+    ],
+    "main": "index.js",
+    "files": [
+        "index.js"
+    ],
+    "peerDependencies": {
+        "eslint": ">=7.4.0"
+    },
+    "dependencies": {
+        "@jiangweiye/eslint-config-basic": "workspace:*",
+        "@jiangweiye/eslint-config-ts": "workspace:*",
+        "eslint-plugin-vue": "^9.8.0",
+        "local-pkg": "^0.4.2"
+    },
+    "devDependencies": {
+        "eslint": "^8.30.0"
+    },
+    "publishConfig": {
+        "access": "public"
+    }
+}
