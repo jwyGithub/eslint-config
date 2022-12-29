@@ -8,7 +8,8 @@ module.exports = {
     },
     env: {
         es2021: true,
-        node: true
+        node: true,
+        es6: true
     },
     plugins: ['import', 'n', 'promise'],
     globals: {
@@ -108,7 +109,7 @@ module.exports = {
         /**
          * 所有可以合并的单个模块的导入都在于一个 import 语句中。
          */
-        'no-duplicate-imports': 1,
+        'no-duplicate-imports': 0,
         /**
          * 不允许正则表达式中的空字符类。
          */
@@ -321,7 +322,7 @@ module.exports = {
         /**
          * Disallow specified identifiers
          */
-        'id-denylist': [1, 'data', 'err', 'e', 'cb', 'callback'],
+        'id-denylist': [1, 'err', 'e', 'cb', 'callback'],
         /**
          * Enforce minimum and maximum identifier lengths
          */
@@ -361,7 +362,7 @@ module.exports = {
         /**
          * Require constructor names to begin with a capital letter
          */
-        'new-cap': 1,
+        'new-cap': [1, { capIsNewExceptionPattern: '^Toast' }],
         /**
          * Disallow the use of alert, confirm, and prompt
          */
@@ -417,7 +418,42 @@ module.exports = {
         /**
          * Require let or const instead of var
          */
-        'no-var': 2
+        'no-var': 2,
+
+        'no-extra-bind': 2,
+        'no-extra-boolean-cast': ['error', { enforceForLogicalOperands: true }],
+        'no-extra-label': 'error',
+        'no-extra-semi': 1,
+        'no-floating-decimal': 1,
+        'no-global-assign': 2,
+        'no-implicit-coercion': 0,
+        'no-implicit-globals': 0,
+        'no-implied-eval': 2,
+        'no-inline-comments': 1,
+        'no-invalid-this': 'error',
+        'no-iterator': 2,
+        'no-label-var': 1,
+        'no-labels': ['error', { allowLoop: true }],
+        'no-lone-blocks': 'error',
+        'no-lonely-if': 1,
+        'no-loop-func': 'error',
+        'no-magic-numbers': 0,
+        'no-mixed-operators': 1,
+        'no-multi-assign': 1,
+        'no-multi-str': 0,
+        'no-negated-condition': 0,
+        'no-nested-ternary': 2,
+        'no-new': 0,
+        'no-new-func': 'error',
+        'no-new-object': 2,
+        'no-new-wrappers': 'error',
+        'no-nonoctal-decimal-escape': 2,
+        'no-octal': 'error',
+        'no-octal-escape': 'error',
+
+        // Layout & Formatting
+        'array-bracket-newline': [1, { multiline: true, minItems: 2 }],
+        'array-bracket-spacing': ['error', 'always', { objectsInArrays: false }]
     }
 };
 

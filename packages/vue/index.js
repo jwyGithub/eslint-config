@@ -19,7 +19,6 @@ module.exports = {
     ],
     extends: ['plugin:vue/vue3-recommended', TS ? '@jiangweiye/eslint-config-ts' : '@jiangweiye/eslint-config-basic'],
     rules: {
-        'vue/multi-word-component-names': 'error',
         'vue/no-arrow-functions-in-watch': 'error',
         'vue/no-async-in-computed-properties': 'error',
         'vue/no-child-content': 'error',
@@ -226,6 +225,12 @@ module.exports = {
                     'directives',
                     'filters'
                 ]
+            }
+        ],
+        'vue/multi-word-component-names': [
+            'error',
+            {
+                ignores: ['index']
             }
         ]
     }

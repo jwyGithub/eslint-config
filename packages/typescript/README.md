@@ -1,22 +1,38 @@
 # @jiangweiye/eslint-config-ts
 
-jiangweiye eslint config
+#### jiangweiye eslint config ts
 
-[![Contributors][contributors-shield]][contributors-url] [![Forks][forks-shield]][forks-url] [![Stargazers][stars-shield]][stars-url] [![Issues][issues-shield]][issues-url] [![MIT License][license-shield]][license-url]
-
+<p align="center">
+  <img src="https://img.shields.io/npm/v/@jiangweiye/eslint-config-ts" alt='version'>
+  <img src="https://img.shields.io/npm/dw/@jiangweiye/eslint-config-ts" alt='download'>
+  <img src="https://img.shields.io/github/issues/jwyGithub/eslint-config" alt='issues'>
+  <img src="https://img.shields.io/github/license/jwyGithub/eslint-config" alt='Vue'>
+</p>
 <br />
 
-### 安装
+### install
+
+#### with pnpm
 
 ```sh
-pnpm add @jiangweiye/eslint-config-ts -D
-or
-yarn add @jiangweiye/eslint-config-ts -D
-or
-npm install @jiangweiye/eslint-config-ts -D
+pnpm add @jiangweiye/eslint-config-ts eslint -D
 ```
 
-### 使用
+#### with yarn
+
+```sh
+yarn add @jiangweiye/eslint-config-ts eslint -D
+```
+
+#### with npm
+
+```sh
+npm install @jiangweiye/eslint-config-ts eslint -D
+```
+
+### use
+
+#### with js
 
 ```js
 module.exports = {
@@ -24,22 +40,12 @@ module.exports = {
 };
 ```
 
-### 鸣谢
+#### with ts
 
--   [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
--   [Img Shields](https://shields.io)
-
-<!-- links -->
-
-[your-project-path]: jwyGithub/eslint-config
-[contributors-shield]: https://img.shields.io/github/contributors/jwyGithub/eslint-config.svg?style=flat-square
-[contributors-url]: https://github.com/jwyGithub/eslint-config/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/jwyGithub/eslint-config.svg?style=flat-square
-[forks-url]: https://github.com/jwyGithub/eslint-config/network/members
-[stars-shield]: https://img.shields.io/github/stars/jwyGithub/eslint-config.svg?style=flat-square
-[stars-url]: https://github.com/jwyGithub/eslint-config/stargazers
-[issues-shield]: https://img.shields.io/github/issues/jwyGithub/eslint-config.svg?style=flat-square
-[issues-url]: https://img.shields.io/github/issues/jwyGithub/eslint-config.svg
-[license-shield]: https://img.shields.io/github/license/jwyGithub/eslint-config.svg?style=flat-square
-[license-url]: https://github.com/jwyGithub/eslint-config/blob/master/LICENSE.txt
+```typescript
+process.env.ESLINT_TSCONFIG = 'tsconfig.json';
+module.exports = {
+    extends: '@jiangweiye/eslint-config-ts'
+};
+```
 
