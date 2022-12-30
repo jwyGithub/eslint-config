@@ -273,7 +273,7 @@ module.exports = {
         /**
          * Require braces around arrow function bodies
          */
-        'arrow-body-style': [1, 'as-needed'],
+        'arrow-body-style': 0,
         /**
          * Enforce the use of variables within the scope they are defined
          */
