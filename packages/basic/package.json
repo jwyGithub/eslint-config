@@ -1,6 +1,6 @@
 {
     "name": "@jiangweiye/eslint-config-basic",
-    "version": "0.0.12",
+    "version": "0.0.13",
     "description": "eslint basic config",
     "author": "jiangweiye <jiangweiye@outlook.com> (https://github.com/jwyGithub)",
     "license": "MIT",
