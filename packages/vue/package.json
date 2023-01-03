@@ -1,6 +1,6 @@
 {
     "name": "@jiangweiye/eslint-config-vue",
-    "version": "0.0.13",
+    "version": "0.0.14",
     "description": "eslint vue config",
     "author": "jiangweiye <jiangweiye@outlook.com> (https://github.com/jwyGithub)",
     "homepage": "https://github.com/jwyGithub/eslint-config",
