@@ -423,7 +423,6 @@ module.exports = {
         'no-extra-bind': 2,
         'no-extra-boolean-cast': ['error', { enforceForLogicalOperands: true }],
         'no-extra-label': 'error',
-        'no-extra-semi': 1,
         'no-floating-decimal': 1,
         'no-global-assign': 2,
         'no-implicit-coercion': 0,
@@ -452,8 +451,8 @@ module.exports = {
         'no-octal-escape': 'error',
 
         // Layout & Formatting
-        'array-bracket-newline': [1, { multiline: true, minItems: 2 }],
-        'array-bracket-spacing': ['error', 'always', { objectsInArrays: false }]
+        'array-bracket-newline': [1, 'never'],
+        'array-bracket-spacing': [1, 'never', { singleValue: false }]
     }
 };
 
