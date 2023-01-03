@@ -1,6 +1,6 @@
 {
     "name": "@jiangweiye/eslint-config-ts",
-    "version": "0.0.10",
+    "version": "0.0.11",
     "description": "eslint ts config",
     "author": "jiangweiye <jiangweiye@outlook.com> (https://github.com/jwyGithub)",
     "license": "MIT",
@@ -10,7 +10,7 @@
     ],
     "main": "index.js",
     "files": [
-        "index.js"
+        "*.js"
     ],
     "peerDependencies": {
         "eslint": ">=7.4.0",
