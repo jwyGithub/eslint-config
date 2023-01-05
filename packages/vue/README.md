@@ -4,7 +4,7 @@
 
 <p align="center">
   <img src="https://img.shields.io/npm/v/@jiangweiye/eslint-config-vue" alt='version'>
-  <img src="https://img.shields.io/npm/dw/@jiangweiye/eslint-config-vue" alt='download'>
+  <img src="https://img.shields.io/npm/dy/@jiangweiye/eslint-config-vue" alt='download'>
   <img src="https://img.shields.io/github/issues/jwyGithub/eslint-config" alt='issues'>
   <img src="https://img.shields.io/github/license/jwyGithub/eslint-config" alt='Vue'>
 </p>
