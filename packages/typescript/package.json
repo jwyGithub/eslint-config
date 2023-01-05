@@ -1,6 +1,6 @@
 {
     "name": "@jiangweiye/eslint-config-ts",
-    "version": "0.0.14",
+    "version": "0.0.15",
     "description": "eslint ts config",
     "author": "jiangweiye <jiangweiye@outlook.com> (https://github.com/jwyGithub)",
     "license": "MIT",

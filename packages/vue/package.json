@@ -1,10 +1,10 @@
 {
     "name": "@jiangweiye/eslint-config-vue",
-    "version": "0.0.14",
+    "version": "0.0.15",
     "description": "eslint vue config",
     "author": "jiangweiye <jiangweiye@outlook.com> (https://github.com/jwyGithub)",
-    "homepage": "https://github.com/jwyGithub/eslint-config",
     "license": "MIT",
+    "homepage": "https://github.com/jwyGithub/eslint-config",
     "keywords": [
         "eslint-config"
     ],
