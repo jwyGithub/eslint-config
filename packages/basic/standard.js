@@ -145,13 +145,7 @@ module.exports = {
         /**
          * 目的是捕捉非正常制表符和空格的无效空白
          */
-        'no-irregular-whitespace': [
-            2,
-            {
-                skipComments: true,
-                skipTemplates: true
-            }
-        ],
+        'no-irregular-whitespace': [2, { skipComments: true, skipTemplates: true }],
         /**
          * 不允许使用在运行时由于 64 位浮点四舍五入而在转换为 JS Number 时失去精度的数字字面。
          */
@@ -281,7 +275,7 @@ module.exports = {
         /**
          * Enforce a maximum cyclomatic complexity allowed in a program
          */
-        complexity: [2, 5],
+        complexity: [2, 10],
         /**
          * Require return statements to either always or never specify values
          */
@@ -451,8 +445,30 @@ module.exports = {
         'no-octal-escape': 'error',
 
         // Layout & Formatting
-        'array-bracket-newline': [1, 'never'],
-        'array-bracket-spacing': [1, 'never', { singleValue: false }]
+        'array-bracket-newline': [1, 'consistent'],
+        'array-bracket-spacing': [1, 'never', { singleValue: false }],
+        'array-element-newline': [1, 'consistent'],
+        'arrow-parens': [1, 'as-needed'],
+        'arrow-spacing': 1,
+        'block-spacing': [1, 'always'],
+        'brace-style': 1,
+        'comma-dangle': [1, 'never'],
+        'comma-spacing': [1, { before: false, after: true }],
+        'comma-style': [1, 'last'],
+        'computed-property-spacing': [1, 'never', { enforceForClassMembers: true }],
+        'dot-location': [1, 'property'],
+        'eol-last': 0,
+        'func-call-spacing': [2, 'never'],
+        'function-call-argument-newline': [2, 'consistent'],
+        'function-paren-newline': [1, 'consistent'],
+        'generator-star-spacing': ['error', { before: true, after: false }],
+        'implicit-arrow-linebreak': ['error', 'beside'],
+        indent: [1, 4],
+        'jsx-quotes': [1, 'prefer-double'],
+        'key-spacing': [1, { beforeColon: false }],
+        'line-comment-position': [1, { position: 'above' }],
+        'lines-between-class-members': [1, 'always'],
+        'max-len': 0
     }
 };
 
