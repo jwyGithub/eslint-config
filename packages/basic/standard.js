@@ -468,7 +468,32 @@ module.exports = {
         'key-spacing': [1, { beforeColon: false }],
         'line-comment-position': [1, { position: 'above' }],
         'lines-between-class-members': [1, 'always'],
-        'max-len': 0
+        'max-len': 0,
+        'max-statements-per-line': [1, { max: 2 }],
+        'multiline-ternary': [1, 'always-multiline'],
+        'new-parens': 'error',
+        'newline-per-chained-call': [1, { ignoreChainWithDepth: 4 }],
+        'no-mixed-spaces-and-tabs': [1, 'smart-tabs'],
+        'no-multi-spaces': 1,
+        'no-tabs': 0,
+        'no-trailing-spaces': 1,
+        'no-whitespace-before-property': 'error',
+        'object-curly-newline': [1, { consistent: true }],
+        'object-curly-spacing': [1, 'always'],
+        'object-property-newline': [1, { allowAllPropertiesOnSameLine: true }],
+        'operator-linebreak': [1, 'after'],
+        'padded-blocks': [1, 'never'],
+        quotes: [1, 'single', { avoidEscape: true, allowTemplateLiterals: true }],
+        'rest-spread-spacing': ['error', 'never'],
+        semi: ['error', 'always'],
+        'semi-spacing': 'error',
+        'semi-style': ['error', 'last'],
+        'space-before-blocks': 1,
+        'space-before-function-paren': 1,
+        'space-in-parens': [1, 'never'],
+        'space-infix-ops': 1,
+        'wrap-iife': ['error', 'outside'],
+        'yield-star-spacing': ['error', 'before']
     }
 };
 
