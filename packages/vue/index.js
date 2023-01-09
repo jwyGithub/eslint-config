@@ -137,9 +137,15 @@ module.exports = {
                 multiline: 'always'
             }
         ],
-        'vue/component-name-in-template-casing': ['error', 'PascalCase'],
-        'vue/component-options-name-casing': ['error', 'PascalCase'],
-        'vue/custom-event-name-casing': ['error', 'camelCase'],
+        'vue/component-name-in-template-casing': [1, 'kebab-case', { ignores: ['router-view', 'RouterView'] }],
+        'vue/component-options-name-casing': [1, 'camelCase'],
+        'vue/custom-event-name-casing': [
+            1,
+            'kebab-case',
+            {
+                ignores: []
+            }
+        ],
         'vue/define-macros-order': [
             'error',
             {
@@ -227,12 +233,7 @@ module.exports = {
                 ]
             }
         ],
-        'vue/multi-word-component-names': [
-            'error',
-            {
-                ignores: ['index']
-            }
-        ]
+        'vue/multi-word-component-names': 0
     }
 };
 

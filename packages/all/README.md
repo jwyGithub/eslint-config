@@ -6,7 +6,7 @@
   <img src="https://img.shields.io/npm/v/@jiangweiye/eslint-config" alt='version'>
   <img src="https://img.shields.io/npm/dy/@jiangweiye/eslint-config" alt='download'>
   <img src="https://img.shields.io/github/issues/jwyGithub/eslint-config" alt='issues'>
-  <img src="https://img.shields.io/github/license/jwyGithub/eslint-config.svg" alt='Vue'>
+  <img src="https://img.shields.io/github/license/jwyGithub/eslint-config" alt='Vue'>
 </p>
 <br />
 

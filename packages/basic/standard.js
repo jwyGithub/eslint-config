@@ -340,7 +340,7 @@ module.exports = {
         /**
          * 函数代码最大行数
          */
-        'max-lines-per-function': [1, { max: 100, skipBlankLines: true, skipComments: true }],
+        'max-lines-per-function': [1, { max: 200, skipBlankLines: true, skipComments: true }],
         /**
          * 回调可以嵌套的最大深度，以提高代码的清晰度。
          */
@@ -461,7 +461,7 @@ module.exports = {
         'func-call-spacing': [2, 'never'],
         'function-call-argument-newline': [2, 'consistent'],
         'function-paren-newline': [1, 'consistent'],
-        'generator-star-spacing': ['error', { before: true, after: false }],
+        'generator-star-spacing': [1, { before: false, after: true }],
         'implicit-arrow-linebreak': ['error', 'beside'],
         indent: [1, 4],
         'jsx-quotes': [1, 'prefer-double'],

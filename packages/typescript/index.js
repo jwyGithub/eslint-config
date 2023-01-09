@@ -77,7 +77,7 @@ module.exports = {
             }
         ],
         'no-unused-vars': 'off',
-        '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+        '@typescript-eslint/no-unused-vars': [1, { argsIgnorePattern: '^_' }],
         'no-redeclare': 'off',
         '@typescript-eslint/no-redeclare': 'error',
         'no-use-before-define': 'off',
