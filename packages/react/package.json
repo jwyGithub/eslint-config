@@ -1,6 +1,6 @@
 {
     "name": "@jiangweiye/eslint-config-react",
-    "version": "0.0.20",
+    "version": "0.0.21",
     "description": "eslint react config",
     "author": "jiangwy <jiangweiye@outlook.com> (https://github.com/jwyGithub)",
     "license": "MIT",
