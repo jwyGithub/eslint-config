@@ -1,4 +1,4 @@
-const tsconfig = process.env.ESLINT_TSCONFIG || 'tsconfig.eslint.json';
+const tsconfig = process.env.ESLINT_TSCONFIG || 'tsconfig.json';
 
 const tsParser = [
     {
