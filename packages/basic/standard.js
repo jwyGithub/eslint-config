@@ -356,7 +356,7 @@ module.exports = {
         /**
          * Require constructor names to begin with a capital letter
          */
-        'new-cap': [1, { capIsNewExceptionPattern: '^Toast' }],
+        'new-cap': [0, { capIsNewExceptionPattern: '^Toast' }],
         /**
          * Disallow the use of alert, confirm, and prompt
          */
@@ -431,7 +431,7 @@ module.exports = {
         'no-lonely-if': 1,
         'no-loop-func': 'error',
         'no-magic-numbers': 0,
-        'no-mixed-operators': 1,
+        'no-mixed-operators': 0,
         'no-multi-assign': 1,
         'no-multi-str': 0,
         'no-negated-condition': 0,
