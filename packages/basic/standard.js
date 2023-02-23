@@ -481,7 +481,7 @@ module.exports = {
         'object-curly-newline': [1, { consistent: true }],
         'object-curly-spacing': [1, 'always'],
         'object-property-newline': [1, { allowAllPropertiesOnSameLine: true }],
-        'operator-linebreak': [1, 'before'],
+        'operator-linebreak': 0,
         'padded-blocks': [1, 'never'],
         quotes: [1, 'single', { avoidEscape: true, allowTemplateLiterals: true }],
         'rest-spread-spacing': ['error', 'never'],
