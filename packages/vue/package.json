@@ -1,6 +1,6 @@
 {
     "name": "@jiangweiye/eslint-config-vue",
-    "version": "0.0.25",
+    "version": "0.0.26",
     "description": "eslint vue config",
     "author": "jiangweiye <jiangweiye@outlook.com> (https://github.com/jwyGithub)",
     "license": "MIT",
