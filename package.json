@@ -4,7 +4,7 @@
     "private": true,
     "packageManager": "pnpm@7.1.0",
     "author": "jiangweiye",
-    "license": "ISC",
+    "license": "MIT",
     "scripts": {
         "lint": "eslint .",
         "test": "pnpm -r run test",
