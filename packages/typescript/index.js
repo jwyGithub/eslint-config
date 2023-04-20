@@ -132,7 +132,10 @@ module.exports = {
         '@typescript-eslint/explicit-module-boundary-types': 'off',
         '@typescript-eslint/ban-types': 'off',
         '@typescript-eslint/no-namespace': 'off',
-        '@typescript-eslint/triple-slash-reference': 'off'
+        '@typescript-eslint/triple-slash-reference': 'off',
+        '@typescript-eslint/no-unsafe-return': 'off',
+        '@typescript-eslint/no-floating-promises': 'off',
+        'consistent-return': 'off'
     }
 };
 
