@@ -312,7 +312,7 @@ module.exports = {
         /**
          * Require for-in loops to include an if statement
          */
-        'guard-for-in': 1,
+        'guard-for-in': 0,
         /**
          * Disallow specified identifiers
          */
