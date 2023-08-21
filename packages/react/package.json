@@ -1,6 +1,6 @@
 {
     "name": "@jiangweiye/eslint-config-react",
-    "version": "0.0.28",
+    "version": "0.0.29",
     "description": "eslint react config",
     "author": "jiangwy <jiangweiye@outlook.com> (https://github.com/jwyGithub)",
     "license": "MIT",
@@ -20,11 +20,11 @@
     },
     "dependencies": {
         "@jiangweiye/eslint-config-ts": "workspace:*",
-        "eslint-plugin-react": "^7.32.2",
+        "eslint-plugin-react": "^7.33.2",
         "eslint-plugin-react-hooks": "^4.6.0"
     },
     "devDependencies": {
-        "eslint": "^8.36.0"
+        "eslint": "^8.47.0"
     },
     "publishConfig": {
         "access": "public"

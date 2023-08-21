@@ -1,6 +1,6 @@
 {
     "name": "@jiangweiye/eslint-config-ts",
-    "version": "0.0.28",
+    "version": "0.0.29",
     "description": "eslint ts config",
     "author": "jiangweiye <jiangweiye@outlook.com> (https://github.com/jwyGithub)",
     "license": "MIT",
@@ -18,9 +18,9 @@
     },
     "dependencies": {
         "@jiangweiye/eslint-config-basic": "workspace:*",
-        "@typescript-eslint/eslint-plugin": "^5.55.0",
-        "@typescript-eslint/parser": "^5.55.0",
-        "eslint-plugin-jest": "^27.2.1"
+        "@typescript-eslint/eslint-plugin": "^6.4.0",
+        "@typescript-eslint/parser": "^6.4.0",
+        "eslint-plugin-jest": "^27.2.3"
     },
     "publishConfig": {
         "access": "public"

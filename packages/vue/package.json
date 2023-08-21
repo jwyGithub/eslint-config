@@ -1,6 +1,6 @@
 {
     "name": "@jiangweiye/eslint-config-vue",
-    "version": "0.0.28",
+    "version": "0.0.29",
     "description": "eslint vue config",
     "author": "jiangweiye <jiangweiye@outlook.com> (https://github.com/jwyGithub)",
     "license": "MIT",
@@ -18,11 +18,11 @@
     "dependencies": {
         "@jiangweiye/eslint-config-basic": "workspace:*",
         "@jiangweiye/eslint-config-ts": "workspace:*",
-        "eslint-plugin-vue": "^9.9.0",
+        "eslint-plugin-vue": "^9.17.0",
         "local-pkg": "^0.4.3"
     },
     "devDependencies": {
-        "eslint": "^8.36.0"
+        "eslint": "^8.47.0"
     },
     "publishConfig": {
         "access": "public"
