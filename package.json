@@ -3,7 +3,7 @@
     "version": "0.0.30",
     "private": true,
     "packageManager": "pnpm@7.1.0",
-    "author": "jiangweiye",
+    "author": "jiangweiye <jiangweiye@outlook.com> (https://github.com/jwyGithub)",
     "license": "MIT",
     "scripts": {
         "lint": "eslint .",
@@ -14,8 +14,8 @@
     "devDependencies": {
         "@jiangweiye/eslint-config": "workspace:*",
         "bumpp": "^9.2.0",
-        "eslint": "^8.47.0",
+        "eslint": "^8.49.0",
         "rimraf": "^5.0.1",
-        "typescript": "^5.1.6"
+        "typescript": "^5.2.2"
     }
 }
