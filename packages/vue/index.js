@@ -79,7 +79,7 @@ module.exports = {
 
         'vue/no-deprecated-data-object-declaration': 'error',
         'vue/no-deprecated-destroyed-lifecycle': 'off',
-        'vue/no-deprecated-dollar-listeners-api': 'error',
+        'vue/no-deprecated-dollar-listeners-api': 'off',
         'vue/no-deprecated-dollar-scopedslots-api': 'error',
         'vue/no-deprecated-events-api': 'error',
         'vue/no-deprecated-filter': 'error',
@@ -138,7 +138,7 @@ module.exports = {
             }
         ],
         'vue/component-name-in-template-casing': [1, 'kebab-case', { ignores: ['router-view', 'RouterView'] }],
-        'vue/component-options-name-casing': [1, 'camelCase'],
+        'vue/component-options-name-casing': [1, 'kebab-case'],
         'vue/custom-event-name-casing': [
             1,
             'kebab-case',
