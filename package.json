@@ -3,9 +3,13 @@
     "type": "module",
     "version": "0.1.2-beta.1",
     "packageManager": "pnpm@8.15.5",
-    "description": "",
-    "author": "",
-    "license": "ISC",
+    "description": "A eslint config for jiangweiye",
+    "author": "jiangweiye <jiangweiye@outlook.com> (https://github.com/jwyGithub)",
+    "license": "SEE LICENSE IN LICENSE.md",
+    "homepage": "https://github.com/jwyGithub/eslint-config",
+    "publishConfig": {
+        "access": "public"
+    },
     "keywords": [
         "eslint",
         "eslint-config",
@@ -14,10 +18,12 @@
     "exports": {
         ".": {
             "import": "./dist/index.js",
-            "require": "./dist/index.cjs"
+            "require": "./dist/index.cjs",
+            "types": "./dist/index.d.ts"
         }
     },
     "main": "./dist/index.js",
+    "module": "./dist/index.js",
     "types": "./dist/index.d.ts",
     "bin": "./bin/index.js",
     "files": [

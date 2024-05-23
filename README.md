@@ -32,19 +32,12 @@ npm install @jiangweiye/eslint-config eslint -D
 
 ### use
 
-#### with js
+#### eslint.config.js
 
 ```js
-module.exports = {
-    extends: '@jiangweiye/eslint-config'
-};
-```
-
-#### with ts
-
-```typescript
-process.env.ESLINT_TSCONFIG = 'tsconfig.json';
-module.exports = {
-    extends: '@jiangweiye/eslint-config'
-};
+import { eslint } from '@jiangweiye/eslint-config';
+export default eslint({
+    vue: true,
+    typescript: true
+});
 ```
