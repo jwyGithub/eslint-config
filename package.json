@@ -38,7 +38,7 @@
         "lint": "eslint .",
         "lint:fix": "eslint --fix .",
         "typegen": "esno scripts/typegen.ts",
-        "prepack": "nr build",
+        "prepack": "pnpm run build",
         "release": "bumpp && pnpm publish",
         "test": "vitest",
         "typecheck": "tsc --noEmit",
