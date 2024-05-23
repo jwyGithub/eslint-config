@@ -1,21 +1,176 @@
 {
-    "name": "@jiangweiye/eslint-config-monorepo",
-    "version": "0.1.1",
-    "private": true,
-    "packageManager": "pnpm@7.1.0",
-    "author": "jiangweiye <jiangweiye@outlook.com> (https://github.com/jwyGithub)",
-    "license": "MIT",
+    "name": "@jiangweiye/eslint-config",
+    "type": "module",
+    "version": "0.1.2-beta.1",
+    "packageManager": "pnpm@8.15.5",
+    "description": "",
+    "author": "",
+    "license": "ISC",
+    "keywords": [
+        "eslint",
+        "eslint-config",
+        "eslint-config-jwy"
+    ],
+    "exports": {
+        ".": {
+            "import": "./dist/index.js",
+            "require": "./dist/index.cjs"
+        }
+    },
+    "main": "./dist/index.js",
+    "types": "./dist/index.d.ts",
+    "bin": "./bin/index.js",
+    "files": [
+        "bin",
+        "dist"
+    ],
     "scripts": {
+        "build": "pnpm run typegen && tsup --format esm,cjs --clean --dts",
+        "stub": "tsup --format esm",
+        "dev": "npx @eslint/config-inspector --config eslint.config.ts",
+        "build:inspector": "pnpm build && npx @eslint/config-inspector build",
+        "watch": "tsup --format esm,cjs --watch",
         "lint": "eslint .",
-        "test": "pnpm -r run test",
-        "prepare": "pnpm -r run stub",
-        "release": "bumpp package.json packages/*/package.json --commit --push --tag && pnpm -r publish --access public"
+        "lint:fix": "eslint --fix .",
+        "typegen": "esno scripts/typegen.ts",
+        "prepack": "nr build",
+        "release": "bumpp && pnpm publish",
+        "test": "vitest",
+        "typecheck": "tsc --noEmit",
+        "prettier": "npx prettier --write ."
+    },
+    "peerDependencies": {
+        "@eslint-react/eslint-plugin": "^1.5.8",
+        "@prettier/plugin-xml": "^3.4.1",
+        "astro-eslint-parser": "^0.16.3",
+        "eslint": ">=8.40.0",
+        "eslint-plugin-astro": "^0.31.4",
+        "eslint-plugin-format": ">=0.1.0",
+        "eslint-plugin-react-hooks": "^4.6.0",
+        "eslint-plugin-react-refresh": "^0.4.4",
+        "eslint-plugin-solid": "^0.13.2",
+        "eslint-plugin-svelte": ">=2.35.1",
+        "prettier-plugin-astro": "^0.13.0",
+        "prettier-plugin-slidev": "^1.0.5",
+        "svelte-eslint-parser": "^0.33.1"
+    },
+    "peerDependenciesMeta": {
+        "@eslint-react/eslint-plugin": {
+            "optional": true
+        },
+        "@prettier/plugin-xml": {
+            "optional": true
+        },
+        "@unocss/eslint-plugin": {
+            "optional": true
+        },
+        "astro-eslint-parser": {
+            "optional": true
+        },
+        "eslint-plugin-astro": {
+            "optional": true
+        },
+        "eslint-plugin-format": {
+            "optional": true
+        },
+        "eslint-plugin-react-hooks": {
+            "optional": true
+        },
+        "eslint-plugin-react-refresh": {
+            "optional": true
+        },
+        "eslint-plugin-solid": {
+            "optional": true
+        },
+        "eslint-plugin-svelte": {
+            "optional": true
+        },
+        "prettier-plugin-astro": {
+            "optional": true
+        },
+        "prettier-plugin-slidev": {
+            "optional": true
+        },
+        "svelte-eslint-parser": {
+            "optional": true
+        }
+    },
+    "dependencies": {
+        "@clack/prompts": "^0.7.0",
+        "@stylistic/eslint-plugin": "^2.1.0",
+        "@typescript-eslint/eslint-plugin": "^7.9.0",
+        "@typescript-eslint/parser": "^7.9.0",
+        "eslint-config-flat-gitignore": "^0.1.5",
+        "eslint-flat-config-utils": "^0.2.5",
+        "eslint-merge-processors": "^0.1.0",
+        "eslint-plugin-command": "^0.2.2",
+        "eslint-plugin-eslint-comments": "^3.2.0",
+        "eslint-plugin-import-x": "^0.5.0",
+        "eslint-plugin-jsdoc": "^48.2.5",
+        "eslint-plugin-jsonc": "^2.15.1",
+        "eslint-plugin-markdown": "^5.0.0",
+        "eslint-plugin-n": "^17.7.0",
+        "eslint-plugin-no-only-tests": "^3.1.0",
+        "eslint-plugin-perfectionist": "^2.10.0",
+        "eslint-plugin-regexp": "^2.5.0",
+        "eslint-plugin-toml": "^0.11.0",
+        "eslint-plugin-unicorn": "^53.0.0",
+        "eslint-plugin-unused-imports": "^3.2.0",
+        "eslint-plugin-vitest": "^0.5.4",
+        "eslint-plugin-vue": "^9.26.0",
+        "eslint-plugin-yml": "^1.14.0",
+        "eslint-processor-vue-blocks": "^0.1.2",
+        "globals": "^15.2.0",
+        "jsonc-eslint-parser": "^2.4.0",
+        "local-pkg": "^0.5.0",
+        "parse-gitignore": "^2.0.0",
+        "picocolors": "^1.0.1",
+        "toml-eslint-parser": "^0.9.3",
+        "vue-eslint-parser": "^9.4.2",
+        "yaml-eslint-parser": "^1.2.2",
+        "yargs": "^17.7.2"
     },
     "devDependencies": {
+        "@eslint-react/eslint-plugin": "^1.5.12",
+        "@eslint/config-inspector": "^0.4.8",
         "@jiangweiye/eslint-config": "workspace:*",
-        "bumpp": "^9.2.0",
-        "eslint": "^8.49.0",
-        "rimraf": "^5.0.1",
-        "typescript": "^5.2.2"
+        "@jiangweiye/prettier-config": "^0.0.5",
+        "@jiangweiye/tsconfig": "^0.0.11",
+        "@prettier/plugin-xml": "^3.4.1",
+        "@stylistic/eslint-plugin-migrate": "^2.1.0",
+        "@types/eslint": "^8.56.10",
+        "@types/fs-extra": "^11.0.4",
+        "@types/node": "^20.12.12",
+        "@types/prompts": "^2.4.9",
+        "@types/yargs": "^17.0.32",
+        "@unocss/eslint-plugin": "^0.60.2",
+        "astro-eslint-parser": "^1.0.2",
+        "bumpp": "^9.4.1",
+        "bundle-require": "^4.1.0",
+        "eslint": "^8.57.0",
+        "eslint-plugin-astro": "^1.2.0",
+        "eslint-plugin-format": "^0.1.1",
+        "eslint-plugin-react-hooks": "^4.6.2",
+        "eslint-plugin-react-refresh": "^0.4.7",
+        "eslint-plugin-solid": "^0.14.0",
+        "eslint-plugin-svelte": "^2.39.0",
+        "eslint-typegen": "^0.2.4",
+        "esno": "^4.7.0",
+        "execa": "^9.1.0",
+        "fast-glob": "^3.3.2",
+        "fs-extra": "^11.2.0",
+        "lint-staged": "^15.2.2",
+        "prettier": "^3.2.5",
+        "prettier-plugin-astro": "^0.13.0",
+        "prettier-plugin-slidev": "^1.0.5",
+        "rimraf": "^5.0.7",
+        "simple-git-hooks": "^2.11.1",
+        "svelte": "^4.2.17",
+        "svelte-eslint-parser": "^0.36.0",
+        "tsup": "^8.0.2",
+        "tsx": "^4.10.4",
+        "typescript": "^5.4.5",
+        "vitest": "^1.6.0",
+        "vue": "^3.4.27"
     }
 }
