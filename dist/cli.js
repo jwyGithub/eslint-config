@@ -30,10 +30,13 @@ var package_default = {
   name: "@jiangweiye/eslint-config",
   type: "module",
   version: "0.1.2-beta.1",
-  packageManager: "pnpm@8.15.5",
-  description: "",
-  author: "",
-  license: "ISC",
+  description: "A eslint config for jiangweiye",
+  author: "jiangweiye <jiangweiye@outlook.com> (https://github.com/jwyGithub)",
+  license: "SEE LICENSE IN LICENSE.md",
+  homepage: "https://github.com/jwyGithub/eslint-config",
+  publishConfig: {
+    access: "public"
+  },
   keywords: [
     "eslint",
     "eslint-config",
@@ -42,10 +45,12 @@ var package_default = {
   exports: {
     ".": {
       import: "./dist/index.js",
-      require: "./dist/index.cjs"
+      require: "./dist/index.cjs",
+      types: "./dist/index.d.ts"
     }
   },
   main: "./dist/index.js",
+  module: "./dist/index.js",
   types: "./dist/index.d.ts",
   bin: "./bin/index.js",
   files: [
@@ -61,8 +66,6 @@ var package_default = {
     lint: "eslint .",
     "lint:fix": "eslint --fix .",
     typegen: "esno scripts/typegen.ts",
-    prepack: "nr build",
-    release: "bumpp && pnpm publish",
     test: "vitest",
     typecheck: "tsc --noEmit",
     prettier: "npx prettier --write ."
@@ -192,7 +195,6 @@ var package_default = {
     "prettier-plugin-astro": "^0.13.0",
     "prettier-plugin-slidev": "^1.0.5",
     rimraf: "^5.0.7",
-    "simple-git-hooks": "^2.11.1",
     svelte: "^4.2.17",
     "svelte-eslint-parser": "^0.36.0",
     tsup: "^8.0.2",
