@@ -164,10 +164,8 @@ async function ensurePackages(packages) {
   const nonExistingPackages = packages.filter((i) => i && !isPackageExists(i));
   if (nonExistingPackages.length === 0)
     return;
-  const p = await import("@clack/prompts");
-  await p.confirm({
-    message: `${nonExistingPackages.length === 1 ? "Package is" : "Packages are"} required for this config: ${nonExistingPackages.join(", ")}. Do you want to install them?`
-  });
+  const message = `${nonExistingPackages.length === 1 ? "Package is" : "Packages are"} required for this config: ${nonExistingPackages.join(", ")}. please install them`;
+  console.error(message);
 }
 
 // src/configs/astro.ts
