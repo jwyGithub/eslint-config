@@ -2,7 +2,6 @@
     "name": "@jiangweiye/eslint-config",
     "type": "module",
     "version": "0.1.2-beta.1",
-    "packageManager": "pnpm@8.15.5",
     "description": "A eslint config for jiangweiye",
     "author": "jiangweiye <jiangweiye@outlook.com> (https://github.com/jwyGithub)",
     "license": "SEE LICENSE IN LICENSE.md",
