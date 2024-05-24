@@ -118,8 +118,8 @@ importers:
         specifier: workspace:*
         version: 'link:'
       '@jiangweiye/prettier-config':
-        specifier: ^0.0.5
-        version: 0.0.5
+        specifier: ^0.0.7
+        version: 0.0.7
       '@jiangweiye/tsconfig':
         specifier: ^0.0.11
         version: 0.0.11(@types/node@20.12.12)
@@ -1178,8 +1178,8 @@ packages:
     dependencies:
       '@sinclair/typebox': 0.27.8
 
-  /@jiangweiye/prettier-config@0.0.5:
-    resolution: {integrity: sha512-ytGcx7nSx/Ttjn46FR3qJb58u5LV1y0DXJoJDK7ZwAZVxXkKbsyTD8qA3rFGw3sht4gK2idB41tF1CZaWeqOnQ==, tarball: https://registry.npmjs.org/@jiangweiye/prettier-config/-/prettier-config-0.0.5.tgz}
+  /@jiangweiye/prettier-config@0.0.7:
+    resolution: {integrity: sha512-J2ZeFebp3CUi+dJquXfpIqTxw087DWb71q062pSfL4O4Gxr7sRZb6aAWJZIaSXa308+HRdy2e+hSTkOX4O33gg==}
     optionalDependencies:
       prettier: 3.2.5
     dev: true

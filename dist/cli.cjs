@@ -48,7 +48,7 @@ var import_picocolors = __toESM(require("picocolors"), 1);
 var package_default = {
   name: "@jiangweiye/eslint-config",
   type: "module",
-  version: "0.1.2-beta.1",
+  version: "0.1.2-beta.3",
   description: "A eslint config for jiangweiye",
   author: "jiangweiye <jiangweiye@outlook.com> (https://github.com/jwyGithub)",
   license: "SEE LICENSE IN LICENSE.md",
@@ -63,9 +63,9 @@ var package_default = {
   ],
   exports: {
     ".": {
+      types: "./dist/index.d.ts",
       import: "./dist/index.js",
-      require: "./dist/index.cjs",
-      types: "./dist/index.d.ts"
+      require: "./dist/index.cjs"
     }
   },
   main: "./dist/index.js",
@@ -184,7 +184,7 @@ var package_default = {
     "@eslint-react/eslint-plugin": "^1.5.12",
     "@eslint/config-inspector": "^0.4.8",
     "@jiangweiye/eslint-config": "workspace:*",
-    "@jiangweiye/prettier-config": "^0.0.5",
+    "@jiangweiye/prettier-config": "^0.0.7",
     "@jiangweiye/tsconfig": "^0.0.11",
     "@prettier/plugin-xml": "^3.4.1",
     "@stylistic/eslint-plugin-migrate": "^2.1.0",

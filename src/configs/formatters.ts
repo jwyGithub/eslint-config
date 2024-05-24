@@ -1,4 +1,5 @@
 import { isPackageExists } from 'local-pkg';
+import { prettier } from '@jiangweiye/prettier-config';
 import { PLUGIN_PREFIX } from '../factory';
 import { GLOB_ASTRO, GLOB_CSS, GLOB_GRAPHQL, GLOB_HTML, GLOB_LESS, GLOB_MARKDOWN, GLOB_POSTCSS, GLOB_SCSS, GLOB_XML } from '../globs';
 import type { VendoredPrettierOptions } from '../vender/prettier-types';
@@ -34,13 +35,16 @@ export async function formatters(options: OptionsFormatters | true = {}, stylist
         ...stylistic
     };
 
+    const preset = prettier();
+
     const prettierOptions: VendoredPrettierOptions = Object.assign(
         {
-            endOfLine: 'auto',
+            ...preset,
+            endOfLine: preset.endOfLine,
             semi,
-            singleQuote: quotes === 'single',
+            singleQuote: preset.singleQuote,
             tabWidth: typeof indent === 'number' ? indent : 4,
-            trailingComma: 'all',
+            trailingComma: preset.trailingComma,
             useTabs: indent === 'tab'
         } satisfies VendoredPrettierOptions,
         options.prettierOptions || {}
@@ -183,7 +187,7 @@ export async function formatters(options: OptionsFormatters | true = {}, stylist
                     'error',
                     formater === 'prettier'
                         ? {
-                              printWidth: 120,
+                              printWidth: preset.printWidth,
                               ...prettierOptions,
                               embeddedLanguageFormatting: 'off',
                               parser: 'markdown'
@@ -207,7 +211,7 @@ export async function formatters(options: OptionsFormatters | true = {}, stylist
                     'format/prettier': [
                         'error',
                         {
-                            printWidth: 120,
+                            printWidth: preset.printWidth,
                             ...prettierOptions,
                             embeddedLanguageFormatting: 'off',
                             parser: 'slidev',

@@ -1,7 +1,6 @@
 import { PLUGIN_PREFIX } from '../factory';
 import { interopDefault } from '../utils';
 import type { OptionsOverrides, StylisticConfig, TypedFlatConfigItem } from '../types';
-// import { pluginAntfu } from '../plugins';
 
 export const StylisticConfigDefaults: StylisticConfig = {
     indent: 4,
@@ -42,7 +41,6 @@ export async function stylistic(options: StylisticOptions = {}): Promise<TypedFl
         {
             name: `${PLUGIN_PREFIX}/stylistic/rules`,
             plugins: {
-                // antfu: pluginAntfu,
                 style: pluginStylistic
             },
             rules: {
@@ -55,6 +53,7 @@ export async function stylistic(options: StylisticOptions = {}): Promise<TypedFl
                 'style/quote-props': ['error', 'as-needed'],
                 'style/operator-linebreak': 'off',
                 'style/brace-style': 'error',
+                curly: ['off', 'multi'],
                 ...overrides
             }
         }

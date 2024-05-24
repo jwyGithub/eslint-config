@@ -12823,6 +12823,32 @@ async function comments() {
 init_cjs_shims();
 var import_local_pkg2 = require("local-pkg");
 
+// node_modules/.pnpm/@jiangweiye+prettier-config@0.0.7/node_modules/@jiangweiye/prettier-config/dist/index.esm.js
+init_cjs_shims();
+function prettier(options) {
+  return {
+    printWidth: 140,
+    tabWidth: 4,
+    useTabs: false,
+    semi: true,
+    singleQuote: true,
+    quoteProps: "as-needed",
+    jsxSingleQuote: true,
+    trailingComma: "none",
+    bracketSpacing: true,
+    bracketSameLine: false,
+    arrowParens: "avoid",
+    insertPragma: false,
+    proseWrap: "never",
+    htmlWhitespaceSensitivity: "strict",
+    vueIndentScriptAndStyle: false,
+    endOfLine: "lf",
+    embeddedLanguageFormatting: "auto",
+    singleAttributePerLine: false,
+    ...options || {}
+  };
+}
+
 // src/configs/stylistic.ts
 init_cjs_shims();
 var StylisticConfigDefaults = {
@@ -12856,7 +12882,6 @@ async function stylistic(options = {}) {
     {
       name: `${PLUGIN_PREFIX}/stylistic/rules`,
       plugins: {
-        // antfu: pluginAntfu,
         style: pluginStylistic
       },
       rules: {
@@ -12869,6 +12894,7 @@ async function stylistic(options = {}) {
         "style/quote-props": ["error", "as-needed"],
         "style/operator-linebreak": "off",
         "style/brace-style": "error",
+        curly: ["off", "multi"],
         ...overrides
       }
     }
@@ -12900,13 +12926,15 @@ async function formatters(options = {}, stylistic2 = {}) {
     ...StylisticConfigDefaults,
     ...stylistic2
   };
+  const preset = prettier();
   const prettierOptions = Object.assign(
     {
-      endOfLine: "auto",
+      ...preset,
+      endOfLine: preset.endOfLine,
       semi,
-      singleQuote: quotes === "single",
+      singleQuote: preset.singleQuote,
       tabWidth: typeof indent === "number" ? indent : 4,
-      trailingComma: "all",
+      trailingComma: preset.trailingComma,
       useTabs: indent === "tab"
     },
     options.prettierOptions || {}
@@ -13038,7 +13066,7 @@ async function formatters(options = {}, stylistic2 = {}) {
         [`format/${formater}`]: [
           "error",
           formater === "prettier" ? {
-            printWidth: 120,
+            printWidth: preset.printWidth,
             ...prettierOptions,
             embeddedLanguageFormatting: "off",
             parser: "markdown"
@@ -13060,7 +13088,7 @@ async function formatters(options = {}, stylistic2 = {}) {
           "format/prettier": [
             "error",
             {
-              printWidth: 120,
+              printWidth: preset.printWidth,
               ...prettierOptions,
               embeddedLanguageFormatting: "off",
               parser: "slidev",
@@ -13192,7 +13220,6 @@ async function javascript(options = {}) {
       },
       name: `${PLUGIN_PREFIX}/javascript/rules`,
       plugins: {
-        // antfu: pluginAntfu,
         "unused-imports": import_eslint_plugin_unused_imports.default
       },
       rules: {
@@ -14279,7 +14306,6 @@ async function typescript(options = {}) {
       // Install the plugins without globs, so they can be configured separately.
       name: `${PLUGIN_PREFIX}/typescript/setup`,
       plugins: {
-        // antfu: pluginAntfu,
         ts: pluginTs
       }
     },
@@ -14320,6 +14346,7 @@ async function typescript(options = {}) {
         "ts/prefer-ts-expect-error": "error",
         "ts/triple-slash-reference": "off",
         "ts/unified-signatures": "off",
+        "ts/no-this-alias": "off",
         ...overrides
       }
     },
@@ -14506,7 +14533,7 @@ async function vue(options = {}) {
         "vue/block-order": [
           "error",
           {
-            order: ["script", "template", "style"]
+            order: ["template", "script", "style"]
           }
         ],
         "vue/component-name-in-template-casing": ["error", "PascalCase"],

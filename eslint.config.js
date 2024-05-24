@@ -1,6 +1,6 @@
-import { kyara } from '@jiangweiye/eslint-config';
+import { eslint } from '@jiangweiye/eslint-config';
 
-export default kyara({
+export default eslint({
     vue: true,
     react: true,
     solid: true,

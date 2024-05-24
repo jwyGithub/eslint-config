@@ -33,7 +33,6 @@ export async function javascript(options: OptionsIsInEditor & OptionsOverrides =
             },
             name: `${PLUGIN_PREFIX}/javascript/rules`,
             plugins: {
-                // antfu: pluginAntfu,
                 'unused-imports': pluginUnusedImports
             },
             rules: {

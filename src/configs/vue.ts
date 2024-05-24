@@ -93,7 +93,7 @@ export async function vue(
                 'vue/block-order': [
                     'error',
                     {
-                        order: ['script', 'template', 'style']
+                        order: ['template', 'script', 'style']
                     }
                 ],
 

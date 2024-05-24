@@ -9,7 +9,6 @@ import type {
     OptionsTypeScriptWithTypes,
     TypedFlatConfigItem
 } from '../types';
-// import { pluginAntfu } from '../plugins';
 import { interopDefault, renameRules, toArray } from '../utils';
 
 export async function typescript(
@@ -77,7 +76,6 @@ export async function typescript(
             // Install the plugins without globs, so they can be configured separately.
             name: `${PLUGIN_PREFIX}/typescript/setup`,
             plugins: {
-                // antfu: pluginAntfu,
                 ts: pluginTs as any
             }
         },
@@ -117,6 +115,7 @@ export async function typescript(
                 'ts/prefer-ts-expect-error': 'error',
                 'ts/triple-slash-reference': 'off',
                 'ts/unified-signatures': 'off',
+                'ts/no-this-alias': 'off',
                 ...overrides
             }
         },
