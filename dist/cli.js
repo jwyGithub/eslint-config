@@ -29,7 +29,7 @@ import c from "picocolors";
 var package_default = {
   name: "@jiangweiye/eslint-config",
   type: "module",
-  version: "0.1.2-beta.3",
+  version: "0.1.3-beta.1",
   description: "A eslint config for jiangweiye",
   author: "jiangweiye <jiangweiye@outlook.com> (https://github.com/jwyGithub)",
   license: "SEE LICENSE IN LICENSE.md",
@@ -165,6 +165,7 @@ var package_default = {
     "@eslint-react/eslint-plugin": "^1.5.12",
     "@eslint/config-inspector": "^0.4.8",
     "@jiangweiye/eslint-config": "workspace:*",
+    "@jiangweiye/install-pkg": "^0.0.0",
     "@jiangweiye/prettier-config": "^0.0.7",
     "@jiangweiye/tsconfig": "^0.0.11",
     "@prettier/plugin-xml": "^3.4.1",

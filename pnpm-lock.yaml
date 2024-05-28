@@ -117,6 +117,9 @@ importers:
       '@jiangweiye/eslint-config':
         specifier: workspace:*
         version: 'link:'
+      '@jiangweiye/install-pkg':
+        specifier: ^0.0.0
+        version: 0.0.0
       '@jiangweiye/prettier-config':
         specifier: ^0.0.7
         version: 0.0.7
@@ -1177,6 +1180,12 @@ packages:
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     dependencies:
       '@sinclair/typebox': 0.27.8
+
+  /@jiangweiye/install-pkg@0.0.0:
+    resolution: {integrity: sha512-GYRzUOcyDx1wN7XSiJABM1ylsOwD4csr4+Pqlwtv501JLlSU08Km8qPu0+jpKla2Y7thxxu7MouOibpCk6mx7g==, tarball: https://registry.npmjs.org/@jiangweiye/install-pkg/-/install-pkg-0.0.0.tgz}
+    dependencies:
+      '@jsdevtools/ez-spawn': 3.0.4
+    dev: true
 
   /@jiangweiye/prettier-config@0.0.7:
     resolution: {integrity: sha512-J2ZeFebp3CUi+dJquXfpIqTxw087DWb71q062pSfL4O4Gxr7sRZb6aAWJZIaSXa308+HRdy2e+hSTkOX4O33gg==}

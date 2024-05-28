@@ -104,12 +104,9 @@ export async function ensurePackages(packages: (string | undefined)[]) {
     const nonExistingPackages = packages.filter(i => i && !isPackageExists(i)) as string[];
     if (nonExistingPackages.length === 0) return;
 
-    const message = `${nonExistingPackages.length === 1 ? 'Package is' : 'Packages are'} required for this config: ${nonExistingPackages.join(', ')}. please install them`;
-    console.error(message);
-
-    // const p = await import('@clack/prompts');
-    // await p.confirm({
-    //     message: ``
-    // });
-    // if (result) await import('@antfu/install-pkg').then(i => i.installPackage(nonExistingPackages, { dev: true }));
+    const p = await import('@clack/prompts');
+    const result = await p.confirm({
+        message: `${nonExistingPackages.length === 1 ? 'Package is' : 'Packages are'} required for this config: ${nonExistingPackages.join(', ')}. Do you want to install them?`
+    });
+    if (result) await import('@jiangweiye/install-pkg').then(i => i.installPackage(nonExistingPackages, { dev: true }));
 }

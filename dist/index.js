@@ -164,8 +164,12 @@ async function ensurePackages(packages) {
   const nonExistingPackages = packages.filter((i) => i && !isPackageExists(i));
   if (nonExistingPackages.length === 0)
     return;
-  const message = `${nonExistingPackages.length === 1 ? "Package is" : "Packages are"} required for this config: ${nonExistingPackages.join(", ")}. please install them`;
-  console.error(message);
+  const p = await import("@clack/prompts");
+  const result = await p.confirm({
+    message: `${nonExistingPackages.length === 1 ? "Package is" : "Packages are"} required for this config: ${nonExistingPackages.join(", ")}. Do you want to install them?`
+  });
+  if (result)
+    await import("./dist-EN4UENK7.js").then((i) => i.installPackage(nonExistingPackages, { dev: true }));
 }
 
 // src/configs/astro.ts

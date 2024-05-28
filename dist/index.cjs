@@ -43,6 +43,1358 @@ var init_cjs_shims = __esm({
   }
 });
 
+// node_modules/.pnpm/string-argv@0.3.2/node_modules/string-argv/commonjs/index.js
+var require_commonjs = __commonJS({
+  "node_modules/.pnpm/string-argv@0.3.2/node_modules/string-argv/commonjs/index.js"(exports2) {
+    "use strict";
+    init_cjs_shims();
+    exports2.__esModule = true;
+    exports2.parseArgsStringToArgv = void 0;
+    function parseArgsStringToArgv(value, env, file) {
+      var myRegexp = /([^\s'"]([^\s'"]*(['"])([^\3]*?)\3)+[^\s'"]*)|[^\s'"]+|(['"])([^\5]*?)\5/gi;
+      var myString = value;
+      var myArray = [];
+      if (env) {
+        myArray.push(env);
+      }
+      if (file) {
+        myArray.push(file);
+      }
+      var match;
+      do {
+        match = myRegexp.exec(myString);
+        if (match !== null) {
+          myArray.push(firstString(match[1], match[6], match[0]));
+        }
+      } while (match !== null);
+      return myArray;
+    }
+    exports2["default"] = parseArgsStringToArgv;
+    exports2.parseArgsStringToArgv = parseArgsStringToArgv;
+    function firstString() {
+      var args = [];
+      for (var _i = 0; _i < arguments.length; _i++) {
+        args[_i] = arguments[_i];
+      }
+      for (var i = 0; i < args.length; i++) {
+        var arg = args[i];
+        if (typeof arg === "string") {
+          return arg;
+        }
+      }
+    }
+  }
+});
+
+// node_modules/.pnpm/type-detect@4.0.8/node_modules/type-detect/type-detect.js
+var require_type_detect = __commonJS({
+  "node_modules/.pnpm/type-detect@4.0.8/node_modules/type-detect/type-detect.js"(exports2, module2) {
+    "use strict";
+    init_cjs_shims();
+    (function(global2, factory) {
+      typeof exports2 === "object" && typeof module2 !== "undefined" ? module2.exports = factory() : typeof define === "function" && define.amd ? define(factory) : global2.typeDetect = factory();
+    })(exports2, function() {
+      "use strict";
+      var promiseExists = typeof Promise === "function";
+      var globalObject = typeof self === "object" ? self : global;
+      var symbolExists = typeof Symbol !== "undefined";
+      var mapExists = typeof Map !== "undefined";
+      var setExists = typeof Set !== "undefined";
+      var weakMapExists = typeof WeakMap !== "undefined";
+      var weakSetExists = typeof WeakSet !== "undefined";
+      var dataViewExists = typeof DataView !== "undefined";
+      var symbolIteratorExists = symbolExists && typeof Symbol.iterator !== "undefined";
+      var symbolToStringTagExists = symbolExists && typeof Symbol.toStringTag !== "undefined";
+      var setEntriesExists = setExists && typeof Set.prototype.entries === "function";
+      var mapEntriesExists = mapExists && typeof Map.prototype.entries === "function";
+      var setIteratorPrototype = setEntriesExists && Object.getPrototypeOf((/* @__PURE__ */ new Set()).entries());
+      var mapIteratorPrototype = mapEntriesExists && Object.getPrototypeOf((/* @__PURE__ */ new Map()).entries());
+      var arrayIteratorExists = symbolIteratorExists && typeof Array.prototype[Symbol.iterator] === "function";
+      var arrayIteratorPrototype = arrayIteratorExists && Object.getPrototypeOf([][Symbol.iterator]());
+      var stringIteratorExists = symbolIteratorExists && typeof String.prototype[Symbol.iterator] === "function";
+      var stringIteratorPrototype = stringIteratorExists && Object.getPrototypeOf(""[Symbol.iterator]());
+      var toStringLeftSliceLength = 8;
+      var toStringRightSliceLength = -1;
+      function typeDetect(obj) {
+        var typeofObj = typeof obj;
+        if (typeofObj !== "object") {
+          return typeofObj;
+        }
+        if (obj === null) {
+          return "null";
+        }
+        if (obj === globalObject) {
+          return "global";
+        }
+        if (Array.isArray(obj) && (symbolToStringTagExists === false || !(Symbol.toStringTag in obj))) {
+          return "Array";
+        }
+        if (typeof window === "object" && window !== null) {
+          if (typeof window.location === "object" && obj === window.location) {
+            return "Location";
+          }
+          if (typeof window.document === "object" && obj === window.document) {
+            return "Document";
+          }
+          if (typeof window.navigator === "object") {
+            if (typeof window.navigator.mimeTypes === "object" && obj === window.navigator.mimeTypes) {
+              return "MimeTypeArray";
+            }
+            if (typeof window.navigator.plugins === "object" && obj === window.navigator.plugins) {
+              return "PluginArray";
+            }
+          }
+          if ((typeof window.HTMLElement === "function" || typeof window.HTMLElement === "object") && obj instanceof window.HTMLElement) {
+            if (obj.tagName === "BLOCKQUOTE") {
+              return "HTMLQuoteElement";
+            }
+            if (obj.tagName === "TD") {
+              return "HTMLTableDataCellElement";
+            }
+            if (obj.tagName === "TH") {
+              return "HTMLTableHeaderCellElement";
+            }
+          }
+        }
+        var stringTag = symbolToStringTagExists && obj[Symbol.toStringTag];
+        if (typeof stringTag === "string") {
+          return stringTag;
+        }
+        var objPrototype = Object.getPrototypeOf(obj);
+        if (objPrototype === RegExp.prototype) {
+          return "RegExp";
+        }
+        if (objPrototype === Date.prototype) {
+          return "Date";
+        }
+        if (promiseExists && objPrototype === Promise.prototype) {
+          return "Promise";
+        }
+        if (setExists && objPrototype === Set.prototype) {
+          return "Set";
+        }
+        if (mapExists && objPrototype === Map.prototype) {
+          return "Map";
+        }
+        if (weakSetExists && objPrototype === WeakSet.prototype) {
+          return "WeakSet";
+        }
+        if (weakMapExists && objPrototype === WeakMap.prototype) {
+          return "WeakMap";
+        }
+        if (dataViewExists && objPrototype === DataView.prototype) {
+          return "DataView";
+        }
+        if (mapExists && objPrototype === mapIteratorPrototype) {
+          return "Map Iterator";
+        }
+        if (setExists && objPrototype === setIteratorPrototype) {
+          return "Set Iterator";
+        }
+        if (arrayIteratorExists && objPrototype === arrayIteratorPrototype) {
+          return "Array Iterator";
+        }
+        if (stringIteratorExists && objPrototype === stringIteratorPrototype) {
+          return "String Iterator";
+        }
+        if (objPrototype === null) {
+          return "Object";
+        }
+        return Object.prototype.toString.call(obj).slice(toStringLeftSliceLength, toStringRightSliceLength);
+      }
+      return typeDetect;
+    });
+  }
+});
+
+// node_modules/.pnpm/@jsdevtools+ez-spawn@3.0.4/node_modules/@jsdevtools/ez-spawn/lib/normalize-args.js
+var require_normalize_args = __commonJS({
+  "node_modules/.pnpm/@jsdevtools+ez-spawn@3.0.4/node_modules/@jsdevtools/ez-spawn/lib/normalize-args.js"(exports2, module2) {
+    "use strict";
+    init_cjs_shims();
+    var { parseArgsStringToArgv } = require_commonjs();
+    var detectType = require_type_detect();
+    module2.exports = normalizeArgs;
+    function normalizeArgs(params) {
+      let command2, args, options, callback, error;
+      try {
+        ({ command: command2, args, options, callback } = shiftArgs(params));
+        let commandArgs = [];
+        if (typeof command2 === "string" && args === void 0) {
+          command2 = splitArgString(command2);
+        }
+        if (Array.isArray(command2)) {
+          commandArgs = command2.slice(1);
+          command2 = command2[0];
+        }
+        if (typeof args === "string") {
+          args = splitArgString(args);
+        }
+        if (Array.isArray(args)) {
+          args = commandArgs.concat(args);
+        }
+        if (args === void 0 || args === null) {
+          args = commandArgs;
+        }
+        if (options === void 0 || options === null) {
+          options = {};
+        }
+        options.encoding = options.encoding || "utf8";
+        validateArgs(command2, args, options, callback);
+      } catch (err) {
+        error = err;
+        command2 = String(command2 || "");
+        args = (Array.isArray(args) ? args : []).map((arg) => String(arg || ""));
+      }
+      return { command: command2, args, options, callback, error };
+    }
+    function shiftArgs(params) {
+      params = Array.prototype.slice.call(params);
+      let command2, args, options, callback;
+      let lastParam = params[params.length - 1];
+      if (typeof lastParam === "function") {
+        callback = lastParam;
+        params.pop();
+      }
+      lastParam = params[params.length - 1];
+      if (lastParam === null || lastParam === void 0 || typeof lastParam === "object" && !Array.isArray(lastParam)) {
+        options = lastParam;
+        params.pop();
+      }
+      command2 = params.shift();
+      if (params.length === 0) {
+        args = void 0;
+      } else if (params.length === 1 && Array.isArray(params[0])) {
+        args = params[0];
+      } else if (params.length === 1 && params[0] === "") {
+        args = [];
+      } else {
+        args = params;
+      }
+      return { command: command2, args, options, callback };
+    }
+    function validateArgs(command2, args, options, callback) {
+      if (command2 === void 0 || command2 === null) {
+        throw new Error("The command to execute is missing.");
+      }
+      if (typeof command2 !== "string") {
+        throw new Error("The command to execute should be a string, not " + friendlyType(command2));
+      }
+      if (!Array.isArray(args)) {
+        throw new Error(
+          "The command arguments should be a string or an array, not " + friendlyType(args)
+        );
+      }
+      for (let i = 0; i < args.length; i++) {
+        let arg = args[i];
+        if (typeof arg !== "string") {
+          throw new Error(
+            `The command arguments should be strings, but argument #${i + 1} is ` + friendlyType(arg)
+          );
+        }
+      }
+      if (typeof options !== "object") {
+        throw new Error(
+          "The options should be an object, not " + friendlyType(options)
+        );
+      }
+      if (callback !== void 0 && callback !== null) {
+        if (typeof callback !== "function") {
+          throw new Error("The callback should be a function, not " + friendlyType(callback));
+        }
+      }
+    }
+    function splitArgString(argString) {
+      try {
+        return parseArgsStringToArgv(argString);
+      } catch (error) {
+        throw new Error(`Could not parse the string: ${argString}
+${error.message}`);
+      }
+    }
+    function friendlyType(val) {
+      let type = detectType(val);
+      let firstChar = String(type)[0].toLowerCase();
+      if (["a", "e", "i", "o", "u"].indexOf(firstChar) === -1) {
+        return `a ${type}.`;
+      } else {
+        return `an ${type}.`;
+      }
+    }
+  }
+});
+
+// node_modules/.pnpm/@jsdevtools+ez-spawn@3.0.4/node_modules/@jsdevtools/ez-spawn/lib/process.js
+var require_process = __commonJS({
+  "node_modules/.pnpm/@jsdevtools+ez-spawn@3.0.4/node_modules/@jsdevtools/ez-spawn/lib/process.js"(exports2, module2) {
+    "use strict";
+    init_cjs_shims();
+    module2.exports = class Process {
+      /**
+       * @param {object} props - Initial property values
+       */
+      constructor({ command: command2, args, pid, stdout, stderr, output, status, signal, options }) {
+        options = options || {};
+        stdout = stdout || (options.encoding === "buffer" ? Buffer.from([]) : "");
+        stderr = stderr || (options.encoding === "buffer" ? Buffer.from([]) : "");
+        output = output || [options.input || null, stdout, stderr];
+        this.command = command2 || "";
+        this.args = args || [];
+        this.pid = pid || 0;
+        this.stdout = output[1];
+        this.stderr = output[2];
+        this.output = output;
+        this.status = status;
+        this.signal = signal || null;
+      }
+      /**
+       * Returns the full command and arguments used to spawn the process
+       *
+       * @type {string}
+       */
+      toString() {
+        let string = this.command;
+        for (let arg of this.args) {
+          arg = arg.replace(/"/g, '\\"');
+          if (arg.indexOf(" ") >= 0) {
+            string += ` "${arg}"`;
+          } else {
+            string += ` ${arg}`;
+          }
+        }
+        return string;
+      }
+    };
+  }
+});
+
+// node_modules/.pnpm/@jsdevtools+ez-spawn@3.0.4/node_modules/@jsdevtools/ez-spawn/lib/process-error.js
+var require_process_error = __commonJS({
+  "node_modules/.pnpm/@jsdevtools+ez-spawn@3.0.4/node_modules/@jsdevtools/ez-spawn/lib/process-error.js"(exports2, module2) {
+    "use strict";
+    init_cjs_shims();
+    module2.exports = class ProcessError extends Error {
+      constructor(process7) {
+        let message = `${process7.toString()} exited with a status of ${process7.status}.`;
+        if (process7.stderr.length > 0) {
+          message += "\n\n" + process7.stderr.toString().trim();
+        }
+        super(message);
+        Object.assign(this, process7);
+        this.name = ProcessError.name;
+      }
+    };
+  }
+});
+
+// node_modules/.pnpm/@jsdevtools+ez-spawn@3.0.4/node_modules/@jsdevtools/ez-spawn/lib/normalize-result.js
+var require_normalize_result = __commonJS({
+  "node_modules/.pnpm/@jsdevtools+ez-spawn@3.0.4/node_modules/@jsdevtools/ez-spawn/lib/normalize-result.js"(exports2, module2) {
+    "use strict";
+    init_cjs_shims();
+    var Process = require_process();
+    var ProcessError = require_process_error();
+    module2.exports = normalizeResult;
+    function normalizeResult({ command: command2, args, pid, stdout, stderr, output, status, signal, options, error }) {
+      let process7 = new Process({ command: command2, args, pid, stdout, stderr, output, status, signal, options });
+      if (error) {
+        if (process7.status === void 0) {
+          process7.status = null;
+        }
+        throw Object.assign(error, process7);
+      } else if (process7.status) {
+        throw new ProcessError(process7);
+      } else {
+        return process7;
+      }
+    }
+  }
+});
+
+// node_modules/.pnpm/isexe@2.0.0/node_modules/isexe/windows.js
+var require_windows = __commonJS({
+  "node_modules/.pnpm/isexe@2.0.0/node_modules/isexe/windows.js"(exports2, module2) {
+    "use strict";
+    init_cjs_shims();
+    module2.exports = isexe;
+    isexe.sync = sync;
+    var fs6 = require("fs");
+    function checkPathExt(path6, options) {
+      var pathext = options.pathExt !== void 0 ? options.pathExt : process.env.PATHEXT;
+      if (!pathext) {
+        return true;
+      }
+      pathext = pathext.split(";");
+      if (pathext.indexOf("") !== -1) {
+        return true;
+      }
+      for (var i = 0; i < pathext.length; i++) {
+        var p = pathext[i].toLowerCase();
+        if (p && path6.substr(-p.length).toLowerCase() === p) {
+          return true;
+        }
+      }
+      return false;
+    }
+    function checkStat(stat, path6, options) {
+      if (!stat.isSymbolicLink() && !stat.isFile()) {
+        return false;
+      }
+      return checkPathExt(path6, options);
+    }
+    function isexe(path6, options, cb) {
+      fs6.stat(path6, function(er, stat) {
+        cb(er, er ? false : checkStat(stat, path6, options));
+      });
+    }
+    function sync(path6, options) {
+      return checkStat(fs6.statSync(path6), path6, options);
+    }
+  }
+});
+
+// node_modules/.pnpm/isexe@2.0.0/node_modules/isexe/mode.js
+var require_mode = __commonJS({
+  "node_modules/.pnpm/isexe@2.0.0/node_modules/isexe/mode.js"(exports2, module2) {
+    "use strict";
+    init_cjs_shims();
+    module2.exports = isexe;
+    isexe.sync = sync;
+    var fs6 = require("fs");
+    function isexe(path6, options, cb) {
+      fs6.stat(path6, function(er, stat) {
+        cb(er, er ? false : checkStat(stat, options));
+      });
+    }
+    function sync(path6, options) {
+      return checkStat(fs6.statSync(path6), options);
+    }
+    function checkStat(stat, options) {
+      return stat.isFile() && checkMode(stat, options);
+    }
+    function checkMode(stat, options) {
+      var mod = stat.mode;
+      var uid = stat.uid;
+      var gid = stat.gid;
+      var myUid = options.uid !== void 0 ? options.uid : process.getuid && process.getuid();
+      var myGid = options.gid !== void 0 ? options.gid : process.getgid && process.getgid();
+      var u = parseInt("100", 8);
+      var g = parseInt("010", 8);
+      var o = parseInt("001", 8);
+      var ug = u | g;
+      var ret = mod & o || mod & g && gid === myGid || mod & u && uid === myUid || mod & ug && myUid === 0;
+      return ret;
+    }
+  }
+});
+
+// node_modules/.pnpm/isexe@2.0.0/node_modules/isexe/index.js
+var require_isexe = __commonJS({
+  "node_modules/.pnpm/isexe@2.0.0/node_modules/isexe/index.js"(exports2, module2) {
+    "use strict";
+    init_cjs_shims();
+    var fs6 = require("fs");
+    var core;
+    if (process.platform === "win32" || global.TESTING_WINDOWS) {
+      core = require_windows();
+    } else {
+      core = require_mode();
+    }
+    module2.exports = isexe;
+    isexe.sync = sync;
+    function isexe(path6, options, cb) {
+      if (typeof options === "function") {
+        cb = options;
+        options = {};
+      }
+      if (!cb) {
+        if (typeof Promise !== "function") {
+          throw new TypeError("callback not provided");
+        }
+        return new Promise(function(resolve2, reject) {
+          isexe(path6, options || {}, function(er, is) {
+            if (er) {
+              reject(er);
+            } else {
+              resolve2(is);
+            }
+          });
+        });
+      }
+      core(path6, options || {}, function(er, is) {
+        if (er) {
+          if (er.code === "EACCES" || options && options.ignoreErrors) {
+            er = null;
+            is = false;
+          }
+        }
+        cb(er, is);
+      });
+    }
+    function sync(path6, options) {
+      try {
+        return core.sync(path6, options || {});
+      } catch (er) {
+        if (options && options.ignoreErrors || er.code === "EACCES") {
+          return false;
+        } else {
+          throw er;
+        }
+      }
+    }
+  }
+});
+
+// node_modules/.pnpm/which@2.0.2/node_modules/which/which.js
+var require_which = __commonJS({
+  "node_modules/.pnpm/which@2.0.2/node_modules/which/which.js"(exports2, module2) {
+    "use strict";
+    init_cjs_shims();
+    var isWindows = process.platform === "win32" || process.env.OSTYPE === "cygwin" || process.env.OSTYPE === "msys";
+    var path6 = require("path");
+    var COLON = isWindows ? ";" : ":";
+    var isexe = require_isexe();
+    var getNotFoundError = (cmd) => Object.assign(new Error(`not found: ${cmd}`), { code: "ENOENT" });
+    var getPathInfo = (cmd, opt) => {
+      const colon = opt.colon || COLON;
+      const pathEnv = cmd.match(/\//) || isWindows && cmd.match(/\\/) ? [""] : [
+        // windows always checks the cwd first
+        ...isWindows ? [process.cwd()] : [],
+        ...(opt.path || process.env.PATH || /* istanbul ignore next: very unusual */
+        "").split(colon)
+      ];
+      const pathExtExe = isWindows ? opt.pathExt || process.env.PATHEXT || ".EXE;.CMD;.BAT;.COM" : "";
+      const pathExt = isWindows ? pathExtExe.split(colon) : [""];
+      if (isWindows) {
+        if (cmd.indexOf(".") !== -1 && pathExt[0] !== "")
+          pathExt.unshift("");
+      }
+      return {
+        pathEnv,
+        pathExt,
+        pathExtExe
+      };
+    };
+    var which = (cmd, opt, cb) => {
+      if (typeof opt === "function") {
+        cb = opt;
+        opt = {};
+      }
+      if (!opt)
+        opt = {};
+      const { pathEnv, pathExt, pathExtExe } = getPathInfo(cmd, opt);
+      const found = [];
+      const step = (i) => new Promise((resolve2, reject) => {
+        if (i === pathEnv.length)
+          return opt.all && found.length ? resolve2(found) : reject(getNotFoundError(cmd));
+        const ppRaw = pathEnv[i];
+        const pathPart = /^".*"$/.test(ppRaw) ? ppRaw.slice(1, -1) : ppRaw;
+        const pCmd = path6.join(pathPart, cmd);
+        const p = !pathPart && /^\.[\\\/]/.test(cmd) ? cmd.slice(0, 2) + pCmd : pCmd;
+        resolve2(subStep(p, i, 0));
+      });
+      const subStep = (p, i, ii) => new Promise((resolve2, reject) => {
+        if (ii === pathExt.length)
+          return resolve2(step(i + 1));
+        const ext = pathExt[ii];
+        isexe(p + ext, { pathExt: pathExtExe }, (er, is) => {
+          if (!er && is) {
+            if (opt.all)
+              found.push(p + ext);
+            else
+              return resolve2(p + ext);
+          }
+          return resolve2(subStep(p, i, ii + 1));
+        });
+      });
+      return cb ? step(0).then((res) => cb(null, res), cb) : step(0);
+    };
+    var whichSync = (cmd, opt) => {
+      opt = opt || {};
+      const { pathEnv, pathExt, pathExtExe } = getPathInfo(cmd, opt);
+      const found = [];
+      for (let i = 0; i < pathEnv.length; i++) {
+        const ppRaw = pathEnv[i];
+        const pathPart = /^".*"$/.test(ppRaw) ? ppRaw.slice(1, -1) : ppRaw;
+        const pCmd = path6.join(pathPart, cmd);
+        const p = !pathPart && /^\.[\\\/]/.test(cmd) ? cmd.slice(0, 2) + pCmd : pCmd;
+        for (let j = 0; j < pathExt.length; j++) {
+          const cur = p + pathExt[j];
+          try {
+            const is = isexe.sync(cur, { pathExt: pathExtExe });
+            if (is) {
+              if (opt.all)
+                found.push(cur);
+              else
+                return cur;
+            }
+          } catch (ex) {
+          }
+        }
+      }
+      if (opt.all && found.length)
+        return found;
+      if (opt.nothrow)
+        return null;
+      throw getNotFoundError(cmd);
+    };
+    module2.exports = which;
+    which.sync = whichSync;
+  }
+});
+
+// node_modules/.pnpm/path-key@3.1.1/node_modules/path-key/index.js
+var require_path_key = __commonJS({
+  "node_modules/.pnpm/path-key@3.1.1/node_modules/path-key/index.js"(exports2, module2) {
+    "use strict";
+    init_cjs_shims();
+    var pathKey = (options = {}) => {
+      const environment = options.env || process.env;
+      const platform = options.platform || process.platform;
+      if (platform !== "win32") {
+        return "PATH";
+      }
+      return Object.keys(environment).reverse().find((key) => key.toUpperCase() === "PATH") || "Path";
+    };
+    module2.exports = pathKey;
+    module2.exports.default = pathKey;
+  }
+});
+
+// node_modules/.pnpm/cross-spawn@7.0.3/node_modules/cross-spawn/lib/util/resolveCommand.js
+var require_resolveCommand = __commonJS({
+  "node_modules/.pnpm/cross-spawn@7.0.3/node_modules/cross-spawn/lib/util/resolveCommand.js"(exports2, module2) {
+    "use strict";
+    init_cjs_shims();
+    var path6 = require("path");
+    var which = require_which();
+    var getPathKey = require_path_key();
+    function resolveCommandAttempt(parsed, withoutPathExt) {
+      const env = parsed.options.env || process.env;
+      const cwd = process.cwd();
+      const hasCustomCwd = parsed.options.cwd != null;
+      const shouldSwitchCwd = hasCustomCwd && process.chdir !== void 0 && !process.chdir.disabled;
+      if (shouldSwitchCwd) {
+        try {
+          process.chdir(parsed.options.cwd);
+        } catch (err) {
+        }
+      }
+      let resolved;
+      try {
+        resolved = which.sync(parsed.command, {
+          path: env[getPathKey({ env })],
+          pathExt: withoutPathExt ? path6.delimiter : void 0
+        });
+      } catch (e) {
+      } finally {
+        if (shouldSwitchCwd) {
+          process.chdir(cwd);
+        }
+      }
+      if (resolved) {
+        resolved = path6.resolve(hasCustomCwd ? parsed.options.cwd : "", resolved);
+      }
+      return resolved;
+    }
+    function resolveCommand(parsed) {
+      return resolveCommandAttempt(parsed) || resolveCommandAttempt(parsed, true);
+    }
+    module2.exports = resolveCommand;
+  }
+});
+
+// node_modules/.pnpm/cross-spawn@7.0.3/node_modules/cross-spawn/lib/util/escape.js
+var require_escape = __commonJS({
+  "node_modules/.pnpm/cross-spawn@7.0.3/node_modules/cross-spawn/lib/util/escape.js"(exports2, module2) {
+    "use strict";
+    init_cjs_shims();
+    var metaCharsRegExp = /([()\][%!^"`<>&|;, *?])/g;
+    function escapeCommand(arg) {
+      arg = arg.replace(metaCharsRegExp, "^$1");
+      return arg;
+    }
+    function escapeArgument(arg, doubleEscapeMetaChars) {
+      arg = `${arg}`;
+      arg = arg.replace(/(\\*)"/g, '$1$1\\"');
+      arg = arg.replace(/(\\*)$/, "$1$1");
+      arg = `"${arg}"`;
+      arg = arg.replace(metaCharsRegExp, "^$1");
+      if (doubleEscapeMetaChars) {
+        arg = arg.replace(metaCharsRegExp, "^$1");
+      }
+      return arg;
+    }
+    module2.exports.command = escapeCommand;
+    module2.exports.argument = escapeArgument;
+  }
+});
+
+// node_modules/.pnpm/shebang-regex@3.0.0/node_modules/shebang-regex/index.js
+var require_shebang_regex = __commonJS({
+  "node_modules/.pnpm/shebang-regex@3.0.0/node_modules/shebang-regex/index.js"(exports2, module2) {
+    "use strict";
+    init_cjs_shims();
+    module2.exports = /^#!(.*)/;
+  }
+});
+
+// node_modules/.pnpm/shebang-command@2.0.0/node_modules/shebang-command/index.js
+var require_shebang_command = __commonJS({
+  "node_modules/.pnpm/shebang-command@2.0.0/node_modules/shebang-command/index.js"(exports2, module2) {
+    "use strict";
+    init_cjs_shims();
+    var shebangRegex = require_shebang_regex();
+    module2.exports = (string = "") => {
+      const match = string.match(shebangRegex);
+      if (!match) {
+        return null;
+      }
+      const [path6, argument] = match[0].replace(/#! ?/, "").split(" ");
+      const binary = path6.split("/").pop();
+      if (binary === "env") {
+        return argument;
+      }
+      return argument ? `${binary} ${argument}` : binary;
+    };
+  }
+});
+
+// node_modules/.pnpm/cross-spawn@7.0.3/node_modules/cross-spawn/lib/util/readShebang.js
+var require_readShebang = __commonJS({
+  "node_modules/.pnpm/cross-spawn@7.0.3/node_modules/cross-spawn/lib/util/readShebang.js"(exports2, module2) {
+    "use strict";
+    init_cjs_shims();
+    var fs6 = require("fs");
+    var shebangCommand = require_shebang_command();
+    function readShebang(command2) {
+      const size = 150;
+      const buffer = Buffer.alloc(size);
+      let fd;
+      try {
+        fd = fs6.openSync(command2, "r");
+        fs6.readSync(fd, buffer, 0, size, 0);
+        fs6.closeSync(fd);
+      } catch (e) {
+      }
+      return shebangCommand(buffer.toString());
+    }
+    module2.exports = readShebang;
+  }
+});
+
+// node_modules/.pnpm/cross-spawn@7.0.3/node_modules/cross-spawn/lib/parse.js
+var require_parse = __commonJS({
+  "node_modules/.pnpm/cross-spawn@7.0.3/node_modules/cross-spawn/lib/parse.js"(exports2, module2) {
+    "use strict";
+    init_cjs_shims();
+    var path6 = require("path");
+    var resolveCommand = require_resolveCommand();
+    var escape2 = require_escape();
+    var readShebang = require_readShebang();
+    var isWin = process.platform === "win32";
+    var isExecutableRegExp = /\.(?:com|exe)$/i;
+    var isCmdShimRegExp = /node_modules[\\/].bin[\\/][^\\/]+\.cmd$/i;
+    function detectShebang(parsed) {
+      parsed.file = resolveCommand(parsed);
+      const shebang = parsed.file && readShebang(parsed.file);
+      if (shebang) {
+        parsed.args.unshift(parsed.file);
+        parsed.command = shebang;
+        return resolveCommand(parsed);
+      }
+      return parsed.file;
+    }
+    function parseNonShell(parsed) {
+      if (!isWin) {
+        return parsed;
+      }
+      const commandFile = detectShebang(parsed);
+      const needsShell = !isExecutableRegExp.test(commandFile);
+      if (parsed.options.forceShell || needsShell) {
+        const needsDoubleEscapeMetaChars = isCmdShimRegExp.test(commandFile);
+        parsed.command = path6.normalize(parsed.command);
+        parsed.command = escape2.command(parsed.command);
+        parsed.args = parsed.args.map((arg) => escape2.argument(arg, needsDoubleEscapeMetaChars));
+        const shellCommand = [parsed.command].concat(parsed.args).join(" ");
+        parsed.args = ["/d", "/s", "/c", `"${shellCommand}"`];
+        parsed.command = process.env.comspec || "cmd.exe";
+        parsed.options.windowsVerbatimArguments = true;
+      }
+      return parsed;
+    }
+    function parse(command2, args, options) {
+      if (args && !Array.isArray(args)) {
+        options = args;
+        args = null;
+      }
+      args = args ? args.slice(0) : [];
+      options = Object.assign({}, options);
+      const parsed = {
+        command: command2,
+        args,
+        options,
+        file: void 0,
+        original: {
+          command: command2,
+          args
+        }
+      };
+      return options.shell ? parsed : parseNonShell(parsed);
+    }
+    module2.exports = parse;
+  }
+});
+
+// node_modules/.pnpm/cross-spawn@7.0.3/node_modules/cross-spawn/lib/enoent.js
+var require_enoent = __commonJS({
+  "node_modules/.pnpm/cross-spawn@7.0.3/node_modules/cross-spawn/lib/enoent.js"(exports2, module2) {
+    "use strict";
+    init_cjs_shims();
+    var isWin = process.platform === "win32";
+    function notFoundError(original, syscall) {
+      return Object.assign(new Error(`${syscall} ${original.command} ENOENT`), {
+        code: "ENOENT",
+        errno: "ENOENT",
+        syscall: `${syscall} ${original.command}`,
+        path: original.command,
+        spawnargs: original.args
+      });
+    }
+    function hookChildProcess(cp, parsed) {
+      if (!isWin) {
+        return;
+      }
+      const originalEmit = cp.emit;
+      cp.emit = function(name, arg1) {
+        if (name === "exit") {
+          const err = verifyENOENT(arg1, parsed, "spawn");
+          if (err) {
+            return originalEmit.call(cp, "error", err);
+          }
+        }
+        return originalEmit.apply(cp, arguments);
+      };
+    }
+    function verifyENOENT(status, parsed) {
+      if (isWin && status === 1 && !parsed.file) {
+        return notFoundError(parsed.original, "spawn");
+      }
+      return null;
+    }
+    function verifyENOENTSync(status, parsed) {
+      if (isWin && status === 1 && !parsed.file) {
+        return notFoundError(parsed.original, "spawnSync");
+      }
+      return null;
+    }
+    module2.exports = {
+      hookChildProcess,
+      verifyENOENT,
+      verifyENOENTSync,
+      notFoundError
+    };
+  }
+});
+
+// node_modules/.pnpm/cross-spawn@7.0.3/node_modules/cross-spawn/index.js
+var require_cross_spawn = __commonJS({
+  "node_modules/.pnpm/cross-spawn@7.0.3/node_modules/cross-spawn/index.js"(exports2, module2) {
+    "use strict";
+    init_cjs_shims();
+    var cp = require("child_process");
+    var parse = require_parse();
+    var enoent = require_enoent();
+    function spawn(command2, args, options) {
+      const parsed = parse(command2, args, options);
+      const spawned = cp.spawn(parsed.command, parsed.args, parsed.options);
+      enoent.hookChildProcess(spawned, parsed);
+      return spawned;
+    }
+    function spawnSync(command2, args, options) {
+      const parsed = parse(command2, args, options);
+      const result = cp.spawnSync(parsed.command, parsed.args, parsed.options);
+      result.error = result.error || enoent.verifyENOENTSync(result.status, parsed);
+      return result;
+    }
+    module2.exports = spawn;
+    module2.exports.spawn = spawn;
+    module2.exports.sync = spawnSync;
+    module2.exports._parse = parse;
+    module2.exports._enoent = enoent;
+  }
+});
+
+// node_modules/.pnpm/@jsdevtools+ez-spawn@3.0.4/node_modules/@jsdevtools/ez-spawn/lib/sync.js
+var require_sync = __commonJS({
+  "node_modules/.pnpm/@jsdevtools+ez-spawn@3.0.4/node_modules/@jsdevtools/ez-spawn/lib/sync.js"(exports2, module2) {
+    "use strict";
+    init_cjs_shims();
+    var normalizeArgs = require_normalize_args();
+    var normalizeResult = require_normalize_result();
+    var spawnSync = require_cross_spawn().sync;
+    module2.exports = sync;
+    function sync() {
+      let { command: command2, args, options, error } = normalizeArgs(arguments);
+      if (error) {
+        normalizeResult({ command: command2, args, options, error });
+      } else {
+        let result;
+        try {
+          result = spawnSync(command2, args, options);
+        } catch (error2) {
+          normalizeResult({ error: error2, command: command2, args, options });
+        }
+        return normalizeResult(Object.assign({}, result, { command: command2, args, options }));
+      }
+    }
+  }
+});
+
+// node_modules/.pnpm/call-me-maybe@1.0.2/node_modules/call-me-maybe/src/next.js
+var require_next = __commonJS({
+  "node_modules/.pnpm/call-me-maybe@1.0.2/node_modules/call-me-maybe/src/next.js"(exports2, module2) {
+    "use strict";
+    init_cjs_shims();
+    function makeNext() {
+      if (typeof process === "object" && typeof process.nextTick === "function") {
+        return process.nextTick;
+      } else if (typeof setImmediate === "function") {
+        return setImmediate;
+      } else {
+        return function next(f) {
+          setTimeout(f, 0);
+        };
+      }
+    }
+    module2.exports = makeNext();
+  }
+});
+
+// node_modules/.pnpm/call-me-maybe@1.0.2/node_modules/call-me-maybe/src/maybe.js
+var require_maybe = __commonJS({
+  "node_modules/.pnpm/call-me-maybe@1.0.2/node_modules/call-me-maybe/src/maybe.js"(exports2, module2) {
+    "use strict";
+    init_cjs_shims();
+    var next = require_next();
+    module2.exports = function maybe(cb, promise) {
+      if (cb) {
+        promise.then(function(result) {
+          next(function() {
+            cb(null, result);
+          });
+        }, function(err) {
+          next(function() {
+            cb(err);
+          });
+        });
+        return void 0;
+      } else {
+        return promise;
+      }
+    };
+  }
+});
+
+// node_modules/.pnpm/@jsdevtools+ez-spawn@3.0.4/node_modules/@jsdevtools/ez-spawn/lib/async.js
+var require_async = __commonJS({
+  "node_modules/.pnpm/@jsdevtools+ez-spawn@3.0.4/node_modules/@jsdevtools/ez-spawn/lib/async.js"(exports2, module2) {
+    "use strict";
+    init_cjs_shims();
+    var normalizeArgs = require_normalize_args();
+    var normalizeResult = require_normalize_result();
+    var maybe = require_maybe();
+    var spawn = require_cross_spawn();
+    module2.exports = async;
+    function async() {
+      let { command: command2, args, options, callback, error } = normalizeArgs(arguments);
+      return maybe(callback, new Promise((resolve2, reject) => {
+        if (error) {
+          normalizeResult({ command: command2, args, options, error });
+        } else {
+          let spawnedProcess;
+          try {
+            spawnedProcess = spawn(command2, args, options);
+          } catch (error2) {
+            normalizeResult({ error: error2, command: command2, args, options });
+          }
+          let pid = spawnedProcess.pid;
+          let stdout = options.encoding === "buffer" ? Buffer.from([]) : "";
+          let stderr = options.encoding === "buffer" ? Buffer.from([]) : "";
+          spawnedProcess.stdout && spawnedProcess.stdout.on("data", (data) => {
+            if (typeof stdout === "string") {
+              stdout += data.toString();
+            } else {
+              stdout = Buffer.concat([stdout, data]);
+            }
+          });
+          spawnedProcess.stderr && spawnedProcess.stderr.on("data", (data) => {
+            if (typeof stderr === "string") {
+              stderr += data.toString();
+            } else {
+              stderr = Buffer.concat([stderr, data]);
+            }
+          });
+          spawnedProcess.on("error", (error2) => {
+            try {
+              normalizeResult({ error: error2, command: command2, args, options, pid, stdout, stderr });
+            } catch (error3) {
+              reject(error3);
+            }
+          });
+          spawnedProcess.on("exit", (status, signal) => {
+            try {
+              resolve2(normalizeResult({ command: command2, args, options, pid, stdout, stderr, status, signal }));
+            } catch (error2) {
+              reject(error2);
+            }
+          });
+        }
+      }));
+    }
+  }
+});
+
+// node_modules/.pnpm/@jsdevtools+ez-spawn@3.0.4/node_modules/@jsdevtools/ez-spawn/lib/index.js
+var require_lib = __commonJS({
+  "node_modules/.pnpm/@jsdevtools+ez-spawn@3.0.4/node_modules/@jsdevtools/ez-spawn/lib/index.js"(exports2, module2) {
+    "use strict";
+    init_cjs_shims();
+    module2.exports.sync = require_sync();
+    module2.exports.async = require_async();
+  }
+});
+
+// node_modules/.pnpm/@jiangweiye+install-pkg@0.0.0/node_modules/@jiangweiye/install-pkg/dist/index.js
+var dist_exports = {};
+__export(dist_exports, {
+  detectPackageManager: () => detectPackageManager,
+  installPackage: () => installPackage
+});
+function pLimit(concurrency) {
+  if (!((Number.isInteger(concurrency) || concurrency === Number.POSITIVE_INFINITY) && concurrency > 0)) {
+    throw new TypeError("Expected `concurrency` to be a number from 1 and up");
+  }
+  const queue = new Queue();
+  let activeCount = 0;
+  const next = /* @__PURE__ */ __name(() => {
+    activeCount--;
+    if (queue.size > 0) {
+      queue.dequeue()();
+    }
+  }, "next");
+  const run = /* @__PURE__ */ __name(async (fn, resolve2, args) => {
+    activeCount++;
+    const result = (async () => fn(...args))();
+    resolve2(result);
+    try {
+      await result;
+    } catch {
+    }
+    next();
+  }, "run");
+  const enqueue = /* @__PURE__ */ __name((fn, resolve2, args) => {
+    queue.enqueue(run.bind(void 0, fn, resolve2, args));
+    (async () => {
+      await Promise.resolve();
+      if (activeCount < concurrency && queue.size > 0) {
+        queue.dequeue()();
+      }
+    })();
+  }, "enqueue");
+  const generator = /* @__PURE__ */ __name((fn, ...args) => new Promise((resolve2) => {
+    enqueue(fn, resolve2, args);
+  }), "generator");
+  Object.defineProperties(generator, {
+    activeCount: {
+      get: () => activeCount
+    },
+    pendingCount: {
+      get: () => queue.size
+    },
+    clearQueue: {
+      value: () => {
+        queue.clear();
+      }
+    }
+  });
+  return generator;
+}
+async function pLocate(iterable, tester, { concurrency = Number.POSITIVE_INFINITY, preserveOrder = true } = {}) {
+  const limit = pLimit(concurrency);
+  const items = [
+    ...iterable
+  ].map((element) => [
+    element,
+    limit(testElement, element, tester)
+  ]);
+  const checkLimit = pLimit(preserveOrder ? 1 : Number.POSITIVE_INFINITY);
+  try {
+    await Promise.all(items.map((element) => checkLimit(finder, element)));
+  } catch (error) {
+    if (error instanceof EndError) {
+      return error.value;
+    }
+    throw error;
+  }
+}
+function checkType(type) {
+  if (Object.hasOwnProperty.call(typeMappings, type)) {
+    return;
+  }
+  throw new Error(`Invalid type specified: ${type}`);
+}
+async function locatePath(paths, { cwd = import_node_process2.default.cwd(), type = "file", allowSymlinks = true, concurrency, preserveOrder } = {}) {
+  checkType(type);
+  cwd = toPath(cwd);
+  const statFunction = allowSymlinks ? import_node_fs2.promises.stat : import_node_fs2.promises.lstat;
+  return pLocate(paths, async (path_) => {
+    try {
+      const stat = await statFunction(import_node_path3.default.resolve(cwd, path_));
+      return matchType(type, stat);
+    } catch {
+      return false;
+    }
+  }, {
+    concurrency,
+    preserveOrder
+  });
+}
+function toPath2(urlOrPath) {
+  return urlOrPath instanceof URL ? (0, import_node_url2.fileURLToPath)(urlOrPath) : urlOrPath;
+}
+async function findUpMultiple(name, options = {}) {
+  let directory = import_node_path2.default.resolve(toPath2(options.cwd) ?? "");
+  const { root } = import_node_path2.default.parse(directory);
+  const stopAt = import_node_path2.default.resolve(directory, toPath2(options.stopAt ?? root));
+  const limit = options.limit ?? Number.POSITIVE_INFINITY;
+  const paths = [
+    name
+  ].flat();
+  const runMatcher = /* @__PURE__ */ __name(async (locateOptions) => {
+    if (typeof name !== "function") {
+      return locatePath(paths, locateOptions);
+    }
+    const foundPath = await name(locateOptions.cwd);
+    if (typeof foundPath === "string") {
+      return locatePath([
+        foundPath
+      ], locateOptions);
+    }
+    return foundPath;
+  }, "runMatcher");
+  const matches = [];
+  while (true) {
+    const foundPath = await runMatcher({
+      ...options,
+      cwd: directory
+    });
+    if (foundPath === findUpStop) {
+      break;
+    }
+    if (foundPath) {
+      matches.push(import_node_path2.default.resolve(directory, foundPath));
+    }
+    if (directory === stopAt || matches.length >= limit) {
+      break;
+    }
+    directory = import_node_path2.default.dirname(directory);
+  }
+  return matches;
+}
+async function findUp(name, options = {}) {
+  const matches = await findUpMultiple(name, {
+    ...options,
+    limit: 1
+  });
+  return matches[0];
+}
+async function detectPackageManager(cwd = import_node_process.default.cwd()) {
+  let agent = null;
+  const lockPath = await findUp(Object.keys(LOCKS), {
+    cwd
+  });
+  let packageJsonPath;
+  if (lockPath)
+    packageJsonPath = import_node_path.default.resolve(lockPath, "../package.json");
+  else
+    packageJsonPath = await findUp("package.json", {
+      cwd
+    });
+  if (packageJsonPath && import_node_fs.default.existsSync(packageJsonPath)) {
+    try {
+      const pkg = JSON.parse(import_node_fs.default.readFileSync(packageJsonPath, "utf8"));
+      if (typeof pkg.packageManager === "string") {
+        const [name, version] = pkg.packageManager.split("@");
+        if (name === "yarn" && Number.parseInt(version) > 1)
+          agent = "yarn@berry";
+        else if (name === "pnpm" && Number.parseInt(version) < 7)
+          agent = "pnpm@6";
+        else if (AGENTS.includes(name))
+          agent = name;
+        else
+          console.warn("[ni] Unknown packageManager:", pkg.packageManager);
+      }
+    } catch {
+    }
+  }
+  if (!agent && lockPath)
+    agent = LOCKS[import_node_path.default.basename(lockPath)];
+  return agent;
+}
+async function installPackage(names, options = {}) {
+  const detectedAgent = options.packageManager || await detectPackageManager(options.cwd) || "npm";
+  const [agent] = detectedAgent.split("@");
+  if (!Array.isArray(names))
+    names = [
+      names
+    ];
+  const args = options.additionalArgs || [];
+  if (options.preferOffline) {
+    if (detectedAgent === "yarn@berry")
+      args.unshift("--cached");
+    else
+      args.unshift("--prefer-offline");
+  }
+  if (agent === "pnpm" && (0, import_node_fs3.existsSync)((0, import_node_path4.resolve)(options.cwd ?? import_node_process3.default.cwd(), "pnpm-workspace.yaml")))
+    args.unshift("-w");
+  return (0, import_ez_spawn.async)(agent, [
+    agent === "yarn" ? "add" : "install",
+    options.dev ? "-D" : "",
+    ...args,
+    ...names
+  ].filter(Boolean), {
+    stdio: options.silent ? "ignore" : "inherit",
+    cwd: options.cwd
+  });
+}
+var import_node_fs, import_node_path, import_node_process, import_node_path2, import_node_process2, import_node_path3, import_node_fs2, import_node_url, import_node_url2, import_node_fs3, import_node_process3, import_node_path4, import_ez_spawn, __defProp2, __name, Node, Queue, EndError, testElement, finder, typeMappings, matchType, toPath, findUpStop, AGENTS, LOCKS;
+var init_dist = __esm({
+  "node_modules/.pnpm/@jiangweiye+install-pkg@0.0.0/node_modules/@jiangweiye/install-pkg/dist/index.js"() {
+    "use strict";
+    init_cjs_shims();
+    import_node_fs = __toESM(require("fs"), 1);
+    import_node_path = __toESM(require("path"), 1);
+    import_node_process = __toESM(require("process"), 1);
+    import_node_path2 = __toESM(require("path"), 1);
+    import_node_process2 = __toESM(require("process"), 1);
+    import_node_path3 = __toESM(require("path"), 1);
+    import_node_fs2 = __toESM(require("fs"), 1);
+    import_node_url = require("url");
+    import_node_url2 = require("url");
+    import_node_fs3 = require("fs");
+    import_node_process3 = __toESM(require("process"), 1);
+    import_node_path4 = require("path");
+    import_ez_spawn = __toESM(require_lib(), 1);
+    __defProp2 = Object.defineProperty;
+    __name = (target, value) => __defProp2(target, "name", { value, configurable: true });
+    Node = class Node2 {
+      static {
+        __name(this, "Node");
+      }
+      value;
+      next;
+      constructor(value) {
+        this.value = value;
+      }
+    };
+    Queue = class {
+      static {
+        __name(this, "Queue");
+      }
+      #head;
+      #tail;
+      #size;
+      constructor() {
+        this.clear();
+      }
+      enqueue(value) {
+        const node2 = new Node(value);
+        if (this.#head) {
+          this.#tail.next = node2;
+          this.#tail = node2;
+        } else {
+          this.#head = node2;
+          this.#tail = node2;
+        }
+        this.#size++;
+      }
+      dequeue() {
+        const current = this.#head;
+        if (!current) {
+          return;
+        }
+        this.#head = this.#head.next;
+        this.#size--;
+        return current.value;
+      }
+      clear() {
+        this.#head = void 0;
+        this.#tail = void 0;
+        this.#size = 0;
+      }
+      get size() {
+        return this.#size;
+      }
+      *[Symbol.iterator]() {
+        let current = this.#head;
+        while (current) {
+          yield current.value;
+          current = current.next;
+        }
+      }
+    };
+    __name(pLimit, "pLimit");
+    EndError = class EndError2 extends Error {
+      static {
+        __name(this, "EndError");
+      }
+      constructor(value) {
+        super();
+        this.value = value;
+      }
+    };
+    testElement = /* @__PURE__ */ __name(async (element, tester) => tester(await element), "testElement");
+    finder = /* @__PURE__ */ __name(async (element) => {
+      const values = await Promise.all(element);
+      if (values[1] === true) {
+        throw new EndError(values[0]);
+      }
+      return false;
+    }, "finder");
+    __name(pLocate, "pLocate");
+    typeMappings = {
+      directory: "isDirectory",
+      file: "isFile"
+    };
+    __name(checkType, "checkType");
+    matchType = /* @__PURE__ */ __name((type, stat) => stat[typeMappings[type]](), "matchType");
+    toPath = /* @__PURE__ */ __name((urlOrPath) => urlOrPath instanceof URL ? (0, import_node_url.fileURLToPath)(urlOrPath) : urlOrPath, "toPath");
+    __name(locatePath, "locatePath");
+    __name(toPath2, "toPath");
+    findUpStop = Symbol("findUpStop");
+    __name(findUpMultiple, "findUpMultiple");
+    __name(findUp, "findUp");
+    AGENTS = [
+      "pnpm",
+      "yarn",
+      "npm",
+      "pnpm@6",
+      "yarn@berry",
+      "bun"
+    ];
+    LOCKS = {
+      "bun.lockb": "bun",
+      "pnpm-lock.yaml": "pnpm",
+      "yarn.lock": "yarn",
+      "package-lock.json": "npm",
+      "npm-shrinkwrap.json": "npm"
+    };
+    __name(detectPackageManager, "detectPackageManager");
+    __name(installPackage, "installPackage");
+  }
+});
+
 // node_modules/.pnpm/@jridgewell+sourcemap-codec@1.4.15/node_modules/@jridgewell/sourcemap-codec/dist/sourcemap-codec.mjs
 function encode(decoded) {
   const state = new Int32Array(5);
@@ -1174,13 +2526,13 @@ var init_constants = __esm({
 });
 
 // node_modules/.pnpm/@pkgr+core@0.1.1/node_modules/@pkgr/core/lib/helpers.js
-var import_node_fs, import_node_path, tryPkg, isPkgAvailable, tryFile, tryExtensions, findUp;
+var import_node_fs4, import_node_path5, tryPkg, isPkgAvailable, tryFile, tryExtensions, findUp2;
 var init_helpers = __esm({
   "node_modules/.pnpm/@pkgr+core@0.1.1/node_modules/@pkgr/core/lib/helpers.js"() {
     "use strict";
     init_cjs_shims();
-    import_node_fs = __toESM(require("fs"), 1);
-    import_node_path = __toESM(require("path"), 1);
+    import_node_fs4 = __toESM(require("fs"), 1);
+    import_node_path5 = __toESM(require("path"), 1);
     init_constants();
     tryPkg = (pkg) => {
       try {
@@ -1191,7 +2543,7 @@ var init_helpers = __esm({
     isPkgAvailable = (pkg) => !!tryPkg(pkg);
     tryFile = (filePath, includeDir = false) => {
       if (typeof filePath === "string") {
-        return import_node_fs.default.existsSync(filePath) && (includeDir || import_node_fs.default.statSync(filePath).isFile()) ? filePath : "";
+        return import_node_fs4.default.existsSync(filePath) && (includeDir || import_node_fs4.default.statSync(filePath).isFile()) ? filePath : "";
       }
       for (const file of filePath !== null && filePath !== void 0 ? filePath : []) {
         if (tryFile(file, includeDir)) {
@@ -1204,21 +2556,21 @@ var init_helpers = __esm({
       const ext = [...extensions, ""].find((ext2) => tryFile(filepath + ext2));
       return ext == null ? "" : filepath + ext;
     };
-    findUp = (searchEntry, searchFileOrIncludeDir, includeDir) => {
-      console.assert(import_node_path.default.isAbsolute(searchEntry));
-      if (!tryFile(searchEntry, true) || searchEntry !== CWD && !searchEntry.startsWith(CWD + import_node_path.default.sep)) {
+    findUp2 = (searchEntry, searchFileOrIncludeDir, includeDir) => {
+      console.assert(import_node_path5.default.isAbsolute(searchEntry));
+      if (!tryFile(searchEntry, true) || searchEntry !== CWD && !searchEntry.startsWith(CWD + import_node_path5.default.sep)) {
         return "";
       }
-      searchEntry = import_node_path.default.resolve(import_node_fs.default.statSync(searchEntry).isDirectory() ? searchEntry : import_node_path.default.resolve(searchEntry, ".."));
+      searchEntry = import_node_path5.default.resolve(import_node_fs4.default.statSync(searchEntry).isDirectory() ? searchEntry : import_node_path5.default.resolve(searchEntry, ".."));
       const isSearchFile = typeof searchFileOrIncludeDir === "string";
       const searchFile = isSearchFile ? searchFileOrIncludeDir : "package.json";
       do {
-        const searched = tryFile(import_node_path.default.resolve(searchEntry, searchFile), isSearchFile && includeDir);
+        const searched = tryFile(import_node_path5.default.resolve(searchEntry, searchFile), isSearchFile && includeDir);
         if (searched) {
           return searched;
         }
-        searchEntry = import_node_path.default.resolve(searchEntry, "..");
-      } while (searchEntry === CWD || searchEntry.startsWith(CWD + import_node_path.default.sep));
+        searchEntry = import_node_path5.default.resolve(searchEntry, "..");
+      } while (searchEntry === CWD || searchEntry.startsWith(CWD + import_node_path5.default.sep));
       return "";
     };
   }
@@ -1249,7 +2601,7 @@ function createSyncFn(workerPath, timeoutOrOptions) {
   if (cachedSyncFn) {
     return cachedSyncFn;
   }
-  if (!import_node_path2.default.isAbsolute(workerPath)) {
+  if (!import_node_path6.default.isAbsolute(workerPath)) {
     throw new Error("`workerPath` must be absolute");
   }
   const syncFn = startWorkerThread(workerPath, typeof timeoutOrOptions === "number" ? { timeout: timeoutOrOptions } : timeoutOrOptions);
@@ -1259,7 +2611,7 @@ function createSyncFn(workerPath, timeoutOrOptions) {
 function startWorkerThread(workerPath, { timeout = DEFAULT_TIMEOUT, execArgv = DEFAULT_EXEC_ARGV, tsRunner = DEFAULT_TS_RUNNER, transferList = [], globalShims = DEFAULT_GLOBAL_SHIMS } = {}) {
   const { port1: mainPort, port2: workerPort } = new import_node_worker_threads.MessageChannel();
   const { isTs, ext, jsUseEsm, tsUseEsm, tsRunner: finalTsRunner, workerPath: finalWorkerPath, execArgv: finalExecArgv } = setupTsRunner(workerPath, { execArgv, tsRunner });
-  const workerPathUrl = (0, import_node_url.pathToFileURL)(finalWorkerPath);
+  const workerPathUrl = (0, import_node_url3.pathToFileURL)(finalWorkerPath);
   if (/\.[cm]ts$/.test(finalWorkerPath)) {
     const isTsxSupported = !tsUseEsm || Number.parseFloat(process.versions.node) >= MTS_SUPPORTED_NODE_VERSION;
     if (!finalTsRunner) {
@@ -1305,16 +2657,16 @@ function startWorkerThread(workerPath, { timeout = DEFAULT_TIMEOUT, execArgv = D
   worker.unref();
   return syncFn;
 }
-var import_node_crypto, import_node_fs2, import_node_module2, import_node_path2, import_node_url, import_node_worker_threads, INT32_BYTES, TsRunner, NODE_OPTIONS, SYNCKIT_EXEC_ARGV, SYNCKIT_GLOBAL_SHIMS, SYNCKIT_TIMEOUT, SYNCKIT_TS_RUNNER, DEFAULT_TIMEOUT, DEFAULT_EXEC_ARGV, DEFAULT_TS_RUNNER, DEFAULT_GLOBAL_SHIMS, DEFAULT_GLOBAL_SHIMS_PRESET, MTS_SUPPORTED_NODE_VERSION, syncFnCache, cjsRequire2, dataUrl, isFile, setupTsRunner, md5Hash, encodeImportModule, _generateGlobals, globalsCache, tmpdir, _dirname, sharedBuffer, sharedBufferView, generateGlobals;
+var import_node_crypto, import_node_fs5, import_node_module2, import_node_path6, import_node_url3, import_node_worker_threads, INT32_BYTES, TsRunner, NODE_OPTIONS, SYNCKIT_EXEC_ARGV, SYNCKIT_GLOBAL_SHIMS, SYNCKIT_TIMEOUT, SYNCKIT_TS_RUNNER, DEFAULT_TIMEOUT, DEFAULT_EXEC_ARGV, DEFAULT_TS_RUNNER, DEFAULT_GLOBAL_SHIMS, DEFAULT_GLOBAL_SHIMS_PRESET, MTS_SUPPORTED_NODE_VERSION, syncFnCache, cjsRequire2, dataUrl, isFile, setupTsRunner, md5Hash, encodeImportModule, _generateGlobals, globalsCache, tmpdir, _dirname, sharedBuffer, sharedBufferView, generateGlobals;
 var init_lib2 = __esm({
   "node_modules/.pnpm/synckit@0.9.0/node_modules/synckit/lib/index.js"() {
     "use strict";
     init_cjs_shims();
     import_node_crypto = require("crypto");
-    import_node_fs2 = __toESM(require("fs"), 1);
+    import_node_fs5 = __toESM(require("fs"), 1);
     import_node_module2 = require("module");
-    import_node_path2 = __toESM(require("path"), 1);
-    import_node_url = require("url");
+    import_node_path6 = __toESM(require("path"), 1);
+    import_node_url3 = require("url");
     import_node_worker_threads = require("worker_threads");
     init_lib();
     init_types();
@@ -1345,16 +2697,16 @@ var init_lib2 = __esm({
     MTS_SUPPORTED_NODE_VERSION = 16;
     cjsRequire2 = typeof require === "undefined" ? (0, import_node_module2.createRequire)(importMetaUrl) : require;
     dataUrl = (code) => new URL(`data:text/javascript,${encodeURIComponent(code)}`);
-    isFile = (path3) => {
+    isFile = (path6) => {
       var _a;
       try {
-        return !!((_a = import_node_fs2.default.statSync(path3, { throwIfNoEntry: false })) === null || _a === void 0 ? void 0 : _a.isFile());
+        return !!((_a = import_node_fs5.default.statSync(path6, { throwIfNoEntry: false })) === null || _a === void 0 ? void 0 : _a.isFile());
       } catch (_b) {
         return false;
       }
     };
     setupTsRunner = (workerPath, { execArgv, tsRunner }) => {
-      let ext = import_node_path2.default.extname(workerPath);
+      let ext = import_node_path6.default.extname(workerPath);
       if (!/[/\\]node_modules[/\\]/.test(workerPath) && (!ext || /^\.[cm]?js$/.test(ext))) {
         const workPathWithoutExt = ext ? workerPath.slice(0, -ext.length) : workerPath;
         let extensions;
@@ -1377,7 +2729,7 @@ var init_lib2 = __esm({
         if (found && (!ext || (differentExt = found !== workPathWithoutExt))) {
           workerPath = found;
           if (differentExt) {
-            ext = import_node_path2.default.extname(workerPath);
+            ext = import_node_path6.default.extname(workerPath);
           }
         }
       }
@@ -1386,7 +2738,7 @@ var init_lib2 = __esm({
       let tsUseEsm = workerPath.endsWith(".mts");
       if (isTs) {
         if (!tsUseEsm) {
-          const pkg = findUp(workerPath);
+          const pkg = findUp2(workerPath);
           if (pkg) {
             tsUseEsm = cjsRequire2(pkg).type === "module";
           }
@@ -1434,7 +2786,7 @@ var init_lib2 = __esm({
           }
         }
       } else if (!jsUseEsm) {
-        const pkg = findUp(workerPath);
+        const pkg = findUp2(workerPath);
         if (pkg) {
           jsUseEsm = cjsRequire2(pkg).type === "module";
         }
@@ -1448,9 +2800,9 @@ var init_lib2 = __esm({
         }
         if (pnpApiPath && !(nodeOptions === null || nodeOptions === void 0 ? void 0 : nodeOptions.some((option, index2) => ["-r", "--require"].includes(option) && pnpApiPath === cjsRequire2.resolve(nodeOptions[index2 + 1]))) && !execArgv.includes(pnpApiPath)) {
           execArgv = ["-r", pnpApiPath, ...execArgv];
-          const pnpLoaderPath = import_node_path2.default.resolve(pnpApiPath, "../.pnp.loader.mjs");
+          const pnpLoaderPath = import_node_path6.default.resolve(pnpApiPath, "../.pnp.loader.mjs");
           if (isFile(pnpLoaderPath)) {
-            const experimentalLoader = (0, import_node_url.pathToFileURL)(pnpLoaderPath).toString();
+            const experimentalLoader = (0, import_node_url3.pathToFileURL)(pnpLoaderPath).toString();
             execArgv = ["--experimental-loader", experimentalLoader, ...execArgv];
           }
         }
@@ -1468,7 +2820,7 @@ var init_lib2 = __esm({
     md5Hash = (text) => (0, import_node_crypto.createHash)("md5").update(text).digest("hex");
     encodeImportModule = (moduleNameOrGlobalShim, type = "import") => {
       const { moduleName, globalName, named, conditional } = typeof moduleNameOrGlobalShim === "string" ? { moduleName: moduleNameOrGlobalShim } : moduleNameOrGlobalShim;
-      const importStatement = type === "import" ? `import${globalName ? " " + (named === null ? "* as " + globalName : (named === null || named === void 0 ? void 0 : named.trim()) ? `{${named}}` : globalName) + " from" : ""} '${import_node_path2.default.isAbsolute(moduleName) ? String((0, import_node_url.pathToFileURL)(moduleName)) : moduleName}'` : `${globalName ? "const " + ((named === null || named === void 0 ? void 0 : named.trim()) ? `{${named}}` : globalName) + "=" : ""}require('${moduleName.replace(/\\/g, "\\\\")}')`;
+      const importStatement = type === "import" ? `import${globalName ? " " + (named === null ? "* as " + globalName : (named === null || named === void 0 ? void 0 : named.trim()) ? `{${named}}` : globalName) + " from" : ""} '${import_node_path6.default.isAbsolute(moduleName) ? String((0, import_node_url3.pathToFileURL)(moduleName)) : moduleName}'` : `${globalName ? "const " + ((named === null || named === void 0 ? void 0 : named.trim()) ? `{${named}}` : globalName) + "=" : ""}require('${moduleName.replace(/\\/g, "\\\\")}')`;
       if (!globalName) {
         return importStatement;
       }
@@ -1476,7 +2828,7 @@ var init_lib2 = __esm({
       return importStatement + (conditional === false ? `;${overrideStatement}` : `;if(!globalThis.${globalName})${overrideStatement}`);
     };
     _generateGlobals = (globalShims, type) => globalShims.reduce((acc, shim) => `${acc}${acc ? ";" : ""}${encodeImportModule(shim, type)}`, "");
-    _dirname = typeof __dirname === "undefined" ? import_node_path2.default.dirname((0, import_node_url.fileURLToPath)(importMetaUrl)) : __dirname;
+    _dirname = typeof __dirname === "undefined" ? import_node_path6.default.dirname((0, import_node_url3.fileURLToPath)(importMetaUrl)) : __dirname;
     generateGlobals = (workerPath, globalShims, type = "import") => {
       globalsCache !== null && globalsCache !== void 0 ? globalsCache : globalsCache = /* @__PURE__ */ new Map();
       const cached = globalsCache.get(workerPath);
@@ -1491,12 +2843,12 @@ var init_lib2 = __esm({
       let filepath;
       if (type === "import") {
         if (!tmpdir) {
-          tmpdir = import_node_path2.default.resolve(findUp(_dirname), "../node_modules/.synckit");
+          tmpdir = import_node_path6.default.resolve(findUp2(_dirname), "../node_modules/.synckit");
         }
-        import_node_fs2.default.mkdirSync(tmpdir, { recursive: true });
-        filepath = import_node_path2.default.resolve(tmpdir, md5Hash(workerPath) + ".mjs");
+        import_node_fs5.default.mkdirSync(tmpdir, { recursive: true });
+        filepath = import_node_path6.default.resolve(tmpdir, md5Hash(workerPath) + ".mjs");
         content = encodeImportModule(filepath);
-        import_node_fs2.default.writeFileSync(filepath, globals2);
+        import_node_fs5.default.writeFileSync(filepath, globals2);
       }
       globalsCache.set(workerPath, [content, filepath]);
       return content;
@@ -2958,27 +4310,27 @@ var require_eslint_utils = __commonJS({
       *iterateGlobalReferences(traceMap) {
         for (const key of Object.keys(traceMap)) {
           const nextTraceMap = traceMap[key];
-          const path3 = [key];
+          const path6 = [key];
           const variable = this.globalScope.set.get(key);
           if (isModifiedGlobal(variable)) {
             continue;
           }
           yield* this._iterateVariableReferences(
             variable,
-            path3,
+            path6,
             nextTraceMap,
             true
           );
         }
         for (const key of this.globalObjectNames) {
-          const path3 = [];
+          const path6 = [];
           const variable = this.globalScope.set.get(key);
           if (isModifiedGlobal(variable)) {
             continue;
           }
           yield* this._iterateVariableReferences(
             variable,
-            path3,
+            path6,
             traceMap,
             false
           );
@@ -2996,16 +4348,16 @@ var require_eslint_utils = __commonJS({
             continue;
           }
           const nextTraceMap = traceMap[key];
-          const path3 = [key];
+          const path6 = [key];
           if (nextTraceMap[READ]) {
             yield {
               node: node2,
-              path: path3,
+              path: path6,
               type: READ,
               info: nextTraceMap[READ]
             };
           }
-          yield* this._iteratePropertyReferences(node2, path3, nextTraceMap);
+          yield* this._iteratePropertyReferences(node2, path6, nextTraceMap);
         }
       }
       /**
@@ -3024,9 +4376,9 @@ var require_eslint_utils = __commonJS({
             continue;
           }
           const nextTraceMap = traceMap[moduleId];
-          const path3 = [moduleId];
+          const path6 = [moduleId];
           if (nextTraceMap[READ]) {
-            yield { node: node2, path: path3, type: READ, info: nextTraceMap[READ] };
+            yield { node: node2, path: path6, type: READ, info: nextTraceMap[READ] };
           }
           if (node2.type === "ExportAllDeclaration") {
             for (const key of Object.keys(nextTraceMap)) {
@@ -3034,7 +4386,7 @@ var require_eslint_utils = __commonJS({
               if (exportTraceMap[READ]) {
                 yield {
                   node: node2,
-                  path: path3.concat(key),
+                  path: path6.concat(key),
                   type: READ,
                   info: exportTraceMap[READ]
                 };
@@ -3045,7 +4397,7 @@ var require_eslint_utils = __commonJS({
               const esm = has(nextTraceMap, ESM);
               const it = this._iterateImportReferences(
                 specifier,
-                path3,
+                path6,
                 esm ? nextTraceMap : this.mode === "legacy" ? { default: nextTraceMap, ...nextTraceMap } : { default: nextTraceMap }
               );
               if (esm) {
@@ -3070,7 +4422,7 @@ var require_eslint_utils = __commonJS({
        * @param {boolean} shouldReport = The flag to report those references.
        * @returns {IterableIterator<{node:Node,path:string[],type:symbol,info:any}>} The iterator to iterate references.
        */
-      *_iterateVariableReferences(variable, path3, traceMap, shouldReport) {
+      *_iterateVariableReferences(variable, path6, traceMap, shouldReport) {
         if (this.variableStack.includes(variable)) {
           return;
         }
@@ -3082,9 +4434,9 @@ var require_eslint_utils = __commonJS({
             }
             const node2 = reference.identifier;
             if (shouldReport && traceMap[READ]) {
-              yield { node: node2, path: path3, type: READ, info: traceMap[READ] };
+              yield { node: node2, path: path6, type: READ, info: traceMap[READ] };
             }
-            yield* this._iteratePropertyReferences(node2, path3, traceMap);
+            yield* this._iteratePropertyReferences(node2, path6, traceMap);
           }
         } finally {
           this.variableStack.pop();
@@ -3098,7 +4450,7 @@ var require_eslint_utils = __commonJS({
        * @returns {IterableIterator<{node:Node,path:string[],type:symbol,info:any}>} The iterator to iterate references.
        */
       //eslint-disable-next-line complexity
-      *_iteratePropertyReferences(rootNode, path3, traceMap) {
+      *_iteratePropertyReferences(rootNode, path6, traceMap) {
         let node2 = rootNode;
         while (isPassThrough(node2)) {
           node2 = node2.parent;
@@ -3110,19 +4462,19 @@ var require_eslint_utils = __commonJS({
             if (key == null || !has(traceMap, key)) {
               return;
             }
-            path3 = path3.concat(key);
+            path6 = path6.concat(key);
             const nextTraceMap = traceMap[key];
             if (nextTraceMap[READ]) {
               yield {
                 node: parent,
-                path: path3,
+                path: path6,
                 type: READ,
                 info: nextTraceMap[READ]
               };
             }
             yield* this._iteratePropertyReferences(
               parent,
-              path3,
+              path6,
               nextTraceMap
             );
           }
@@ -3130,7 +4482,7 @@ var require_eslint_utils = __commonJS({
         }
         if (parent.type === "CallExpression") {
           if (parent.callee === node2 && traceMap[CALL]) {
-            yield { node: parent, path: path3, type: CALL, info: traceMap[CALL] };
+            yield { node: parent, path: path6, type: CALL, info: traceMap[CALL] };
           }
           return;
         }
@@ -3138,7 +4490,7 @@ var require_eslint_utils = __commonJS({
           if (parent.callee === node2 && traceMap[CONSTRUCT]) {
             yield {
               node: parent,
-              path: path3,
+              path: path6,
               type: CONSTRUCT,
               info: traceMap[CONSTRUCT]
             };
@@ -3147,20 +4499,20 @@ var require_eslint_utils = __commonJS({
         }
         if (parent.type === "AssignmentExpression") {
           if (parent.right === node2) {
-            yield* this._iterateLhsReferences(parent.left, path3, traceMap);
-            yield* this._iteratePropertyReferences(parent, path3, traceMap);
+            yield* this._iterateLhsReferences(parent.left, path6, traceMap);
+            yield* this._iteratePropertyReferences(parent, path6, traceMap);
           }
           return;
         }
         if (parent.type === "AssignmentPattern") {
           if (parent.right === node2) {
-            yield* this._iterateLhsReferences(parent.left, path3, traceMap);
+            yield* this._iterateLhsReferences(parent.left, path6, traceMap);
           }
           return;
         }
         if (parent.type === "VariableDeclarator") {
           if (parent.init === node2) {
-            yield* this._iterateLhsReferences(parent.id, path3, traceMap);
+            yield* this._iterateLhsReferences(parent.id, path6, traceMap);
           }
         }
       }
@@ -3171,13 +4523,13 @@ var require_eslint_utils = __commonJS({
        * @param {object} traceMap The trace map.
        * @returns {IterableIterator<{node:Node,path:string[],type:symbol,info:any}>} The iterator to iterate references.
        */
-      *_iterateLhsReferences(patternNode, path3, traceMap) {
+      *_iterateLhsReferences(patternNode, path6, traceMap) {
         if (patternNode.type === "Identifier") {
           const variable = findVariable(this.globalScope, patternNode);
           if (variable != null) {
             yield* this._iterateVariableReferences(
               variable,
-              path3,
+              path6,
               traceMap,
               false
             );
@@ -3190,7 +4542,7 @@ var require_eslint_utils = __commonJS({
             if (key == null || !has(traceMap, key)) {
               continue;
             }
-            const nextPath = path3.concat(key);
+            const nextPath = path6.concat(key);
             const nextTraceMap = traceMap[key];
             if (nextTraceMap[READ]) {
               yield {
@@ -3209,7 +4561,7 @@ var require_eslint_utils = __commonJS({
           return;
         }
         if (patternNode.type === "AssignmentPattern") {
-          yield* this._iterateLhsReferences(patternNode.left, path3, traceMap);
+          yield* this._iterateLhsReferences(patternNode.left, path6, traceMap);
         }
       }
       /**
@@ -3219,26 +4571,26 @@ var require_eslint_utils = __commonJS({
        * @param {object} traceMap The trace map.
        * @returns {IterableIterator<{node:Node,path:string[],type:symbol,info:any}>} The iterator to iterate references.
        */
-      *_iterateImportReferences(specifierNode, path3, traceMap) {
+      *_iterateImportReferences(specifierNode, path6, traceMap) {
         const type = specifierNode.type;
         if (type === "ImportSpecifier" || type === "ImportDefaultSpecifier") {
           const key = type === "ImportDefaultSpecifier" ? "default" : specifierNode.imported.name;
           if (!has(traceMap, key)) {
             return;
           }
-          path3 = path3.concat(key);
+          path6 = path6.concat(key);
           const nextTraceMap = traceMap[key];
           if (nextTraceMap[READ]) {
             yield {
               node: specifierNode,
-              path: path3,
+              path: path6,
               type: READ,
               info: nextTraceMap[READ]
             };
           }
           yield* this._iterateVariableReferences(
             findVariable(this.globalScope, specifierNode.local),
-            path3,
+            path6,
             nextTraceMap,
             false
           );
@@ -3247,7 +4599,7 @@ var require_eslint_utils = __commonJS({
         if (type === "ImportNamespaceSpecifier") {
           yield* this._iterateVariableReferences(
             findVariable(this.globalScope, specifierNode.local),
-            path3,
+            path6,
             traceMap,
             false
           );
@@ -3258,12 +4610,12 @@ var require_eslint_utils = __commonJS({
           if (!has(traceMap, key)) {
             return;
           }
-          path3 = path3.concat(key);
+          path6 = path6.concat(key);
           const nextTraceMap = traceMap[key];
           if (nextTraceMap[READ]) {
             yield {
               node: specifierNode,
-              path: path3,
+              path: path6,
               type: READ,
               info: nextTraceMap[READ]
             };
@@ -3916,7 +5268,7 @@ var require_ast_spec = __commonJS({
 });
 
 // node_modules/.pnpm/@typescript-eslint+types@7.10.0/node_modules/@typescript-eslint/types/dist/lib.js
-var require_lib = __commonJS({
+var require_lib2 = __commonJS({
   "node_modules/.pnpm/@typescript-eslint+types@7.10.0/node_modules/@typescript-eslint/types/dist/lib.js"(exports2) {
     "use strict";
     init_cjs_shims();
@@ -4010,7 +5362,7 @@ var require_dist = __commonJS({
     Object.defineProperty(exports2, "AST_TOKEN_TYPES", { enumerable: true, get: function() {
       return ast_spec_1.AST_TOKEN_TYPES;
     } });
-    __exportStar(require_lib(), exports2);
+    __exportStar(require_lib2(), exports2);
     __exportStar(require_parser_options(), exports2);
     __exportStar(require_ts_estree(), exports2);
   }
@@ -8515,7 +9867,7 @@ var require_esnext_weakref = __commonJS({
 });
 
 // node_modules/.pnpm/@typescript-eslint+scope-manager@7.10.0/node_modules/@typescript-eslint/scope-manager/dist/lib/lib.js
-var require_lib2 = __commonJS({
+var require_lib3 = __commonJS({
   "node_modules/.pnpm/@typescript-eslint+scope-manager@7.10.0/node_modules/@typescript-eslint/scope-manager/dist/lib/lib.js"(exports2) {
     "use strict";
     init_cjs_shims();
@@ -9177,7 +10529,7 @@ var require_webworker_iterable = __commonJS({
 });
 
 // node_modules/.pnpm/@typescript-eslint+scope-manager@7.10.0/node_modules/@typescript-eslint/scope-manager/dist/lib/index.js
-var require_lib3 = __commonJS({
+var require_lib4 = __commonJS({
   "node_modules/.pnpm/@typescript-eslint+scope-manager@7.10.0/node_modules/@typescript-eslint/scope-manager/dist/lib/index.js"(exports2) {
     "use strict";
     init_cjs_shims();
@@ -9270,7 +10622,7 @@ var require_lib3 = __commonJS({
     var esnext_string_1 = require_esnext_string();
     var esnext_symbol_1 = require_esnext_symbol();
     var esnext_weakref_1 = require_esnext_weakref();
-    var lib_1 = require_lib2();
+    var lib_1 = require_lib3();
     var scripthost_1 = require_scripthost();
     var webworker_1 = require_webworker();
     var webworker_asynciterable_1 = require_webworker_asynciterable();
@@ -9751,7 +11103,7 @@ var require_ScopeBase = __commonJS({
         this.through = [];
         this.variables = [];
         _ScopeBase_staticCloseRef.set(this, (ref) => {
-          const resolve = () => {
+          const resolve2 = () => {
             const name = ref.identifier.name;
             const variable = this.set.get(name);
             if (!variable) {
@@ -9769,7 +11121,7 @@ var require_ScopeBase = __commonJS({
             ref.resolved = variable;
             return true;
           };
-          if (!resolve()) {
+          if (!resolve2()) {
             this.delegateToUpperScope(ref);
           }
         });
@@ -11141,7 +12493,7 @@ var require_Referencer = __commonJS({
     var types_1 = require_dist();
     var assert_1 = require_assert();
     var definition_1 = require_definition();
-    var lib_1 = require_lib3();
+    var lib_1 = require_lib4();
     var ClassVisitor_1 = require_ClassVisitor();
     var ExportVisitor_1 = require_ExportVisitor();
     var ImportVisitor_1 = require_ImportVisitor();
@@ -12120,32 +13472,32 @@ var require_dist4 = __commonJS({
 });
 
 // node_modules/.pnpm/@unocss+eslint-plugin@0.60.3_eslint@8.57.0_typescript@5.4.5/node_modules/@unocss/eslint-plugin/dist/dirs.mjs
-var import_node_url2, distDir;
+var import_node_url4, distDir;
 var init_dirs = __esm({
   "node_modules/.pnpm/@unocss+eslint-plugin@0.60.3_eslint@8.57.0_typescript@5.4.5/node_modules/@unocss/eslint-plugin/dist/dirs.mjs"() {
     "use strict";
     init_cjs_shims();
-    import_node_url2 = require("url");
-    distDir = (0, import_node_url2.fileURLToPath)(new URL("../dist", importMetaUrl));
+    import_node_url4 = require("url");
+    distDir = (0, import_node_url4.fileURLToPath)(new URL("../dist", importMetaUrl));
   }
 });
 
 // node_modules/.pnpm/@unocss+eslint-plugin@0.60.3_eslint@8.57.0_typescript@5.4.5/node_modules/@unocss/eslint-plugin/dist/index.mjs
-var dist_exports = {};
-__export(dist_exports, {
+var dist_exports2 = {};
+__export(dist_exports2, {
   default: () => index
 });
-var import_node_path3, import_utils13, import_node_url3, configsRecommended, syncAction, createRule, IGNORE_ATTRIBUTES, orderAttributify, CLASS_FIELDS, AST_NODES_WITH_QUOTES, order, blocklist, enforceClassCompile, plugin, configsFlat, index;
-var init_dist = __esm({
+var import_node_path7, import_utils13, import_node_url5, configsRecommended, syncAction, createRule, IGNORE_ATTRIBUTES, orderAttributify, CLASS_FIELDS, AST_NODES_WITH_QUOTES, order, blocklist, enforceClassCompile, plugin, configsFlat, index;
+var init_dist2 = __esm({
   "node_modules/.pnpm/@unocss+eslint-plugin@0.60.3_eslint@8.57.0_typescript@5.4.5/node_modules/@unocss/eslint-plugin/dist/index.mjs"() {
     "use strict";
     init_cjs_shims();
     init_magic_string_es();
-    import_node_path3 = require("path");
+    import_node_path7 = require("path");
     init_lib2();
     import_utils13 = __toESM(require_dist4(), 1);
     init_dirs();
-    import_node_url3 = require("url");
+    import_node_url5 = require("url");
     configsRecommended = {
       plugins: ["@unocss"],
       rules: {
@@ -12153,7 +13505,7 @@ var init_dist = __esm({
         "@unocss/order-attributify": "warn"
       }
     };
-    syncAction = createSyncFn((0, import_node_path3.join)(distDir, "worker.mjs"));
+    syncAction = createSyncFn((0, import_node_path7.join)(distDir, "worker.mjs"));
     createRule = import_utils13.ESLintUtils.RuleCreator(
       () => "https://unocss.dev/integrations/eslint#rules"
     );
@@ -12575,8 +13927,8 @@ init_cjs_shims();
 
 // src/factory.ts
 init_cjs_shims();
-var import_node_process3 = __toESM(require("process"), 1);
-var import_node_fs3 = __toESM(require("fs"), 1);
+var import_node_process6 = __toESM(require("process"), 1);
+var import_node_fs6 = __toESM(require("fs"), 1);
 var import_local_pkg4 = require("local-pkg");
 var import_eslint_flat_config_utils = require("eslint-flat-config-utils");
 
@@ -12666,7 +14018,7 @@ var GLOB_EXCLUDE = [
 
 // src/utils.ts
 init_cjs_shims();
-var import_node_process = __toESM(require("process"), 1);
+var import_node_process4 = __toESM(require("process"), 1);
 var import_local_pkg = require("local-pkg");
 var parserPlain = {
   meta: {
@@ -12727,13 +14079,17 @@ async function interopDefault(m) {
   return resolved.default || resolved;
 }
 async function ensurePackages(packages) {
-  if (import_node_process.default.env.CI || import_node_process.default.stdout.isTTY === false)
+  if (import_node_process4.default.env.CI || import_node_process4.default.stdout.isTTY === false)
     return;
   const nonExistingPackages = packages.filter((i) => i && !(0, import_local_pkg.isPackageExists)(i));
   if (nonExistingPackages.length === 0)
     return;
-  const message = `${nonExistingPackages.length === 1 ? "Package is" : "Packages are"} required for this config: ${nonExistingPackages.join(", ")}. please install them`;
-  console.error(message);
+  const p = await import("@clack/prompts");
+  const result = await p.confirm({
+    message: `${nonExistingPackages.length === 1 ? "Package is" : "Packages are"} required for this config: ${nonExistingPackages.join(", ")}. Do you want to install them?`
+  });
+  if (result)
+    await Promise.resolve().then(() => (init_dist(), dist_exports)).then((i) => i.installPackage(nonExistingPackages, { dev: true }));
 }
 
 // src/configs/astro.ts
@@ -14250,7 +15606,7 @@ async function toml(options = {}) {
 
 // src/configs/typescript.ts
 init_cjs_shims();
-var import_node_process2 = __toESM(require("process"), 1);
+var import_node_process5 = __toESM(require("process"), 1);
 async function typescript(options = {}) {
   const { componentExts = [], overrides = {}, parserOptions = {} } = options;
   const files = options.files ?? [GLOB_SRC, ...componentExts.map((ext) => `**/*.${ext}`)];
@@ -14293,7 +15649,7 @@ async function typescript(options = {}) {
           sourceType: "module",
           ...typeAware ? {
             project: tsconfigPath,
-            tsconfigRootDir: import_node_process2.default.cwd()
+            tsconfigRootDir: import_node_process5.default.cwd()
           } : {},
           ...parserOptions
         }
@@ -14434,7 +15790,7 @@ init_cjs_shims();
 async function unocss(options = {}) {
   const { attributify = true, strict = false } = options;
   await ensurePackages(["@unocss/eslint-plugin"]);
-  const [pluginUnoCSS] = await Promise.all([interopDefault(Promise.resolve().then(() => (init_dist(), dist_exports)))]);
+  const [pluginUnoCSS] = await Promise.all([interopDefault(Promise.resolve().then(() => (init_dist2(), dist_exports2)))]);
   return [
     {
       name: `${PLUGIN_PREFIX}/unocss`,
@@ -14726,7 +16082,7 @@ function eslint(options = {}, ...userConfigs) {
     autoRenamePlugins = true,
     componentExts = [],
     gitignore: enableGitignore = true,
-    isInEditor = !!((import_node_process3.default.env.VSCODE_PID || import_node_process3.default.env.VSCODE_CWD || import_node_process3.default.env.JETBRAINS_IDE || import_node_process3.default.env.VIM) && !import_node_process3.default.env.CI),
+    isInEditor = !!((import_node_process6.default.env.VSCODE_PID || import_node_process6.default.env.VSCODE_CWD || import_node_process6.default.env.JETBRAINS_IDE || import_node_process6.default.env.VIM) && !import_node_process6.default.env.CI),
     react: enableReact = false,
     regexp: enableRegexp = true,
     solid: enableSolid = false,
@@ -14742,7 +16098,7 @@ function eslint(options = {}, ...userConfigs) {
   if (enableGitignore) {
     if (typeof enableGitignore !== "boolean")
       configs2.push(interopDefault(import("eslint-config-flat-gitignore")).then((r) => [r(enableGitignore)]));
-    else if (import_node_fs3.default.existsSync(".gitignore"))
+    else if (import_node_fs6.default.existsSync(".gitignore"))
       configs2.push(interopDefault(import("eslint-config-flat-gitignore")).then((r) => [r()]));
   }
   configs2.push(
