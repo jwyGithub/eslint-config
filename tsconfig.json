@@ -1,13 +1,13 @@
 {
     "compilerOptions": {
         "target": "ESNext",
-        "baseUrl": "./",
+        "baseUrl": ".",
         "module": "ESNext",
         "moduleResolution": "Bundler",
         "strict": true,
         "esModuleInterop": true,
         "skipLibCheck": true
     },
-    "include": ["**/*.ts", "eslint.config.ts", "./prettier.config.js"],
+    "include": ["**/*.ts", "eslint.config.js"],
     "exclude": ["./fixtures/**/*.*", "./_fixtures/**/*.*"]
 }

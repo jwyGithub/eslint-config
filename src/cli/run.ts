@@ -47,12 +47,21 @@ export async function run(options: CliRunOptions = {}) {
     if (!argSkipPrompt) {
         result = (await p.group(
             {
-                uncommittedConfirmed: () => {
-                    if (argSkipPrompt || isGitClean()) return Promise.resolve(true);
+                extra: ({ results }) => {
+                    const isArgExtraValid =
+                        argExtra?.length && !argExtra.filter(element => !extra.includes(<ExtraLibrariesOption>element)).length;
 
-                    return p.confirm({
-                        initialValue: false,
-                        message: 'There are uncommitted changes in the current repository, are you sure to continue?'
+                    if (!results.uncommittedConfirmed || isArgExtraValid) return;
+
+                    const message =
+                        !isArgExtraValid && argExtra
+                            ? `"${argExtra}" isn't a valid extra util. Please choose from below: `
+                            : 'Select a extra utils:';
+
+                    return p.multiselect<PromItem<ExtraLibrariesOption>[], ExtraLibrariesOption>({
+                        message: c.reset(message),
+                        options: extraOptions,
+                        required: false
                     });
                 },
                 frameworks: ({ results }) => {
@@ -71,21 +80,12 @@ export async function run(options: CliRunOptions = {}) {
                         required: false
                     });
                 },
-                extra: ({ results }) => {
-                    const isArgExtraValid =
-                        argExtra?.length && !argExtra.filter(element => !extra.includes(<ExtraLibrariesOption>element)).length;
+                uncommittedConfirmed: () => {
+                    if (argSkipPrompt || isGitClean()) return Promise.resolve(true);
 
-                    if (!results.uncommittedConfirmed || isArgExtraValid) return;
-
-                    const message =
-                        !isArgExtraValid && argExtra
-                            ? `"${argExtra}" isn't a valid extra util. Please choose from below: `
-                            : 'Select a extra utils:';
-
-                    return p.multiselect<PromItem<ExtraLibrariesOption>[], ExtraLibrariesOption>({
-                        message: c.reset(message),
-                        options: extraOptions,
-                        required: false
+                    return p.confirm({
+                        initialValue: false,
+                        message: 'There are uncommitted changes in the current repository, are you sure to continue?'
                     });
                 },
 

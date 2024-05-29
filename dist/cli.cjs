@@ -48,7 +48,8 @@ var import_picocolors = __toESM(require("picocolors"), 1);
 var package_default = {
   name: "@jiangweiye/eslint-config",
   type: "module",
-  version: "0.1.3-beta.2",
+  version: "0.1.4-beta.1",
+  packageManager: "pnpm@9.1.3",
   description: "A eslint config for jiangweiye",
   author: "jiangweiye <jiangweiye@outlook.com> (https://github.com/jwyGithub)",
   license: "SEE LICENSE IN LICENSE.md",
@@ -71,15 +72,17 @@ var package_default = {
   main: "./dist/index.js",
   module: "./dist/index.js",
   types: "./dist/index.d.ts",
-  bin: "./bin/index.js",
+  bin: {
+    "eslint-config": "bin/index.js"
+  },
   files: [
     "bin",
     "dist"
   ],
   scripts: {
-    build: "pnpm run typegen && tsup --format esm,cjs --clean --dts",
+    build: "npm run typegen && tsup --format esm,cjs --clean --dts",
     stub: "tsup --format esm",
-    dev: "npx @eslint/config-inspector --config eslint.config.ts",
+    dev: "npx @eslint/config-inspector --config eslint.config.js",
     "build:inspector": "pnpm build && npx @eslint/config-inspector build",
     watch: "tsup --format esm,cjs --watch",
     lint: "eslint .",
@@ -92,6 +95,7 @@ var package_default = {
   peerDependencies: {
     "@eslint-react/eslint-plugin": "^1.5.8",
     "@prettier/plugin-xml": "^3.4.1",
+    "@unocss/eslint-plugin": ">=0.50.0",
     "astro-eslint-parser": "^0.16.3",
     eslint: ">=8.40.0",
     "eslint-plugin-astro": "^0.31.4",
@@ -147,22 +151,23 @@ var package_default = {
   },
   dependencies: {
     "@clack/prompts": "^0.7.0",
+    "@jiangweiye/install-pkg": "^0.0.0",
     "@stylistic/eslint-plugin": "^2.1.0",
-    "@typescript-eslint/eslint-plugin": "^7.9.0",
-    "@typescript-eslint/parser": "^7.9.0",
+    "@typescript-eslint/eslint-plugin": "^7.11.0",
+    "@typescript-eslint/parser": "^7.11.0",
     "eslint-config-flat-gitignore": "^0.1.5",
     "eslint-flat-config-utils": "^0.2.5",
     "eslint-merge-processors": "^0.1.0",
-    "eslint-plugin-command": "^0.2.2",
+    "eslint-plugin-command": "^0.2.3",
     "eslint-plugin-eslint-comments": "^3.2.0",
-    "eslint-plugin-import-x": "^0.5.0",
-    "eslint-plugin-jsdoc": "^48.2.5",
-    "eslint-plugin-jsonc": "^2.15.1",
+    "eslint-plugin-import-x": "^0.5.1",
+    "eslint-plugin-jsdoc": "^48.2.6",
+    "eslint-plugin-jsonc": "^2.16.0",
     "eslint-plugin-markdown": "^5.0.0",
     "eslint-plugin-n": "^17.7.0",
     "eslint-plugin-no-only-tests": "^3.1.0",
     "eslint-plugin-perfectionist": "^2.10.0",
-    "eslint-plugin-regexp": "^2.5.0",
+    "eslint-plugin-regexp": "^2.6.0",
     "eslint-plugin-toml": "^0.11.0",
     "eslint-plugin-unicorn": "^53.0.0",
     "eslint-plugin-unused-imports": "^3.2.0",
@@ -170,23 +175,21 @@ var package_default = {
     "eslint-plugin-vue": "^9.26.0",
     "eslint-plugin-yml": "^1.14.0",
     "eslint-processor-vue-blocks": "^0.1.2",
-    globals: "^15.2.0",
+    globals: "^15.3.0",
     "jsonc-eslint-parser": "^2.4.0",
     "local-pkg": "^0.5.0",
     "parse-gitignore": "^2.0.0",
     picocolors: "^1.0.1",
     "toml-eslint-parser": "^0.9.3",
     "vue-eslint-parser": "^9.4.2",
-    "yaml-eslint-parser": "^1.2.2",
+    "yaml-eslint-parser": "^1.2.3",
     yargs: "^17.7.2"
   },
   devDependencies: {
-    "@eslint-react/eslint-plugin": "^1.5.12",
+    "@eslint-react/eslint-plugin": "^1.5.13",
     "@eslint/config-inspector": "^0.4.8",
     "@jiangweiye/eslint-config": "workspace:*",
-    "@jiangweiye/install-pkg": "^0.0.0",
-    "@jiangweiye/prettier-config": "^0.0.7",
-    "@jiangweiye/tsconfig": "^0.0.11",
+    "@jiangweiye/prettier-config": "^0.0.9",
     "@prettier/plugin-xml": "^3.4.1",
     "@stylistic/eslint-plugin-migrate": "^2.1.0",
     "@types/eslint": "^8.56.10",
@@ -194,11 +197,11 @@ var package_default = {
     "@types/node": "^20.12.12",
     "@types/prompts": "^2.4.9",
     "@types/yargs": "^17.0.32",
-    "@unocss/eslint-plugin": "^0.60.2",
+    "@unocss/eslint-plugin": "^0.60.3",
     "astro-eslint-parser": "^1.0.2",
     bumpp: "^9.4.1",
     "bundle-require": "^4.1.0",
-    eslint: "^8.57.0",
+    eslint: "^9.3.0",
     "eslint-plugin-astro": "^1.2.0",
     "eslint-plugin-format": "^0.1.1",
     "eslint-plugin-react-hooks": "^4.6.2",
@@ -210,15 +213,14 @@ var package_default = {
     execa: "^9.1.0",
     "fast-glob": "^3.3.2",
     "fs-extra": "^11.2.0",
-    "lint-staged": "^15.2.2",
-    prettier: "^3.2.5",
-    "prettier-plugin-astro": "^0.13.0",
+    "prettier-plugin-astro": "^0.14.0",
     "prettier-plugin-slidev": "^1.0.5",
     rimraf: "^5.0.7",
+    "simple-git-hooks": "^2.11.1",
     svelte: "^4.2.17",
     "svelte-eslint-parser": "^0.36.0",
     tsup: "^8.0.2",
-    tsx: "^4.10.4",
+    tsx: "^4.11.0",
     typescript: "^5.4.5",
     vitest: "^1.6.0",
     vue: "^3.4.27"
@@ -495,12 +497,15 @@ async function run(options = {}) {
   if (!argSkipPrompt) {
     result = await p4.group(
       {
-        uncommittedConfirmed: () => {
-          if (argSkipPrompt || isGitClean())
-            return Promise.resolve(true);
-          return p4.confirm({
-            initialValue: false,
-            message: "There are uncommitted changes in the current repository, are you sure to continue?"
+        extra: ({ results }) => {
+          const isArgExtraValid = argExtra?.length && !argExtra.filter((element) => !extra.includes(element)).length;
+          if (!results.uncommittedConfirmed || isArgExtraValid)
+            return;
+          const message = !isArgExtraValid && argExtra ? `"${argExtra}" isn't a valid extra util. Please choose from below: ` : "Select a extra utils:";
+          return p4.multiselect({
+            message: import_picocolors5.default.reset(message),
+            options: extraOptions,
+            required: false
           });
         },
         frameworks: ({ results }) => {
@@ -514,15 +519,12 @@ async function run(options = {}) {
             required: false
           });
         },
-        extra: ({ results }) => {
-          const isArgExtraValid = argExtra?.length && !argExtra.filter((element) => !extra.includes(element)).length;
-          if (!results.uncommittedConfirmed || isArgExtraValid)
-            return;
-          const message = !isArgExtraValid && argExtra ? `"${argExtra}" isn't a valid extra util. Please choose from below: ` : "Select a extra utils:";
-          return p4.multiselect({
-            message: import_picocolors5.default.reset(message),
-            options: extraOptions,
-            required: false
+        uncommittedConfirmed: () => {
+          if (argSkipPrompt || isGitClean())
+            return Promise.resolve(true);
+          return p4.confirm({
+            initialValue: false,
+            message: "There are uncommitted changes in the current repository, are you sure to continue?"
           });
         },
         updateVscodeSettings: ({ results }) => {

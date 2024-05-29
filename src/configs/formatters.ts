@@ -1,10 +1,10 @@
 import { isPackageExists } from 'local-pkg';
-import { prettier } from '@jiangweiye/prettier-config';
-import { PLUGIN_PREFIX } from '../factory';
+import { DEFAULT_OPTIONS } from '@jiangweiye/prettier-config';
 import { GLOB_ASTRO, GLOB_CSS, GLOB_GRAPHQL, GLOB_HTML, GLOB_LESS, GLOB_MARKDOWN, GLOB_POSTCSS, GLOB_SCSS, GLOB_XML } from '../globs';
 import type { VendoredPrettierOptions } from '../vender/prettier-types';
 import { ensurePackages, interopDefault, parserPlain } from '../utils';
 import type { OptionsFormatters, StylisticConfig, TypedFlatConfigItem } from '../types';
+import { PLUGIN_PREFIX } from '../factory';
 import { StylisticConfigDefaults } from './stylistic';
 
 export async function formatters(options: OptionsFormatters | true = {}, stylistic: StylisticConfig = {}): Promise<TypedFlatConfigItem[]> {
@@ -35,17 +35,15 @@ export async function formatters(options: OptionsFormatters | true = {}, stylist
         ...stylistic
     };
 
-    const preset = prettier();
-
     const prettierOptions: VendoredPrettierOptions = Object.assign(
         {
-            ...preset,
-            endOfLine: preset.endOfLine,
+            ...DEFAULT_OPTIONS,
+            endOfLine: DEFAULT_OPTIONS.endOfLine,
             semi,
-            singleQuote: preset.singleQuote,
+            singleQuote: DEFAULT_OPTIONS.singleQuote,
             tabWidth: typeof indent === 'number' ? indent : 4,
-            trailingComma: preset.trailingComma,
-            useTabs: indent === 'tab'
+            trailingComma: DEFAULT_OPTIONS.trailingComma,
+            useTabs: DEFAULT_OPTIONS.useTabs
         } satisfies VendoredPrettierOptions,
         options.prettierOptions || {}
     );
@@ -187,7 +185,7 @@ export async function formatters(options: OptionsFormatters | true = {}, stylist
                     'error',
                     formater === 'prettier'
                         ? {
-                              printWidth: preset.printWidth,
+                              printWidth: DEFAULT_OPTIONS.printWidth,
                               ...prettierOptions,
                               embeddedLanguageFormatting: 'off',
                               parser: 'markdown'
@@ -211,7 +209,7 @@ export async function formatters(options: OptionsFormatters | true = {}, stylist
                     'format/prettier': [
                         'error',
                         {
-                            printWidth: preset.printWidth,
+                            printWidth: DEFAULT_OPTIONS.printWidth,
                             ...prettierOptions,
                             embeddedLanguageFormatting: 'off',
                             parser: 'slidev',

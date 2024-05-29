@@ -1,12 +1,13 @@
+import { DEFAULT_OPTIONS } from '@jiangweiye/prettier-config';
 import { PLUGIN_PREFIX } from '../factory';
 import { interopDefault } from '../utils';
 import type { OptionsOverrides, StylisticConfig, TypedFlatConfigItem } from '../types';
 
 export const StylisticConfigDefaults: StylisticConfig = {
-    indent: 4,
+    indent: DEFAULT_OPTIONS.tabWidth,
     jsx: true,
     quotes: 'single',
-    semi: true
+    semi: DEFAULT_OPTIONS.semi
 };
 
 export interface StylisticOptions extends StylisticConfig, OptionsOverrides {
@@ -46,14 +47,14 @@ export async function stylistic(options: StylisticOptions = {}): Promise<TypedFl
             rules: {
                 ...config.rules,
                 ...(lessOpinionated ? { curly: ['error', 'all'] } : { curly: ['error', 'multi-or-nest', 'consistent'] }),
+                curly: ['off', 'multi'],
+                'style/arrow-parens': ['error', 'as-needed'],
+                'style/brace-style': 'error',
+                'style/comma-dangle': ['off'],
                 'style/indent': ['off'],
                 'style/no-multiple-empty-lines': ['off'],
-                'style/arrow-parens': ['error', 'as-needed'],
-                'style/comma-dangle': ['off'],
-                'style/quote-props': ['error', 'as-needed'],
                 'style/operator-linebreak': 'off',
-                'style/brace-style': 'error',
-                curly: ['off', 'multi'],
+                'style/quote-props': ['error', 'as-needed'],
                 ...overrides
             }
         }

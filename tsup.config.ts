@@ -3,5 +3,6 @@ import { defineConfig } from 'tsup';
 export default defineConfig({
     entry: ['src/index.ts', 'src/cli.ts'],
     shims: true,
-    splitting: false
+    splitting: false,
+    external: ['prettier']
 });

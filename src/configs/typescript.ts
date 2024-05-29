@@ -109,13 +109,13 @@ export async function typescript(
                 'ts/no-non-null-assertion': 'off',
                 'ts/no-redeclare': 'error',
                 'ts/no-require-imports': 'error',
+                'ts/no-this-alias': 'off',
                 'ts/no-unused-vars': 'off',
                 'ts/no-use-before-define': ['error', { classes: false, functions: false, variables: true }],
                 'ts/no-useless-constructor': 'off',
                 'ts/prefer-ts-expect-error': 'error',
                 'ts/triple-slash-reference': 'off',
                 'ts/unified-signatures': 'off',
-                'ts/no-this-alias': 'off',
                 ...overrides
             }
         },
