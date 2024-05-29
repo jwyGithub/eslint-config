@@ -305,14 +305,14 @@ function isGitClean() {
 }
 function getEslintConfigContent(mainConfig, additionalConfigs) {
   return `
-            import eslint from '@jiangweiye/eslint-config';
+import eslint from '@jiangweiye/eslint-config'
 
-            export default eslint({
-                ${mainConfig}
-            }${additionalConfigs?.map((config) => `,{
+export default eslint({
+${mainConfig}
+}${additionalConfigs?.map((config) => `,{
 ${config}
 }`)})
-            `.trimStart();
+`.trimStart();
 }
 
 // src/cli/stages/update-package-json.ts
@@ -329,6 +329,7 @@ async function updatePackageJson(result) {
   const pkg = JSON.parse(pkgContent);
   pkg.devDependencies ??= {};
   pkg.devDependencies["@jiangweiye/eslint-config"] = `^${package_default.version}`;
+  pkg.devDependencies.eslint ??= package_default.devDependencies.eslint.replace("npm:eslint-ts-patch@", "").replace(/-\d+$/, "");
   const addedPackages = [];
   if (result.extra.length) {
     result.extra.forEach((item) => {
@@ -466,15 +467,12 @@ async function run(options = {}) {
   if (!argSkipPrompt) {
     result = await p4.group(
       {
-        extra: ({ results }) => {
-          const isArgExtraValid = argExtra?.length && !argExtra.filter((element) => !extra.includes(element)).length;
-          if (!results.uncommittedConfirmed || isArgExtraValid)
-            return;
-          const message = !isArgExtraValid && argExtra ? `"${argExtra}" isn't a valid extra util. Please choose from below: ` : "Select a extra utils:";
-          return p4.multiselect({
-            message: c5.reset(message),
-            options: extraOptions,
-            required: false
+        uncommittedConfirmed: () => {
+          if (argSkipPrompt || isGitClean())
+            return Promise.resolve(true);
+          return p4.confirm({
+            initialValue: false,
+            message: "There are uncommitted changes in the current repository, are you sure to continue?"
           });
         },
         frameworks: ({ results }) => {
@@ -488,12 +486,15 @@ async function run(options = {}) {
             required: false
           });
         },
-        uncommittedConfirmed: () => {
-          if (argSkipPrompt || isGitClean())
-            return Promise.resolve(true);
-          return p4.confirm({
-            initialValue: false,
-            message: "There are uncommitted changes in the current repository, are you sure to continue?"
+        extra: ({ results }) => {
+          const isArgExtraValid = argExtra?.length && !argExtra.filter((element) => !extra.includes(element)).length;
+          if (!results.uncommittedConfirmed || isArgExtraValid)
+            return;
+          const message = !isArgExtraValid && argExtra ? `"${argExtra}" isn't a valid extra util. Please choose from below: ` : "Select a extra utils:";
+          return p4.multiselect({
+            message: c5.reset(message),
+            options: extraOptions,
+            required: false
           });
         },
         updateVscodeSettings: ({ results }) => {
