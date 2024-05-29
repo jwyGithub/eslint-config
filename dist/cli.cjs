@@ -48,7 +48,7 @@ var import_picocolors = __toESM(require("picocolors"), 1);
 var package_default = {
   name: "@jiangweiye/eslint-config",
   type: "module",
-  version: "0.1.3-beta.1",
+  version: "0.1.3-beta.2",
   description: "A eslint config for jiangweiye",
   author: "jiangweiye <jiangweiye@outlook.com> (https://github.com/jwyGithub)",
   license: "SEE LICENSE IN LICENSE.md",
@@ -232,7 +232,7 @@ var vscodeSettingsString = `
   "eslint.experimental.useFlatConfig": true,
 
   // Disable the default formatter, use eslint instead
-  "prettier.enable": false,
+  "prettier.enable": true,
   "editor.formatOnSave": false,
 
   // Auto fix
@@ -334,14 +334,14 @@ function isGitClean() {
 }
 function getEslintConfigContent(mainConfig, additionalConfigs) {
   return `
-import antfu from '@antfu/eslint-config'
+            import eslint from '@jiangweiye/eslint-config';
 
-export default antfu({
-${mainConfig}
-}${additionalConfigs?.map((config) => `,{
+            export default eslint({
+                ${mainConfig}
+            }${additionalConfigs?.map((config) => `,{
 ${config}
 }`)})
-`.trimStart();
+            `.trimStart();
 }
 
 // src/cli/stages/update-package-json.ts
@@ -353,12 +353,11 @@ var p = __toESM(require("@clack/prompts"), 1);
 async function updatePackageJson(result) {
   const cwd = import_node_process.default.cwd();
   const pathPackageJSON = import_node_path.default.join(cwd, "package.json");
-  p.log.step(import_picocolors2.default.cyan(`Bumping @antfu/eslint-config to v${package_default.version}`));
+  p.log.step(import_picocolors2.default.cyan(`Bumping @jiangweiye/eslint-config to v${package_default.version}`));
   const pkgContent = await import_promises.default.readFile(pathPackageJSON, "utf-8");
   const pkg = JSON.parse(pkgContent);
   pkg.devDependencies ??= {};
-  pkg.devDependencies["@antfu/eslint-config"] = `^${package_default.version}`;
-  pkg.devDependencies.eslint ??= package_default.devDependencies.eslint.replace("npm:eslint-ts-patch@", "").replace(/-\d+$/, "");
+  pkg.devDependencies["@jiangweiye/eslint-config"] = `^${package_default.version}`;
   const addedPackages = [];
   if (result.extra.length) {
     result.extra.forEach((item) => {
@@ -556,9 +555,9 @@ async function run(options = {}) {
 // src/cli/index.ts
 function header() {
   console.log("\n");
-  p5.intro(`${import_picocolors6.default.green(`@antfu/eslint-config `)}${import_picocolors6.default.dim(`v${package_default.version}`)}`);
+  p5.intro(`${import_picocolors6.default.green(`@jiangweiye/eslint-config `)}${import_picocolors6.default.dim(`v${package_default.version}`)}`);
 }
-var instance = (0, import_yargs.default)((0, import_helpers.hideBin)(import_node_process5.default.argv)).scriptName("@antfu/eslint-config").usage("").command(
+var instance = (0, import_yargs.default)((0, import_helpers.hideBin)(import_node_process5.default.argv)).scriptName("@jiangweiye/eslint-config").usage("").command(
   "*",
   "Run the initialization or migration",
   (args) => args.option("yes", {

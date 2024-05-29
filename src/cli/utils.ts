@@ -11,10 +11,10 @@ export function isGitClean() {
 
 export function getEslintConfigContent(mainConfig: string, additionalConfigs?: string[]) {
     return `
-import antfu from '@antfu/eslint-config'
+            import eslint from '@jiangweiye/eslint-config';
 
-export default antfu({
-${mainConfig}
-}${additionalConfigs?.map(config => `,{\n${config}\n}`)})
-`.trimStart();
+            export default eslint({
+                ${mainConfig}
+            }${additionalConfigs?.map(config => `,{\n${config}\n}`)})
+            `.trimStart();
 }

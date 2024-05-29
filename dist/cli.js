@@ -1,12 +1,4 @@
-import {
-  init_esm_shims
-} from "./chunk-343WRYT2.js";
-
-// src/cli.ts
-init_esm_shims();
-
 // src/cli/index.ts
-init_esm_shims();
 import process5 from "node:process";
 import c6 from "picocolors";
 import { hideBin } from "yargs/helpers";
@@ -14,7 +6,6 @@ import yargs from "yargs";
 import * as p5 from "@clack/prompts";
 
 // src/cli/run.ts
-init_esm_shims();
 import fs3 from "node:fs";
 import path4 from "node:path";
 import process4 from "node:process";
@@ -22,14 +13,13 @@ import c5 from "picocolors";
 import * as p4 from "@clack/prompts";
 
 // src/cli/constants.ts
-init_esm_shims();
 import c from "picocolors";
 
 // package.json
 var package_default = {
   name: "@jiangweiye/eslint-config",
   type: "module",
-  version: "0.1.3-beta.1",
+  version: "0.1.3-beta.2",
   description: "A eslint config for jiangweiye",
   author: "jiangweiye <jiangweiye@outlook.com> (https://github.com/jwyGithub)",
   license: "SEE LICENSE IN LICENSE.md",
@@ -213,7 +203,7 @@ var vscodeSettingsString = `
   "eslint.experimental.useFlatConfig": true,
 
   // Disable the default formatter, use eslint instead
-  "prettier.enable": false,
+  "prettier.enable": true,
   "editor.formatOnSave": false,
 
   // Auto fix
@@ -304,7 +294,6 @@ var dependenciesMap = {
 };
 
 // src/cli/utils.ts
-init_esm_shims();
 import { execSync } from "node:child_process";
 function isGitClean() {
   try {
@@ -316,18 +305,17 @@ function isGitClean() {
 }
 function getEslintConfigContent(mainConfig, additionalConfigs) {
   return `
-import antfu from '@antfu/eslint-config'
+            import eslint from '@jiangweiye/eslint-config';
 
-export default antfu({
-${mainConfig}
-}${additionalConfigs?.map((config) => `,{
+            export default eslint({
+                ${mainConfig}
+            }${additionalConfigs?.map((config) => `,{
 ${config}
 }`)})
-`.trimStart();
+            `.trimStart();
 }
 
 // src/cli/stages/update-package-json.ts
-init_esm_shims();
 import path from "node:path";
 import fsp from "node:fs/promises";
 import process from "node:process";
@@ -336,12 +324,11 @@ import * as p from "@clack/prompts";
 async function updatePackageJson(result) {
   const cwd = process.cwd();
   const pathPackageJSON = path.join(cwd, "package.json");
-  p.log.step(c2.cyan(`Bumping @antfu/eslint-config to v${package_default.version}`));
+  p.log.step(c2.cyan(`Bumping @jiangweiye/eslint-config to v${package_default.version}`));
   const pkgContent = await fsp.readFile(pathPackageJSON, "utf-8");
   const pkg = JSON.parse(pkgContent);
   pkg.devDependencies ??= {};
-  pkg.devDependencies["@antfu/eslint-config"] = `^${package_default.version}`;
-  pkg.devDependencies.eslint ??= package_default.devDependencies.eslint.replace("npm:eslint-ts-patch@", "").replace(/-\d+$/, "");
+  pkg.devDependencies["@jiangweiye/eslint-config"] = `^${package_default.version}`;
   const addedPackages = [];
   if (result.extra.length) {
     result.extra.forEach((item) => {
@@ -379,7 +366,6 @@ async function updatePackageJson(result) {
 }
 
 // src/cli/stages/update-eslint-files.ts
-init_esm_shims();
 import fs from "node:fs";
 import fsp2 from "node:fs/promises";
 import process2 from "node:process";
@@ -433,7 +419,6 @@ async function updateEslintFiles(result) {
 }
 
 // src/cli/stages/update-vscode-settings.ts
-init_esm_shims();
 import path3 from "node:path";
 import fsp3 from "node:fs/promises";
 import fs2 from "node:fs";
@@ -541,9 +526,9 @@ async function run(options = {}) {
 // src/cli/index.ts
 function header() {
   console.log("\n");
-  p5.intro(`${c6.green(`@antfu/eslint-config `)}${c6.dim(`v${package_default.version}`)}`);
+  p5.intro(`${c6.green(`@jiangweiye/eslint-config `)}${c6.dim(`v${package_default.version}`)}`);
 }
-var instance = yargs(hideBin(process5.argv)).scriptName("@antfu/eslint-config").usage("").command(
+var instance = yargs(hideBin(process5.argv)).scriptName("@jiangweiye/eslint-config").usage("").command(
   "*",
   "Run the initialization or migration",
   (args) => args.option("yes", {

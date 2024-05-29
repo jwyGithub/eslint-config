@@ -7,7 +7,7 @@ export type VendoredPrettierOptions = Partial<VendoredPrettierOptionsRequired>;
 export interface VendoredPrettierOptionsRequired {
     /**
      * Specify the line length that the printer will wrap on.
-     * @default 120
+     * @default 140
      */
     printWidth: number;
     /**
