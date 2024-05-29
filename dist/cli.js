@@ -19,7 +19,7 @@ import c from "picocolors";
 var package_default = {
   name: "@jiangweiye/eslint-config",
   type: "module",
-  version: "0.1.5",
+  version: "0.1.5-beta.2",
   description: "A eslint config for jiangweiye",
   author: "jiangweiye <jiangweiye@outlook.com> (https://github.com/jwyGithub)",
   license: "SEE LICENSE IN LICENSE.md",
@@ -305,14 +305,13 @@ function isGitClean() {
 }
 function getEslintConfigContent(mainConfig, additionalConfigs) {
   return `
-import eslint from '@jiangweiye/eslint-config'
-
-export default eslint({
-${mainConfig}
-}${additionalConfigs?.map((config) => `,{
+            import eslint from '@jiangweiye/eslint-config';
+                export default eslint({
+                ${mainConfig}
+                }${additionalConfigs?.map((config) => `,{
 ${config}
-}`)})
-`.trimStart();
+}`)});
+            `.trimStart();
 }
 
 // src/cli/stages/update-package-json.ts
@@ -362,7 +361,7 @@ async function updatePackageJson(result) {
   }
   if (addedPackages.length)
     p.note(`${c2.dim(addedPackages.join(", "))}`, "Added packages");
-  await fsp.writeFile(pathPackageJSON, JSON.stringify(pkg, null, 2));
+  await fsp.writeFile(pathPackageJSON, JSON.stringify(pkg, null, 4));
   p.log.success(c2.green(`Changes wrote to package.json`));
 }
 
