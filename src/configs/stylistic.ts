@@ -1,4 +1,4 @@
-import { DEFAULT_OPTIONS } from '@jiangweiye/prettier-config';
+import { DEFAULT_OPTIONS } from '@jiangweiye/prettier-config/options';
 import { PLUGIN_PREFIX } from '../factory';
 import { interopDefault } from '../utils';
 import type { OptionsOverrides, StylisticConfig, TypedFlatConfigItem } from '../types';

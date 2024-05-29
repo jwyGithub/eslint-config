@@ -121,8 +121,8 @@ importers:
         specifier: workspace:*
         version: 'link:'
       '@jiangweiye/prettier-config':
-        specifier: ^0.0.9
-        version: 0.0.9
+        specifier: ^0.0.11
+        version: 0.0.11
       '@prettier/plugin-xml':
         specifier: ^3.4.1
         version: 3.4.1(prettier@3.2.5)
@@ -201,9 +201,6 @@ importers:
       rimraf:
         specifier: ^5.0.7
         version: 5.0.7
-      simple-git-hooks:
-        specifier: ^2.11.1
-        version: 2.11.1
       svelte:
         specifier: ^4.2.17
         version: 4.2.17
@@ -1171,8 +1168,8 @@ packages:
       '@jsdevtools/ez-spawn': 3.0.4
     dev: false
 
-  /@jiangweiye/prettier-config@0.0.9:
-    resolution: {integrity: sha512-pGjBB7/R9+NAybMkm7BAjub7xdfwFVk+00cOCesY2a5GBeymh/AFgjJ61fKPiBEEAbItO2PNTvjMT1Gxa8hF3Q==}
+  /@jiangweiye/prettier-config@0.0.11:
+    resolution: {integrity: sha512-C2GEJ86Rs/VpFoGm2Cbb5dd+sD7iYo/HxSiqyVyQ66IaLM0Dcskfi/gvi2NC74QLCdNAmyzU4PdAlTcS0nON3A==}
     optionalDependencies:
       prettier: 3.2.5
     dev: true
@@ -4545,12 +4542,6 @@ packages:
   /signal-exit@4.1.0:
     resolution: {integrity: sha512-bzyZ1e88w9O1iNJbKnOlvYTrWPDl46O1bG0D3XInv+9tkPrxrN8jUUTiFlDkkmKWgn1M6CfIA13SuGqOa9Korw==}
     engines: {node: '>=14'}
-
-  /simple-git-hooks@2.11.1:
-    resolution: {integrity: sha512-tgqwPUMDcNDhuf1Xf6KTUsyeqGdgKMhzaH4PAZZuzguOgTl5uuyeYe/8mWgAr6IBxB5V06uqEf6Dy37gIWDtDg==}
-    hasBin: true
-    requiresBuild: true
-    dev: true
 
   /sisteransi@1.0.5:
     resolution: {integrity: sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==}

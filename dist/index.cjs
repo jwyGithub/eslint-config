@@ -340,8 +340,7 @@ async function comments() {
 // src/configs/formatters.ts
 var import_local_pkg2 = require("local-pkg");
 
-// node_modules/.pnpm/@jiangweiye+prettier-config@0.0.9/node_modules/@jiangweiye/prettier-config/dist/index.esm.js
-var import_prettier = require("prettier");
+// node_modules/.pnpm/@jiangweiye+prettier-config@0.0.11/node_modules/@jiangweiye/prettier-config/dist/src/options.esm.js
 var DEFAULT_OPTIONS = {
   printWidth: 140,
   tabWidth: 4,
