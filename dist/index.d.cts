@@ -9961,7 +9961,7 @@ declare function combine(...configs: Awaitable<TypedFlatConfigItem | TypedFlatCo
  *
  * @example
  * ```ts
- * import { renameRules } from '@antfu/eslint-config'
+ * import { renameRules } from '@jiangweiye/eslint-config'
  *
  * export default [{
  *   rules: renameRules(
@@ -9981,7 +9981,7 @@ declare function renameRules(rules: Record<string, any>, map: Record<string, str
  *
  * @example
  * ```ts
- * import { renamePluginInConfigs } from '@antfu/eslint-config'
+ * import { renamePluginInConfigs } from '@jiangweiye/eslint-config'
  * import someConfigs from './some-configs'
  *
  * export default renamePluginInConfigs(someConfigs, {
