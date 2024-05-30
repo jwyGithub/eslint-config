@@ -1,10 +1,107 @@
+var __create = Object.create;
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __getProtoOf = Object.getPrototypeOf;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __esm = (fn, res) => function __init() {
+  return fn && (res = (0, fn[__getOwnPropNames(fn)[0]])(fn = 0)), res;
+};
+var __commonJS = (cb, mod) => function __require() {
+  return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+  // If the importer is in node compatibility mode or this is not an ESM
+  // file that has been converted to a CommonJS file using a Babel-
+  // compatible transform (i.e. "__esModule" has not been set), then set
+  // "default" to the CommonJS "module.exports" for node compatibility.
+  isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
+  mod
+));
+
+// node_modules/.pnpm/tsup@8.0.2_postcss@8.4.38_typescript@5.4.5/node_modules/tsup/assets/esm_shims.js
+var init_esm_shims = __esm({
+  "node_modules/.pnpm/tsup@8.0.2_postcss@8.4.38_typescript@5.4.5/node_modules/tsup/assets/esm_shims.js"() {
+    "use strict";
+  }
+});
+
+// node_modules/.pnpm/@jiangweiye+prettier-config@0.0.14/node_modules/@jiangweiye/prettier-config/dist/src/options.cjs
+var require_options = __commonJS({
+  "node_modules/.pnpm/@jiangweiye+prettier-config@0.0.14/node_modules/@jiangweiye/prettier-config/dist/src/options.cjs"(exports, module) {
+    "use strict";
+    init_esm_shims();
+    var __defProp2 = Object.defineProperty;
+    var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
+    var __getOwnPropNames2 = Object.getOwnPropertyNames;
+    var __hasOwnProp2 = Object.prototype.hasOwnProperty;
+    var __export = (target, all) => {
+      for (var name in all)
+        __defProp2(target, name, { get: all[name], enumerable: true });
+    };
+    var __copyProps2 = (to, from, except, desc) => {
+      if (from && typeof from === "object" || typeof from === "function") {
+        for (let key of __getOwnPropNames2(from))
+          if (!__hasOwnProp2.call(to, key) && key !== except)
+            __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc2(from, key)) || desc.enumerable });
+      }
+      return to;
+    };
+    var __toCommonJS = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
+    var options_exports = {};
+    __export(options_exports, {
+      DEFAULT_OPTIONS: () => DEFAULT_OPTIONS3
+    });
+    module.exports = __toCommonJS(options_exports);
+    var DEFAULT_OPTIONS3 = {
+      printWidth: 140,
+      tabWidth: 4,
+      useTabs: false,
+      semi: true,
+      singleQuote: true,
+      quoteProps: "as-needed",
+      jsxSingleQuote: true,
+      trailingComma: "none",
+      bracketSpacing: true,
+      bracketSameLine: false,
+      arrowParens: "avoid",
+      insertPragma: false,
+      proseWrap: "never",
+      htmlWhitespaceSensitivity: "strict",
+      vueIndentScriptAndStyle: false,
+      endOfLine: "lf",
+      embeddedLanguageFormatting: "auto",
+      singleAttributePerLine: false
+    };
+  }
+});
+
+// src/index.ts
+init_esm_shims();
+
 // src/factory.ts
+init_esm_shims();
 import process3 from "node:process";
 import fs from "node:fs";
 import { isPackageExists as isPackageExists4 } from "local-pkg";
 import { FlatConfigComposer } from "eslint-flat-config-utils";
 
+// src/configs/index.ts
+init_esm_shims();
+
+// src/configs/astro.ts
+init_esm_shims();
+
 // src/globs.ts
+init_esm_shims();
 var GLOB_SRC_EXT = "?([cm])[jt]s?(x)";
 var GLOB_SRC = "**/*.?([cm])[jt]s?(x)";
 var GLOB_JS = "**/*.?([cm])js";
@@ -82,6 +179,7 @@ var GLOB_EXCLUDE = [
 ];
 
 // src/utils.ts
+init_esm_shims();
 import process from "node:process";
 import { isPackageExists } from "local-pkg";
 var parserPlain = {
@@ -198,6 +296,7 @@ async function astro(options = {}) {
 }
 
 // src/configs/command.ts
+init_esm_shims();
 import createCommand from "eslint-plugin-command/config";
 async function command() {
   return [
@@ -208,7 +307,11 @@ async function command() {
   ];
 }
 
+// src/configs/comments.ts
+init_esm_shims();
+
 // src/plugins.ts
+init_esm_shims();
 import { default as default2 } from "eslint-plugin-eslint-comments";
 import * as pluginImport from "eslint-plugin-import-x";
 import { default as default3 } from "eslint-plugin-n";
@@ -235,36 +338,18 @@ async function comments() {
 }
 
 // src/configs/formatters.ts
+init_esm_shims();
+var import_options2 = __toESM(require_options(), 1);
 import { isPackageExists as isPackageExists2 } from "local-pkg";
 
-// node_modules/.pnpm/@jiangweiye+prettier-config@0.0.11/node_modules/@jiangweiye/prettier-config/dist/src/options.esm.js
-var DEFAULT_OPTIONS = {
-  printWidth: 140,
-  tabWidth: 4,
-  useTabs: false,
-  semi: true,
-  singleQuote: true,
-  quoteProps: "as-needed",
-  jsxSingleQuote: true,
-  trailingComma: "none",
-  bracketSpacing: true,
-  bracketSameLine: false,
-  arrowParens: "avoid",
-  insertPragma: false,
-  proseWrap: "never",
-  htmlWhitespaceSensitivity: "strict",
-  vueIndentScriptAndStyle: false,
-  endOfLine: "lf",
-  embeddedLanguageFormatting: "auto",
-  singleAttributePerLine: false
-};
-
 // src/configs/stylistic.ts
+init_esm_shims();
+var import_options = __toESM(require_options(), 1);
 var StylisticConfigDefaults = {
-  indent: DEFAULT_OPTIONS.tabWidth,
+  indent: import_options.DEFAULT_OPTIONS.tabWidth,
   jsx: true,
   quotes: "single",
-  semi: DEFAULT_OPTIONS.semi
+  semi: import_options.DEFAULT_OPTIONS.semi
 };
 async function stylistic(options = {}) {
   const {
@@ -337,13 +422,13 @@ async function formatters(options = {}, stylistic2 = {}) {
   };
   const prettierOptions = Object.assign(
     {
-      ...DEFAULT_OPTIONS,
-      endOfLine: DEFAULT_OPTIONS.endOfLine,
+      ...import_options2.DEFAULT_OPTIONS,
+      endOfLine: import_options2.DEFAULT_OPTIONS.endOfLine,
       semi,
-      singleQuote: DEFAULT_OPTIONS.singleQuote,
+      singleQuote: import_options2.DEFAULT_OPTIONS.singleQuote,
       tabWidth: typeof indent === "number" ? indent : 4,
-      trailingComma: DEFAULT_OPTIONS.trailingComma,
-      useTabs: DEFAULT_OPTIONS.useTabs
+      trailingComma: import_options2.DEFAULT_OPTIONS.trailingComma,
+      useTabs: import_options2.DEFAULT_OPTIONS.useTabs
     },
     options.prettierOptions || {}
   );
@@ -474,7 +559,7 @@ async function formatters(options = {}, stylistic2 = {}) {
         [`format/${formater}`]: [
           "error",
           formater === "prettier" ? {
-            printWidth: DEFAULT_OPTIONS.printWidth,
+            printWidth: import_options2.DEFAULT_OPTIONS.printWidth,
             ...prettierOptions,
             embeddedLanguageFormatting: "off",
             parser: "markdown"
@@ -496,7 +581,7 @@ async function formatters(options = {}, stylistic2 = {}) {
           "format/prettier": [
             "error",
             {
-              printWidth: DEFAULT_OPTIONS.printWidth,
+              printWidth: import_options2.DEFAULT_OPTIONS.printWidth,
               ...prettierOptions,
               embeddedLanguageFormatting: "off",
               parser: "slidev",
@@ -548,6 +633,7 @@ async function formatters(options = {}, stylistic2 = {}) {
 }
 
 // src/configs/ignores.ts
+init_esm_shims();
 async function ignores() {
   return [
     {
@@ -559,6 +645,7 @@ async function ignores() {
 }
 
 // src/configs/imports.ts
+init_esm_shims();
 async function imports(options = {}) {
   const { stylistic: stylistic2 = true } = options;
   return [
@@ -596,6 +683,7 @@ async function imports(options = {}) {
 }
 
 // src/configs/javascript.ts
+init_esm_shims();
 import globals from "globals";
 async function javascript(options = {}) {
   const { isInEditor = false, overrides = {} } = options;
@@ -835,6 +923,7 @@ async function javascript(options = {}) {
 }
 
 // src/configs/jsdoc.ts
+init_esm_shims();
 async function jsdoc(options = {}) {
   const { stylistic: stylistic2 = true } = options;
   return [
@@ -869,6 +958,7 @@ async function jsdoc(options = {}) {
 }
 
 // src/configs/jsonc.ts
+init_esm_shims();
 async function jsonc(options = {}) {
   const { files = [GLOB_JSON, GLOB_JSON5, GLOB_JSONC], overrides = {}, stylistic: stylistic2 = true } = options;
   const { indent = 4 } = typeof stylistic2 === "boolean" ? {} : stylistic2;
@@ -935,6 +1025,7 @@ async function jsonc(options = {}) {
 }
 
 // src/configs/markdown.ts
+init_esm_shims();
 import { mergeProcessors, processorPassThrough } from "eslint-merge-processors";
 async function markdown(options = {}) {
   const { componentExts = [], files = [GLOB_MARKDOWN], overrides = {} } = options;
@@ -1022,6 +1113,7 @@ async function markdown(options = {}) {
 }
 
 // src/configs/node.ts
+init_esm_shims();
 async function node() {
   return [
     {
@@ -1044,6 +1136,7 @@ async function node() {
 }
 
 // src/configs/perfectionist.ts
+init_esm_shims();
 async function perfectionist() {
   return [
     {
@@ -1056,6 +1149,7 @@ async function perfectionist() {
 }
 
 // src/configs/react.ts
+init_esm_shims();
 import { isPackageExists as isPackageExists3 } from "local-pkg";
 var ReactRefreshAllowConstantExportPackages = ["vite"];
 var RemixPackages = ["@remix-run/node", "@remix-run/react", "@remix-run/serve", "@remix-run/dev"];
@@ -1175,6 +1269,7 @@ async function react(options = {}) {
 }
 
 // src/configs/solid.ts
+init_esm_shims();
 async function solid(options = {}) {
   const { files = [GLOB_JSX, GLOB_TSX], overrides = {}, typescript: typescript2 = true } = options;
   await ensurePackages(["eslint-plugin-solid"]);
@@ -1245,6 +1340,7 @@ async function solid(options = {}) {
 }
 
 // src/configs/sort.ts
+init_esm_shims();
 async function sortPackageJson() {
   return [
     {
@@ -1461,6 +1557,7 @@ function sortTsconfig() {
 }
 
 // src/configs/svelte.ts
+init_esm_shims();
 async function svelte(options = {}) {
   const { files = [GLOB_SVELTE], overrides = {}, stylistic: stylistic2 = true } = options;
   const { indent = 4, quotes = "single" } = typeof stylistic2 === "boolean" ? {} : stylistic2;
@@ -1552,6 +1649,7 @@ async function svelte(options = {}) {
 }
 
 // src/configs/test.ts
+init_esm_shims();
 var _pluginTest;
 async function test(options = {}) {
   const { files = GLOB_TESTS, isInEditor = false, overrides = {} } = options;
@@ -1593,6 +1691,7 @@ async function test(options = {}) {
 }
 
 // src/configs/toml.ts
+init_esm_shims();
 async function toml(options = {}) {
   const { files = [GLOB_TOML], overrides = {}, stylistic: stylistic2 = true } = options;
   const { indent = 4 } = typeof stylistic2 === "boolean" ? {} : stylistic2;
@@ -1643,6 +1742,7 @@ async function toml(options = {}) {
 }
 
 // src/configs/typescript.ts
+init_esm_shims();
 import process2 from "node:process";
 async function typescript(options = {}) {
   const { componentExts = [], overrides = {}, parserOptions = {} } = options;
@@ -1782,6 +1882,7 @@ async function typescript(options = {}) {
 }
 
 // src/configs/unicorn.ts
+init_esm_shims();
 async function unicorn() {
   return [
     {
@@ -1822,6 +1923,7 @@ async function unicorn() {
 }
 
 // src/configs/unocss.ts
+init_esm_shims();
 async function unocss(options = {}) {
   const { attributify = true, strict = false } = options;
   await ensurePackages(["@unocss/eslint-plugin"]);
@@ -1846,6 +1948,7 @@ async function unocss(options = {}) {
 }
 
 // src/configs/vue.ts
+init_esm_shims();
 import { mergeProcessors as mergeProcessors2 } from "eslint-merge-processors";
 async function vue(options = {}) {
   const { files = [GLOB_VUE], overrides = {}, stylistic: stylistic2 = true, vueVersion = 3 } = options;
@@ -2010,6 +2113,7 @@ async function vue(options = {}) {
 }
 
 // src/configs/yaml.ts
+init_esm_shims();
 async function yaml(options = {}) {
   const { files = [GLOB_YAML], overrides = {}, stylistic: stylistic2 = true } = options;
   const { quotes = "single" } = typeof stylistic2 === "boolean" ? {} : stylistic2;
@@ -2059,6 +2163,7 @@ async function yaml(options = {}) {
 }
 
 // src/configs/regexp.ts
+init_esm_shims();
 import { configs } from "eslint-plugin-regexp";
 async function regexp(options = {}) {
   const config = configs["flat/recommended"];
@@ -2293,6 +2398,9 @@ function getOverrides(options, key) {
     ..."overrides" in sub ? sub.overrides : {}
   };
 }
+
+// src/types.ts
+init_esm_shims();
 
 // src/index.ts
 var src_default = eslint;
