@@ -52,7 +52,10 @@ export async function stylistic(options: StylisticOptions = {}): Promise<TypedFl
                 'style/brace-style': 'error',
                 'style/comma-dangle': ['off'],
                 'style/indent': ['off'],
+                'style/indent-binary-ops': 'off',
+                'style/jsx-quotes': ['error', 'prefer-single'],
                 'style/no-multiple-empty-lines': ['off'],
+                'style/no-tabs': 'off',
                 'style/operator-linebreak': 'off',
                 'style/quote-props': ['error', 'as-needed'],
                 ...overrides
