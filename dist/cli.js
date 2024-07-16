@@ -19,7 +19,7 @@ import c from "picocolors";
 var package_default = {
   name: "@jiangweiye/eslint-config",
   type: "module",
-  version: "0.1.5-beta.3",
+  version: "0.1.6-beta.1",
   description: "A eslint config for jiangweiye",
   author: "jiangweiye <jiangweiye@outlook.com> (https://github.com/jwyGithub)",
   license: "SEE LICENSE IN LICENSE.md",
