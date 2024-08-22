@@ -1,7 +1,7 @@
 {
     "name": "@jiangweiye/eslint-config",
     "type": "module",
-    "version": "0.1.7-beta.1",
+    "version": "0.1.7-beta.2",
     "description": "A eslint config for jiangweiye",
     "author": "jiangweiye <jiangweiye@outlook.com> (https://github.com/jwyGithub)",
     "license": "SEE LICENSE IN LICENSE.md",
