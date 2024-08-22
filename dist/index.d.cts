@@ -406,42 +406,42 @@ interface RuleOptions {
   'implicit-arrow-linebreak'?: Linter.RuleEntry<ImplicitArrowLinebreak>
   /**
    * Enforce or ban the use of inline type-only markers for named imports.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v0.5.1/docs/rules/consistent-type-specifier-style.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v3.1.0/docs/rules/consistent-type-specifier-style.md
    */
   'import/consistent-type-specifier-style'?: Linter.RuleEntry<ImportConsistentTypeSpecifierStyle>
   /**
    * Ensure a default export is present, given a default import.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v0.5.1/docs/rules/default.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v3.1.0/docs/rules/default.md
    */
   'import/default'?: Linter.RuleEntry<[]>
   /**
    * Enforce a leading comment with the webpackChunkName for dynamic imports.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v0.5.1/docs/rules/dynamic-import-chunkname.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v3.1.0/docs/rules/dynamic-import-chunkname.md
    */
   'import/dynamic-import-chunkname'?: Linter.RuleEntry<ImportDynamicImportChunkname>
   /**
    * Forbid any invalid exports, i.e. re-export of the same name.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v0.5.1/docs/rules/export.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v3.1.0/docs/rules/export.md
    */
   'import/export'?: Linter.RuleEntry<[]>
   /**
    * Ensure all exports appear after other statements.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v0.5.1/docs/rules/exports-last.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v3.1.0/docs/rules/exports-last.md
    */
   'import/exports-last'?: Linter.RuleEntry<[]>
   /**
    * Ensure consistent use of file extension within the import path.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v0.5.1/docs/rules/extensions.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v3.1.0/docs/rules/extensions.md
    */
   'import/extensions'?: Linter.RuleEntry<ImportExtensions>
   /**
    * Ensure all imports appear before other statements.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v0.5.1/docs/rules/first.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v3.1.0/docs/rules/first.md
    */
   'import/first'?: Linter.RuleEntry<ImportFirst>
   /**
    * Prefer named exports to be grouped together in a single export declaration.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v0.5.1/docs/rules/group-exports.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v3.1.0/docs/rules/group-exports.md
    */
   'import/group-exports'?: Linter.RuleEntry<[]>
   /**
@@ -452,182 +452,182 @@ interface RuleOptions {
   'import/imports-first'?: Linter.RuleEntry<ImportImportsFirst>
   /**
    * Enforce the maximum number of dependencies a module can have.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v0.5.1/docs/rules/max-dependencies.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v3.1.0/docs/rules/max-dependencies.md
    */
   'import/max-dependencies'?: Linter.RuleEntry<ImportMaxDependencies>
   /**
    * Ensure named imports correspond to a named export in the remote file.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v0.5.1/docs/rules/named.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v3.1.0/docs/rules/named.md
    */
   'import/named'?: Linter.RuleEntry<ImportNamed>
   /**
    * Ensure imported namespaces contain dereferenced properties as they are dereferenced.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v0.5.1/docs/rules/namespace.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v3.1.0/docs/rules/namespace.md
    */
   'import/namespace'?: Linter.RuleEntry<ImportNamespace>
   /**
    * Enforce a newline after import statements.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v0.5.1/docs/rules/newline-after-import.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v3.1.0/docs/rules/newline-after-import.md
    */
   'import/newline-after-import'?: Linter.RuleEntry<ImportNewlineAfterImport>
   /**
    * Forbid import of modules using absolute paths.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v0.5.1/docs/rules/no-absolute-path.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v3.1.0/docs/rules/no-absolute-path.md
    */
   'import/no-absolute-path'?: Linter.RuleEntry<ImportNoAbsolutePath>
   /**
    * Forbid AMD `require` and `define` calls.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v0.5.1/docs/rules/no-amd.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v3.1.0/docs/rules/no-amd.md
    */
   'import/no-amd'?: Linter.RuleEntry<[]>
   /**
    * Forbid anonymous values as default exports.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v0.5.1/docs/rules/no-anonymous-default-export.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v3.1.0/docs/rules/no-anonymous-default-export.md
    */
   'import/no-anonymous-default-export'?: Linter.RuleEntry<ImportNoAnonymousDefaultExport>
   /**
    * Forbid CommonJS `require` calls and `module.exports` or `exports.*`.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v0.5.1/docs/rules/no-commonjs.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v3.1.0/docs/rules/no-commonjs.md
    */
   'import/no-commonjs'?: Linter.RuleEntry<ImportNoCommonjs>
   /**
    * Forbid a module from importing a module with a dependency path back to itself.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v0.5.1/docs/rules/no-cycle.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v3.1.0/docs/rules/no-cycle.md
    */
   'import/no-cycle'?: Linter.RuleEntry<ImportNoCycle>
   /**
    * Forbid default exports.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v0.5.1/docs/rules/no-default-export.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v3.1.0/docs/rules/no-default-export.md
    */
   'import/no-default-export'?: Linter.RuleEntry<[]>
   /**
    * Forbid imported names marked with `@deprecated` documentation tag.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v0.5.1/docs/rules/no-deprecated.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v3.1.0/docs/rules/no-deprecated.md
    */
   'import/no-deprecated'?: Linter.RuleEntry<[]>
   /**
    * Forbid repeated import of the same module in multiple places.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v0.5.1/docs/rules/no-duplicates.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v3.1.0/docs/rules/no-duplicates.md
    */
   'import/no-duplicates'?: Linter.RuleEntry<ImportNoDuplicates>
   /**
    * Forbid `require()` calls with expressions.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v0.5.1/docs/rules/no-dynamic-require.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v3.1.0/docs/rules/no-dynamic-require.md
    */
   'import/no-dynamic-require'?: Linter.RuleEntry<ImportNoDynamicRequire>
   /**
    * Forbid empty named import blocks.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v0.5.1/docs/rules/no-empty-named-blocks.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v3.1.0/docs/rules/no-empty-named-blocks.md
    */
   'import/no-empty-named-blocks'?: Linter.RuleEntry<[]>
   /**
    * Forbid the use of extraneous packages.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v0.5.1/docs/rules/no-extraneous-dependencies.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v3.1.0/docs/rules/no-extraneous-dependencies.md
    */
   'import/no-extraneous-dependencies'?: Linter.RuleEntry<ImportNoExtraneousDependencies>
   /**
    * Forbid import statements with CommonJS module.exports.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v0.5.1/docs/rules/no-import-module-exports.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v3.1.0/docs/rules/no-import-module-exports.md
    */
   'import/no-import-module-exports'?: Linter.RuleEntry<ImportNoImportModuleExports>
   /**
    * Forbid importing the submodules of other modules.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v0.5.1/docs/rules/no-internal-modules.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v3.1.0/docs/rules/no-internal-modules.md
    */
   'import/no-internal-modules'?: Linter.RuleEntry<ImportNoInternalModules>
   /**
    * Forbid the use of mutable exports with `var` or `let`.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v0.5.1/docs/rules/no-mutable-exports.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v3.1.0/docs/rules/no-mutable-exports.md
    */
   'import/no-mutable-exports'?: Linter.RuleEntry<[]>
   /**
    * Forbid use of exported name as identifier of default export.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v0.5.1/docs/rules/no-named-as-default.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v3.1.0/docs/rules/no-named-as-default.md
    */
   'import/no-named-as-default'?: Linter.RuleEntry<[]>
   /**
    * Forbid use of exported name as property of default export.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v0.5.1/docs/rules/no-named-as-default-member.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v3.1.0/docs/rules/no-named-as-default-member.md
    */
   'import/no-named-as-default-member'?: Linter.RuleEntry<[]>
   /**
    * Forbid named default exports.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v0.5.1/docs/rules/no-named-default.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v3.1.0/docs/rules/no-named-default.md
    */
   'import/no-named-default'?: Linter.RuleEntry<[]>
   /**
    * Forbid named exports.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v0.5.1/docs/rules/no-named-export.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v3.1.0/docs/rules/no-named-export.md
    */
   'import/no-named-export'?: Linter.RuleEntry<[]>
   /**
    * Forbid namespace (a.k.a. "wildcard" `*`) imports.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v0.5.1/docs/rules/no-namespace.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v3.1.0/docs/rules/no-namespace.md
    */
   'import/no-namespace'?: Linter.RuleEntry<ImportNoNamespace>
   /**
    * Forbid Node.js builtin modules.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v0.5.1/docs/rules/no-nodejs-modules.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v3.1.0/docs/rules/no-nodejs-modules.md
    */
   'import/no-nodejs-modules'?: Linter.RuleEntry<ImportNoNodejsModules>
   /**
    * Forbid importing packages through relative paths.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v0.5.1/docs/rules/no-relative-packages.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v3.1.0/docs/rules/no-relative-packages.md
    */
   'import/no-relative-packages'?: Linter.RuleEntry<ImportNoRelativePackages>
   /**
    * Forbid importing modules from parent directories.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v0.5.1/docs/rules/no-relative-parent-imports.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v3.1.0/docs/rules/no-relative-parent-imports.md
    */
   'import/no-relative-parent-imports'?: Linter.RuleEntry<ImportNoRelativeParentImports>
   /**
    * Enforce which files can be imported in a given folder.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v0.5.1/docs/rules/no-restricted-paths.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v3.1.0/docs/rules/no-restricted-paths.md
    */
   'import/no-restricted-paths'?: Linter.RuleEntry<ImportNoRestrictedPaths>
   /**
    * Forbid a module from importing itself.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v0.5.1/docs/rules/no-self-import.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v3.1.0/docs/rules/no-self-import.md
    */
   'import/no-self-import'?: Linter.RuleEntry<[]>
   /**
    * Forbid unassigned imports.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v0.5.1/docs/rules/no-unassigned-import.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v3.1.0/docs/rules/no-unassigned-import.md
    */
   'import/no-unassigned-import'?: Linter.RuleEntry<ImportNoUnassignedImport>
   /**
    * Ensure imports point to a file/module that can be resolved.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v0.5.1/docs/rules/no-unresolved.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v3.1.0/docs/rules/no-unresolved.md
    */
   'import/no-unresolved'?: Linter.RuleEntry<ImportNoUnresolved>
   /**
    * Forbid modules without exports, or exports without matching import in another module.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v0.5.1/docs/rules/no-unused-modules.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v3.1.0/docs/rules/no-unused-modules.md
    */
   'import/no-unused-modules'?: Linter.RuleEntry<ImportNoUnusedModules>
   /**
    * Forbid unnecessary path segments in import and require statements.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v0.5.1/docs/rules/no-useless-path-segments.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v3.1.0/docs/rules/no-useless-path-segments.md
    */
   'import/no-useless-path-segments'?: Linter.RuleEntry<ImportNoUselessPathSegments>
   /**
    * Forbid webpack loader syntax in imports.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v0.5.1/docs/rules/no-webpack-loader-syntax.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v3.1.0/docs/rules/no-webpack-loader-syntax.md
    */
   'import/no-webpack-loader-syntax'?: Linter.RuleEntry<[]>
   /**
    * Enforce a convention in module import order.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v0.5.1/docs/rules/order.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v3.1.0/docs/rules/order.md
    */
   'import/order'?: Linter.RuleEntry<ImportOrder>
   /**
    * Prefer a default export if module exports a single name or multiple names.
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v0.5.1/docs/rules/prefer-default-export.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v3.1.0/docs/rules/prefer-default-export.md
    */
   'import/prefer-default-export'?: Linter.RuleEntry<ImportPreferDefaultExport>
   /**
    * Forbid potentially ambiguous parse goal (`script` vs. `module`).
-   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v0.5.1/docs/rules/unambiguous.md
+   * @see https://github.com/un-ts/eslint-plugin-import-x/blob/v3.1.0/docs/rules/unambiguous.md
    */
   'import/unambiguous'?: Linter.RuleEntry<[]>
   /**
@@ -693,6 +693,11 @@ interface RuleOptions {
    */
   'jsdoc/check-tag-names'?: Linter.RuleEntry<JsdocCheckTagNames>
   /**
+   * Checks that any `@template` names are actually used in the connected `@typedef` or type alias.
+   * @see https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/check-template-names.md#repos-sticky-header
+   */
+  'jsdoc/check-template-names'?: Linter.RuleEntry<[]>
+  /**
    * Reports invalid types.
    * @see https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/check-types.md#repos-sticky-header
    */
@@ -702,6 +707,11 @@ interface RuleOptions {
    * @see https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/check-values.md#repos-sticky-header
    */
   'jsdoc/check-values'?: Linter.RuleEntry<JsdocCheckValues>
+  /**
+   * Converts non-JSDoc comments preceding or following nodes into JSDoc ones
+   * @see https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/convert-to-jsdoc-comments.md#repos-sticky-header
+   */
+  'jsdoc/convert-to-jsdoc-comments'?: Linter.RuleEntry<JsdocConvertToJsdocComments>
   /**
    * Expects specific tags to be empty of any content.
    * @see https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/empty-tags.md#repos-sticky-header
@@ -722,6 +732,11 @@ interface RuleOptions {
    * @see https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/informative-docs.md#repos-sticky-header
    */
   'jsdoc/informative-docs'?: Linter.RuleEntry<JsdocInformativeDocs>
+  /**
+   * Enforces minimum number of newlines before JSDoc comment blocks
+   * @see https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/lines-before-block.md#repos-sticky-header
+   */
+  'jsdoc/lines-before-block'?: Linter.RuleEntry<JsdocLinesBeforeBlock>
   /**
    * Enforces a regular expression pattern on descriptions.
    * @see https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/match-description.md#repos-sticky-header
@@ -877,6 +892,11 @@ interface RuleOptions {
    */
   'jsdoc/require-returns-type'?: Linter.RuleEntry<JsdocRequireReturnsType>
   /**
+   * Requires template tags for each generic type parameter
+   * @see https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-template.md#repos-sticky-header
+   */
+  'jsdoc/require-template'?: Linter.RuleEntry<JsdocRequireTemplate>
+  /**
    * Requires that throw statements are documented.
    * @see https://github.com/gajus/eslint-plugin-jsdoc/blob/main/docs/rules/require-throws.md#repos-sticky-header
    */
@@ -931,7 +951,6 @@ interface RuleOptions {
   /**
    * Enforce position of line comments
    * @see https://eslint.org/docs/latest/rules/line-comment-position
-   * @deprecated
    */
   'line-comment-position'?: Linter.RuleEntry<LineCommentPosition>
   /**
@@ -1013,7 +1032,6 @@ interface RuleOptions {
   /**
    * Enforce a particular style for multiline comments
    * @see https://eslint.org/docs/latest/rules/multiline-comment-style
-   * @deprecated
    */
   'multiline-comment-style'?: Linter.RuleEntry<MultilineCommentStyle>
   /**
@@ -1143,7 +1161,7 @@ interface RuleOptions {
    * Disallow returning value from constructor
    * @see https://eslint.org/docs/latest/rules/no-constructor-return
    */
-  'no-constructor-return'?: Linter.RuleEntry<[]>
+  'no-constructor-return'?: Linter.RuleEntry<NoConstructorReturn>
   /**
    * Disallow `continue` statements
    * @see https://eslint.org/docs/latest/rules/no-continue
@@ -1386,7 +1404,7 @@ interface RuleOptions {
    * Disallow characters which are made with multiple code points in character class syntax
    * @see https://eslint.org/docs/latest/rules/no-misleading-character-class
    */
-  'no-misleading-character-class'?: Linter.RuleEntry<NoMisleadingCharacterClass>
+  'no-misleading-character-class'?: Linter.RuleEntry<[]>
   /**
    * Disallow mixed binary operators
    * @see https://eslint.org/docs/latest/rules/no-mixed-operators
@@ -1479,7 +1497,6 @@ interface RuleOptions {
   /**
    * Disallow `new` operators with the `Symbol` object
    * @see https://eslint.org/docs/latest/rules/no-new-symbol
-   * @deprecated
    */
   'no-new-symbol'?: Linter.RuleEntry<[]>
   /**
@@ -1776,11 +1793,6 @@ interface RuleOptions {
    * @see https://eslint.org/docs/latest/rules/no-use-before-define
    */
   'no-use-before-define'?: Linter.RuleEntry<NoUseBeforeDefine>
-  /**
-   * Disallow variable assignments when the value is not used
-   * @see https://eslint.org/docs/latest/rules/no-useless-assignment
-   */
-  'no-useless-assignment'?: Linter.RuleEntry<[]>
   /**
    * Disallow useless backreferences in regular expressions
    * @see https://eslint.org/docs/latest/rules/no-useless-backreference
@@ -2424,6 +2436,12 @@ interface RuleOptions {
    */
   'require-await'?: Linter.RuleEntry<[]>
   /**
+   * Require JSDoc comments
+   * @see https://eslint.org/docs/latest/rules/require-jsdoc
+   * @deprecated
+   */
+  'require-jsdoc'?: Linter.RuleEntry<RequireJsdoc>
+  /**
    * Enforce the use of `u` or `v` flag on RegExp
    * @see https://eslint.org/docs/latest/rules/require-unicode-regexp
    */
@@ -2562,23 +2580,6 @@ interface RuleOptions {
    */
   'ts/ban-tslint-comment'?: Linter.RuleEntry<[]>
   /**
-   * Disallow certain types
-   * @see https://typescript-eslint.io/rules/ban-types
-   */
-  'ts/ban-types'?: Linter.RuleEntry<TsBanTypes>
-  /**
-   * Disallow or enforce spaces inside of blocks after opening block and before closing block
-   * @see https://typescript-eslint.io/rules/block-spacing
-   * @deprecated
-   */
-  'ts/block-spacing'?: Linter.RuleEntry<TsBlockSpacing>
-  /**
-   * Enforce consistent brace style for blocks
-   * @see https://typescript-eslint.io/rules/brace-style
-   * @deprecated
-   */
-  'ts/brace-style'?: Linter.RuleEntry<TsBraceStyle>
-  /**
    * Enforce that literals on classes are exposed in a consistent style
    * @see https://typescript-eslint.io/rules/class-literal-property-style
    */
@@ -2588,18 +2589,6 @@ interface RuleOptions {
    * @see https://typescript-eslint.io/rules/class-methods-use-this
    */
   'ts/class-methods-use-this'?: Linter.RuleEntry<TsClassMethodsUseThis>
-  /**
-   * Require or disallow trailing commas
-   * @see https://typescript-eslint.io/rules/comma-dangle
-   * @deprecated
-   */
-  'ts/comma-dangle'?: Linter.RuleEntry<TsCommaDangle>
-  /**
-   * Enforce consistent spacing before and after commas
-   * @see https://typescript-eslint.io/rules/comma-spacing
-   * @deprecated
-   */
-  'ts/comma-spacing'?: Linter.RuleEntry<TsCommaSpacing>
   /**
    * Enforce specifying generic type arguments on type annotation or constructor name of a constructor call
    * @see https://typescript-eslint.io/rules/consistent-generic-constructors
@@ -2661,57 +2650,15 @@ interface RuleOptions {
    */
   'ts/explicit-module-boundary-types'?: Linter.RuleEntry<TsExplicitModuleBoundaryTypes>
   /**
-   * Require or disallow spacing between function identifiers and their invocations
-   * @see https://typescript-eslint.io/rules/func-call-spacing
-   * @deprecated
-   */
-  'ts/func-call-spacing'?: Linter.RuleEntry<TsFuncCallSpacing>
-  /**
-   * Enforce consistent indentation
-   * @see https://typescript-eslint.io/rules/indent
-   * @deprecated
-   */
-  'ts/indent'?: Linter.RuleEntry<TsIndent>
-  /**
    * Require or disallow initialization in variable declarations
    * @see https://typescript-eslint.io/rules/init-declarations
    */
   'ts/init-declarations'?: Linter.RuleEntry<TsInitDeclarations>
   /**
-   * Enforce consistent spacing between property names and type annotations in types and interfaces
-   * @see https://typescript-eslint.io/rules/key-spacing
-   * @deprecated
-   */
-  'ts/key-spacing'?: Linter.RuleEntry<TsKeySpacing>
-  /**
-   * Enforce consistent spacing before and after keywords
-   * @see https://typescript-eslint.io/rules/keyword-spacing
-   * @deprecated
-   */
-  'ts/keyword-spacing'?: Linter.RuleEntry<TsKeywordSpacing>
-  /**
-   * Require empty lines around comments
-   * @see https://typescript-eslint.io/rules/lines-around-comment
-   * @deprecated
-   */
-  'ts/lines-around-comment'?: Linter.RuleEntry<TsLinesAroundComment>
-  /**
-   * Require or disallow an empty line between class members
-   * @see https://typescript-eslint.io/rules/lines-between-class-members
-   * @deprecated
-   */
-  'ts/lines-between-class-members'?: Linter.RuleEntry<TsLinesBetweenClassMembers>
-  /**
    * Enforce a maximum number of parameters in function definitions
    * @see https://typescript-eslint.io/rules/max-params
    */
   'ts/max-params'?: Linter.RuleEntry<TsMaxParams>
-  /**
-   * Require a specific member delimiter style for interfaces and type literals
-   * @see https://typescript-eslint.io/rules/member-delimiter-style
-   * @deprecated
-   */
-  'ts/member-delimiter-style'?: Linter.RuleEntry<TsMemberDelimiterStyle>
   /**
    * Require a consistent member declaration order
    * @see https://typescript-eslint.io/rules/member-ordering
@@ -2780,8 +2727,14 @@ interface RuleOptions {
   /**
    * Disallow the declaration of empty interfaces
    * @see https://typescript-eslint.io/rules/no-empty-interface
+   * @deprecated
    */
   'ts/no-empty-interface'?: Linter.RuleEntry<TsNoEmptyInterface>
+  /**
+   * Disallow accidentally using the "empty object" type
+   * @see https://typescript-eslint.io/rules/no-empty-object-type
+   */
+  'ts/no-empty-object-type'?: Linter.RuleEntry<TsNoEmptyObjectType>
   /**
    * Disallow the `any` type
    * @see https://typescript-eslint.io/rules/no-explicit-any
@@ -2792,18 +2745,6 @@ interface RuleOptions {
    * @see https://typescript-eslint.io/rules/no-extra-non-null-assertion
    */
   'ts/no-extra-non-null-assertion'?: Linter.RuleEntry<[]>
-  /**
-   * Disallow unnecessary parentheses
-   * @see https://typescript-eslint.io/rules/no-extra-parens
-   * @deprecated
-   */
-  'ts/no-extra-parens'?: Linter.RuleEntry<TsNoExtraParens>
-  /**
-   * Disallow unnecessary semicolons
-   * @see https://typescript-eslint.io/rules/no-extra-semi
-   * @deprecated
-   */
-  'ts/no-extra-semi'?: Linter.RuleEntry<[]>
   /**
    * Disallow classes used as namespaces
    * @see https://typescript-eslint.io/rules/no-extraneous-class
@@ -2852,6 +2793,7 @@ interface RuleOptions {
   /**
    * Disallow literal numbers that lose precision
    * @see https://typescript-eslint.io/rules/no-loss-of-precision
+   * @deprecated
    */
   'ts/no-loss-of-precision'?: Linter.RuleEntry<[]>
   /**
@@ -2920,6 +2862,11 @@ interface RuleOptions {
    */
   'ts/no-restricted-imports'?: Linter.RuleEntry<TsNoRestrictedImports>
   /**
+   * Disallow certain types
+   * @see https://typescript-eslint.io/rules/no-restricted-types
+   */
+  'ts/no-restricted-types'?: Linter.RuleEntry<TsNoRestrictedTypes>
+  /**
    * Disallow variable declarations from shadowing variables declared in the outer scope
    * @see https://typescript-eslint.io/rules/no-shadow
    */
@@ -2929,12 +2876,6 @@ interface RuleOptions {
    * @see https://typescript-eslint.io/rules/no-this-alias
    */
   'ts/no-this-alias'?: Linter.RuleEntry<TsNoThisAlias>
-  /**
-   * Disallow throwing literals as exceptions
-   * @see https://typescript-eslint.io/rules/no-throw-literal
-   * @deprecated
-   */
-  'ts/no-throw-literal'?: Linter.RuleEntry<TsNoThrowLiteral>
   /**
    * Disallow type aliases
    * @see https://typescript-eslint.io/rules/no-type-alias
@@ -2952,10 +2893,20 @@ interface RuleOptions {
    */
   'ts/no-unnecessary-condition'?: Linter.RuleEntry<TsNoUnnecessaryCondition>
   /**
+   * Disallow unnecessary assignment of constructor property parameter
+   * @see https://typescript-eslint.io/rules/no-unnecessary-parameter-property-assignment
+   */
+  'ts/no-unnecessary-parameter-property-assignment'?: Linter.RuleEntry<[]>
+  /**
    * Disallow unnecessary namespace qualifiers
    * @see https://typescript-eslint.io/rules/no-unnecessary-qualifier
    */
   'ts/no-unnecessary-qualifier'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow unnecessary template expressions
+   * @see https://typescript-eslint.io/rules/no-unnecessary-template-expression
+   */
+  'ts/no-unnecessary-template-expression'?: Linter.RuleEntry<[]>
   /**
    * Disallow type arguments that are equal to the default
    * @see https://typescript-eslint.io/rules/no-unnecessary-type-arguments
@@ -2971,6 +2922,11 @@ interface RuleOptions {
    * @see https://typescript-eslint.io/rules/no-unnecessary-type-constraint
    */
   'ts/no-unnecessary-type-constraint'?: Linter.RuleEntry<[]>
+  /**
+   * Disallow type parameters that aren't used multiple times
+   * @see https://typescript-eslint.io/rules/no-unnecessary-type-parameters
+   */
+  'ts/no-unnecessary-type-parameters'?: Linter.RuleEntry<[]>
   /**
    * Disallow calling a function with a value with type `any`
    * @see https://typescript-eslint.io/rules/no-unsafe-argument
@@ -2997,6 +2953,11 @@ interface RuleOptions {
    */
   'ts/no-unsafe-enum-comparison'?: Linter.RuleEntry<[]>
   /**
+   * Disallow using the unsafe built-in Function type
+   * @see https://typescript-eslint.io/rules/no-unsafe-function-type
+   */
+  'ts/no-unsafe-function-type'?: Linter.RuleEntry<[]>
+  /**
    * Disallow member access on a value with type `any`
    * @see https://typescript-eslint.io/rules/no-unsafe-member-access
    */
@@ -3018,7 +2979,7 @@ interface RuleOptions {
   'ts/no-unused-expressions'?: Linter.RuleEntry<TsNoUnusedExpressions>
   /**
    * Disallow unused variables
-   * @see https://github.com/sweepline/eslint-plugin-unused-imports/blob/master/docs/rules/no-unused-imports.md
+   * @see https://typescript-eslint.io/rules/no-unused-vars
    */
   'ts/no-unused-vars'?: Linter.RuleEntry<TsNoUnusedVars>
   /**
@@ -3037,37 +2998,26 @@ interface RuleOptions {
    */
   'ts/no-useless-empty-export'?: Linter.RuleEntry<[]>
   /**
-   * Disallow unnecessary template literals
-   * @see https://typescript-eslint.io/rules/no-useless-template-literals
-   */
-  'ts/no-useless-template-literals'?: Linter.RuleEntry<[]>
-  /**
    * Disallow `require` statements except in import statements
    * @see https://typescript-eslint.io/rules/no-var-requires
+   * @deprecated
    */
   'ts/no-var-requires'?: Linter.RuleEntry<TsNoVarRequires>
+  /**
+   * Disallow using confusing built-in primitive class wrappers
+   * @see https://typescript-eslint.io/rules/no-wrapper-object-types
+   */
+  'ts/no-wrapper-object-types'?: Linter.RuleEntry<[]>
   /**
    * Enforce non-null assertions over explicit type casts
    * @see https://typescript-eslint.io/rules/non-nullable-type-assertion-style
    */
   'ts/non-nullable-type-assertion-style'?: Linter.RuleEntry<[]>
   /**
-   * Enforce consistent spacing inside braces
-   * @see https://typescript-eslint.io/rules/object-curly-spacing
-   * @deprecated
-   */
-  'ts/object-curly-spacing'?: Linter.RuleEntry<TsObjectCurlySpacing>
-  /**
    * Disallow throwing non-`Error` values as exceptions
    * @see https://typescript-eslint.io/rules/only-throw-error
    */
   'ts/only-throw-error'?: Linter.RuleEntry<TsOnlyThrowError>
-  /**
-   * Require or disallow padding lines between statements
-   * @see https://typescript-eslint.io/rules/padding-line-between-statements
-   * @deprecated
-   */
-  'ts/padding-line-between-statements'?: Linter.RuleEntry<TsPaddingLineBetweenStatements>
   /**
    * Require or disallow parameter properties in class constructors
    * @see https://typescript-eslint.io/rules/parameter-properties
@@ -3175,18 +3125,12 @@ interface RuleOptions {
    */
   'ts/promise-function-async'?: Linter.RuleEntry<TsPromiseFunctionAsync>
   /**
-   * Enforce the consistent use of either backticks, double, or single quotes
-   * @see https://typescript-eslint.io/rules/quotes
-   * @deprecated
-   */
-  'ts/quotes'?: Linter.RuleEntry<TsQuotes>
-  /**
    * Require `Array#sort` and `Array#toSorted` calls to always provide a `compareFunction`
    * @see https://typescript-eslint.io/rules/require-array-sort-compare
    */
   'ts/require-array-sort-compare'?: Linter.RuleEntry<TsRequireArraySortCompare>
   /**
-   * Disallow async functions which have no `await` expression
+   * Disallow async functions which do not return promises and have no `await` expression
    * @see https://typescript-eslint.io/rules/require-await
    */
   'ts/require-await'?: Linter.RuleEntry<[]>
@@ -3201,39 +3145,16 @@ interface RuleOptions {
    */
   'ts/restrict-template-expressions'?: Linter.RuleEntry<TsRestrictTemplateExpressions>
   /**
-   * Enforce consistent returning of awaited values
+   * Enforce consistent awaiting of returned promises
    * @see https://typescript-eslint.io/rules/return-await
    */
   'ts/return-await'?: Linter.RuleEntry<TsReturnAwait>
   /**
-   * Require or disallow semicolons instead of ASI
-   * @see https://typescript-eslint.io/rules/semi
-   * @deprecated
-   */
-  'ts/semi'?: Linter.RuleEntry<TsSemi>
-  /**
    * Enforce constituents of a type union/intersection to be sorted alphabetically
    * @see https://typescript-eslint.io/rules/sort-type-constituents
+   * @deprecated
    */
   'ts/sort-type-constituents'?: Linter.RuleEntry<TsSortTypeConstituents>
-  /**
-   * Enforce consistent spacing before blocks
-   * @see https://typescript-eslint.io/rules/space-before-blocks
-   * @deprecated
-   */
-  'ts/space-before-blocks'?: Linter.RuleEntry<TsSpaceBeforeBlocks>
-  /**
-   * Enforce consistent spacing before function parenthesis
-   * @see https://typescript-eslint.io/rules/space-before-function-paren
-   * @deprecated
-   */
-  'ts/space-before-function-paren'?: Linter.RuleEntry<TsSpaceBeforeFunctionParen>
-  /**
-   * Require spacing around infix operators
-   * @see https://typescript-eslint.io/rules/space-infix-ops
-   * @deprecated
-   */
-  'ts/space-infix-ops'?: Linter.RuleEntry<TsSpaceInfixOps>
   /**
    * Disallow certain types in boolean expressions
    * @see https://typescript-eslint.io/rules/strict-boolean-expressions
@@ -3250,12 +3171,6 @@ interface RuleOptions {
    */
   'ts/triple-slash-reference'?: Linter.RuleEntry<TsTripleSlashReference>
   /**
-   * Require consistent spacing around type annotations
-   * @see https://typescript-eslint.io/rules/type-annotation-spacing
-   * @deprecated
-   */
-  'ts/type-annotation-spacing'?: Linter.RuleEntry<TsTypeAnnotationSpacing>
-  /**
    * Require type annotations in certain places
    * @see https://typescript-eslint.io/rules/typedef
    */
@@ -3271,7 +3186,7 @@ interface RuleOptions {
    */
   'ts/unified-signatures'?: Linter.RuleEntry<TsUnifiedSignatures>
   /**
-   * Enforce typing arguments in `.catch()` callbacks as `unknown`
+   * Enforce typing arguments in Promise rejection callbacks as `unknown`
    * @see https://typescript-eslint.io/rules/use-unknown-in-catch-callback-variable
    */
   'ts/use-unknown-in-catch-callback-variable'?: Linter.RuleEntry<[]>
@@ -3287,24 +3202,20 @@ interface RuleOptions {
   'unused-imports/no-unused-imports'?: Linter.RuleEntry<UnusedImportsNoUnusedImports>
   /**
    * Disallow unused variables
-   * @see https://github.com/sweepline/eslint-plugin-unused-imports/blob/master/docs/rules/no-unused-imports.md
-   */
-  'unused-imports/no-unused-imports-ts'?: Linter.RuleEntry<UnusedImportsNoUnusedImportsTs>
-  /**
-   * Disallow unused variables
-   * @see https://github.com/sweepline/eslint-plugin-unused-imports/blob/master/docs/rules/no-unused-imports.md
+   * @see https://github.com/sweepline/eslint-plugin-unused-imports/blob/master/docs/rules/no-unused-vars.md
    */
   'unused-imports/no-unused-vars'?: Linter.RuleEntry<UnusedImportsNoUnusedVars>
-  /**
-   * Disallow unused variables
-   * @see https://github.com/sweepline/eslint-plugin-unused-imports/blob/master/docs/rules/no-unused-imports.md
-   */
-  'unused-imports/no-unused-vars-ts'?: Linter.RuleEntry<UnusedImportsNoUnusedVarsTs>
   /**
    * Require calls to `isNaN()` when checking for `NaN`
    * @see https://eslint.org/docs/latest/rules/use-isnan
    */
   'use-isnan'?: Linter.RuleEntry<UseIsnan>
+  /**
+   * Enforce valid JSDoc comments
+   * @see https://eslint.org/docs/latest/rules/valid-jsdoc
+   * @deprecated
+   */
+  'valid-jsdoc'?: Linter.RuleEntry<ValidJsdoc>
   /**
    * Enforce comparing `typeof` expressions against valid strings
    * @see https://eslint.org/docs/latest/rules/valid-typeof
@@ -4612,7 +4523,7 @@ type Camelcase = []|[{
   ignoreGlobals?: boolean
   properties?: ("always" | "never")
   
-  allow?: string[]
+  allow?: []|[string]
 }]
 // ----- capitalized-comments -----
 type CapitalizedComments = []|[("always" | "never")]|[("always" | "never"), ({
@@ -4724,9 +4635,6 @@ type _FuncNamesValue = ("always" | "as-needed" | "never")
 // ----- func-style -----
 type FuncStyle = []|[("declaration" | "expression")]|[("declaration" | "expression"), {
   allowArrowFunctions?: boolean
-  overrides?: {
-    namedExports?: ("declaration" | "expression" | "ignore")
-  }
 }]
 // ----- function-call-argument-newline -----
 type FunctionCallArgumentNewline = []|[("always" | "never" | "consistent")]
@@ -5146,6 +5054,25 @@ type JsdocCheckValues = []|[{
   licensePattern?: string
   numericOnlyVariation?: boolean
 }]
+// ----- jsdoc/convert-to-jsdoc-comments -----
+type JsdocConvertToJsdocComments = []|[{
+  allowedPrefixes?: string[]
+  contexts?: (string | {
+    context?: string
+    inlineCommentBlock?: boolean
+  })[]
+  contextsAfter?: (string | {
+    context?: string
+    inlineCommentBlock?: boolean
+  })[]
+  contextsBeforeAndAfter?: (string | {
+    context?: string
+    inlineCommentBlock?: boolean
+  })[]
+  enableFixer?: boolean
+  enforceJsdocLineStyle?: ("multi" | "single")
+  lineOrBlockStyle?: ("block" | "line" | "both")
+}]
 // ----- jsdoc/empty-tags -----
 type JsdocEmptyTags = []|[{
   tags?: string[]
@@ -5164,6 +5091,12 @@ type JsdocInformativeDocs = []|[{
   }
   excludedTags?: string[]
   uselessWords?: string[]
+}]
+// ----- jsdoc/lines-before-block -----
+type JsdocLinesBeforeBlock = []|[{
+  excludedTags?: string[]
+  ignoreSameLine?: boolean
+  lines?: number
 }]
 // ----- jsdoc/match-description -----
 type JsdocMatchDescription = []|[{
@@ -5432,6 +5365,10 @@ type JsdocRequireReturnsType = []|[{
     comment?: string
     context?: string
   })[]
+}]
+// ----- jsdoc/require-template -----
+type JsdocRequireTemplate = []|[{
+  requireSeparateTemplates?: boolean
 }]
 // ----- jsdoc/require-throws -----
 type JsdocRequireThrows = []|[{
@@ -6044,8 +5981,12 @@ type NoConsole = []|[{
 }]
 // ----- no-constant-condition -----
 type NoConstantCondition = []|[{
-  checkLoops?: ("all" | "allExceptWhileTrue" | "none" | true | false)
+  checkLoops?: boolean
 }]
+// ----- no-constructor-return -----
+interface NoConstructorReturn {
+  [k: string]: unknown | undefined
+}
 // ----- no-duplicate-imports -----
 type NoDuplicateImports = []|[{
   includeExports?: boolean
@@ -6075,11 +6016,9 @@ type NoExtendNative = []|[{
   exceptions?: string[]
 }]
 // ----- no-extra-boolean-cast -----
-type NoExtraBooleanCast = []|[({
-  enforceForInnerExpressions?: boolean
-} | {
+type NoExtraBooleanCast = []|[{
   enforceForLogicalOperands?: boolean
-})]
+}]
 // ----- no-extra-parens -----
 type NoExtraParens = ([]|["functions"] | []|["all"]|["all", {
   conditionalAssign?: boolean
@@ -6097,7 +6036,6 @@ type NoExtraParens = ([]|["functions"] | []|["all"]|["all", {
 type NoFallthrough = []|[{
   commentPattern?: string
   allowEmptyCase?: boolean
-  reportUnusedFallthroughComment?: boolean
 }]
 // ----- no-global-assign -----
 type NoGlobalAssign = []|[{
@@ -6109,7 +6047,7 @@ type NoImplicitCoercion = []|[{
   number?: boolean
   string?: boolean
   disallowTemplateShorthand?: boolean
-  allow?: ("~" | "!!" | "+" | "- -" | "-" | "*")[]
+  allow?: ("~" | "!!" | "+" | "*")[]
 }]
 // ----- no-implicit-globals -----
 type NoImplicitGlobals = []|[{
@@ -6120,9 +6058,7 @@ type NoInlineComments = []|[{
   ignorePattern?: string
 }]
 // ----- no-inner-declarations -----
-type NoInnerDeclarations = []|[("functions" | "both")]|[("functions" | "both"), {
-  blockScopedFunctions?: ("allow" | "disallow")
-}]
+type NoInnerDeclarations = []|[("functions" | "both")]
 // ----- no-invalid-regexp -----
 type NoInvalidRegexp = []|[{
   allowConstructorFlags?: string[]
@@ -6152,10 +6088,6 @@ type NoMagicNumbers = []|[{
   ignoreArrayIndexes?: boolean
   ignoreDefaultValues?: boolean
   ignoreClassFieldInitialValues?: boolean
-}]
-// ----- no-misleading-character-class -----
-type NoMisleadingCharacterClass = []|[{
-  allowEscape?: boolean
 }]
 // ----- no-mixed-operators -----
 type NoMixedOperators = []|[{
@@ -6213,10 +6145,8 @@ type NoRedeclare = []|[{
 // ----- no-restricted-exports -----
 type NoRestrictedExports = []|[({
   restrictedNamedExports?: string[]
-  restrictedNamedExportsPattern?: string
 } | {
   restrictedNamedExports?: string[]
-  restrictedNamedExportsPattern?: string
   restrictDefaultExports?: {
     direct?: boolean
     named?: boolean
@@ -6235,23 +6165,18 @@ type NoRestrictedImports = ((string | {
   name: string
   message?: string
   importNames?: string[]
-  allowImportNames?: string[]
 })[] | []|[{
   paths?: (string | {
     name: string
     message?: string
     importNames?: string[]
-    allowImportNames?: string[]
   })[]
   patterns?: (string[] | {
     
     importNames?: [string, ...(string)[]]
     
-    allowImportNames?: [string, ...(string)[]]
-    
     group: [string, ...(string)[]]
     importNamePattern?: string
-    allowImportNamePattern?: string
     message?: string
     caseSensitive?: boolean
   }[])
@@ -6361,8 +6286,6 @@ type NoUnusedVars = []|[(("all" | "local") | {
   caughtErrors?: ("all" | "none")
   caughtErrorsIgnorePattern?: string
   destructuredArrayIgnorePattern?: string
-  ignoreClassWithStaticInitBlock?: boolean
-  reportUsedIgnorePattern?: boolean
 })]
 // ----- no-use-before-define -----
 type NoUseBeforeDefine = []|[("nofunc" | {
@@ -6673,6 +6596,16 @@ type RegexpUnicodeProperty = []|[{
 type RequireAtomicUpdates = []|[{
   allowProperties?: boolean
 }]
+// ----- require-jsdoc -----
+type RequireJsdoc = []|[{
+  require?: {
+    ClassDeclaration?: boolean
+    MethodDefinition?: boolean
+    FunctionDeclaration?: boolean
+    ArrowFunctionExpression?: boolean
+    FunctionExpression?: boolean
+  }
+}]
 // ----- rest-spread-spacing -----
 type RestSpreadSpacing = []|[("always" | "never")]
 // ----- semi -----
@@ -6785,26 +6718,6 @@ type TsBanTsComment = []|[{
   })
   minimumDescriptionLength?: number
 }]
-// ----- ts/ban-types -----
-type TsBanTypes = []|[{
-  types?: {
-    [k: string]: (null | false | true | string | {
-      
-      message?: string
-      
-      fixWith?: string
-      
-      suggest?: string[]
-    }) | undefined
-  }
-  extendDefaults?: boolean
-}]
-// ----- ts/block-spacing -----
-type TsBlockSpacing = []|[("always" | "never")]
-// ----- ts/brace-style -----
-type TsBraceStyle = []|[("1tbs" | "stroustrup" | "allman")]|[("1tbs" | "stroustrup" | "allman"), {
-  allowSingleLine?: boolean
-}]
 // ----- ts/class-literal-property-style -----
 type TsClassLiteralPropertyStyle = []|[("fields" | "getters")]
 // ----- ts/class-methods-use-this -----
@@ -6817,24 +6730,6 @@ type TsClassMethodsUseThis = []|[{
   ignoreOverrideMethods?: boolean
   
   ignoreClassesThatImplementAnInterface?: (boolean | "public-fields")
-}]
-// ----- ts/comma-dangle -----
-type TsCommaDangle = []|[(_TsCommaDangleValue | {
-  arrays?: _TsCommaDangleValueWithIgnore
-  objects?: _TsCommaDangleValueWithIgnore
-  imports?: _TsCommaDangleValueWithIgnore
-  exports?: _TsCommaDangleValueWithIgnore
-  functions?: _TsCommaDangleValueWithIgnore
-  enums?: _TsCommaDangleValueWithIgnore
-  generics?: _TsCommaDangleValueWithIgnore
-  tuples?: _TsCommaDangleValueWithIgnore
-})]
-type _TsCommaDangleValue = ("always-multiline" | "always" | "never" | "only-multiline")
-type _TsCommaDangleValueWithIgnore = ("always-multiline" | "always" | "never" | "only-multiline" | "ignore")
-// ----- ts/comma-spacing -----
-type TsCommaSpacing = []|[{
-  before?: boolean
-  after?: boolean
 }]
 // ----- ts/consistent-generic-constructors -----
 type TsConsistentGenericConstructors = []|[("type-annotation" | "constructor")]
@@ -6915,459 +6810,16 @@ type TsExplicitModuleBoundaryTypes = []|[{
   
   allowTypedFunctionExpressions?: boolean
 }]
-// ----- ts/func-call-spacing -----
-type TsFuncCallSpacing = ([]|["never"] | []|["always"]|["always", {
-  allowNewlines?: boolean
-}])
-// ----- ts/indent -----
-type TsIndent = []|[("tab" | number)]|[("tab" | number), {
-  SwitchCase?: number
-  VariableDeclarator?: ((number | ("first" | "off")) | {
-    var?: (number | ("first" | "off"))
-    let?: (number | ("first" | "off"))
-    const?: (number | ("first" | "off"))
-  })
-  outerIIFEBody?: (number | "off")
-  MemberExpression?: (number | "off")
-  FunctionDeclaration?: {
-    parameters?: (number | ("first" | "off"))
-    body?: number
-  }
-  FunctionExpression?: {
-    parameters?: (number | ("first" | "off"))
-    body?: number
-  }
-  StaticBlock?: {
-    body?: number
-  }
-  CallExpression?: {
-    arguments?: (number | ("first" | "off"))
-  }
-  ArrayExpression?: (number | ("first" | "off"))
-  ObjectExpression?: (number | ("first" | "off"))
-  ImportDeclaration?: (number | ("first" | "off"))
-  flatTernaryExpressions?: boolean
-  offsetTernaryExpressions?: boolean
-  ignoredNodes?: string[]
-  ignoreComments?: boolean
-}]
 // ----- ts/init-declarations -----
 type TsInitDeclarations = ([]|["always"] | []|["never"]|["never", {
   ignoreForLoopInit?: boolean
 }])
-// ----- ts/key-spacing -----
-type TsKeySpacing = []|[({
-  align?: (("colon" | "value") | {
-    mode?: ("strict" | "minimum")
-    on?: ("colon" | "value")
-    beforeColon?: boolean
-    afterColon?: boolean
-  })
-  mode?: ("strict" | "minimum")
-  beforeColon?: boolean
-  afterColon?: boolean
-} | {
-  singleLine?: {
-    mode?: ("strict" | "minimum")
-    beforeColon?: boolean
-    afterColon?: boolean
-  }
-  multiLine?: {
-    align?: (("colon" | "value") | {
-      mode?: ("strict" | "minimum")
-      on?: ("colon" | "value")
-      beforeColon?: boolean
-      afterColon?: boolean
-    })
-    mode?: ("strict" | "minimum")
-    beforeColon?: boolean
-    afterColon?: boolean
-  }
-} | {
-  singleLine?: {
-    mode?: ("strict" | "minimum")
-    beforeColon?: boolean
-    afterColon?: boolean
-  }
-  multiLine?: {
-    mode?: ("strict" | "minimum")
-    beforeColon?: boolean
-    afterColon?: boolean
-  }
-  align?: {
-    mode?: ("strict" | "minimum")
-    on?: ("colon" | "value")
-    beforeColon?: boolean
-    afterColon?: boolean
-  }
-})]
-// ----- ts/keyword-spacing -----
-type TsKeywordSpacing = []|[{
-  before?: boolean
-  after?: boolean
-  overrides?: {
-    abstract?: {
-      before?: boolean
-      after?: boolean
-    }
-    as?: {
-      before?: boolean
-      after?: boolean
-    }
-    async?: {
-      before?: boolean
-      after?: boolean
-    }
-    await?: {
-      before?: boolean
-      after?: boolean
-    }
-    boolean?: {
-      before?: boolean
-      after?: boolean
-    }
-    break?: {
-      before?: boolean
-      after?: boolean
-    }
-    byte?: {
-      before?: boolean
-      after?: boolean
-    }
-    case?: {
-      before?: boolean
-      after?: boolean
-    }
-    catch?: {
-      before?: boolean
-      after?: boolean
-    }
-    char?: {
-      before?: boolean
-      after?: boolean
-    }
-    class?: {
-      before?: boolean
-      after?: boolean
-    }
-    const?: {
-      before?: boolean
-      after?: boolean
-    }
-    continue?: {
-      before?: boolean
-      after?: boolean
-    }
-    debugger?: {
-      before?: boolean
-      after?: boolean
-    }
-    default?: {
-      before?: boolean
-      after?: boolean
-    }
-    delete?: {
-      before?: boolean
-      after?: boolean
-    }
-    do?: {
-      before?: boolean
-      after?: boolean
-    }
-    double?: {
-      before?: boolean
-      after?: boolean
-    }
-    else?: {
-      before?: boolean
-      after?: boolean
-    }
-    enum?: {
-      before?: boolean
-      after?: boolean
-    }
-    export?: {
-      before?: boolean
-      after?: boolean
-    }
-    extends?: {
-      before?: boolean
-      after?: boolean
-    }
-    false?: {
-      before?: boolean
-      after?: boolean
-    }
-    final?: {
-      before?: boolean
-      after?: boolean
-    }
-    finally?: {
-      before?: boolean
-      after?: boolean
-    }
-    float?: {
-      before?: boolean
-      after?: boolean
-    }
-    for?: {
-      before?: boolean
-      after?: boolean
-    }
-    from?: {
-      before?: boolean
-      after?: boolean
-    }
-    function?: {
-      before?: boolean
-      after?: boolean
-    }
-    get?: {
-      before?: boolean
-      after?: boolean
-    }
-    goto?: {
-      before?: boolean
-      after?: boolean
-    }
-    if?: {
-      before?: boolean
-      after?: boolean
-    }
-    implements?: {
-      before?: boolean
-      after?: boolean
-    }
-    import?: {
-      before?: boolean
-      after?: boolean
-    }
-    in?: {
-      before?: boolean
-      after?: boolean
-    }
-    instanceof?: {
-      before?: boolean
-      after?: boolean
-    }
-    int?: {
-      before?: boolean
-      after?: boolean
-    }
-    interface?: {
-      before?: boolean
-      after?: boolean
-    }
-    let?: {
-      before?: boolean
-      after?: boolean
-    }
-    long?: {
-      before?: boolean
-      after?: boolean
-    }
-    native?: {
-      before?: boolean
-      after?: boolean
-    }
-    new?: {
-      before?: boolean
-      after?: boolean
-    }
-    null?: {
-      before?: boolean
-      after?: boolean
-    }
-    of?: {
-      before?: boolean
-      after?: boolean
-    }
-    package?: {
-      before?: boolean
-      after?: boolean
-    }
-    private?: {
-      before?: boolean
-      after?: boolean
-    }
-    protected?: {
-      before?: boolean
-      after?: boolean
-    }
-    public?: {
-      before?: boolean
-      after?: boolean
-    }
-    return?: {
-      before?: boolean
-      after?: boolean
-    }
-    set?: {
-      before?: boolean
-      after?: boolean
-    }
-    short?: {
-      before?: boolean
-      after?: boolean
-    }
-    static?: {
-      before?: boolean
-      after?: boolean
-    }
-    super?: {
-      before?: boolean
-      after?: boolean
-    }
-    switch?: {
-      before?: boolean
-      after?: boolean
-    }
-    synchronized?: {
-      before?: boolean
-      after?: boolean
-    }
-    this?: {
-      before?: boolean
-      after?: boolean
-    }
-    throw?: {
-      before?: boolean
-      after?: boolean
-    }
-    throws?: {
-      before?: boolean
-      after?: boolean
-    }
-    transient?: {
-      before?: boolean
-      after?: boolean
-    }
-    true?: {
-      before?: boolean
-      after?: boolean
-    }
-    try?: {
-      before?: boolean
-      after?: boolean
-    }
-    typeof?: {
-      before?: boolean
-      after?: boolean
-    }
-    var?: {
-      before?: boolean
-      after?: boolean
-    }
-    void?: {
-      before?: boolean
-      after?: boolean
-    }
-    volatile?: {
-      before?: boolean
-      after?: boolean
-    }
-    while?: {
-      before?: boolean
-      after?: boolean
-    }
-    with?: {
-      before?: boolean
-      after?: boolean
-    }
-    yield?: {
-      before?: boolean
-      after?: boolean
-    }
-    type?: {
-      before?: boolean
-      after?: boolean
-    }
-  }
-}]
-// ----- ts/lines-around-comment -----
-type TsLinesAroundComment = []|[{
-  beforeBlockComment?: boolean
-  afterBlockComment?: boolean
-  beforeLineComment?: boolean
-  afterLineComment?: boolean
-  allowBlockStart?: boolean
-  allowBlockEnd?: boolean
-  allowClassStart?: boolean
-  allowClassEnd?: boolean
-  allowObjectStart?: boolean
-  allowObjectEnd?: boolean
-  allowArrayStart?: boolean
-  allowArrayEnd?: boolean
-  allowInterfaceStart?: boolean
-  allowInterfaceEnd?: boolean
-  allowTypeStart?: boolean
-  allowTypeEnd?: boolean
-  allowEnumStart?: boolean
-  allowEnumEnd?: boolean
-  allowModuleStart?: boolean
-  allowModuleEnd?: boolean
-  ignorePattern?: string
-  applyDefaultIgnorePatterns?: boolean
-}]
-// ----- ts/lines-between-class-members -----
-type TsLinesBetweenClassMembers = []|[({
-  
-  enforce: [{
-    blankLine: ("always" | "never")
-    prev: ("method" | "field" | "*")
-    next: ("method" | "field" | "*")
-  }, ...({
-    blankLine: ("always" | "never")
-    prev: ("method" | "field" | "*")
-    next: ("method" | "field" | "*")
-  })[]]
-} | ("always" | "never"))]|[({
-  
-  enforce: [{
-    blankLine: ("always" | "never")
-    prev: ("method" | "field" | "*")
-    next: ("method" | "field" | "*")
-  }, ...({
-    blankLine: ("always" | "never")
-    prev: ("method" | "field" | "*")
-    next: ("method" | "field" | "*")
-  })[]]
-} | ("always" | "never")), {
-  exceptAfterSingleLine?: boolean
-  exceptAfterOverload?: boolean
-}]
 // ----- ts/max-params -----
 type TsMaxParams = []|[{
   maximum?: number
   max?: number
   countVoidThis?: boolean
 }]
-// ----- ts/member-delimiter-style -----
-type TsMemberDelimiterStyle = []|[{
-  multiline?: {
-    delimiter?: ("none" | "semi" | "comma")
-    requireLast?: boolean
-  }
-  singleline?: {
-    delimiter?: ("semi" | "comma")
-    requireLast?: boolean
-  }
-  overrides?: {
-    interface?: _TsMemberDelimiterStyle_DelimiterConfig
-    typeLiteral?: _TsMemberDelimiterStyle_DelimiterConfig
-  }
-  multilineDetection?: ("brackets" | "last-member")
-}]
-interface _TsMemberDelimiterStyle_DelimiterConfig {
-  multiline?: {
-    delimiter?: ("none" | "semi" | "comma")
-    requireLast?: boolean
-  }
-  singleline?: {
-    delimiter?: ("semi" | "comma")
-    requireLast?: boolean
-  }
-}
 // ----- ts/member-ordering -----
 type TsMemberOrdering = []|[{
   default?: ("never" | (("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization") | ("readonly-signature" | "signature" | "readonly-field" | "public-readonly-field" | "public-decorated-readonly-field" | "decorated-readonly-field" | "static-readonly-field" | "public-static-readonly-field" | "instance-readonly-field" | "public-instance-readonly-field" | "abstract-readonly-field" | "public-abstract-readonly-field" | "protected-readonly-field" | "protected-decorated-readonly-field" | "protected-static-readonly-field" | "protected-instance-readonly-field" | "protected-abstract-readonly-field" | "private-readonly-field" | "private-decorated-readonly-field" | "private-static-readonly-field" | "private-instance-readonly-field" | "#private-readonly-field" | "#private-static-readonly-field" | "#private-instance-readonly-field" | "field" | "public-field" | "public-decorated-field" | "decorated-field" | "static-field" | "public-static-field" | "instance-field" | "public-instance-field" | "abstract-field" | "public-abstract-field" | "protected-field" | "protected-decorated-field" | "protected-static-field" | "protected-instance-field" | "protected-abstract-field" | "private-field" | "private-decorated-field" | "private-static-field" | "private-instance-field" | "#private-field" | "#private-static-field" | "#private-instance-field" | "method" | "public-method" | "public-decorated-method" | "decorated-method" | "static-method" | "public-static-method" | "instance-method" | "public-instance-method" | "abstract-method" | "public-abstract-method" | "protected-method" | "protected-decorated-method" | "protected-static-method" | "protected-instance-method" | "protected-abstract-method" | "private-method" | "private-decorated-method" | "private-static-method" | "private-instance-method" | "#private-method" | "#private-static-method" | "#private-instance-method" | "call-signature" | "constructor" | "public-constructor" | "protected-constructor" | "private-constructor" | "accessor" | "public-accessor" | "public-decorated-accessor" | "decorated-accessor" | "static-accessor" | "public-static-accessor" | "instance-accessor" | "public-instance-accessor" | "abstract-accessor" | "public-abstract-accessor" | "protected-accessor" | "protected-decorated-accessor" | "protected-static-accessor" | "protected-instance-accessor" | "protected-abstract-accessor" | "private-accessor" | "private-decorated-accessor" | "private-static-accessor" | "private-instance-accessor" | "#private-accessor" | "#private-static-accessor" | "#private-instance-accessor" | "get" | "public-get" | "public-decorated-get" | "decorated-get" | "static-get" | "public-static-get" | "instance-get" | "public-instance-get" | "abstract-get" | "public-abstract-get" | "protected-get" | "protected-decorated-get" | "protected-static-get" | "protected-instance-get" | "protected-abstract-get" | "private-get" | "private-decorated-get" | "private-static-get" | "private-instance-get" | "#private-get" | "#private-static-get" | "#private-instance-get" | "set" | "public-set" | "public-decorated-set" | "decorated-set" | "static-set" | "public-static-set" | "instance-set" | "public-instance-set" | "abstract-set" | "public-abstract-set" | "protected-set" | "protected-decorated-set" | "protected-static-set" | "protected-instance-set" | "protected-abstract-set" | "private-set" | "private-decorated-set" | "private-static-set" | "private-instance-set" | "#private-set" | "#private-static-set" | "#private-instance-set" | "static-initialization" | "static-static-initialization" | "public-static-static-initialization" | "instance-static-initialization" | "public-instance-static-initialization" | "abstract-static-initialization" | "public-abstract-static-initialization" | "protected-static-static-initialization" | "protected-instance-static-initialization" | "protected-abstract-static-initialization" | "private-static-static-initialization" | "private-instance-static-initialization" | "#private-static-static-initialization" | "#private-instance-static-initialization")[])[] | {
@@ -7739,6 +7191,12 @@ type TsNoEmptyFunction = []|[{
 type TsNoEmptyInterface = []|[{
   allowSingleExtends?: boolean
 }]
+// ----- ts/no-empty-object-type -----
+type TsNoEmptyObjectType = []|[{
+  allowInterfaces?: ("always" | "never" | "with-single-extends")
+  allowObjectTypes?: ("always" | "never")
+  allowWithName?: string
+}]
 // ----- ts/no-explicit-any -----
 type TsNoExplicitAny = []|[{
   
@@ -7746,19 +7204,6 @@ type TsNoExplicitAny = []|[{
   
   ignoreRestArgs?: boolean
 }]
-// ----- ts/no-extra-parens -----
-type TsNoExtraParens = ([]|["functions"] | []|["all"]|["all", {
-  conditionalAssign?: boolean
-  ternaryOperandBinaryExpressions?: boolean
-  nestedBinaryExpressions?: boolean
-  returnAssign?: boolean
-  ignoreJSX?: ("none" | "all" | "single-line" | "multi-line")
-  enforceForArrowConditionals?: boolean
-  enforceForSequenceExpressions?: boolean
-  enforceForNewInMemberExpressions?: boolean
-  enforceForFunctionPrototypeMethods?: boolean
-  allowParensAfterCommentPattern?: string
-}])
 // ----- ts/no-extraneous-class -----
 type TsNoExtraneousClass = []|[{
   
@@ -7772,6 +7217,32 @@ type TsNoExtraneousClass = []|[{
 }]
 // ----- ts/no-floating-promises -----
 type TsNoFloatingPromises = []|[{
+  allowForKnownSafePromises?: (string | {
+    from: "file"
+    name: (string | [string, ...(string)[]])
+    path?: string
+  } | {
+    from: "lib"
+    name: (string | [string, ...(string)[]])
+  } | {
+    from: "package"
+    name: (string | [string, ...(string)[]])
+    package: string
+  })[]
+  allowForKnownSafeCalls?: (string | {
+    from: "file"
+    name: (string | [string, ...(string)[]])
+    path?: string
+  } | {
+    from: "lib"
+    name: (string | [string, ...(string)[]])
+  } | {
+    from: "package"
+    name: (string | [string, ...(string)[]])
+    package: string
+  })[]
+  
+  checkThenables?: boolean
   
   ignoreVoid?: boolean
   
@@ -7814,6 +7285,7 @@ type TsNoMisusedPromises = []|[{
   checksVoidReturn?: (boolean | {
     arguments?: boolean
     attributes?: boolean
+    inheritedMethods?: boolean
     properties?: boolean
     returns?: boolean
     variables?: boolean
@@ -7836,13 +7308,14 @@ type TsNoRedeclare = []|[{
 type TsNoRequireImports = []|[{
   
   allow?: string[]
+  
+  allowAsImport?: boolean
 }]
 // ----- ts/no-restricted-imports -----
 type TsNoRestrictedImports = ((string | {
   name: string
   message?: string
   importNames?: string[]
-  allowImportNames?: string[]
   
   allowTypeImports?: boolean
 })[] | []|[{
@@ -7850,7 +7323,6 @@ type TsNoRestrictedImports = ((string | {
     name: string
     message?: string
     importNames?: string[]
-    allowImportNames?: string[]
     
     allowTypeImports?: boolean
   })[]
@@ -7858,17 +7330,27 @@ type TsNoRestrictedImports = ((string | {
     
     importNames?: [string, ...(string)[]]
     
-    allowImportNames?: [string, ...(string)[]]
-    
     group: [string, ...(string)[]]
     importNamePattern?: string
-    allowImportNamePattern?: string
     message?: string
     caseSensitive?: boolean
     
     allowTypeImports?: boolean
   }[])
 }])
+// ----- ts/no-restricted-types -----
+type TsNoRestrictedTypes = []|[{
+  types?: {
+    [k: string]: (true | string | {
+      
+      message?: string
+      
+      fixWith?: string
+      
+      suggest?: string[]
+    }) | undefined
+  }
+}]
 // ----- ts/no-shadow -----
 type TsNoShadow = []|[{
   builtinGlobals?: boolean
@@ -7884,11 +7366,6 @@ type TsNoThisAlias = []|[{
   allowDestructuring?: boolean
   
   allowedNames?: string[]
-}]
-// ----- ts/no-throw-literal -----
-type TsNoThrowLiteral = []|[{
-  allowThrowingAny?: boolean
-  allowThrowingUnknown?: boolean
 }]
 // ----- ts/no-type-alias -----
 type TsNoTypeAlias = []|[{
@@ -7945,6 +7422,8 @@ type TsNoUnusedVars = []|[(("all" | "local") | {
   caughtErrors?: ("all" | "none")
   caughtErrorsIgnorePattern?: string
   destructuredArrayIgnorePattern?: string
+  ignoreClassWithStaticInitBlock?: boolean
+  reportUsedIgnorePattern?: boolean
 })]
 // ----- ts/no-use-before-define -----
 type TsNoUseBeforeDefine = []|[("nofunc" | {
@@ -7961,24 +7440,11 @@ type TsNoVarRequires = []|[{
   
   allow?: string[]
 }]
-// ----- ts/object-curly-spacing -----
-type TsObjectCurlySpacing = []|[("always" | "never")]|[("always" | "never"), {
-  arraysInObjects?: boolean
-  objectsInObjects?: boolean
-}]
 // ----- ts/only-throw-error -----
 type TsOnlyThrowError = []|[{
   allowThrowingAny?: boolean
   allowThrowingUnknown?: boolean
 }]
-// ----- ts/padding-line-between-statements -----
-type _TsPaddingLineBetweenStatementsPaddingType = ("any" | "never" | "always")
-type _TsPaddingLineBetweenStatementsStatementType = (("*" | "block-like" | "exports" | "require" | "directive" | "expression" | "iife" | "multiline-block-like" | "multiline-expression" | "multiline-const" | "multiline-let" | "multiline-var" | "singleline-const" | "singleline-let" | "singleline-var" | "block" | "empty" | "function" | "break" | "case" | "class" | "const" | "continue" | "debugger" | "default" | "do" | "export" | "for" | "if" | "import" | "let" | "return" | "switch" | "throw" | "try" | "var" | "while" | "with" | "interface" | "type") | [("*" | "block-like" | "exports" | "require" | "directive" | "expression" | "iife" | "multiline-block-like" | "multiline-expression" | "multiline-const" | "multiline-let" | "multiline-var" | "singleline-const" | "singleline-let" | "singleline-var" | "block" | "empty" | "function" | "break" | "case" | "class" | "const" | "continue" | "debugger" | "default" | "do" | "export" | "for" | "if" | "import" | "let" | "return" | "switch" | "throw" | "try" | "var" | "while" | "with" | "interface" | "type"), ...(("*" | "block-like" | "exports" | "require" | "directive" | "expression" | "iife" | "multiline-block-like" | "multiline-expression" | "multiline-const" | "multiline-let" | "multiline-var" | "singleline-const" | "singleline-let" | "singleline-var" | "block" | "empty" | "function" | "break" | "case" | "class" | "const" | "continue" | "debugger" | "default" | "do" | "export" | "for" | "if" | "import" | "let" | "return" | "switch" | "throw" | "try" | "var" | "while" | "with" | "interface" | "type"))[]])
-type TsPaddingLineBetweenStatements = {
-  blankLine: _TsPaddingLineBetweenStatementsPaddingType
-  prev: _TsPaddingLineBetweenStatementsStatementType
-  next: _TsPaddingLineBetweenStatementsStatementType
-}[]
 // ----- ts/parameter-properties -----
 type TsParameterProperties = []|[{
   allow?: ("readonly" | "private" | "protected" | "public" | "private readonly" | "protected readonly" | "public readonly")[]
@@ -8093,11 +7559,6 @@ type TsPromiseFunctionAsync = []|[{
   checkFunctionExpressions?: boolean
   checkMethodDeclarations?: boolean
 }]
-// ----- ts/quotes -----
-type TsQuotes = []|[("single" | "double" | "backtick")]|[("single" | "double" | "backtick"), ("avoid-escape" | {
-  avoidEscape?: boolean
-  allowTemplateLiterals?: boolean
-})]
 // ----- ts/require-array-sort-compare -----
 type TsRequireArraySortCompare = []|[{
   
@@ -8136,14 +7597,7 @@ type TsRestrictTemplateExpressions = []|[{
   allowNever?: boolean
 }]
 // ----- ts/return-await -----
-type TsReturnAwait = []|[("in-try-catch" | "always" | "never")]
-// ----- ts/semi -----
-type TsSemi = ([]|["never"]|["never", {
-  beforeStatementContinuationChars?: ("always" | "any" | "never")
-}] | []|["always"]|["always", {
-  omitLastInOneLineBlock?: boolean
-  omitLastInOneLineClassBody?: boolean
-}])
+type TsReturnAwait = []|[("in-try-catch" | "always" | "never" | "error-handling-correctness-only")]
 // ----- ts/sort-type-constituents -----
 type TsSortTypeConstituents = []|[{
   
@@ -8154,22 +7608,6 @@ type TsSortTypeConstituents = []|[{
   caseSensitive?: boolean
   
   groupOrder?: ("conditional" | "function" | "import" | "intersection" | "keyword" | "nullish" | "literal" | "named" | "object" | "operator" | "tuple" | "union")[]
-}]
-// ----- ts/space-before-blocks -----
-type TsSpaceBeforeBlocks = []|[(("always" | "never") | {
-  keywords?: ("always" | "never" | "off")
-  functions?: ("always" | "never" | "off")
-  classes?: ("always" | "never" | "off")
-})]
-// ----- ts/space-before-function-paren -----
-type TsSpaceBeforeFunctionParen = []|[(("always" | "never") | {
-  anonymous?: ("always" | "never" | "ignore")
-  named?: ("always" | "never" | "ignore")
-  asyncArrow?: ("always" | "never" | "ignore")
-})]
-// ----- ts/space-infix-ops -----
-type TsSpaceInfixOps = []|[{
-  int32Hint?: boolean
 }]
 // ----- ts/strict-boolean-expressions -----
 type TsStrictBooleanExpressions = []|[{
@@ -8196,23 +7634,6 @@ type TsTripleSlashReference = []|[{
   path?: ("always" | "never")
   types?: ("always" | "never" | "prefer-import")
 }]
-// ----- ts/type-annotation-spacing -----
-type TsTypeAnnotationSpacing = []|[{
-  before?: boolean
-  after?: boolean
-  overrides?: {
-    colon?: _TsTypeAnnotationSpacing_SpacingConfig
-    arrow?: _TsTypeAnnotationSpacing_SpacingConfig
-    variable?: _TsTypeAnnotationSpacing_SpacingConfig
-    parameter?: _TsTypeAnnotationSpacing_SpacingConfig
-    property?: _TsTypeAnnotationSpacing_SpacingConfig
-    returnType?: _TsTypeAnnotationSpacing_SpacingConfig
-  }
-}]
-interface _TsTypeAnnotationSpacing_SpacingConfig {
-  before?: boolean
-  after?: boolean
-}
 // ----- ts/typedef -----
 type TsTypedef = []|[{
   arrayDestructuring?: boolean
@@ -8246,17 +7667,8 @@ type UnusedImportsNoUnusedImports = []|[(("all" | "local") | {
   caughtErrors?: ("all" | "none")
   caughtErrorsIgnorePattern?: string
   destructuredArrayIgnorePattern?: string
-})]
-// ----- unused-imports/no-unused-imports-ts -----
-type UnusedImportsNoUnusedImportsTs = []|[(("all" | "local") | {
-  vars?: ("all" | "local")
-  varsIgnorePattern?: string
-  args?: ("all" | "after-used" | "none")
-  ignoreRestSiblings?: boolean
-  argsIgnorePattern?: string
-  caughtErrors?: ("all" | "none")
-  caughtErrorsIgnorePattern?: string
-  destructuredArrayIgnorePattern?: string
+  ignoreClassWithStaticInitBlock?: boolean
+  reportUsedIgnorePattern?: boolean
 })]
 // ----- unused-imports/no-unused-vars -----
 type UnusedImportsNoUnusedVars = []|[(("all" | "local") | {
@@ -8268,22 +7680,28 @@ type UnusedImportsNoUnusedVars = []|[(("all" | "local") | {
   caughtErrors?: ("all" | "none")
   caughtErrorsIgnorePattern?: string
   destructuredArrayIgnorePattern?: string
-})]
-// ----- unused-imports/no-unused-vars-ts -----
-type UnusedImportsNoUnusedVarsTs = []|[(("all" | "local") | {
-  vars?: ("all" | "local")
-  varsIgnorePattern?: string
-  args?: ("all" | "after-used" | "none")
-  ignoreRestSiblings?: boolean
-  argsIgnorePattern?: string
-  caughtErrors?: ("all" | "none")
-  caughtErrorsIgnorePattern?: string
-  destructuredArrayIgnorePattern?: string
+  ignoreClassWithStaticInitBlock?: boolean
+  reportUsedIgnorePattern?: boolean
 })]
 // ----- use-isnan -----
 type UseIsnan = []|[{
   enforceForSwitchCase?: boolean
   enforceForIndexOf?: boolean
+}]
+// ----- valid-jsdoc -----
+type ValidJsdoc = []|[{
+  prefer?: {
+    [k: string]: string | undefined
+  }
+  preferType?: {
+    [k: string]: string | undefined
+  }
+  requireReturn?: boolean
+  requireParamDescription?: boolean
+  requireReturnDescription?: boolean
+  matchDescription?: string
+  requireReturnType?: boolean
+  requireParamType?: boolean
 }]
 // ----- valid-typeof -----
 type ValidTypeof = []|[{
@@ -8306,6 +7724,7 @@ type VueArrayElementNewline = []|[(_VueArrayElementNewlineBasicConfig | {
   ArrayPattern?: _VueArrayElementNewlineBasicConfig
 })]
 type _VueArrayElementNewlineBasicConfig = (("always" | "never" | "consistent") | {
+  consistent?: boolean
   multiline?: boolean
   minItems?: (number | null)
 })
@@ -8364,7 +7783,7 @@ type VueCamelcase = []|[{
   ignoreGlobals?: boolean
   properties?: ("always" | "never")
   
-  allow?: string[]
+  allow?: []|[string]
 }]
 // ----- vue/comma-dangle -----
 type VueCommaDangle = []|[(_VueCommaDangleValue | {
@@ -9000,7 +8419,7 @@ type VueNoConsole = []|[{
 }]
 // ----- vue/no-constant-condition -----
 type VueNoConstantCondition = []|[{
-  checkLoops?: ("all" | "allExceptWhileTrue" | "none" | true | false)
+  checkLoops?: boolean
 }]
 // ----- vue/no-deprecated-model-definition -----
 type VueNoDeprecatedModelDefinition = []|[{
@@ -9280,6 +8699,16 @@ type VueObjectCurlyNewline = []|[((("always" | "never") | {
     minProperties?: number
     consistent?: boolean
   })
+  TSTypeLiteral?: (("always" | "never") | {
+    multiline?: boolean
+    minProperties?: number
+    consistent?: boolean
+  })
+  TSInterfaceBody?: (("always" | "never") | {
+    multiline?: boolean
+    minProperties?: number
+    consistent?: boolean
+  })
 })]
 // ----- vue/object-curly-spacing -----
 type VueObjectCurlySpacing = []|[("always" | "never")]|[("always" | "never"), {
@@ -9468,7 +8897,7 @@ type ConfigNames = 'jiangweiye/formatter/setup' | 'jiangweiye/imports/rules' | '
 type Awaitable<T> = T | Promise<T>;
 type Rules = RuleOptions;
 
-type TypedFlatConfigItem = Omit<Linter.FlatConfig<Linter.RulesRecord & Rules>, 'plugins'> & {
+type TypedFlatConfigItem = Omit<Linter.Config<Linter.RulesRecord & Rules>, 'plugins'> & {
     /**
      * An object containing a name-value mapping of plugin names to plugin objects. When `files` is specified, these plugins are only available to the matching files.
      *

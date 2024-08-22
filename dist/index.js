@@ -27,9 +27,9 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
   mod
 ));
 
-// node_modules/.pnpm/tsup@8.0.2_postcss@8.4.38_typescript@5.4.5/node_modules/tsup/assets/esm_shims.js
+// node_modules/.pnpm/tsup@8.2.4_postcss@8.4.41_tsx@4.17.0_typescript@5.5.4/node_modules/tsup/assets/esm_shims.js
 var init_esm_shims = __esm({
-  "node_modules/.pnpm/tsup@8.0.2_postcss@8.4.38_typescript@5.4.5/node_modules/tsup/assets/esm_shims.js"() {
+  "node_modules/.pnpm/tsup@8.2.4_postcss@8.4.41_tsx@4.17.0_typescript@5.5.4/node_modules/tsup/assets/esm_shims.js"() {
     "use strict";
   }
 });
@@ -209,9 +209,7 @@ async function combine(...configs2) {
 function renameRules(rules, map) {
   return Object.fromEntries(
     Object.entries(rules).map(([key, value]) => {
-      for (const [from, to] of Object.entries(map))
-        if (key.startsWith(`${from}/`))
-          return [to + key.slice(from.length), value];
+      for (const [from, to] of Object.entries(map)) if (key.startsWith(`${from}/`)) return [to + key.slice(from.length), value];
       return [key, value];
     })
   );
@@ -219,13 +217,11 @@ function renameRules(rules, map) {
 function renamePluginInConfigs(configs2, map) {
   return configs2.map((i) => {
     const clone = { ...i };
-    if (clone.rules)
-      clone.rules = renameRules(clone.rules, map);
+    if (clone.rules) clone.rules = renameRules(clone.rules, map);
     if (clone.plugins) {
       clone.plugins = Object.fromEntries(
         Object.entries(clone.plugins).map(([key, value]) => {
-          if (key in map)
-            return [map[key], value];
+          if (key in map) return [map[key], value];
           return [key, value];
         })
       );
@@ -241,17 +237,14 @@ async function interopDefault(m) {
   return resolved.default || resolved;
 }
 async function ensurePackages(packages) {
-  if (process.env.CI || process.stdout.isTTY === false)
-    return;
+  if (process.env.CI || process.stdout.isTTY === false) return;
   const nonExistingPackages = packages.filter((i) => i && !isPackageExists(i));
-  if (nonExistingPackages.length === 0)
-    return;
+  if (nonExistingPackages.length === 0) return;
   const p = await import("@clack/prompts");
   const result = await p.confirm({
     message: `${nonExistingPackages.length === 1 ? "Package is" : "Packages are"} required for this config: ${nonExistingPackages.join(", ")}. Do you want to install them?`
   });
-  if (result)
-    await import("@jiangweiye/install-pkg").then((i) => i.installPackage(nonExistingPackages, { dev: true }));
+  if (result) await import("@jiangweiye/install-pkg").then((i) => i.installPackage(nonExistingPackages, { dev: true }));
 }
 
 // src/configs/astro.ts
@@ -2175,9 +2168,7 @@ async function regexp(options = {}) {
     ...config.rules
   };
   if (options.level === "warn") {
-    for (const key in rules)
-      if (rules[key] === "error")
-        rules[key] = "warn";
+    for (const key in rules) if (rules[key] === "error") rules[key] = "warn";
   }
   return [
     {
@@ -2233,14 +2224,12 @@ function eslint(options = {}, ...userConfigs) {
     vue: enableVue = VuePackages.some((i) => isPackageExists4(i))
   } = options;
   const stylisticOptions = options.stylistic === false ? false : typeof options.stylistic === "object" ? options.stylistic : {};
-  if (stylisticOptions && !("jsx" in stylisticOptions))
-    stylisticOptions.jsx = options.jsx ?? true;
+  if (stylisticOptions && !("jsx" in stylisticOptions)) stylisticOptions.jsx = options.jsx ?? true;
   const configs2 = [];
   if (enableGitignore) {
     if (typeof enableGitignore !== "boolean")
       configs2.push(interopDefault(import("eslint-config-flat-gitignore")).then((r) => [r(enableGitignore)]));
-    else if (fs.existsSync(".gitignore"))
-      configs2.push(interopDefault(import("eslint-config-flat-gitignore")).then((r) => [r()]));
+    else if (fs.existsSync(".gitignore")) configs2.push(interopDefault(import("eslint-config-flat-gitignore")).then((r) => [r()]));
   }
   configs2.push(
     ignores(),
@@ -2261,8 +2250,7 @@ function eslint(options = {}, ...userConfigs) {
     // Optional plugins (installed but not enabled by default)
     perfectionist()
   );
-  if (enableVue)
-    componentExts.push("vue");
+  if (enableVue) componentExts.push("vue");
   if (enableTypeScript) {
     configs2.push(
       typescript({
@@ -2281,8 +2269,7 @@ function eslint(options = {}, ...userConfigs) {
       })
     );
   }
-  if (enableRegexp)
-    configs2.push(regexp(typeof enableRegexp === "boolean" ? {} : enableRegexp));
+  if (enableRegexp) configs2.push(regexp(typeof enableRegexp === "boolean" ? {} : enableRegexp));
   if (options.test ?? true) {
     configs2.push(
       test({
@@ -2377,19 +2364,15 @@ function eslint(options = {}, ...userConfigs) {
       })
     );
   }
-  if (options.formatters)
-    configs2.push(formatters(options.formatters, typeof stylisticOptions === "boolean" ? {} : stylisticOptions));
+  if (options.formatters) configs2.push(formatters(options.formatters, typeof stylisticOptions === "boolean" ? {} : stylisticOptions));
   const fusedConfig = flatConfigProps.reduce((acc, key) => {
-    if (key in options)
-      acc[key] = options[key];
+    if (key in options) acc[key] = options[key];
     return acc;
   }, {});
-  if (Object.keys(fusedConfig).length)
-    configs2.push([fusedConfig]);
+  if (Object.keys(fusedConfig).length) configs2.push([fusedConfig]);
   let composer = new FlatConfigComposer();
   composer = composer.append(...configs2, ...userConfigs);
-  if (autoRenamePlugins)
-    composer = composer.renamePlugins(defaultPluginRenaming);
+  if (autoRenamePlugins) composer = composer.renamePlugins(defaultPluginRenaming);
   return composer;
 }
 function resolveSubOptions(options, key) {

@@ -19,7 +19,7 @@ import c from "picocolors";
 var package_default = {
   name: "@jiangweiye/eslint-config",
   type: "module",
-  version: "0.1.6-beta.1",
+  version: "0.1.7-beta.1",
   description: "A eslint config for jiangweiye",
   author: "jiangweiye <jiangweiye@outlook.com> (https://github.com/jwyGithub)",
   license: "SEE LICENSE IN LICENSE.md",
@@ -121,78 +121,78 @@ var package_default = {
   },
   dependencies: {
     "@clack/prompts": "^0.7.0",
-    "@jiangweiye/install-pkg": "^0.0.0",
-    "@stylistic/eslint-plugin": "^2.1.0",
-    "@typescript-eslint/eslint-plugin": "^7.11.0",
-    "@typescript-eslint/parser": "^7.11.0",
-    "eslint-config-flat-gitignore": "^0.1.5",
-    "eslint-flat-config-utils": "^0.2.5",
+    "@jiangweiye/install-pkg": "^0.0.1",
+    "@stylistic/eslint-plugin": "^2.6.4",
+    "@typescript-eslint/eslint-plugin": "^8.2.0",
+    "@typescript-eslint/parser": "^8.2.0",
+    "eslint-config-flat-gitignore": "^0.1.8",
+    "eslint-flat-config-utils": "^0.3.1",
     "eslint-merge-processors": "^0.1.0",
     "eslint-plugin-command": "^0.2.3",
     "eslint-plugin-eslint-comments": "^3.2.0",
-    "eslint-plugin-import-x": "^0.5.1",
-    "eslint-plugin-jsdoc": "^48.2.6",
+    "eslint-plugin-import-x": "^3.1.0",
+    "eslint-plugin-jsdoc": "^50.2.2",
     "eslint-plugin-jsonc": "^2.16.0",
-    "eslint-plugin-markdown": "^5.0.0",
-    "eslint-plugin-n": "^17.7.0",
-    "eslint-plugin-no-only-tests": "^3.1.0",
-    "eslint-plugin-perfectionist": "^2.10.0",
+    "eslint-plugin-markdown": "^5.1.0",
+    "eslint-plugin-n": "^17.10.2",
+    "eslint-plugin-no-only-tests": "^3.3.0",
+    "eslint-plugin-perfectionist": "^3.2.0",
     "eslint-plugin-regexp": "^2.6.0",
-    "eslint-plugin-toml": "^0.11.0",
-    "eslint-plugin-unicorn": "^53.0.0",
-    "eslint-plugin-unused-imports": "^3.2.0",
+    "eslint-plugin-toml": "^0.11.1",
+    "eslint-plugin-unicorn": "^55.0.0",
+    "eslint-plugin-unused-imports": "^4.1.3",
     "eslint-plugin-vitest": "^0.5.4",
-    "eslint-plugin-vue": "^9.26.0",
+    "eslint-plugin-vue": "^9.27.0",
     "eslint-plugin-yml": "^1.14.0",
     "eslint-processor-vue-blocks": "^0.1.2",
-    globals: "^15.3.0",
+    globals: "^15.9.0",
     "jsonc-eslint-parser": "^2.4.0",
     "local-pkg": "^0.5.0",
     "parse-gitignore": "^2.0.0",
     picocolors: "^1.0.1",
-    "toml-eslint-parser": "^0.9.3",
-    "vue-eslint-parser": "^9.4.2",
+    "toml-eslint-parser": "^0.10.0",
+    "vue-eslint-parser": "^9.4.3",
     "yaml-eslint-parser": "^1.2.3",
     yargs: "^17.7.2"
   },
   devDependencies: {
-    "@eslint-react/eslint-plugin": "^1.5.13",
-    "@eslint/config-inspector": "^0.4.8",
+    "@eslint-react/eslint-plugin": "^1.12.0",
+    "@eslint/config-inspector": "^0.5.4",
     "@jiangweiye/eslint-config": "workspace:*",
     "@jiangweiye/prettier-config": "^0.0.14",
     "@prettier/plugin-xml": "^3.4.1",
-    "@stylistic/eslint-plugin-migrate": "^2.1.0",
-    "@types/eslint": "^8.56.10",
+    "@stylistic/eslint-plugin-migrate": "^2.6.4",
+    "@types/eslint": "^9.6.0",
     "@types/fs-extra": "^11.0.4",
-    "@types/node": "^20.12.12",
+    "@types/node": "^22.5.0",
     "@types/prompts": "^2.4.9",
-    "@types/yargs": "^17.0.32",
-    "@unocss/eslint-plugin": "^0.60.3",
+    "@types/yargs": "^17.0.33",
+    "@unocss/eslint-plugin": "^0.62.2",
     "astro-eslint-parser": "^1.0.2",
-    bumpp: "^9.4.1",
-    "bundle-require": "^4.1.0",
-    eslint: "^9.3.0",
-    "eslint-plugin-astro": "^1.2.0",
-    "eslint-plugin-format": "^0.1.1",
+    bumpp: "^9.5.1",
+    "bundle-require": "^5.0.0",
+    eslint: "^8.56.0",
+    "eslint-plugin-astro": "^1.2.3",
+    "eslint-plugin-format": "^0.1.2",
     "eslint-plugin-react-hooks": "^4.6.2",
-    "eslint-plugin-react-refresh": "^0.4.7",
-    "eslint-plugin-solid": "^0.14.0",
-    "eslint-plugin-svelte": "^2.39.0",
-    "eslint-typegen": "^0.2.4",
+    "eslint-plugin-react-refresh": "^0.4.10",
+    "eslint-plugin-solid": "^0.14.2",
+    "eslint-plugin-svelte": "^2.43.0",
+    "eslint-typegen": "^0.3.1",
     esno: "^4.7.0",
-    execa: "^9.1.0",
+    execa: "^9.3.1",
     "fast-glob": "^3.3.2",
     "fs-extra": "^11.2.0",
-    "prettier-plugin-astro": "^0.14.0",
+    "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-slidev": "^1.0.5",
-    rimraf: "^5.0.7",
-    svelte: "^4.2.17",
-    "svelte-eslint-parser": "^0.36.0",
-    tsup: "^8.0.2",
-    tsx: "^4.11.0",
-    typescript: "^5.4.5",
-    vitest: "^1.6.0",
-    vue: "^3.4.27"
+    rimraf: "^6.0.1",
+    svelte: "^4.2.18",
+    "svelte-eslint-parser": "^0.41.0",
+    tsup: "^8.2.4",
+    tsx: "^4.17.0",
+    typescript: "^5.5.4",
+    vitest: "^2.0.5",
+    vue: "^3.4.38"
   }
 };
 
@@ -335,8 +335,7 @@ async function updatePackageJson(result) {
       switch (item) {
         case "formatter":
           ["eslint-plugin-format", result.frameworks.includes("astro") ? "prettier-plugin-astro" : null].forEach((f) => {
-            if (!f)
-              return;
+            if (!f) return;
             pkg.devDependencies[f] = package_default.devDependencies[f];
             addedPackages.push(f);
           });
@@ -359,8 +358,7 @@ async function updatePackageJson(result) {
       });
     }
   }
-  if (addedPackages.length)
-    p.note(`${c2.dim(addedPackages.join(", "))}`, "Added packages");
+  if (addedPackages.length) p.note(`${c2.dim(addedPackages.join(", "))}`, "Added packages");
   await fsp.writeFile(pathPackageJSON, JSON.stringify(pkg, null, 4));
   p.log.success(c2.green(`Changes wrote to package.json`));
 }
@@ -388,21 +386,15 @@ async function updateEslintFiles(result) {
     const parsed = parse(content);
     const globs = parsed.globs();
     for (const glob of globs) {
-      if (glob.type === "ignore")
-        eslintIgnores.push(...glob.patterns);
-      else if (glob.type === "unignore")
-        eslintIgnores.push(...glob.patterns.map((pattern) => `!${pattern}`));
+      if (glob.type === "ignore") eslintIgnores.push(...glob.patterns);
+      else if (glob.type === "unignore") eslintIgnores.push(...glob.patterns.map((pattern) => `!${pattern}`));
     }
   }
   const configLines = [];
-  if (eslintIgnores.length)
-    configLines.push(`ignores: ${JSON.stringify(eslintIgnores)},`);
-  if (result.extra.includes("formatter"))
-    configLines.push(`formatters: true,`);
-  if (result.extra.includes("unocss"))
-    configLines.push(`unocss: true,`);
-  for (const framework of result.frameworks)
-    configLines.push(`${framework}: true,`);
+  if (eslintIgnores.length) configLines.push(`ignores: ${JSON.stringify(eslintIgnores)},`);
+  if (result.extra.includes("formatter")) configLines.push(`formatters: true,`);
+  if (result.extra.includes("unocss")) configLines.push(`unocss: true,`);
+  for (const framework of result.frameworks) configLines.push(`${framework}: true,`);
   const mainConfig = configLines.map((i) => `  ${i}`).join("\n");
   const additionalConfig = [];
   const eslintConfigContent = getEslintConfigContent(mainConfig, additionalConfig);
@@ -411,11 +403,9 @@ async function updateEslintFiles(result) {
   const files = fs.readdirSync(cwd);
   const legacyConfig = [];
   files.forEach((file) => {
-    if (/eslint|prettier/.test(file) && !/eslint\.config\./.test(file))
-      legacyConfig.push(file);
+    if (/eslint|prettier/.test(file) && !/eslint\.config\./.test(file)) legacyConfig.push(file);
   });
-  if (legacyConfig.length)
-    p2.note(`${c3.dim(legacyConfig.join(", "))}`, "You can now remove those files manually");
+  if (legacyConfig.length) p2.note(`${c3.dim(legacyConfig.join(", "))}`, "You can now remove those files manually");
 }
 
 // src/cli/stages/update-vscode-settings.ts
@@ -427,12 +417,10 @@ import c4 from "picocolors";
 import * as p3 from "@clack/prompts";
 async function updateVscodeSettings(result) {
   const cwd = process3.cwd();
-  if (!result.updateVscodeSettings)
-    return;
+  if (!result.updateVscodeSettings) return;
   const dotVscodePath = path3.join(cwd, ".vscode");
   const settingsPath = path3.join(dotVscodePath, "settings.json");
-  if (!fs2.existsSync(dotVscodePath))
-    await fsp3.mkdir(dotVscodePath, { recursive: true });
+  if (!fs2.existsSync(dotVscodePath)) await fsp3.mkdir(dotVscodePath, { recursive: true });
   if (!fs2.existsSync(settingsPath)) {
     await fsp3.writeFile(settingsPath, `{${vscodeSettingsString}}
 `, "utf-8");
@@ -467,8 +455,7 @@ async function run(options = {}) {
     result = await p4.group(
       {
         uncommittedConfirmed: () => {
-          if (argSkipPrompt || isGitClean())
-            return Promise.resolve(true);
+          if (argSkipPrompt || isGitClean()) return Promise.resolve(true);
           return p4.confirm({
             initialValue: false,
             message: "There are uncommitted changes in the current repository, are you sure to continue?"
@@ -476,8 +463,7 @@ async function run(options = {}) {
         },
         frameworks: ({ results }) => {
           const isArgTemplateValid = typeof argTemplate === "string" && !!frameworks.includes(argTemplate);
-          if (!results.uncommittedConfirmed || isArgTemplateValid)
-            return;
+          if (!results.uncommittedConfirmed || isArgTemplateValid) return;
           const message = !isArgTemplateValid && argTemplate ? `"${argTemplate}" isn't a valid template. Please choose from below: ` : "Select a framework:";
           return p4.multiselect({
             message: c5.reset(message),
@@ -487,8 +473,7 @@ async function run(options = {}) {
         },
         extra: ({ results }) => {
           const isArgExtraValid = argExtra?.length && !argExtra.filter((element) => !extra.includes(element)).length;
-          if (!results.uncommittedConfirmed || isArgExtraValid)
-            return;
+          if (!results.uncommittedConfirmed || isArgExtraValid) return;
           const message = !isArgExtraValid && argExtra ? `"${argExtra}" isn't a valid extra util. Please choose from below: ` : "Select a extra utils:";
           return p4.multiselect({
             message: c5.reset(message),
@@ -497,8 +482,7 @@ async function run(options = {}) {
           });
         },
         updateVscodeSettings: ({ results }) => {
-          if (!results.uncommittedConfirmed)
-            return;
+          if (!results.uncommittedConfirmed) return;
           return p4.confirm({
             initialValue: true,
             message: "Update .vscode/settings.json for better VS Code experience?"
@@ -512,8 +496,7 @@ async function run(options = {}) {
         }
       }
     );
-    if (!result.uncommittedConfirmed)
-      return process4.exit(1);
+    if (!result.uncommittedConfirmed) return process4.exit(1);
   }
   await updatePackageJson(result);
   await updateEslintFiles(result);
