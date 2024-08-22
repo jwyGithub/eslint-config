@@ -53,5 +53,5 @@ const instance = yargs(hideBin(process.argv))
     .version('version', pkgJson.version)
     .alias('v', 'version');
 
-// eslint-disable-next-line no-unused-expressions
+// eslint-disable-next-line ts/no-unused-expressions
 instance.help().argv;

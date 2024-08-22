@@ -48,7 +48,7 @@ var import_picocolors = __toESM(require("picocolors"), 1);
 var package_default = {
   name: "@jiangweiye/eslint-config",
   type: "module",
-  version: "0.1.7-beta.1",
+  version: "0.1.8-beta.1",
   description: "A eslint config for jiangweiye",
   author: "jiangweiye <jiangweiye@outlook.com> (https://github.com/jwyGithub)",
   license: "SEE LICENSE IN LICENSE.md",
@@ -328,7 +328,7 @@ function isGitClean() {
   try {
     (0, import_node_child_process.execSync)("git diff-index --quiet HEAD --");
     return true;
-  } catch (error) {
+  } catch {
     return false;
   }
 }

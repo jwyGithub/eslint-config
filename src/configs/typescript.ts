@@ -95,7 +95,6 @@ export async function typescript(
                 'no-use-before-define': 'off',
                 'no-useless-constructor': 'off',
                 'ts/ban-ts-comment': ['error', { 'ts-ignore': 'allow-with-description' }],
-                'ts/ban-types': ['error', { types: { Function: false } }],
                 'ts/consistent-type-definitions': ['error', 'interface'],
                 'ts/consistent-type-imports': ['error', { disallowTypeAnnotations: false, prefer: 'type-imports' }],
                 'ts/method-signature-style': ['error', 'property'], // https://www.totaltypescript.com/method-shorthand-syntax-considered-harmful

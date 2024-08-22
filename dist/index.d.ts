@@ -9018,8 +9018,7 @@ interface OptionsHasTypeScript {
 interface OptionsStylistic {
     stylistic?: boolean | StylisticConfig;
 }
-interface StylisticConfig extends Pick<StylisticCustomizeOptions, 'indent' | 'quotes' | 'jsx' | 'semi'> {
-}
+type StylisticConfig = Pick<StylisticCustomizeOptions, 'indent' | 'quotes' | 'jsx' | 'semi'>;
 interface OptionsOverrides {
     overrides?: TypedFlatConfigItem['rules'];
 }
