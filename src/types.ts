@@ -30,12 +30,6 @@ export interface OptionsFiles {
 }
 
 export interface OptionsVue extends OptionsOverrides {
-    /**
-     * Create virtual files for Vue SFC blocks to enable linting.
-     *
-     * @see https://github.com/antfu/eslint-processor-vue-blocks
-     * @default true
-     */
     sfcBlocks?: boolean | VueBlocksOptions;
 
     /**
@@ -69,6 +63,13 @@ export interface OptionsFormatters {
      * Currently only support Prettier.
      */
     xml?: 'prettier' | boolean;
+
+    /**
+     * Enable formatting support for SVG.
+     *
+     * Currently only support Prettier.
+     */
+    svg?: 'prettier' | boolean;
 
     /**
      * Enable formatting support for Markdown.
@@ -127,6 +128,15 @@ export interface OptionsComponentExts {
     componentExts?: string[];
 }
 
+export interface OptionsUnicorn {
+    /**
+     * Include all rules recommended by `eslint-plugin-unicorn`, instead of only ones picked by Anthony.
+     *
+     * @default false
+     */
+    allRecommended?: boolean;
+}
+
 export interface OptionsTypeScriptParserOptions {
     /**
      * Additional parser options for TypeScript.
@@ -138,6 +148,12 @@ export interface OptionsTypeScriptParserOptions {
      * @default ['**\/*.{ts,tsx}']
      */
     filesTypeAware?: string[];
+
+    /**
+     * Glob patterns for files that should not be type aware.
+     * @default ['**\/*.md\/**', '**\/*.astro/*.ts']
+     */
+    ignoresTypeAware?: string[];
 }
 
 export interface OptionsTypeScriptWithTypes {
@@ -145,7 +161,12 @@ export interface OptionsTypeScriptWithTypes {
      * When this options is provided, type aware rules will be enabled.
      * @see https://typescript-eslint.io/linting/typed-linting/
      */
-    tsconfigPath?: string | string[];
+    tsconfigPath?: string;
+
+    /**
+     * Override type aware rules.
+     */
+    overridesTypeAware?: TypedFlatConfigItem['rules'];
 }
 
 export interface OptionsHasTypeScript {
@@ -160,6 +181,15 @@ export type StylisticConfig = Pick<StylisticCustomizeOptions, 'indent' | 'quotes
 
 export interface OptionsOverrides {
     overrides?: TypedFlatConfigItem['rules'];
+}
+
+export interface OptionsProjectType {
+    /**
+     * Type of the project. `lib` will enable more strict rules for libraries.
+     *
+     * @default 'app'
+     */
+    type?: 'app' | 'lib';
 }
 
 export interface OptionsRegExp {
@@ -186,23 +216,11 @@ export interface OptionsUnoCSS extends OptionsOverrides {
     strict?: boolean;
 }
 
-export interface OptionsConfig extends OptionsComponentExts {
-    /**
-     * Enable gitignore support.
-     *
-     * Passing an object to configure the options.
-     *
-     * @see https://github.com/antfu/eslint-config-flat-gitignore
-     * @default true
-     */
+export interface OptionsConfig extends OptionsComponentExts, OptionsProjectType {
     gitignore?: boolean | FlatGitignoreOptions;
 
     /**
      * Disable some opinionated rules to Anthony's preference.
-     *
-     * Including:
-     * - `antfu/top-level-function`
-     * - `antfu/if-newline`
      *
      * @default false
      */
@@ -230,6 +248,13 @@ export interface OptionsConfig extends OptionsComponentExts {
      * @default true
      */
     jsx?: boolean;
+
+    /**
+     * Options for eslint-plugin-unicorn.
+     *
+     * @default true
+     */
+    unicorn?: boolean | OptionsUnicorn;
 
     /**
      * Enable test support.

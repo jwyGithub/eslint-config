@@ -9,7 +9,7 @@ export async function vue(
 ): Promise<TypedFlatConfigItem[]> {
     const { files = [GLOB_VUE], overrides = {}, stylistic = true, vueVersion = 3 } = options;
 
-    const sfcBlocks = options.sfcBlocks === true ? {} : options.sfcBlocks ?? {};
+    const sfcBlocks = options.sfcBlocks === true ? {} : (options.sfcBlocks ?? {});
 
     const { indent = 4 } = typeof stylistic === 'boolean' ? {} : stylistic;
 
@@ -139,7 +139,6 @@ export async function vue(
                 'vue/prop-name-casing': ['error', 'camelCase'],
                 'vue/require-default-prop': 'off',
                 'vue/require-prop-types': 'off',
-                'vue/singleline-html-element-content-newline': 'off',
                 'vue/space-infix-ops': 'error',
 
                 'vue/space-unary-ops': ['error', { nonwords: false, words: true }],

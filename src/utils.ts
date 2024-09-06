@@ -1,6 +1,10 @@
 import process from 'node:process';
+import { fileURLToPath } from 'node:url';
 import { isPackageExists } from 'local-pkg';
 import type { Awaitable, TypedFlatConfigItem } from './types';
+
+const scopeUrl = fileURLToPath(new URL('.', import.meta.url));
+const isCwdInScope = isPackageExists('@jiangweiye/eslint-config');
 
 export const parserPlain = {
     meta: {
@@ -49,11 +53,12 @@ export async function combine(...configs: Awaitable<TypedFlatConfigItem | TypedF
  * }]
  * ```
  */
-export function renameRules(rules: Record<string, any>, map: Record<string, string>) {
+export function renameRules(rules: Record<string, any>, map: Record<string, string>): Record<string, any> {
     return Object.fromEntries(
         Object.entries(rules).map(([key, value]) => {
-            for (const [from, to] of Object.entries(map)) if (key.startsWith(`${from}/`)) return [to + key.slice(from.length), value];
-
+            for (const [from, to] of Object.entries(map)) {
+                if (key.startsWith(`${from}/`)) return [to + key.slice(from.length), value];
+            }
             return [key, value];
         })
     );
@@ -98,10 +103,14 @@ export async function interopDefault<T>(m: Awaitable<T>): Promise<T extends { de
     return (resolved as any).default || resolved;
 }
 
-export async function ensurePackages(packages: (string | undefined)[]) {
-    if (process.env.CI || process.stdout.isTTY === false) return;
+export function isPackageInScope(name: string): boolean {
+    return isPackageExists(name, { paths: [scopeUrl] });
+}
 
-    const nonExistingPackages = packages.filter(i => i && !isPackageExists(i)) as string[];
+export async function ensurePackages(packages: (string | undefined)[]) {
+    if (process.env.CI || process.stdout.isTTY === false || isCwdInScope === false) return;
+
+    const nonExistingPackages = packages.filter(i => i && !isPackageInScope(i)) as string[];
     if (nonExistingPackages.length === 0) return;
 
     const p = await import('@clack/prompts');
@@ -109,4 +118,26 @@ export async function ensurePackages(packages: (string | undefined)[]) {
         message: `${nonExistingPackages.length === 1 ? 'Package is' : 'Packages are'} required for this config: ${nonExistingPackages.join(', ')}. Do you want to install them?`
     });
     if (result) await import('@jiangweiye/install-pkg').then(i => i.installPackage(nonExistingPackages, { dev: true }));
+}
+
+export function isInEditorEnv(): boolean {
+    if (process.env.CI) return false;
+    if (isInGitHooksOrLintStaged()) return false;
+    return !!(
+        false ||
+        process.env.VSCODE_PID ||
+        process.env.VSCODE_CWD ||
+        process.env.JETBRAINS_IDE ||
+        process.env.VIM ||
+        process.env.NVIM
+    );
+}
+
+export function isInGitHooksOrLintStaged(): boolean {
+    return !!(
+        false ||
+        process.env.GIT_PARAMS ||
+        process.env.VSCODE_GIT_COMMAND ||
+        process.env.npm_lifecycle_script?.startsWith('lint-staged')
+    );
 }

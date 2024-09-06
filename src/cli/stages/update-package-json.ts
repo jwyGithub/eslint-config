@@ -5,24 +5,23 @@ import c from 'picocolors';
 import * as p from '@clack/prompts';
 
 import { dependenciesMap, pkgJson } from '../constants';
-import type { ExtraLibrariesOption, PromtResult } from '../types';
+import type { ExtraLibrariesOption, PromptResult } from '../types';
 
-export async function updatePackageJson(result: PromtResult) {
+export async function updatePackageJson(result: PromptResult): Promise<void> {
     const cwd = process.cwd();
 
     const pathPackageJSON = path.join(cwd, 'package.json');
 
     p.log.step(c.cyan(`Bumping @jiangweiye/eslint-config to v${pkgJson.version}`));
-
     const pkgContent = await fsp.readFile(pathPackageJSON, 'utf-8');
     const pkg: Record<string, any> = JSON.parse(pkgContent);
 
     pkg.devDependencies ??= {};
     pkg.devDependencies['@jiangweiye/eslint-config'] = `^${pkgJson.version}`;
+
     pkg.devDependencies.eslint ??= pkgJson.devDependencies.eslint.replace('npm:eslint-ts-patch@', '').replace(/-\d+$/, '');
 
     const addedPackages: string[] = [];
-
     if (result.extra.length) {
         result.extra.forEach((item: ExtraLibrariesOption) => {
             switch (item) {

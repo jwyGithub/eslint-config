@@ -1,8 +1,7 @@
 import globals from 'globals';
-import { PLUGIN_PREFIX } from '../factory';
 import type { OptionsIsInEditor, OptionsOverrides, TypedFlatConfigItem } from '../types';
 import { pluginUnusedImports } from '../plugins';
-import { GLOB_SRC, GLOB_SRC_EXT } from '../globs';
+import { PLUGIN_PREFIX } from '../factory';
 
 export async function javascript(options: OptionsIsInEditor & OptionsOverrides = {}): Promise<TypedFlatConfigItem[]> {
     const { isInEditor = false, overrides = {} } = options;
@@ -31,6 +30,9 @@ export async function javascript(options: OptionsIsInEditor & OptionsOverrides =
             linterOptions: {
                 reportUnusedDisableDirectives: true
             },
+            name: `${PLUGIN_PREFIX}/javascript/setup`
+        },
+        {
             name: `${PLUGIN_PREFIX}/javascript/rules`,
             plugins: {
                 'unused-imports': pluginUnusedImports
@@ -101,35 +103,13 @@ export async function javascript(options: OptionsIsInEditor & OptionsOverrides =
                 ],
                 'no-restricted-properties': [
                     'error',
-                    {
-                        message: 'Use `Object.getPrototypeOf` or `Object.setPrototypeOf` instead.',
-                        property: '__proto__'
-                    },
-                    {
-                        message: 'Use `Object.defineProperty` instead.',
-                        property: '__defineGetter__'
-                    },
-                    {
-                        message: 'Use `Object.defineProperty` instead.',
-                        property: '__defineSetter__'
-                    },
-                    {
-                        message: 'Use `Object.getOwnPropertyDescriptor` instead.',
-                        property: '__lookupGetter__'
-                    },
-                    {
-                        message: 'Use `Object.getOwnPropertyDescriptor` instead.',
-                        property: '__lookupSetter__'
-                    }
+                    { message: 'Use `Object.getPrototypeOf` or `Object.setPrototypeOf` instead.', property: '__proto__' },
+                    { message: 'Use `Object.defineProperty` instead.', property: '__defineGetter__' },
+                    { message: 'Use `Object.defineProperty` instead.', property: '__defineSetter__' },
+                    { message: 'Use `Object.getOwnPropertyDescriptor` instead.', property: '__lookupGetter__' },
+                    { message: 'Use `Object.getOwnPropertyDescriptor` instead.', property: '__lookupSetter__' }
                 ],
-                'no-restricted-syntax': [
-                    'error',
-                    'DebuggerStatement',
-                    'LabeledStatement',
-                    'WithStatement',
-                    'TSEnumDeclaration[const=true]',
-                    'TSExportAssignment'
-                ],
+                'no-restricted-syntax': ['error', 'TSEnumDeclaration[const=true]', 'TSExportAssignment'],
                 'no-self-assign': ['error', { props: true }],
                 'no-self-compare': 'error',
                 'no-sequences': 'error',
@@ -233,13 +213,6 @@ export async function javascript(options: OptionsIsInEditor & OptionsOverrides =
                 yoda: ['error', 'never'],
 
                 ...overrides
-            }
-        },
-        {
-            files: [`scripts/${GLOB_SRC}`, `cli.${GLOB_SRC_EXT}`],
-            name: `${PLUGIN_PREFIX}/javascript/disables/cli`,
-            rules: {
-                'no-console': 'off'
             }
         }
     ];

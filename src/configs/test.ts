@@ -10,7 +10,7 @@ export async function test(options: OptionsFiles & OptionsIsInEditor & OptionsOv
     const { files = GLOB_TESTS, isInEditor = false, overrides = {} } = options;
 
     const [pluginVitest, pluginNoOnlyTests] = await Promise.all([
-        interopDefault(import('eslint-plugin-vitest')),
+        interopDefault(import('@vitest/eslint-plugin')),
         // @ts-expect-error missing types
         interopDefault(import('eslint-plugin-no-only-tests'))
     ] as const);
@@ -43,6 +43,9 @@ export async function test(options: OptionsFiles & OptionsIsInEditor & OptionsOv
                 'test/no-only-tests': isInEditor ? 'off' : 'error',
                 'test/prefer-hooks-in-order': 'error',
                 'test/prefer-lowercase-title': 'error',
+
+                'ts/explicit-function-return-type': 'off',
+                'unicorn/consistent-function-scoping': 'off',
 
                 ...overrides
             }

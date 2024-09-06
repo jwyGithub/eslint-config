@@ -1,7 +1,7 @@
 import { isPackageExists } from 'local-pkg';
 import { ensurePackages, interopDefault, toArray } from '../utils';
 import type { OptionsFiles, OptionsOverrides, OptionsTypeScriptWithTypes, TypedFlatConfigItem } from '../types';
-import { GLOB_TS, GLOB_TSX } from '../globs';
+import { GLOB_SRC } from '../globs';
 import { PLUGIN_PREFIX } from '../factory';
 
 // react refresh
@@ -10,7 +10,7 @@ const RemixPackages = ['@remix-run/node', '@remix-run/react', '@remix-run/serve'
 const NextJsPackages = ['next'];
 
 export async function react(options: OptionsTypeScriptWithTypes & OptionsOverrides & OptionsFiles = {}): Promise<TypedFlatConfigItem[]> {
-    const { files = [GLOB_TS, GLOB_TSX], overrides = {} } = options;
+    const { files = [GLOB_SRC], overrides = {} } = options;
 
     await ensurePackages(['@eslint-react/eslint-plugin', 'eslint-plugin-react-hooks', 'eslint-plugin-react-refresh']);
 

@@ -1,5 +1,3 @@
-import process from 'node:process';
-import fs from 'node:fs';
 import { isPackageExists } from 'local-pkg';
 import { FlatConfigComposer } from 'eslint-flat-config-utils';
 import type { Linter } from 'eslint';
@@ -8,11 +6,13 @@ import {
     astro,
     command,
     comments,
+    disables,
     ignores,
     imports,
     javascript,
     jsdoc,
     jsonc,
+    jsx,
     markdown,
     node,
     perfectionist,
@@ -30,23 +30,22 @@ import {
     vue,
     yaml
 } from './configs';
-import { interopDefault } from './utils';
+import { interopDefault, isInEditorEnv } from './utils';
 import { formatters } from './configs/formatters';
 import { regexp } from './configs/regexp';
+import type { RuleOptions } from './typegen';
 
 export const PLUGIN_PREFIX = 'jiangweiye';
 
-const flatConfigProps: (keyof TypedFlatConfigItem)[] = [
+const flatConfigProps = [
     'name',
-    'files',
-    'ignores',
     'languageOptions',
     'linterOptions',
     'processor',
     'plugins',
     'rules',
     'settings'
-];
+] satisfies (keyof TypedFlatConfigItem)[];
 
 const VuePackages = ['vue', 'nuxt', 'vitepress', '@slidev/cli'];
 
@@ -75,42 +74,68 @@ export const defaultPluginRenaming = {
  *  The merged ESLint configurations.
  */
 export function eslint(
-    options: OptionsConfig & TypedFlatConfigItem = {},
-    ...userConfigs: Awaitable<TypedFlatConfigItem | TypedFlatConfigItem[] | FlatConfigComposer<any, any> | Linter.FlatConfig[]>[]
+    options: OptionsConfig & Omit<TypedFlatConfigItem, 'files'> = {},
+    ...userConfigs: Awaitable<TypedFlatConfigItem | TypedFlatConfigItem[] | FlatConfigComposer<any, any> | Linter.Config[]>[]
 ): FlatConfigComposer<TypedFlatConfigItem, ConfigNames> {
     const {
         astro: enableAstro = false,
         autoRenamePlugins = true,
         componentExts = [],
         gitignore: enableGitignore = true,
-        isInEditor = !!(
-            (process.env.VSCODE_PID || process.env.VSCODE_CWD || process.env.JETBRAINS_IDE || process.env.VIM) &&
-            !process.env.CI
-        ),
+        jsx: enableJsx = true,
         react: enableReact = false,
         regexp: enableRegexp = true,
         solid: enableSolid = false,
         svelte: enableSvelte = false,
         typescript: enableTypeScript = isPackageExists('typescript'),
+        unicorn: enableUnicorn = true,
         unocss: enableUnoCSS = false,
         vue: enableVue = VuePackages.some(i => isPackageExists(i))
     } = options;
 
+    let isInEditor = options.isInEditor;
+    if (isInEditor == null) {
+        isInEditor = isInEditorEnv();
+        if (isInEditor) {
+            // eslint-disable-next-line no-console
+            console.log('[@jiangweiye/eslint-config] Detected running in editor, some rules are disabled.');
+        }
+    }
+
     const stylisticOptions = options.stylistic === false ? false : typeof options.stylistic === 'object' ? options.stylistic : {};
 
-    if (stylisticOptions && !('jsx' in stylisticOptions)) stylisticOptions.jsx = options.jsx ?? true;
+    if (stylisticOptions && !('jsx' in stylisticOptions)) stylisticOptions.jsx = enableJsx;
 
     const configs: Awaitable<TypedFlatConfigItem[]>[] = [];
 
     if (enableGitignore) {
-        if (typeof enableGitignore !== 'boolean')
-            configs.push(interopDefault(import('eslint-config-flat-gitignore')).then(r => [r(enableGitignore)]));
-        else if (fs.existsSync('.gitignore')) configs.push(interopDefault(import('eslint-config-flat-gitignore')).then(r => [r()]));
+        if (typeof enableGitignore !== 'boolean') {
+            configs.push(
+                interopDefault(import('eslint-config-flat-gitignore')).then(r => [
+                    r({
+                        name: `${PLUGIN_PREFIX}/gitignore`,
+                        ...enableGitignore
+                    })
+                ])
+            );
+        } else {
+            configs.push(
+                interopDefault(import('eslint-config-flat-gitignore')).then(r => [
+                    r({
+                        name: `${PLUGIN_PREFIX}/gitignore`,
+                        strict: false
+                    })
+                ])
+            );
+        }
     }
+
+    const typescriptOptions = resolveSubOptions(options, 'typescript');
+    const tsconfigPath = 'tsconfigPath' in typescriptOptions ? typescriptOptions.tsconfigPath : undefined;
 
     // Base configs
     configs.push(
-        ignores(),
+        ignores(options.ignores),
         javascript({
             isInEditor,
             overrides: getOverrides(options, 'javascript')
@@ -123,21 +148,31 @@ export function eslint(
         imports({
             stylistic: stylisticOptions
         }),
-        unicorn(),
         command(),
 
         // Optional plugins (installed but not enabled by default)
         perfectionist()
     );
 
-    if (enableVue) componentExts.push('vue');
+    if (enableUnicorn) {
+        configs.push(unicorn(enableUnicorn === true ? {} : enableUnicorn));
+    }
+
+    if (enableVue) {
+        componentExts.push('vue');
+    }
+
+    if (enableJsx) {
+        configs.push(jsx());
+    }
 
     if (enableTypeScript) {
         configs.push(
             typescript({
-                ...resolveSubOptions(options, 'typescript'),
+                ...typescriptOptions,
                 componentExts,
-                overrides: getOverrides(options, 'typescript')
+                overrides: getOverrides(options, 'typescript'),
+                type: options.type
             })
         );
     }
@@ -152,7 +187,9 @@ export function eslint(
         );
     }
 
-    if (enableRegexp) configs.push(regexp(typeof enableRegexp === 'boolean' ? {} : enableRegexp));
+    if (enableRegexp) {
+        configs.push(regexp(typeof enableRegexp === 'boolean' ? {} : enableRegexp));
+    }
 
     if (options.test ?? true) {
         configs.push(
@@ -178,7 +215,7 @@ export function eslint(
         configs.push(
             react({
                 overrides: getOverrides(options, 'react'),
-                tsconfigPath: getOverrides(options, 'typescript').tsconfigPath
+                tsconfigPath
             })
         );
     }
@@ -187,7 +224,7 @@ export function eslint(
         configs.push(
             solid({
                 overrides: getOverrides(options, 'solid'),
-                tsconfigPath: getOverrides(options, 'typescript').tsconfigPath,
+                tsconfigPath,
                 typescript: !!enableTypeScript
             })
         );
@@ -259,7 +296,17 @@ export function eslint(
         );
     }
 
-    if (options.formatters) configs.push(formatters(options.formatters, typeof stylisticOptions === 'boolean' ? {} : stylisticOptions));
+    if (options.formatters) {
+        configs.push(formatters(options.formatters, typeof stylisticOptions === 'boolean' ? {} : stylisticOptions));
+    }
+
+    configs.push(disables());
+
+    if ('files' in options) {
+        throw new Error(
+            '[@jiangweiye/eslint-config] The first argument should not contain the "files" property as the options are supposed to be global. Place it in the second or later config instead.'
+        );
+    }
 
     // User can optionally pass a flat config item to the first argument
     // We pick the known keys as ESLint would do schema validation
@@ -273,7 +320,9 @@ export function eslint(
 
     composer = composer.append(...configs, ...(userConfigs as any));
 
-    if (autoRenamePlugins) composer = composer.renamePlugins(defaultPluginRenaming);
+    if (autoRenamePlugins) {
+        composer = composer.renamePlugins(defaultPluginRenaming);
+    }
 
     return composer;
 }
@@ -284,7 +333,7 @@ export function resolveSubOptions<K extends keyof OptionsConfig>(options: Option
     return typeof options[key] === 'boolean' ? ({} as any) : options[key] || {};
 }
 
-export function getOverrides<K extends keyof OptionsConfig>(options: OptionsConfig, key: K) {
+export function getOverrides<K extends keyof OptionsConfig>(options: OptionsConfig, key: K): Partial<Linter.RulesRecord & RuleOptions> {
     const sub = resolveSubOptions(options, key);
     return {
         ...(options.overrides as any)?.[key],

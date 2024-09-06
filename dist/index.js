@@ -27,16 +27,16 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
   mod
 ));
 
-// node_modules/.pnpm/tsup@8.2.4_postcss@8.4.41_tsx@4.17.0_typescript@5.5.4/node_modules/tsup/assets/esm_shims.js
+// node_modules/.pnpm/tsup@8.2.4_jiti@1.21.6_postcss@8.4.45_tsx@4.19.0_typescript@5.5.4/node_modules/tsup/assets/esm_shims.js
 var init_esm_shims = __esm({
-  "node_modules/.pnpm/tsup@8.2.4_postcss@8.4.41_tsx@4.17.0_typescript@5.5.4/node_modules/tsup/assets/esm_shims.js"() {
+  "node_modules/.pnpm/tsup@8.2.4_jiti@1.21.6_postcss@8.4.45_tsx@4.19.0_typescript@5.5.4/node_modules/tsup/assets/esm_shims.js"() {
     "use strict";
   }
 });
 
-// node_modules/.pnpm/@jiangweiye+prettier-config@0.0.14/node_modules/@jiangweiye/prettier-config/dist/src/options.cjs
+// node_modules/.pnpm/@jiangweiye+prettier-config@0.0.16/node_modules/@jiangweiye/prettier-config/dist/src/options.cjs
 var require_options = __commonJS({
-  "node_modules/.pnpm/@jiangweiye+prettier-config@0.0.14/node_modules/@jiangweiye/prettier-config/dist/src/options.cjs"(exports, module) {
+  "node_modules/.pnpm/@jiangweiye+prettier-config@0.0.16/node_modules/@jiangweiye/prettier-config/dist/src/options.cjs"(exports, module) {
     "use strict";
     init_esm_shims();
     var __defProp2 = Object.defineProperty;
@@ -89,8 +89,6 @@ init_esm_shims();
 
 // src/factory.ts
 init_esm_shims();
-import process3 from "node:process";
-import fs from "node:fs";
 import { isPackageExists as isPackageExists4 } from "local-pkg";
 import { FlatConfigComposer } from "eslint-flat-config-utils";
 
@@ -123,8 +121,10 @@ var GLOB_VUE = "**/*.vue";
 var GLOB_YAML = "**/*.y?(a)ml";
 var GLOB_TOML = "**/*.toml";
 var GLOB_XML = "**/*.xml";
+var GLOB_SVG = "**/*.svg";
 var GLOB_HTML = "**/*.htm?(l)";
 var GLOB_ASTRO = "**/*.astro";
+var GLOB_ASTRO_TS = "**/*.astro/*.ts";
 var GLOB_GRAPHQL = "**/*.{g,graph}ql";
 var GLOB_MARKDOWN_CODE = `${GLOB_MARKDOWN}/${GLOB_SRC}`;
 var GLOB_TESTS = [
@@ -163,6 +163,7 @@ var GLOB_EXCLUDE = [
   "**/.vitepress/cache",
   "**/.nuxt",
   "**/.next",
+  "**/.svelte-kit",
   "**/.vercel",
   "**/.changeset",
   "**/.idea",
@@ -170,6 +171,7 @@ var GLOB_EXCLUDE = [
   "**/.output",
   "**/.vite-inspect",
   "**/.yarn",
+  "**/vite.config.*.timestamp-*",
   "**/CHANGELOG*.md",
   "**/*.min.*",
   "**/LICENSE*",
@@ -181,7 +183,10 @@ var GLOB_EXCLUDE = [
 // src/utils.ts
 init_esm_shims();
 import process from "node:process";
+import { fileURLToPath } from "node:url";
 import { isPackageExists } from "local-pkg";
+var scopeUrl = fileURLToPath(new URL(".", import.meta.url));
+var isCwdInScope = isPackageExists("@jiangweiye/eslint-config");
 var parserPlain = {
   meta: {
     name: "parser-plain"
@@ -209,7 +214,9 @@ async function combine(...configs2) {
 function renameRules(rules, map) {
   return Object.fromEntries(
     Object.entries(rules).map(([key, value]) => {
-      for (const [from, to] of Object.entries(map)) if (key.startsWith(`${from}/`)) return [to + key.slice(from.length), value];
+      for (const [from, to] of Object.entries(map)) {
+        if (key.startsWith(`${from}/`)) return [to + key.slice(from.length), value];
+      }
       return [key, value];
     })
   );
@@ -236,15 +243,26 @@ async function interopDefault(m) {
   const resolved = await m;
   return resolved.default || resolved;
 }
+function isPackageInScope(name) {
+  return isPackageExists(name, { paths: [scopeUrl] });
+}
 async function ensurePackages(packages) {
-  if (process.env.CI || process.stdout.isTTY === false) return;
-  const nonExistingPackages = packages.filter((i) => i && !isPackageExists(i));
+  if (process.env.CI || process.stdout.isTTY === false || isCwdInScope === false) return;
+  const nonExistingPackages = packages.filter((i) => i && !isPackageInScope(i));
   if (nonExistingPackages.length === 0) return;
   const p = await import("@clack/prompts");
   const result = await p.confirm({
     message: `${nonExistingPackages.length === 1 ? "Package is" : "Packages are"} required for this config: ${nonExistingPackages.join(", ")}. Do you want to install them?`
   });
   if (result) await import("@jiangweiye/install-pkg").then((i) => i.installPackage(nonExistingPackages, { dev: true }));
+}
+function isInEditorEnv() {
+  if (process.env.CI) return false;
+  if (isInGitHooksOrLintStaged()) return false;
+  return !!(process.env.VSCODE_PID || process.env.VSCODE_CWD || process.env.JETBRAINS_IDE || process.env.VIM || process.env.NVIM);
+}
+function isInGitHooksOrLintStaged() {
+  return !!(process.env.GIT_PARAMS || process.env.VSCODE_GIT_COMMAND || process.env.npm_lifecycle_script?.startsWith("lint-staged"));
 }
 
 // src/configs/astro.ts
@@ -265,20 +283,31 @@ async function astro(options = {}) {
     {
       files,
       languageOptions: {
+        globals: pluginAstro.environments.astro.globals,
         parser: parserAstro,
         parserOptions: {
           extraFileExtensions: [".astro"],
           parser: parserTs
-        }
+        },
+        sourceType: "module"
       },
       name: `${PLUGIN_PREFIX}/astro/rules`,
+      processor: "astro/client-side-ts",
       rules: {
+        // use recommended rules
+        "astro/missing-client-only-directive-value": "error",
+        "astro/no-conflict-set-directives": "error",
+        "astro/no-deprecated-astro-canonicalurl": "error",
+        "astro/no-deprecated-astro-fetchcontent": "error",
+        "astro/no-deprecated-astro-resolve": "error",
+        "astro/no-deprecated-getentrybyslug": "error",
         "astro/no-set-html-directive": "off",
+        "astro/no-unused-define-vars-in-style": "error",
         "astro/semi": "off",
+        "astro/valid-compile": "error",
         ...stylistic2 ? {
           "style/indent": "off",
           "style/jsx-closing-tag-location": "off",
-          "style/jsx-indent": "off",
           "style/jsx-one-expression-per-line": "off",
           "style/no-multiple-empty-lines": "off"
         } : {},
@@ -305,7 +334,7 @@ init_esm_shims();
 
 // src/plugins.ts
 init_esm_shims();
-import { default as default2 } from "eslint-plugin-eslint-comments";
+import { default as default2 } from "@eslint-community/eslint-plugin-eslint-comments";
 import * as pluginImport from "eslint-plugin-import-x";
 import { default as default3 } from "eslint-plugin-n";
 import { default as default4 } from "eslint-plugin-unicorn";
@@ -347,7 +376,7 @@ var StylisticConfigDefaults = {
 async function stylistic(options = {}) {
   const {
     indent,
-    jsx,
+    jsx: jsx2,
     lessOpinionated = false,
     overrides = {},
     quotes,
@@ -360,7 +389,7 @@ async function stylistic(options = {}) {
   const config = pluginStylistic.configs.customize({
     flat: true,
     indent,
-    jsx,
+    jsx: jsx2,
     pluginName: "style",
     quotes,
     semi
@@ -394,21 +423,23 @@ async function stylistic(options = {}) {
 // src/configs/formatters.ts
 async function formatters(options = {}, stylistic2 = {}) {
   if (options === true) {
+    const isPrettierPluginXmlInScope = isPackageInScope("@prettier/plugin-xml");
     options = {
-      astro: isPackageExists2("astro"),
+      astro: isPackageInScope("prettier-plugin-astro"),
       css: true,
       graphql: true,
       html: true,
       markdown: true,
       slidev: isPackageExists2("@slidev/cli"),
-      xml: isPackageExists2("@prettier/plugin-xml")
+      svg: isPrettierPluginXmlInScope,
+      xml: isPrettierPluginXmlInScope
     };
   }
   await ensurePackages([
     "eslint-plugin-format",
     options.markdown && options.slidev ? "prettier-plugin-slidev" : void 0,
     options.astro ? "prettier-plugin-astro" : void 0,
-    options.xml ? "@prettier/plugin-xml" : void 0
+    options.xml || options.svg ? "@prettier/plugin-xml" : void 0
   ]);
   if (options.slidev && options.markdown !== true && options.markdown !== "prettier")
     throw new Error("`slidev` option only works when `markdown` is enabled with `prettier`");
@@ -541,6 +572,26 @@ async function formatters(options = {}, stylistic2 = {}) {
       }
     });
   }
+  if (options.svg) {
+    configs2.push({
+      files: [GLOB_SVG],
+      languageOptions: {
+        parser: parserPlain
+      },
+      name: `${PLUGIN_PREFIX}/formatter/svg`,
+      rules: {
+        "format/prettier": [
+          "error",
+          {
+            ...prettierXmlOptions,
+            ...prettierOptions,
+            parser: "xml",
+            plugins: ["@prettier/plugin-xml"]
+          }
+        ]
+      }
+    });
+  }
   if (options.markdown) {
     const formater = options.markdown === true ? "prettier" : options.markdown;
     const GLOB_SLIDEV = !options.slidev ? [] : options.slidev === true ? ["**/slides.md"] : options.slidev.files;
@@ -606,6 +657,19 @@ async function formatters(options = {}, stylistic2 = {}) {
         ]
       }
     });
+    configs2.push({
+      files: [GLOB_ASTRO, GLOB_ASTRO_TS],
+      name: `${PLUGIN_PREFIX}/formatter/astro/disables`,
+      rules: {
+        "style/arrow-parens": "off",
+        "style/block-spacing": "off",
+        "style/comma-dangle": "off",
+        "style/indent": "off",
+        "style/no-multi-spaces": "off",
+        "style/quotes": "off",
+        "style/semi": "off"
+      }
+    });
   }
   if (options.graphql) {
     configs2.push({
@@ -630,12 +694,11 @@ async function formatters(options = {}, stylistic2 = {}) {
 
 // src/configs/ignores.ts
 init_esm_shims();
-async function ignores() {
+async function ignores(userIgnores = []) {
   return [
     {
-      ignores: GLOB_EXCLUDE
-      // Awaits https://github.com/humanwhocodes/config-array/pull/131
-      // name: 'antfu/ignores',
+      ignores: [...GLOB_EXCLUDE, ...userIgnores],
+      name: `${PLUGIN_PREFIX}/ignores`
     }
   ];
 }
@@ -648,13 +711,9 @@ async function imports(options = {}) {
     {
       name: `${PLUGIN_PREFIX}/imports/rules`,
       plugins: {
-        // antfu: pluginAntfu,
         import: pluginImport
       },
       rules: {
-        // 'import-dedupe': 'error',
-        // 'no-import-dist': 'error',
-        // 'no-import-node-modules-by-path': 'error',
         "import/first": "error",
         "import/no-duplicates": "error",
         "import/no-mutable-exports": "error",
@@ -665,14 +724,6 @@ async function imports(options = {}) {
         ...stylistic2 ? {
           "import/newline-after-import": ["error", { count: 1 }]
         } : {}
-      }
-    },
-    {
-      files: ["**/bin/**/*", `**/bin.${GLOB_SRC_EXT}`],
-      name: `${PLUGIN_PREFIX}/imports/disables/bin`,
-      rules: {
-        "no-import-dist": "off",
-        "no-import-node-modules-by-path": "off"
       }
     }
   ];
@@ -707,6 +758,9 @@ async function javascript(options = {}) {
       linterOptions: {
         reportUnusedDisableDirectives: true
       },
+      name: `${PLUGIN_PREFIX}/javascript/setup`
+    },
+    {
       name: `${PLUGIN_PREFIX}/javascript/rules`,
       plugins: {
         "unused-imports": default5
@@ -776,35 +830,13 @@ async function javascript(options = {}) {
         ],
         "no-restricted-properties": [
           "error",
-          {
-            message: "Use `Object.getPrototypeOf` or `Object.setPrototypeOf` instead.",
-            property: "__proto__"
-          },
-          {
-            message: "Use `Object.defineProperty` instead.",
-            property: "__defineGetter__"
-          },
-          {
-            message: "Use `Object.defineProperty` instead.",
-            property: "__defineSetter__"
-          },
-          {
-            message: "Use `Object.getOwnPropertyDescriptor` instead.",
-            property: "__lookupGetter__"
-          },
-          {
-            message: "Use `Object.getOwnPropertyDescriptor` instead.",
-            property: "__lookupSetter__"
-          }
+          { message: "Use `Object.getPrototypeOf` or `Object.setPrototypeOf` instead.", property: "__proto__" },
+          { message: "Use `Object.defineProperty` instead.", property: "__defineGetter__" },
+          { message: "Use `Object.defineProperty` instead.", property: "__defineSetter__" },
+          { message: "Use `Object.getOwnPropertyDescriptor` instead.", property: "__lookupGetter__" },
+          { message: "Use `Object.getOwnPropertyDescriptor` instead.", property: "__lookupSetter__" }
         ],
-        "no-restricted-syntax": [
-          "error",
-          "DebuggerStatement",
-          "LabeledStatement",
-          "WithStatement",
-          "TSEnumDeclaration[const=true]",
-          "TSExportAssignment"
-        ],
+        "no-restricted-syntax": ["error", "TSEnumDeclaration[const=true]", "TSExportAssignment"],
         "no-self-assign": ["error", { props: true }],
         "no-self-compare": "error",
         "no-sequences": "error",
@@ -907,13 +939,6 @@ async function javascript(options = {}) {
         yoda: ["error", "never"],
         ...overrides
       }
-    },
-    {
-      files: [`scripts/${GLOB_SRC}`, `cli.${GLOB_SRC_EXT}`],
-      name: `${PLUGIN_PREFIX}/javascript/disables/cli`,
-      rules: {
-        "no-console": "off"
-      }
     }
   ];
 }
@@ -949,6 +974,24 @@ async function jsdoc(options = {}) {
           "jsdoc/multiline-blocks": "warn"
         } : {}
       }
+    }
+  ];
+}
+
+// src/configs/jsx.ts
+init_esm_shims();
+async function jsx() {
+  return [
+    {
+      files: [GLOB_JSX, GLOB_TSX],
+      languageOptions: {
+        parserOptions: {
+          ecmaFeatures: {
+            jsx: true
+          }
+        }
+      },
+      name: `${PLUGIN_PREFIX}/jsx/setup`
     }
   ];
 }
@@ -1083,25 +1126,6 @@ async function markdown(options = {}) {
         "unicode-bom": "off",
         "unused-imports/no-unused-imports": "off",
         "unused-imports/no-unused-vars": "off",
-        // Type aware rules
-        ...{
-          "ts/await-thenable": "off",
-          "ts/dot-notation": "off",
-          "ts/no-floating-promises": "off",
-          "ts/no-for-in-array": "off",
-          "ts/no-implied-eval": "off",
-          "ts/no-misused-promises": "off",
-          "ts/no-throw-literal": "off",
-          "ts/no-unnecessary-type-assertion": "off",
-          "ts/no-unsafe-argument": "off",
-          "ts/no-unsafe-assignment": "off",
-          "ts/no-unsafe-call": "off",
-          "ts/no-unsafe-member-access": "off",
-          "ts/no-unsafe-return": "off",
-          "ts/restrict-plus-operands": "off",
-          "ts/restrict-template-expressions": "off",
-          "ts/unbound-method": "off"
-        },
         ...overrides
       }
     }
@@ -1151,7 +1175,7 @@ var ReactRefreshAllowConstantExportPackages = ["vite"];
 var RemixPackages = ["@remix-run/node", "@remix-run/react", "@remix-run/serve", "@remix-run/dev"];
 var NextJsPackages = ["next"];
 async function react(options = {}) {
-  const { files = [GLOB_TS, GLOB_TSX], overrides = {} } = options;
+  const { files = [GLOB_SRC], overrides = {} } = options;
   await ensurePackages(["@eslint-react/eslint-plugin", "eslint-plugin-react-hooks", "eslint-plugin-react-refresh"]);
   const tsconfigPath = options?.tsconfigPath ? toArray(options.tsconfigPath) : void 0;
   const isTypeAware = !!tsconfigPath;
@@ -1363,6 +1387,7 @@ async function sortPackageJson() {
               "packageManager",
               "description",
               "author",
+              "contributors",
               "license",
               "funding",
               "homepage",
@@ -1537,6 +1562,7 @@ function sortTsconfig() {
               "allowSyntheticDefaultImports",
               "esModuleInterop",
               "forceConsistentCasingInFileNames",
+              "isolatedDeclarations",
               "isolatedModules",
               "preserveSymlinks",
               "verbatimModuleSyntax",
@@ -1650,7 +1676,7 @@ var _pluginTest;
 async function test(options = {}) {
   const { files = GLOB_TESTS, isInEditor = false, overrides = {} } = options;
   const [pluginVitest, pluginNoOnlyTests] = await Promise.all([
-    interopDefault(import("eslint-plugin-vitest")),
+    interopDefault(import("@vitest/eslint-plugin")),
     // @ts-expect-error missing types
     interopDefault(import("eslint-plugin-no-only-tests"))
   ]);
@@ -1680,6 +1706,8 @@ async function test(options = {}) {
         "test/no-only-tests": isInEditor ? "off" : "error",
         "test/prefer-hooks-in-order": "error",
         "test/prefer-lowercase-title": "error",
+        "ts/explicit-function-return-type": "off",
+        "unicorn/consistent-function-scoping": "off",
         ...overrides
       }
     }
@@ -1741,30 +1769,33 @@ async function toml(options = {}) {
 init_esm_shims();
 import process2 from "node:process";
 async function typescript(options = {}) {
-  const { componentExts = [], overrides = {}, parserOptions = {} } = options;
-  const files = options.files ?? [GLOB_SRC, ...componentExts.map((ext) => `**/*.${ext}`)];
+  const { componentExts = [], overrides = {}, overridesTypeAware = {}, parserOptions = {}, type = "app" } = options;
+  const files = options.files ?? [GLOB_TS, GLOB_TSX, ...componentExts.map((ext) => `**/*.${ext}`)];
   const filesTypeAware = options.filesTypeAware ?? [GLOB_TS, GLOB_TSX];
-  const tsconfigPath = options?.tsconfigPath ? toArray(options.tsconfigPath) : void 0;
+  const ignoresTypeAware = options.ignoresTypeAware ?? [`${GLOB_MARKDOWN}/**`, GLOB_ASTRO_TS];
+  const tsconfigPath = options?.tsconfigPath ? options.tsconfigPath : void 0;
   const isTypeAware = !!tsconfigPath;
   const typeAwareRules = {
     "dot-notation": "off",
     "no-implied-eval": "off",
-    "no-throw-literal": "off",
     "ts/await-thenable": "error",
     "ts/dot-notation": ["error", { allowKeywords: true }],
     "ts/no-floating-promises": "error",
     "ts/no-for-in-array": "error",
     "ts/no-implied-eval": "error",
     "ts/no-misused-promises": "error",
-    "ts/no-throw-literal": "error",
     "ts/no-unnecessary-type-assertion": "error",
     "ts/no-unsafe-argument": "error",
     "ts/no-unsafe-assignment": "error",
     "ts/no-unsafe-call": "error",
     "ts/no-unsafe-member-access": "error",
     "ts/no-unsafe-return": "error",
+    "ts/promise-function-async": "error",
     "ts/restrict-plus-operands": "error",
     "ts/restrict-template-expressions": "error",
+    "ts/return-await": ["error", "in-try-catch"],
+    "ts/strict-boolean-expressions": ["error", { allowNullableBoolean: true, allowNullableObject: true }],
+    "ts/switch-exhaustiveness-check": "error",
     "ts/unbound-method": "error"
   };
   const [pluginTs, parserTs] = await Promise.all([
@@ -1781,7 +1812,10 @@ async function typescript(options = {}) {
           extraFileExtensions: componentExts.map((ext) => `.${ext}`),
           sourceType: "module",
           ...typeAware ? {
-            project: tsconfigPath,
+            projectService: {
+              allowDefaultProject: ["./*.js"],
+              defaultProject: tsconfigPath
+            },
             tsconfigRootDir: process2.cwd()
           } : {},
           ...parserOptions
@@ -1799,86 +1833,74 @@ async function typescript(options = {}) {
       }
     },
     // assign type-aware parser for type-aware files and type-unaware parser for the rest
-    ...isTypeAware ? [makeParser(true, filesTypeAware), makeParser(false, files, filesTypeAware)] : [makeParser(false, files)],
+    ...isTypeAware ? [makeParser(false, files), makeParser(true, filesTypeAware, ignoresTypeAware)] : [makeParser(false, files)],
     {
       files,
       name: `${PLUGIN_PREFIX}/typescript/rules`,
       rules: {
         ...renameRules(pluginTs.configs["eslint-recommended"].overrides[0].rules, { "@typescript-eslint": "ts" }),
-        ...renameRules(pluginTs.configs.strict.rules, {
-          "@typescript-eslint": "ts"
-        }),
+        ...renameRules(pluginTs.configs.strict.rules, { "@typescript-eslint": "ts" }),
         "no-dupe-class-members": "off",
-        "no-loss-of-precision": "off",
         "no-redeclare": "off",
         "no-use-before-define": "off",
         "no-useless-constructor": "off",
-        "ts/ban-ts-comment": ["error", { "ts-ignore": "allow-with-description" }],
+        "ts/ban-ts-comment": ["error", { "ts-expect-error": "allow-with-description" }],
         "ts/consistent-type-definitions": ["error", "interface"],
-        "ts/consistent-type-imports": ["error", { disallowTypeAnnotations: false, prefer: "type-imports" }],
+        "ts/consistent-type-imports": [
+          "error",
+          {
+            disallowTypeAnnotations: false,
+            prefer: "type-imports"
+          }
+        ],
         "ts/method-signature-style": ["error", "property"],
         // https://www.totaltypescript.com/method-shorthand-syntax-considered-harmful
         "ts/no-dupe-class-members": "error",
         "ts/no-dynamic-delete": "off",
+        "ts/no-empty-object-type": ["error", { allowInterfaces: "always" }],
         "ts/no-explicit-any": "off",
         "ts/no-extraneous-class": "off",
         "ts/no-import-type-side-effects": "error",
         "ts/no-invalid-void-type": "off",
-        "ts/no-loss-of-precision": "error",
         "ts/no-non-null-assertion": "off",
         "ts/no-redeclare": "error",
         "ts/no-require-imports": "error",
-        "ts/no-this-alias": "off",
         "ts/no-unused-vars": "off",
         "ts/no-use-before-define": ["error", { classes: false, functions: false, variables: true }],
         "ts/no-useless-constructor": "off",
-        "ts/prefer-ts-expect-error": "error",
+        "ts/no-wrapper-object-types": "error",
         "ts/triple-slash-reference": "off",
         "ts/unified-signatures": "off",
+        ...type === "lib" ? {
+          "ts/explicit-function-return-type": [
+            "error",
+            {
+              allowExpressions: true,
+              allowHigherOrderFunctions: true,
+              allowIIFEs: true
+            }
+          ]
+        } : {},
         ...overrides
       }
     },
     ...isTypeAware ? [
       {
         files: filesTypeAware,
+        ignores: ignoresTypeAware,
         name: `${PLUGIN_PREFIX}/typescript/rules-type-aware`,
         rules: {
-          ...tsconfigPath ? typeAwareRules : {},
-          ...overrides
+          ...typeAwareRules,
+          ...overridesTypeAware
         }
       }
-    ] : [],
-    {
-      files: ["**/*.d.ts"],
-      name: `${PLUGIN_PREFIX}/typescript/disables/dts`,
-      rules: {
-        "eslint-comments/no-unlimited-disable": "off",
-        "import/no-duplicates": "off",
-        "no-restricted-syntax": "off",
-        "unused-imports/no-unused-vars": "off"
-      }
-    },
-    {
-      files: ["**/*.{test,spec}.ts?(x)"],
-      name: `${PLUGIN_PREFIX}/typescript/disables/test`,
-      rules: {
-        "no-unused-expressions": "off"
-      }
-    },
-    {
-      files: ["**/*.js", "**/*.cjs"],
-      name: `${PLUGIN_PREFIX}/typescript/disables/cjs`,
-      rules: {
-        "ts/no-require-imports": "off",
-        "ts/no-var-requires": "off"
-      }
-    }
+    ] : []
   ];
 }
 
 // src/configs/unicorn.ts
 init_esm_shims();
-async function unicorn() {
+async function unicorn(options = {}) {
   return [
     {
       name: `${PLUGIN_PREFIX}/unicorn/rules`,
@@ -1886,32 +1908,24 @@ async function unicorn() {
         unicorn: default4
       },
       rules: {
-        // Pass error message when throwing errors
-        "unicorn/error-message": "error",
-        // Uppercase regex escapes
-        "unicorn/escape-case": "error",
-        // Array.isArray instead of instanceof
-        "unicorn/no-instanceof-array": "error",
-        // Ban `new Array` as `Array` constructor's params are ambiguous
-        "unicorn/no-new-array": "error",
-        // Prevent deprecated `new Buffer()`
-        "unicorn/no-new-buffer": "error",
-        // Lowercase number formatting for octal, hex, binary (0x1'error' instead of 0X1'error')
-        "unicorn/number-literal-case": "error",
-        // textContent instead of innerText
-        "unicorn/prefer-dom-node-text-content": "error",
-        // includes over indexOf when checking for existence
-        "unicorn/prefer-includes": "error",
-        // Prefer using the node: protocol
-        "unicorn/prefer-node-protocol": "error",
-        // Prefer using number properties like `Number.isNaN` rather than `isNaN`
-        "unicorn/prefer-number-properties": "error",
-        // String methods startsWith/endsWith instead of more complicated stuff
-        "unicorn/prefer-string-starts-ends-with": "error",
-        // Enforce throwing type error when throwing error while checking typeof
-        "unicorn/prefer-type-error": "error",
-        // Use new when throwing error
-        "unicorn/throw-new-error": "error"
+        ...options.allRecommended ? default4.configs["flat/recommended"].rules : {
+          "unicorn/consistent-empty-array-spread": "error",
+          "unicorn/consistent-function-scoping": ["error", { checkArrowFunctions: false }],
+          "unicorn/error-message": "error",
+          "unicorn/escape-case": "error",
+          "unicorn/new-for-builtins": "error",
+          "unicorn/no-instanceof-array": "error",
+          "unicorn/no-new-array": "error",
+          "unicorn/no-new-buffer": "error",
+          "unicorn/number-literal-case": "error",
+          "unicorn/prefer-dom-node-text-content": "error",
+          "unicorn/prefer-includes": "error",
+          "unicorn/prefer-node-protocol": "error",
+          "unicorn/prefer-number-properties": "error",
+          "unicorn/prefer-string-starts-ends-with": "error",
+          "unicorn/prefer-type-error": "error",
+          "unicorn/throw-new-error": "error"
+        }
       }
     }
   ];
@@ -2066,7 +2080,6 @@ async function vue(options = {}) {
         "vue/prop-name-casing": ["error", "camelCase"],
         "vue/require-default-prop": "off",
         "vue/require-prop-types": "off",
-        "vue/singleline-html-element-content-newline": "off",
         "vue/space-infix-ops": "error",
         "vue/space-unary-ops": ["error", { nonwords: false, words: true }],
         ...stylistic2 ? {
@@ -2181,12 +2194,65 @@ async function regexp(options = {}) {
   ];
 }
 
+// src/configs/disables.ts
+init_esm_shims();
+async function disables() {
+  return [
+    {
+      files: [`scripts/${GLOB_SRC}`],
+      name: `${PLUGIN_PREFIX}/disables/scripts`,
+      rules: {
+        "no-console": "off",
+        "ts/explicit-function-return-type": "off",
+        "unicorn/consistent-function-scoping": "off"
+      }
+    },
+    {
+      files: [`cli/${GLOB_SRC}`, `cli.${GLOB_SRC_EXT}`],
+      name: `${PLUGIN_PREFIX}/disables/cli`,
+      rules: {
+        "no-console": "off"
+      }
+    },
+    {
+      files: ["**/bin/**/*", `**/bin.${GLOB_SRC_EXT}`],
+      name: `${PLUGIN_PREFIX}/disables/bin`,
+      rules: {
+        [`${PLUGIN_PREFIX}/no-import-dist`]: "off",
+        [`${PLUGIN_PREFIX}/no-import-node-modules-by-path`]: "off"
+      }
+    },
+    {
+      files: ["**/*.d.?([cm])ts"],
+      name: `${PLUGIN_PREFIX}/disables/dts`,
+      rules: {
+        "eslint-comments/no-unlimited-disable": "off",
+        "import/no-duplicates": "off",
+        "no-restricted-syntax": "off",
+        "unused-imports/no-unused-vars": "off"
+      }
+    },
+    {
+      files: ["**/*.{test,spec}.([tj])s?(x)"],
+      name: `${PLUGIN_PREFIX}/disables/test`,
+      rules: {
+        "no-unused-expressions": "off"
+      }
+    },
+    {
+      files: ["**/*.js", "**/*.cjs"],
+      name: `${PLUGIN_PREFIX}/disables/cjs`,
+      rules: {
+        "ts/no-require-imports": "off"
+      }
+    }
+  ];
+}
+
 // src/factory.ts
 var PLUGIN_PREFIX = "jiangweiye";
 var flatConfigProps = [
   "name",
-  "files",
-  "ignores",
   "languageOptions",
   "linterOptions",
   "processor",
@@ -2213,25 +2279,51 @@ function eslint(options = {}, ...userConfigs) {
     autoRenamePlugins = true,
     componentExts = [],
     gitignore: enableGitignore = true,
-    isInEditor = !!((process3.env.VSCODE_PID || process3.env.VSCODE_CWD || process3.env.JETBRAINS_IDE || process3.env.VIM) && !process3.env.CI),
+    jsx: enableJsx = true,
     react: enableReact = false,
     regexp: enableRegexp = true,
     solid: enableSolid = false,
     svelte: enableSvelte = false,
     typescript: enableTypeScript = isPackageExists4("typescript"),
+    unicorn: enableUnicorn = true,
     unocss: enableUnoCSS = false,
     vue: enableVue = VuePackages.some((i) => isPackageExists4(i))
   } = options;
+  let isInEditor = options.isInEditor;
+  if (isInEditor == null) {
+    isInEditor = isInEditorEnv();
+    if (isInEditor) {
+      console.log("[@jiangweiye/eslint-config] Detected running in editor, some rules are disabled.");
+    }
+  }
   const stylisticOptions = options.stylistic === false ? false : typeof options.stylistic === "object" ? options.stylistic : {};
-  if (stylisticOptions && !("jsx" in stylisticOptions)) stylisticOptions.jsx = options.jsx ?? true;
+  if (stylisticOptions && !("jsx" in stylisticOptions)) stylisticOptions.jsx = enableJsx;
   const configs2 = [];
   if (enableGitignore) {
-    if (typeof enableGitignore !== "boolean")
-      configs2.push(interopDefault(import("eslint-config-flat-gitignore")).then((r) => [r(enableGitignore)]));
-    else if (fs.existsSync(".gitignore")) configs2.push(interopDefault(import("eslint-config-flat-gitignore")).then((r) => [r()]));
+    if (typeof enableGitignore !== "boolean") {
+      configs2.push(
+        interopDefault(import("eslint-config-flat-gitignore")).then((r) => [
+          r({
+            name: `${PLUGIN_PREFIX}/gitignore`,
+            ...enableGitignore
+          })
+        ])
+      );
+    } else {
+      configs2.push(
+        interopDefault(import("eslint-config-flat-gitignore")).then((r) => [
+          r({
+            name: `${PLUGIN_PREFIX}/gitignore`,
+            strict: false
+          })
+        ])
+      );
+    }
   }
+  const typescriptOptions = resolveSubOptions(options, "typescript");
+  const tsconfigPath = "tsconfigPath" in typescriptOptions ? typescriptOptions.tsconfigPath : void 0;
   configs2.push(
-    ignores(),
+    ignores(options.ignores),
     javascript({
       isInEditor,
       overrides: getOverrides(options, "javascript")
@@ -2244,18 +2336,26 @@ function eslint(options = {}, ...userConfigs) {
     imports({
       stylistic: stylisticOptions
     }),
-    unicorn(),
     command(),
     // Optional plugins (installed but not enabled by default)
     perfectionist()
   );
-  if (enableVue) componentExts.push("vue");
+  if (enableUnicorn) {
+    configs2.push(unicorn(enableUnicorn === true ? {} : enableUnicorn));
+  }
+  if (enableVue) {
+    componentExts.push("vue");
+  }
+  if (enableJsx) {
+    configs2.push(jsx());
+  }
   if (enableTypeScript) {
     configs2.push(
       typescript({
-        ...resolveSubOptions(options, "typescript"),
+        ...typescriptOptions,
         componentExts,
-        overrides: getOverrides(options, "typescript")
+        overrides: getOverrides(options, "typescript"),
+        type: options.type
       })
     );
   }
@@ -2268,7 +2368,9 @@ function eslint(options = {}, ...userConfigs) {
       })
     );
   }
-  if (enableRegexp) configs2.push(regexp(typeof enableRegexp === "boolean" ? {} : enableRegexp));
+  if (enableRegexp) {
+    configs2.push(regexp(typeof enableRegexp === "boolean" ? {} : enableRegexp));
+  }
   if (options.test ?? true) {
     configs2.push(
       test({
@@ -2291,7 +2393,7 @@ function eslint(options = {}, ...userConfigs) {
     configs2.push(
       react({
         overrides: getOverrides(options, "react"),
-        tsconfigPath: getOverrides(options, "typescript").tsconfigPath
+        tsconfigPath
       })
     );
   }
@@ -2299,7 +2401,7 @@ function eslint(options = {}, ...userConfigs) {
     configs2.push(
       solid({
         overrides: getOverrides(options, "solid"),
-        tsconfigPath: getOverrides(options, "typescript").tsconfigPath,
+        tsconfigPath,
         typescript: !!enableTypeScript
       })
     );
@@ -2363,7 +2465,15 @@ function eslint(options = {}, ...userConfigs) {
       })
     );
   }
-  if (options.formatters) configs2.push(formatters(options.formatters, typeof stylisticOptions === "boolean" ? {} : stylisticOptions));
+  if (options.formatters) {
+    configs2.push(formatters(options.formatters, typeof stylisticOptions === "boolean" ? {} : stylisticOptions));
+  }
+  configs2.push(disables());
+  if ("files" in options) {
+    throw new Error(
+      '[@jiangweiye/eslint-config] The first argument should not contain the "files" property as the options are supposed to be global. Place it in the second or later config instead.'
+    );
+  }
   const fusedConfig = flatConfigProps.reduce((acc, key) => {
     if (key in options) acc[key] = options[key];
     return acc;
@@ -2371,7 +2481,9 @@ function eslint(options = {}, ...userConfigs) {
   if (Object.keys(fusedConfig).length) configs2.push([fusedConfig]);
   let composer = new FlatConfigComposer();
   composer = composer.append(...configs2, ...userConfigs);
-  if (autoRenamePlugins) composer = composer.renamePlugins(defaultPluginRenaming);
+  if (autoRenamePlugins) {
+    composer = composer.renamePlugins(defaultPluginRenaming);
+  }
   return composer;
 }
 function resolveSubOptions(options, key) {
@@ -2393,6 +2505,7 @@ var src_default = eslint;
 export {
   GLOB_ALL_SRC,
   GLOB_ASTRO,
+  GLOB_ASTRO_TS,
   GLOB_CSS,
   GLOB_EXCLUDE,
   GLOB_GRAPHQL,
@@ -2412,6 +2525,7 @@ export {
   GLOB_SRC_EXT,
   GLOB_STYLE,
   GLOB_SVELTE,
+  GLOB_SVG,
   GLOB_TESTS,
   GLOB_TOML,
   GLOB_TS,
@@ -2427,6 +2541,7 @@ export {
   comments,
   src_default as default,
   defaultPluginRenaming,
+  disables,
   ensurePackages,
   eslint,
   formatters,
@@ -2434,9 +2549,13 @@ export {
   ignores,
   imports,
   interopDefault,
+  isInEditorEnv,
+  isInGitHooksOrLintStaged,
+  isPackageInScope,
   javascript,
   jsdoc,
   jsonc,
+  jsx,
   markdown,
   node,
   parserPlain,
