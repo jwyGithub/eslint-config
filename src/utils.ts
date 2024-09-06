@@ -107,7 +107,7 @@ export function isPackageInScope(name: string): boolean {
     return isPackageExists(name, { paths: [scopeUrl] });
 }
 
-export async function ensurePackages(packages: (string | undefined)[]) {
+export async function ensurePackages(packages: (string | undefined)[]): Promise<void> {
     if (process.env.CI || process.stdout.isTTY === false || isCwdInScope === false) return;
 
     const nonExistingPackages = packages.filter(i => i && !isPackageInScope(i)) as string[];
