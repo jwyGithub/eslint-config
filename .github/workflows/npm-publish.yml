@@ -7,6 +7,13 @@ on:
     push:
         branches:
             - main
+        paths-ignore:
+            - README.md
+            - packages/**/*.md
+            - LICENSE
+            - .github/**
+            - .vscode/**
+            - .gitignore
 
 jobs:
     build-and-publish:
@@ -41,7 +48,7 @@ jobs:
               run: pnpm lint
 
             - name: Prettier
-              run: pnpm prettier --check .
+              run: pnpm prettier
 
             - name: Configure git
               run: |
