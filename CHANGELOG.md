@@ -2,13 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-### [0.1.10](https://github.com/jwyGithub/eslint-config/compare/v0.1.9...v0.1.10) (2024-10-15)
+### [0.1.11](https://github.com/jwyGithub/eslint-config/compare/v0.1.10...v0.1.11) (2024-10-15)
 
 
 ### Bug Fixes
 
-* remove bin ([17c0a0d](https://github.com/jwyGithub/eslint-config/commit/17c0a0df4b6fb4b6752c2d8e4de5fe052975389c))
-* update release yml ([d341619](https://github.com/jwyGithub/eslint-config/commit/d341619a2a19076cc1b5d5a4566924b17aab0ce7))
+* add bin ([c805002](https://github.com/jwyGithub/eslint-config/commit/c8050021d0b99fdbb4cf0561a4b2f77a5a53b3a0))
+
+### [0.1.10](https://github.com/jwyGithub/eslint-config/compare/v0.1.9...v0.1.10) (2024-10-15)
+
+### Bug Fixes
+
+-   remove bin ([17c0a0d](https://github.com/jwyGithub/eslint-config/commit/17c0a0df4b6fb4b6752c2d8e4de5fe052975389c))
+-   update release yml ([d341619](https://github.com/jwyGithub/eslint-config/commit/d341619a2a19076cc1b5d5a4566924b17aab0ce7))
 
 ### [0.1.9](https://github.com/jwyGithub/eslint-config/compare/v0.1.8...v0.1.9) (2024-10-15)
 
