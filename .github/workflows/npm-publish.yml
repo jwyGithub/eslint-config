@@ -40,21 +40,21 @@ jobs:
                   git config --global user.email "${{ secrets.GITHUB_ACTOR }}@users.noreply.github.com"
 
             - name: Get version bump
-              id: version
+              id: bump
               run: |
                   LAST_COMMIT_MSG=$(git log -1 --pretty=%B)
                   if [[ $LAST_COMMIT_MSG == fix:* ]]; then
-                  echo "bump=patch" >> $GITHUB_OUTPUT
+                    echo "type=patch" >> $GITHUB_OUTPUT
                   elif [[ $LAST_COMMIT_MSG == feat:* ]]; then
-                    echo "bump=minor" >> $GITHUB_OUTPUT
+                    echo "type=minor" >> $GITHUB_OUTPUT
                   elif [[ $LAST_COMMIT_MSG == chore:* ]]; then
-                    echo "bump=major" >> $GITHUB_OUTPUT
+                    echo "type=major" >> $GITHUB_OUTPUT
                   else
-                    echo "bump=patch" >> $GITHUB_OUTPUT
+                    echo "type=patch" >> $GITHUB_OUTPUT
                   fi
 
             - name: Bump version
-              run: pnpm standard-version --release-as ${{ steps.get-version-bump.outputs.bump }}
+              run: pnpm standard-version --release-as ${{ steps.bump.outputs.type }}
 
             - name: Push changes
               run: |
