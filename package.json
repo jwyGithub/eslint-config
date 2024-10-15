@@ -42,7 +42,8 @@
         "typegen": "esno scripts/typegen.ts",
         "test": "vitest",
         "typecheck": "tsc --noEmit",
-        "prettier": "npx prettier --write .",
+        "prettier": "pnpx prettier --write .",
+        "lint-staged": "lint-staged",
         "release": "standard-version"
     },
     "peerDependencies": {
@@ -166,6 +167,7 @@
         "fast-glob": "^3.3.2",
         "fs-extra": "^11.2.0",
         "jiti": "^1.21.6",
+        "lint-staged": "^15.2.10",
         "prettier-plugin-astro": "^0.14.1",
         "prettier-plugin-slidev": "^1.0.5",
         "rimraf": "^6.0.1",
@@ -184,5 +186,14 @@
         "@typescript-eslint/utils": "^8.4.0",
         "eslint": "^9.9.1",
         "tsx": "^4.19.0"
+    },
+    "simple-git-hooks": {
+        "pre-commit": "pnpm lint-staged"
+    },
+    "lint-staged": {
+        "*.{js,ts}": [
+            "pnpm lint",
+            "pnpm prettier"
+        ]
     }
 }
