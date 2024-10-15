@@ -1,11 +1,11 @@
 import type { TypedFlatConfigItem } from '../types';
+
 import { pluginComments } from '../plugins';
-import { PLUGIN_PREFIX } from '../factory';
 
 export async function comments(): Promise<TypedFlatConfigItem[]> {
     return [
         {
-            name: `${PLUGIN_PREFIX}/eslint-comments/rules`,
+            name: 'jiangweiye/eslint-comments/rules',
             plugins: {
                 'eslint-comments': pluginComments
             },

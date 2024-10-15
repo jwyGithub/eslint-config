@@ -1,6 +1,6 @@
-import { ensurePackages, interopDefault } from '../utils';
 import type { OptionsUnoCSS, TypedFlatConfigItem } from '../types';
-import { PLUGIN_PREFIX } from '../factory';
+
+import { ensurePackages, interopDefault } from '../utils';
 
 export async function unocss(options: OptionsUnoCSS = {}): Promise<TypedFlatConfigItem[]> {
     const { attributify = true, strict = false } = options;
@@ -11,7 +11,7 @@ export async function unocss(options: OptionsUnoCSS = {}): Promise<TypedFlatConf
 
     return [
         {
-            name: `${PLUGIN_PREFIX}/unocss`,
+            name: 'jiangweiye/unocss',
             plugins: {
                 unocss: pluginUnoCSS
             },

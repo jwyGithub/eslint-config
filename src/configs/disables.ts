@@ -1,36 +1,37 @@
-import { PLUGIN_PREFIX } from '../factory';
-import { GLOB_SRC, GLOB_SRC_EXT } from '../globs';
 import type { TypedFlatConfigItem } from '../types';
+
+import { GLOB_SRC, GLOB_SRC_EXT } from '../globs';
 
 export async function disables(): Promise<TypedFlatConfigItem[]> {
     return [
         {
-            files: [`scripts/${GLOB_SRC}`],
-            name: `${PLUGIN_PREFIX}/disables/scripts`,
+            files: [`**/scripts/${GLOB_SRC}`],
+            name: 'jiangweiye/disables/scripts',
             rules: {
+                'jiangweiye/no-top-level-await': 'off',
                 'no-console': 'off',
-                'ts/explicit-function-return-type': 'off',
-                'unicorn/consistent-function-scoping': 'off'
+                'ts/explicit-function-return-type': 'off'
             }
         },
         {
-            files: [`cli/${GLOB_SRC}`, `cli.${GLOB_SRC_EXT}`],
-            name: `${PLUGIN_PREFIX}/disables/cli`,
+            files: [`**/cli/${GLOB_SRC}`, `**/cli.${GLOB_SRC_EXT}`],
+            name: 'jiangweiye/disables/cli',
             rules: {
+                'jiangweiye/no-top-level-await': 'off',
                 'no-console': 'off'
             }
         },
         {
             files: ['**/bin/**/*', `**/bin.${GLOB_SRC_EXT}`],
-            name: `${PLUGIN_PREFIX}/disables/bin`,
+            name: 'jiangweiye/disables/bin',
             rules: {
-                [`${PLUGIN_PREFIX}/no-import-dist`]: 'off',
-                [`${PLUGIN_PREFIX}/no-import-node-modules-by-path`]: 'off'
+                'jiangweiye/no-import-dist': 'off',
+                'jiangweiye/no-import-node-modules-by-path': 'off'
             }
         },
         {
             files: ['**/*.d.?([cm])ts'],
-            name: `${PLUGIN_PREFIX}/disables/dts`,
+            name: 'jiangweiye/disables/dts',
             rules: {
                 'eslint-comments/no-unlimited-disable': 'off',
                 'import/no-duplicates': 'off',
@@ -39,17 +40,19 @@ export async function disables(): Promise<TypedFlatConfigItem[]> {
             }
         },
         {
-            files: ['**/*.{test,spec}.([tj])s?(x)'],
-            name: `${PLUGIN_PREFIX}/disables/test`,
+            files: ['**/*.js', '**/*.cjs'],
+            name: 'jiangweiye/disables/cjs',
             rules: {
-                'no-unused-expressions': 'off'
+                'ts/no-require-imports': 'off'
             }
         },
         {
-            files: ['**/*.js', '**/*.cjs'],
-            name: `${PLUGIN_PREFIX}/disables/cjs`,
+            files: [`**/*.config.${GLOB_SRC_EXT}`, `**/*.config.*.${GLOB_SRC_EXT}`],
+            name: 'jiangweiye/disables/config-files',
             rules: {
-                'ts/no-require-imports': 'off'
+                'jiangweiye/no-top-level-await': 'off',
+                'no-console': 'off',
+                'ts/explicit-function-return-type': 'off'
             }
         }
     ];

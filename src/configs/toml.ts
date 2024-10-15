@@ -1,7 +1,7 @@
 import type { OptionsFiles, OptionsOverrides, OptionsStylistic, TypedFlatConfigItem } from '../types';
+
 import { GLOB_TOML } from '../globs';
 import { interopDefault } from '../utils';
-import { PLUGIN_PREFIX } from '../factory';
 
 export async function toml(options: OptionsOverrides & OptionsStylistic & OptionsFiles = {}): Promise<TypedFlatConfigItem[]> {
     const { files = [GLOB_TOML], overrides = {}, stylistic = true } = options;
@@ -15,7 +15,7 @@ export async function toml(options: OptionsOverrides & OptionsStylistic & Option
 
     return [
         {
-            name: `${PLUGIN_PREFIX}/toml/setup`,
+            name: 'jiangweiye/toml/setup',
             plugins: {
                 toml: pluginToml
             }
@@ -25,7 +25,7 @@ export async function toml(options: OptionsOverrides & OptionsStylistic & Option
             languageOptions: {
                 parser: parserToml
             },
-            name: `${PLUGIN_PREFIX}/toml/rules`,
+            name: 'jiangweiye/toml/rules',
             rules: {
                 'style/spaced-comment': 'off',
 

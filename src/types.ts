@@ -1,10 +1,10 @@
-import type { FlatGitignoreOptions } from 'eslint-config-flat-gitignore';
-import type { ParserOptions } from '@typescript-eslint/parser';
-import type { Options as VueBlocksOptions } from 'eslint-processor-vue-blocks';
-import type { Linter } from 'eslint';
 import type { StylisticCustomizeOptions } from '@stylistic/eslint-plugin';
-import type { VendoredPrettierOptions } from './vender/prettier-types';
+import type { ParserOptions } from '@typescript-eslint/parser';
+import type { Linter } from 'eslint';
+import type { FlatGitignoreOptions } from 'eslint-config-flat-gitignore';
+import type { Options as VueBlocksOptions } from 'eslint-processor-vue-blocks';
 import type { ConfigNames, RuleOptions } from './typegen';
+import type { VendoredPrettierOptions } from './vender/prettier-types';
 
 export type Awaitable<T> = T | Promise<T>;
 
@@ -30,6 +30,12 @@ export interface OptionsFiles {
 }
 
 export interface OptionsVue extends OptionsOverrides {
+    /**
+     * Create virtual files for Vue SFC blocks to enable linting.
+     *
+     * @see https://github.com/jiangweiye/eslint-processor-vue-blocks
+     * @default true
+     */
     sfcBlocks?: boolean | VueBlocksOptions;
 
     /**
@@ -177,7 +183,7 @@ export interface OptionsStylistic {
     stylistic?: boolean | StylisticConfig;
 }
 
-export type StylisticConfig = Pick<StylisticCustomizeOptions, 'indent' | 'quotes' | 'jsx' | 'semi'>;
+export interface StylisticConfig extends Pick<StylisticCustomizeOptions, 'indent' | 'quotes' | 'jsx' | 'semi'> {}
 
 export interface OptionsOverrides {
     overrides?: TypedFlatConfigItem['rules'];
@@ -217,10 +223,22 @@ export interface OptionsUnoCSS extends OptionsOverrides {
 }
 
 export interface OptionsConfig extends OptionsComponentExts, OptionsProjectType {
+    /**
+     * Enable gitignore support.
+     *
+     * Passing an object to configure the options.
+     *
+     * @see https://github.com/jiangweiye/eslint-config-flat-gitignore
+     * @default true
+     */
     gitignore?: boolean | FlatGitignoreOptions;
 
     /**
      * Disable some opinionated rules to Anthony's preference.
+     *
+     * Including:
+     * - `jiangweiye/top-level-function`
+     * - `jiangweiye/if-newline`
      *
      * @default false
      */

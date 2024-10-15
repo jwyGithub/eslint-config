@@ -1,7 +1,9 @@
-import { isPackageExists } from 'local-pkg';
-import { FlatConfigComposer } from 'eslint-flat-config-utils';
 import type { Linter } from 'eslint';
+import type { RuleOptions } from './typegen';
 import type { Awaitable, ConfigNames, OptionsConfig, TypedFlatConfigItem } from './types';
+
+import { FlatConfigComposer } from 'eslint-flat-config-utils';
+import { isPackageExists } from 'local-pkg';
 import {
     astro,
     command,
@@ -30,12 +32,10 @@ import {
     vue,
     yaml
 } from './configs';
-import { interopDefault, isInEditorEnv } from './utils';
 import { formatters } from './configs/formatters';
-import { regexp } from './configs/regexp';
-import type { RuleOptions } from './typegen';
 
-export const PLUGIN_PREFIX = 'jiangweiye';
+import { regexp } from './configs/regexp';
+import { interopDefault, isInEditorEnv } from './utils';
 
 const flatConfigProps = [
     'name',
@@ -96,10 +96,9 @@ export function eslint(
     let isInEditor = options.isInEditor;
     if (isInEditor == null) {
         isInEditor = isInEditorEnv();
-        if (isInEditor) {
+        if (isInEditor)
             // eslint-disable-next-line no-console
             console.log('[@jiangweiye/eslint-config] Detected running in editor, some rules are disabled.');
-        }
     }
 
     const stylisticOptions = options.stylistic === false ? false : typeof options.stylistic === 'object' ? options.stylistic : {};
@@ -113,7 +112,7 @@ export function eslint(
             configs.push(
                 interopDefault(import('eslint-config-flat-gitignore')).then(r => [
                     r({
-                        name: `${PLUGIN_PREFIX}/gitignore`,
+                        name: 'jiangweiye/gitignore',
                         ...enableGitignore
                     })
                 ])
@@ -122,7 +121,7 @@ export function eslint(
             configs.push(
                 interopDefault(import('eslint-config-flat-gitignore')).then(r => [
                     r({
-                        name: `${PLUGIN_PREFIX}/gitignore`,
+                        name: 'jiangweiye/gitignore',
                         strict: false
                     })
                 ])

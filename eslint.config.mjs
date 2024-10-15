@@ -8,8 +8,7 @@ export default eslint(
         svelte: true,
         astro: true,
         typescript: true,
-        formatters: true,
-        type: 'lib'
+        formatters: true
     },
     {
         ignores: ['fixtures', '_fixtures']

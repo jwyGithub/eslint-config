@@ -1,5 +1,3 @@
-import process from 'node:process';
-import { GLOB_ASTRO_TS, GLOB_MARKDOWN, GLOB_TS, GLOB_TSX } from '../globs';
 import type {
     OptionsComponentExts,
     OptionsFiles,
@@ -9,8 +7,10 @@ import type {
     OptionsTypeScriptWithTypes,
     TypedFlatConfigItem
 } from '../types';
+
+import process from 'node:process';
+import { GLOB_ASTRO_TS, GLOB_MARKDOWN, GLOB_TS, GLOB_TSX } from '../globs';
 import { interopDefault, renameRules } from '../utils';
-import { PLUGIN_PREFIX } from '../factory';
 
 export async function typescript(
     options: OptionsFiles &
@@ -79,14 +79,14 @@ export async function typescript(
                     ...(parserOptions as any)
                 }
             },
-            name: `${PLUGIN_PREFIX}/typescript/${typeAware ? 'type-aware-parser' : 'parser'}`
+            name: `jiangweiye/typescript/${typeAware ? 'type-aware-parser' : 'parser'}`
         };
     }
 
     return [
         {
             // Install the plugins without globs, so they can be configured separately.
-            name: `${PLUGIN_PREFIX}/typescript/setup`,
+            name: 'jiangweiye/typescript/setup',
             plugins: {
                 ts: pluginTs as any
             }
@@ -95,7 +95,7 @@ export async function typescript(
         ...(isTypeAware ? [makeParser(false, files), makeParser(true, filesTypeAware, ignoresTypeAware)] : [makeParser(false, files)]),
         {
             files,
-            name: `${PLUGIN_PREFIX}/typescript/rules`,
+            name: 'jiangweiye/typescript/rules',
             rules: {
                 ...renameRules(pluginTs.configs['eslint-recommended'].overrides![0].rules!, { '@typescript-eslint': 'ts' }),
                 ...renameRules(pluginTs.configs.strict.rules!, { '@typescript-eslint': 'ts' }),
@@ -122,8 +122,16 @@ export async function typescript(
                 'ts/no-import-type-side-effects': 'error',
                 'ts/no-invalid-void-type': 'off',
                 'ts/no-non-null-assertion': 'off',
-                'ts/no-redeclare': 'error',
+                'ts/no-redeclare': ['error', { builtinGlobals: false }],
                 'ts/no-require-imports': 'error',
+                'ts/no-unused-expressions': [
+                    'error',
+                    {
+                        allowShortCircuit: true,
+                        allowTaggedTemplates: true,
+                        allowTernary: true
+                    }
+                ],
                 'ts/no-unused-vars': 'off',
                 'ts/no-use-before-define': ['error', { classes: false, functions: false, variables: true }],
                 'ts/no-useless-constructor': 'off',
@@ -151,7 +159,7 @@ export async function typescript(
                   {
                       files: filesTypeAware,
                       ignores: ignoresTypeAware,
-                      name: `${PLUGIN_PREFIX}/typescript/rules-type-aware`,
+                      name: 'jiangweiye/typescript/rules-type-aware',
                       rules: {
                           ...typeAwareRules,
                           ...overridesTypeAware

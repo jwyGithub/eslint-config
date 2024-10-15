@@ -1,6 +1,6 @@
 import type { TypedFlatConfigItem } from '../types';
+
 import { GLOB_JSX, GLOB_TSX } from '../globs';
-import { PLUGIN_PREFIX } from '../factory';
 
 export async function jsx(): Promise<TypedFlatConfigItem[]> {
     return [
@@ -13,7 +13,7 @@ export async function jsx(): Promise<TypedFlatConfigItem[]> {
                     }
                 }
             },
-            name: `${PLUGIN_PREFIX}/jsx/setup`
+            name: 'jiangweiye/jsx/setup'
         }
     ];
 }

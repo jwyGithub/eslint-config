@@ -1,8 +1,8 @@
-import { mergeProcessors } from 'eslint-merge-processors';
-import { PLUGIN_PREFIX } from '../factory';
-import { interopDefault } from '../utils';
 import type { OptionsFiles, OptionsHasTypeScript, OptionsOverrides, OptionsStylistic, OptionsVue, TypedFlatConfigItem } from '../types';
+
+import { mergeProcessors } from 'eslint-merge-processors';
 import { GLOB_VUE } from '../globs';
+import { interopDefault } from '../utils';
 
 export async function vue(
     options: OptionsVue & OptionsHasTypeScript & OptionsOverrides & OptionsStylistic & OptionsFiles = {}
@@ -14,7 +14,6 @@ export async function vue(
     const { indent = 4 } = typeof stylistic === 'boolean' ? {} : stylistic;
 
     const [pluginVue, parserVue, processorVueBlocks] = await Promise.all([
-        // @ts-expect-error missing types
         interopDefault(import('eslint-plugin-vue')),
         interopDefault(import('vue-eslint-parser')),
         interopDefault(import('eslint-processor-vue-blocks'))
@@ -42,7 +41,7 @@ export async function vue(
                     watchEffect: 'readonly'
                 }
             },
-            name: `${PLUGIN_PREFIX}/vue/setup`,
+            name: 'jiangweiye/vue/setup',
             plugins: {
                 vue: pluginVue
             }
@@ -60,7 +59,7 @@ export async function vue(
                     sourceType: 'module'
                 }
             },
-            name: `${PLUGIN_PREFIX}/vue/rules`,
+            name: 'jiangweiye/vue/rules',
             processor:
                 sfcBlocks === false
                     ? pluginVue.processors['.vue']
@@ -90,13 +89,14 @@ export async function vue(
                       }),
 
                 'node/prefer-global/process': 'off',
+                'ts/explicit-function-return-type': 'off',
+
                 'vue/block-order': [
                     'error',
                     {
                         order: ['template', 'script', 'style']
                     }
                 ],
-
                 'vue/component-name-in-template-casing': ['error', 'PascalCase'],
                 'vue/component-options-name-casing': ['error', 'PascalCase'],
                 // this is deprecated
@@ -140,7 +140,6 @@ export async function vue(
                 'vue/require-default-prop': 'off',
                 'vue/require-prop-types': 'off',
                 'vue/space-infix-ops': 'error',
-
                 'vue/space-unary-ops': ['error', { nonwords: false, words: true }],
 
                 ...(stylistic
@@ -156,7 +155,7 @@ export async function vue(
                               }
                           ],
                           'vue/brace-style': ['error', 'stroustrup', { allowSingleLine: true }],
-                          'vue/comma-dangle': ['off', 'always-multiline'],
+                          'vue/comma-dangle': ['error', 'always-multiline'],
                           'vue/comma-spacing': ['error', { after: true, before: false }],
                           'vue/comma-style': ['error', 'last'],
                           'vue/html-comment-content-spacing': [

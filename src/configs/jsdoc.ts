@@ -1,13 +1,13 @@
-import { PLUGIN_PREFIX } from '../factory';
-import { interopDefault } from '../utils';
 import type { OptionsStylistic, TypedFlatConfigItem } from '../types';
+
+import { interopDefault } from '../utils';
 
 export async function jsdoc(options: OptionsStylistic = {}): Promise<TypedFlatConfigItem[]> {
     const { stylistic = true } = options;
 
     return [
         {
-            name: `${PLUGIN_PREFIX}/jsdoc/rules`,
+            name: 'jiangweiye/jsdoc/rules',
             plugins: {
                 jsdoc: await interopDefault(import('eslint-plugin-jsdoc'))
             },

@@ -1,7 +1,7 @@
 import type { OptionsFiles, OptionsOverrides, OptionsStylistic, TypedFlatConfigItem } from '../types';
+
 import { GLOB_ASTRO } from '../globs';
 import { interopDefault } from '../utils';
-import { PLUGIN_PREFIX } from '../factory';
 
 export async function astro(options: OptionsOverrides & OptionsStylistic & OptionsFiles = {}): Promise<TypedFlatConfigItem[]> {
     const { files = [GLOB_ASTRO], overrides = {}, stylistic = true } = options;
@@ -14,7 +14,7 @@ export async function astro(options: OptionsOverrides & OptionsStylistic & Optio
 
     return [
         {
-            name: `${PLUGIN_PREFIX}/astro/setup`,
+            name: 'jiangweiye/astro/setup',
             plugins: {
                 astro: pluginAstro
             }
@@ -30,7 +30,7 @@ export async function astro(options: OptionsOverrides & OptionsStylistic & Optio
                 },
                 sourceType: 'module'
             },
-            name: `${PLUGIN_PREFIX}/astro/rules`,
+            name: 'jiangweiye/astro/rules',
             processor: 'astro/client-side-ts',
             rules: {
                 // use recommended rules

@@ -1,7 +1,7 @@
-import { ensurePackages, interopDefault } from '../utils';
 import type { OptionsFiles, OptionsHasTypeScript, OptionsOverrides, OptionsStylistic, TypedFlatConfigItem } from '../types';
+
 import { GLOB_SVELTE } from '../globs';
-import { PLUGIN_PREFIX } from '../factory';
+import { ensurePackages, interopDefault } from '../utils';
 
 export async function svelte(
     options: OptionsHasTypeScript & OptionsOverrides & OptionsStylistic & OptionsFiles = {}
@@ -19,7 +19,7 @@ export async function svelte(
 
     return [
         {
-            name: `${PLUGIN_PREFIX}/svelte/setup`,
+            name: 'jiangweiye/svelte/setup',
             plugins: {
                 svelte: pluginSvelte
             }
@@ -33,7 +33,7 @@ export async function svelte(
                     parser: options.typescript ? ((await interopDefault(import('@typescript-eslint/parser'))) as any) : null
                 }
             },
-            name: `${PLUGIN_PREFIX}/svelte/rules`,
+            name: 'jiangweiye/svelte/rules',
             processor: pluginSvelte.processors['.svelte'],
             rules: {
                 'import/no-mutable-exports': 'off',
@@ -68,7 +68,6 @@ export async function svelte(
                 'svelte/no-useless-mustaches': 'error',
                 'svelte/require-store-callbacks-use-set-param': 'error',
                 'svelte/system': 'error',
-                'svelte/valid-compile': 'error',
                 'svelte/valid-each-key': 'error',
 
                 'unused-imports/no-unused-vars': [

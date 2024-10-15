@@ -1,5 +1,5 @@
-import { PLUGIN_PREFIX } from '../factory';
 import type { OptionsStylistic, TypedFlatConfigItem } from '../types';
+
 import { pluginImport } from '../plugins';
 
 export async function imports(options: OptionsStylistic = {}): Promise<TypedFlatConfigItem[]> {
@@ -7,7 +7,7 @@ export async function imports(options: OptionsStylistic = {}): Promise<TypedFlat
 
     return [
         {
-            name: `${PLUGIN_PREFIX}/imports/rules`,
+            name: 'jiangweiye/imports/rules',
             plugins: {
                 import: pluginImport
             },
@@ -18,7 +18,6 @@ export async function imports(options: OptionsStylistic = {}): Promise<TypedFlat
                 'import/no-named-default': 'error',
                 'import/no-self-import': 'error',
                 'import/no-webpack-loader-syntax': 'error',
-                'import/order': 'error',
 
                 ...(stylistic
                     ? {

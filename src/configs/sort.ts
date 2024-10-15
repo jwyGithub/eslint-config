@@ -1,4 +1,3 @@
-import { PLUGIN_PREFIX } from '../factory';
 import type { TypedFlatConfigItem } from '../types';
 
 /**
@@ -10,7 +9,7 @@ export async function sortPackageJson(): Promise<TypedFlatConfigItem[]> {
     return [
         {
             files: ['**/package.json'],
-            name: `${PLUGIN_PREFIX}/sort/package-json`,
+            name: 'jiangweiye/sort/package-json',
             rules: {
                 'jsonc/sort-array-values': [
                     'error',
@@ -113,7 +112,7 @@ export function sortTsconfig(): TypedFlatConfigItem[] {
     return [
         {
             files: ['**/tsconfig.json', '**/tsconfig.*.json'],
-            name: `${PLUGIN_PREFIX}/sort/tsconfig-json`,
+            name: 'jiangweiye/sort/tsconfig-json',
             rules: {
                 'jsonc/sort-keys': [
                     'error',

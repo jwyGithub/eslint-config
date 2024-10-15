@@ -1,14 +1,11 @@
+import type { ExtraLibrariesOption, FrameworkOption, PromItem } from './types';
+
 import c from 'picocolors';
 import pkgJson from '../../package.json';
-import type { ExtraLibrariesOption, FrameworkOption, PromItem } from './types';
 
 export { pkgJson };
 
 export const vscodeSettingsString = `
-  // Enable the ESlint flat config support
-  // (remove this if your ESLint extension above v3.0.5)
-  "eslint.experimental.useFlatConfig": true,
-
   // Disable the default formatter, use eslint instead
   "prettier.enable": true,
   "editor.formatOnSave": false,

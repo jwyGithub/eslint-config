@@ -1,11 +1,11 @@
 import type { TypedFlatConfigItem } from '../types';
+
 import { pluginNode } from '../plugins';
-import { PLUGIN_PREFIX } from '../factory';
 
 export async function node(): Promise<TypedFlatConfigItem[]> {
     return [
         {
-            name: `${PLUGIN_PREFIX}/node/rules`,
+            name: 'jiangweiye/node/rules',
             plugins: {
                 node: pluginNode
             },

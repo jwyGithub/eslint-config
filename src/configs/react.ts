@@ -1,8 +1,9 @@
-import { isPackageExists } from 'local-pkg';
-import { ensurePackages, interopDefault, toArray } from '../utils';
 import type { OptionsFiles, OptionsOverrides, OptionsTypeScriptWithTypes, TypedFlatConfigItem } from '../types';
+
+import { isPackageExists } from 'local-pkg';
 import { GLOB_SRC } from '../globs';
-import { PLUGIN_PREFIX } from '../factory';
+
+import { ensurePackages, interopDefault, toArray } from '../utils';
 
 // react refresh
 const ReactRefreshAllowConstantExportPackages = ['vite'];
@@ -32,7 +33,7 @@ export async function react(options: OptionsTypeScriptWithTypes & OptionsOverrid
 
     return [
         {
-            name: `${PLUGIN_PREFIX}/react/setup`,
+            name: 'jiangweiye/react/setup',
             plugins: {
                 react: plugins['@eslint-react'],
                 'react-dom': plugins['@eslint-react/dom'],
@@ -54,7 +55,7 @@ export async function react(options: OptionsTypeScriptWithTypes & OptionsOverrid
                 },
                 sourceType: 'module'
             },
-            name: `${PLUGIN_PREFIX}/react/rules`,
+            name: 'jiangweiye/react/rules',
             rules: {
                 // recommended rules from @eslint-react/dom
                 'react-dom/no-children-in-void-dom-elements': 'warn',
@@ -80,7 +81,21 @@ export async function react(options: OptionsTypeScriptWithTypes & OptionsOverrid
                         allowConstantExport: isAllowConstantExport,
                         allowExportNames: [
                             ...(isUsingNext
-                                ? ['config', 'generateStaticParams', 'metadata', 'generateMetadata', 'viewport', 'generateViewport']
+                                ? [
+                                      'dynamic',
+                                      'dynamicParams',
+                                      'revalidate',
+                                      'fetchCache',
+                                      'runtime',
+                                      'preferredRegion',
+                                      'maxDuration',
+                                      'config',
+                                      'generateStaticParams',
+                                      'metadata',
+                                      'generateMetadata',
+                                      'viewport',
+                                      'generateViewport'
+                                  ]
                                 : []),
                             ...(isUsingRemix ? ['meta', 'links', 'headers', 'loader', 'action'] : [])
                         ]

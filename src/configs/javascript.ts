@@ -1,7 +1,8 @@
-import globals from 'globals';
 import type { OptionsIsInEditor, OptionsOverrides, TypedFlatConfigItem } from '../types';
+
+import globals from 'globals';
+
 import { pluginUnusedImports } from '../plugins';
-import { PLUGIN_PREFIX } from '../factory';
 
 export async function javascript(options: OptionsIsInEditor & OptionsOverrides = {}): Promise<TypedFlatConfigItem[]> {
     const { isInEditor = false, overrides = {} } = options;
@@ -30,10 +31,10 @@ export async function javascript(options: OptionsIsInEditor & OptionsOverrides =
             linterOptions: {
                 reportUnusedDisableDirectives: true
             },
-            name: `${PLUGIN_PREFIX}/javascript/setup`
+            name: 'jiangweiye/javascript/setup'
         },
         {
-            name: `${PLUGIN_PREFIX}/javascript/rules`,
+            name: 'jiangweiye/javascript/rules',
             plugins: {
                 'unused-imports': pluginUnusedImports
             },
@@ -183,17 +184,6 @@ export async function javascript(options: OptionsIsInEditor & OptionsOverrides =
                 'prefer-rest-params': 'error',
                 'prefer-spread': 'error',
                 'prefer-template': 'error',
-                'sort-imports': [
-                    'error',
-                    {
-                        allowSeparatedGroups: false,
-                        ignoreCase: false,
-                        ignoreDeclarationSort: true,
-                        ignoreMemberSort: false,
-                        memberSyntaxSortOrder: ['none', 'all', 'multiple', 'single']
-                    }
-                ],
-
                 'symbol-description': 'error',
                 'unicode-bom': ['error', 'never'],
                 'unused-imports/no-unused-imports': isInEditor ? 'off' : 'error',

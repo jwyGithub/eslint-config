@@ -1,12 +1,12 @@
 import type { OptionsFiles, OptionsOverrides, OptionsStylistic, TypedFlatConfigItem } from '../types';
 import { GLOB_YAML } from '../globs';
+
 import { interopDefault } from '../utils';
-import { PLUGIN_PREFIX } from '../factory';
 
 export async function yaml(options: OptionsOverrides & OptionsStylistic & OptionsFiles = {}): Promise<TypedFlatConfigItem[]> {
     const { files = [GLOB_YAML], overrides = {}, stylistic = true } = options;
 
-    const { quotes = 'single' } = typeof stylistic === 'boolean' ? {} : stylistic;
+    const { indent = 2, quotes = 'single' } = typeof stylistic === 'boolean' ? {} : stylistic;
 
     const [pluginYaml, parserYaml] = await Promise.all([
         interopDefault(import('eslint-plugin-yml')),
@@ -15,7 +15,7 @@ export async function yaml(options: OptionsOverrides & OptionsStylistic & Option
 
     return [
         {
-            name: `${PLUGIN_PREFIX}/yaml/setup`,
+            name: 'jiangweiye/yaml/setup',
             plugins: {
                 yaml: pluginYaml
             }
@@ -25,7 +25,7 @@ export async function yaml(options: OptionsOverrides & OptionsStylistic & Option
             languageOptions: {
                 parser: parserYaml
             },
-            name: `${PLUGIN_PREFIX}/yaml/rules`,
+            name: 'jiangweiye/yaml/rules',
             rules: {
                 'style/spaced-comment': 'off',
 
@@ -46,7 +46,7 @@ export async function yaml(options: OptionsOverrides & OptionsStylistic & Option
                           'yaml/flow-mapping-curly-spacing': 'error',
                           'yaml/flow-sequence-bracket-newline': 'error',
                           'yaml/flow-sequence-bracket-spacing': 'error',
-                          'yaml/indent': ['off', 4],
+                          'yaml/indent': ['off', indent === 'tab' ? 4 : indent],
                           'yaml/key-spacing': 'error',
                           'yaml/no-tab-indent': 'error',
                           'yaml/quotes': ['error', { avoidEscape: false, prefer: quotes }],

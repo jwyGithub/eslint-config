@@ -1,5 +1,9 @@
-import { isPackageExists } from 'local-pkg';
+import type { OptionsFormatters, StylisticConfig, TypedFlatConfigItem } from '../types';
+import type { VendoredPrettierOptions, VendoredPrettierRuleOptions } from '../vender/prettier-types';
+
 import { DEFAULT_OPTIONS } from '@jiangweiye/prettier-config/options';
+import { isPackageExists } from 'local-pkg';
+
 import {
     GLOB_ASTRO,
     GLOB_ASTRO_TS,
@@ -13,11 +17,16 @@ import {
     GLOB_SVG,
     GLOB_XML
 } from '../globs';
-import type { VendoredPrettierOptions } from '../vender/prettier-types';
 import { ensurePackages, interopDefault, isPackageInScope, parserPlain } from '../utils';
-import type { OptionsFormatters, StylisticConfig, TypedFlatConfigItem } from '../types';
-import { PLUGIN_PREFIX } from '../factory';
 import { StylisticConfigDefaults } from './stylistic';
+
+function mergePrettierOptions(options: VendoredPrettierOptions, overrides: VendoredPrettierRuleOptions = {}): VendoredPrettierRuleOptions {
+    return {
+        ...options,
+        ...overrides,
+        plugins: [...(overrides.plugins || []), ...(options.plugins || [])]
+    };
+}
 
 export async function formatters(options: OptionsFormatters | true = {}, stylistic: StylisticConfig = {}): Promise<TypedFlatConfigItem[]> {
     if (options === true) {
@@ -53,6 +62,7 @@ export async function formatters(options: OptionsFormatters | true = {}, stylist
         {
             ...DEFAULT_OPTIONS,
             endOfLine: DEFAULT_OPTIONS.endOfLine,
+            printWidth: DEFAULT_OPTIONS.printWidth,
             semi,
             singleQuote: DEFAULT_OPTIONS.singleQuote,
             tabWidth: typeof indent === 'number' ? indent : 4,
@@ -61,7 +71,8 @@ export async function formatters(options: OptionsFormatters | true = {}, stylist
         } satisfies VendoredPrettierOptions,
         options.prettierOptions || {}
     );
-    const prettierXmlOptions = {
+
+    const prettierXmlOptions: VendoredPrettierOptions = {
         xmlQuoteAttributes: 'double',
         xmlSelfClosingSpace: true,
         xmlSortAttributesByKey: false,
@@ -81,7 +92,7 @@ export async function formatters(options: OptionsFormatters | true = {}, stylist
 
     const configs: TypedFlatConfigItem[] = [
         {
-            name: `${PLUGIN_PREFIX}/formatter/setup`,
+            name: 'jiangweiye/formatter/setup',
             plugins: {
                 format: pluginFormat
             }
@@ -95,14 +106,13 @@ export async function formatters(options: OptionsFormatters | true = {}, stylist
                 languageOptions: {
                     parser: parserPlain
                 },
-                name: `${PLUGIN_PREFIX}/formatter/css`,
+                name: 'jiangweiye/formatter/css',
                 rules: {
                     'format/prettier': [
                         'error',
-                        {
-                            ...prettierOptions,
+                        mergePrettierOptions(prettierOptions, {
                             parser: 'css'
-                        }
+                        })
                     ]
                 }
             },
@@ -111,14 +121,13 @@ export async function formatters(options: OptionsFormatters | true = {}, stylist
                 languageOptions: {
                     parser: parserPlain
                 },
-                name: `${PLUGIN_PREFIX}/formatter/scss`,
+                name: 'jiangweiye/formatter/scss',
                 rules: {
                     'format/prettier': [
                         'error',
-                        {
-                            ...prettierOptions,
+                        mergePrettierOptions(prettierOptions, {
                             parser: 'scss'
-                        }
+                        })
                     ]
                 }
             },
@@ -127,14 +136,13 @@ export async function formatters(options: OptionsFormatters | true = {}, stylist
                 languageOptions: {
                     parser: parserPlain
                 },
-                name: `${PLUGIN_PREFIX}/formatter/less`,
+                name: 'jiangweiye/formatter/less',
                 rules: {
                     'format/prettier': [
                         'error',
-                        {
-                            ...prettierOptions,
+                        mergePrettierOptions(prettierOptions, {
                             parser: 'less'
-                        }
+                        })
                     ]
                 }
             }
@@ -147,14 +155,13 @@ export async function formatters(options: OptionsFormatters | true = {}, stylist
             languageOptions: {
                 parser: parserPlain
             },
-            name: `${PLUGIN_PREFIX}/formatter/html`,
+            name: 'jiangweiye/formatter/html',
             rules: {
                 'format/prettier': [
                     'error',
-                    {
-                        ...prettierOptions,
+                    mergePrettierOptions(prettierOptions, {
                         parser: 'html'
-                    }
+                    })
                 ]
             }
         });
@@ -166,37 +173,38 @@ export async function formatters(options: OptionsFormatters | true = {}, stylist
             languageOptions: {
                 parser: parserPlain
             },
-            name: `${PLUGIN_PREFIX}/formatter/xml`,
+            name: 'jiangweiye/formatter/xml',
             rules: {
                 'format/prettier': [
                     'error',
-                    {
-                        ...prettierXmlOptions,
-                        ...prettierOptions,
-                        parser: 'xml',
-                        plugins: ['@prettier/plugin-xml']
-                    }
+                    mergePrettierOptions(
+                        { ...prettierXmlOptions, ...prettierOptions },
+                        {
+                            parser: 'xml',
+                            plugins: ['@prettier/plugin-xml']
+                        }
+                    )
                 ]
             }
         });
     }
-
     if (options.svg) {
         configs.push({
             files: [GLOB_SVG],
             languageOptions: {
                 parser: parserPlain
             },
-            name: `${PLUGIN_PREFIX}/formatter/svg`,
+            name: 'jiangweiye/formatter/svg',
             rules: {
                 'format/prettier': [
                     'error',
-                    {
-                        ...prettierXmlOptions,
-                        ...prettierOptions,
-                        parser: 'xml',
-                        plugins: ['@prettier/plugin-xml']
-                    }
+                    mergePrettierOptions(
+                        { ...prettierXmlOptions, ...prettierOptions },
+                        {
+                            parser: 'xml',
+                            plugins: ['@prettier/plugin-xml']
+                        }
+                    )
                 ]
             }
         });
@@ -213,17 +221,15 @@ export async function formatters(options: OptionsFormatters | true = {}, stylist
             languageOptions: {
                 parser: parserPlain
             },
-            name: `${PLUGIN_PREFIX}/formatter/markdown`,
+            name: 'jiangweiye/formatter/markdown',
             rules: {
                 [`format/${formater}`]: [
                     'error',
                     formater === 'prettier'
-                        ? {
-                              printWidth: DEFAULT_OPTIONS.printWidth,
-                              ...prettierOptions,
+                        ? mergePrettierOptions(prettierOptions, {
                               embeddedLanguageFormatting: 'off',
                               parser: 'markdown'
-                          }
+                          })
                         : {
                               ...dprintOptions,
                               language: 'markdown'
@@ -238,17 +244,15 @@ export async function formatters(options: OptionsFormatters | true = {}, stylist
                 languageOptions: {
                     parser: parserPlain
                 },
-                name: `${PLUGIN_PREFIX}/formatter/slidev`,
+                name: 'jiangweiye/formatter/slidev',
                 rules: {
                     'format/prettier': [
                         'error',
-                        {
-                            printWidth: DEFAULT_OPTIONS.printWidth,
-                            ...prettierOptions,
+                        mergePrettierOptions(prettierOptions, {
                             embeddedLanguageFormatting: 'off',
                             parser: 'slidev',
                             plugins: ['prettier-plugin-slidev']
-                        }
+                        })
                     ]
                 }
             });
@@ -261,22 +265,21 @@ export async function formatters(options: OptionsFormatters | true = {}, stylist
             languageOptions: {
                 parser: parserPlain
             },
-            name: `${PLUGIN_PREFIX}/formatter/astro`,
+            name: 'jiangweiye/formatter/astro',
             rules: {
                 'format/prettier': [
                     'error',
-                    {
-                        ...prettierOptions,
+                    mergePrettierOptions(prettierOptions, {
                         parser: 'astro',
                         plugins: ['prettier-plugin-astro']
-                    }
+                    })
                 ]
             }
         });
 
         configs.push({
             files: [GLOB_ASTRO, GLOB_ASTRO_TS],
-            name: `${PLUGIN_PREFIX}/formatter/astro/disables`,
+            name: 'jiangweiye/formatter/astro/disables',
             rules: {
                 'style/arrow-parens': 'off',
                 'style/block-spacing': 'off',
@@ -295,14 +298,13 @@ export async function formatters(options: OptionsFormatters | true = {}, stylist
             languageOptions: {
                 parser: parserPlain
             },
-            name: `${PLUGIN_PREFIX}/formatter/graphql`,
+            name: 'jiangweiye/formatter/graphql',
             rules: {
                 'format/prettier': [
                     'error',
-                    {
-                        ...prettierOptions,
+                    mergePrettierOptions(prettierOptions, {
                         parser: 'graphql'
-                    }
+                    })
                 ]
             }
         });

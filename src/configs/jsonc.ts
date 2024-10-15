@@ -1,7 +1,7 @@
 import type { OptionsFiles, OptionsOverrides, OptionsStylistic, TypedFlatConfigItem } from '../types';
+
 import { GLOB_JSON, GLOB_JSON5, GLOB_JSONC } from '../globs';
 import { interopDefault } from '../utils';
-import { PLUGIN_PREFIX } from '../factory';
 
 export async function jsonc(options: OptionsFiles & OptionsStylistic & OptionsOverrides = {}): Promise<TypedFlatConfigItem[]> {
     const { files = [GLOB_JSON, GLOB_JSON5, GLOB_JSONC], overrides = {}, stylistic = true } = options;
@@ -15,7 +15,7 @@ export async function jsonc(options: OptionsFiles & OptionsStylistic & OptionsOv
 
     return [
         {
-            name: `${PLUGIN_PREFIX}/jsonc/setup`,
+            name: 'jiangweiye/jsonc/setup',
             plugins: {
                 jsonc: pluginJsonc as any
             }
@@ -25,7 +25,7 @@ export async function jsonc(options: OptionsFiles & OptionsStylistic & OptionsOv
             languageOptions: {
                 parser: parserJsonc
             },
-            name: `${PLUGIN_PREFIX}/jsonc/rules`,
+            name: 'jiangweiye/jsonc/rules',
             rules: {
                 'jsonc/no-bigint-literals': 'error',
                 'jsonc/no-binary-expression': 'error',

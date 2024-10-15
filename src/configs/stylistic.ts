@@ -1,7 +1,7 @@
-import { DEFAULT_OPTIONS } from '@jiangweiye/prettier-config/options';
-import { PLUGIN_PREFIX } from '../factory';
-import { interopDefault } from '../utils';
 import type { OptionsOverrides, StylisticConfig, TypedFlatConfigItem } from '../types';
+import { DEFAULT_OPTIONS } from '@jiangweiye/prettier-config/options';
+
+import { interopDefault } from '../utils';
 
 export const StylisticConfigDefaults: StylisticConfig = {
     indent: DEFAULT_OPTIONS.tabWidth,
@@ -18,8 +18,8 @@ export async function stylistic(options: StylisticOptions = {}): Promise<TypedFl
     const {
         indent,
         jsx,
-        lessOpinionated = false,
         overrides = {},
+        lessOpinionated,
         quotes,
         semi
     } = {
@@ -40,7 +40,7 @@ export async function stylistic(options: StylisticOptions = {}): Promise<TypedFl
 
     return [
         {
-            name: `${PLUGIN_PREFIX}/stylistic/rules`,
+            name: 'jiangweiye/stylistic/rules',
             plugins: {
                 style: pluginStylistic
             },

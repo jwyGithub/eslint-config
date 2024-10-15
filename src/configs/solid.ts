@@ -1,7 +1,7 @@
-import { ensurePackages, interopDefault, toArray } from '../utils';
 import type { OptionsFiles, OptionsHasTypeScript, OptionsOverrides, OptionsTypeScriptWithTypes, TypedFlatConfigItem } from '../types';
 import { GLOB_JSX, GLOB_TSX } from '../globs';
-import { PLUGIN_PREFIX } from '../factory';
+
+import { ensurePackages, interopDefault, toArray } from '../utils';
 
 export async function solid(
     options: OptionsHasTypeScript & OptionsOverrides & OptionsFiles & OptionsTypeScriptWithTypes = {}
@@ -20,7 +20,7 @@ export async function solid(
 
     return [
         {
-            name: `${PLUGIN_PREFIX}/solid/setup`,
+            name: 'jiangweiye/solid/setup',
             plugins: {
                 solid: pluginSolid
             }
@@ -37,7 +37,7 @@ export async function solid(
                 },
                 sourceType: 'module'
             },
-            name: `${PLUGIN_PREFIX}/solid/rules`,
+            name: 'jiangweiye/solid/rules',
             rules: {
                 // reactivity
                 'solid/components-return-once': 'warn',
