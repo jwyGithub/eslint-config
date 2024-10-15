@@ -2,14 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-### [0.1.9](https://github.com/jwyGithub/eslint-config/compare/v0.1.8...v0.1.9) (2024-10-15)
+### [0.1.10](https://github.com/jwyGithub/eslint-config/compare/v0.1.9...v0.1.10) (2024-10-15)
 
 
 ### Bug Fixes
 
-* update release ([fbacff6](https://github.com/jwyGithub/eslint-config/commit/fbacff694f16944e5c884f734bd40f7c1f25c07f))
-* update release yml ([6cb9ccd](https://github.com/jwyGithub/eslint-config/commit/6cb9ccd67ab25174c063d0a8af4544b36c9bb080))
-* update release yml ([6e170d0](https://github.com/jwyGithub/eslint-config/commit/6e170d031c53b549f80c3a01469c1fd7fb22416f))
+* remove bin ([17c0a0d](https://github.com/jwyGithub/eslint-config/commit/17c0a0df4b6fb4b6752c2d8e4de5fe052975389c))
+* update release yml ([d341619](https://github.com/jwyGithub/eslint-config/commit/d341619a2a19076cc1b5d5a4566924b17aab0ce7))
+
+### [0.1.9](https://github.com/jwyGithub/eslint-config/compare/v0.1.8...v0.1.9) (2024-10-15)
+
+### Bug Fixes
+
+-   update release ([fbacff6](https://github.com/jwyGithub/eslint-config/commit/fbacff694f16944e5c884f734bd40f7c1f25c07f))
+-   update release yml ([6cb9ccd](https://github.com/jwyGithub/eslint-config/commit/6cb9ccd67ab25174c063d0a8af4544b36c9bb080))
+-   update release yml ([6e170d0](https://github.com/jwyGithub/eslint-config/commit/6e170d031c53b549f80c3a01469c1fd7fb22416f))
 
 ### [0.1.8](https://github.com/jwyGithub/eslint-config/compare/v0.1.8-beta.2...v0.1.8) (2024-10-15)
 
