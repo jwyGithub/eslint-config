@@ -107,3 +107,4 @@ typings/
 src/typegen.d.ts
 
 dist
+bin
