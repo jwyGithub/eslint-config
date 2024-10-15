@@ -31,14 +31,14 @@ jobs:
             - name: Install dependencies
               run: pnpm install --frozen-lockfile
 
+            - name: Build
+              run: pnpm run build
+
             - name: Lint
               run: pnpm lint
 
             - name: Prettier
               run: pnpm prettier --check .
-
-            - name: Build
-              run: pnpm run build
 
             - name: Configure git
               run: |
