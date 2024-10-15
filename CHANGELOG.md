@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.13](https://github.com/jwyGithub/eslint-config/compare/v0.1.12...v0.1.13) (2024-10-15)
+
+
+### Bug Fixes
+
+* update rules ([1970d8f](https://github.com/jwyGithub/eslint-config/commit/1970d8fc7bc414542d16d27b155043beb1b5d10b))
+
 ### [0.1.12](https://github.com/jwyGithub/eslint-config/compare/v0.1.11...v0.1.12) (2024-10-15)
 
 
