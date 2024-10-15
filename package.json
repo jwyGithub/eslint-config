@@ -32,7 +32,7 @@
         "dist"
     ],
     "scripts": {
-        "build": "npm run typegen && tsup --format esm,cjs --clean --dts",
+        "build": "pnpm run typegen && tsup --format esm,cjs --clean --dts",
         "stub": "tsup --format esm",
         "dev": "npx @eslint/config-inspector --config eslint.config.js",
         "build:inspector": "pnpm build && npx @eslint/config-inspector build",
@@ -42,7 +42,8 @@
         "typegen": "esno scripts/typegen.ts",
         "test": "vitest",
         "typecheck": "tsc --noEmit",
-        "prettier": "npx prettier --write ."
+        "prettier": "npx prettier --write .",
+        "release": "standard-version"
     },
     "peerDependencies": {
         "@eslint-react/eslint-plugin": "^1.5.8",
@@ -169,6 +170,7 @@
         "prettier-plugin-slidev": "^1.0.5",
         "rimraf": "^6.0.1",
         "simple-git-hooks": "^2.11.1",
+        "standard-version": "^9.5.0",
         "svelte": "^4.2.19",
         "svelte-eslint-parser": "^0.41.0",
         "tsup": "^8.2.4",
