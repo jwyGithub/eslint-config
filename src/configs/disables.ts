@@ -8,7 +8,6 @@ export async function disables(): Promise<TypedFlatConfigItem[]> {
             files: [`**/scripts/${GLOB_SRC}`],
             name: 'jiangweiye/disables/scripts',
             rules: {
-                'jiangweiye/no-top-level-await': 'off',
                 'no-console': 'off',
                 'ts/explicit-function-return-type': 'off'
             }
@@ -17,7 +16,6 @@ export async function disables(): Promise<TypedFlatConfigItem[]> {
             files: [`**/cli/${GLOB_SRC}`, `**/cli.${GLOB_SRC_EXT}`],
             name: 'jiangweiye/disables/cli',
             rules: {
-                'jiangweiye/no-top-level-await': 'off',
                 'no-console': 'off'
             }
         },
@@ -50,7 +48,6 @@ export async function disables(): Promise<TypedFlatConfigItem[]> {
             files: [`**/*.config.${GLOB_SRC_EXT}`, `**/*.config.*.${GLOB_SRC_EXT}`],
             name: 'jiangweiye/disables/config-files',
             rules: {
-                'jiangweiye/no-top-level-await': 'off',
                 'no-console': 'off',
                 'ts/explicit-function-return-type': 'off'
             }

@@ -19,7 +19,7 @@ export async function stylistic(options: StylisticOptions = {}): Promise<TypedFl
         indent,
         jsx,
         overrides = {},
-        lessOpinionated,
+        lessOpinionated = false,
         quotes,
         semi
     } = {

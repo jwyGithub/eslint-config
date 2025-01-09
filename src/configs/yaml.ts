@@ -6,7 +6,7 @@ import { interopDefault } from '../utils';
 export async function yaml(options: OptionsOverrides & OptionsStylistic & OptionsFiles = {}): Promise<TypedFlatConfigItem[]> {
     const { files = [GLOB_YAML], overrides = {}, stylistic = true } = options;
 
-    const { indent = 2, quotes = 'single' } = typeof stylistic === 'boolean' ? {} : stylistic;
+    const { indent = 4, quotes = 'single' } = typeof stylistic === 'boolean' ? {} : stylistic;
 
     const [pluginYaml, parserYaml] = await Promise.all([
         interopDefault(import('eslint-plugin-yml')),
@@ -49,7 +49,7 @@ export async function yaml(options: OptionsOverrides & OptionsStylistic & Option
                           'yaml/indent': ['off', indent === 'tab' ? 4 : indent],
                           'yaml/key-spacing': 'error',
                           'yaml/no-tab-indent': 'error',
-                          'yaml/quotes': ['error', { avoidEscape: false, prefer: quotes }],
+                          'yaml/quotes': ['error', { avoidEscape: true, prefer: quotes === 'backtick' ? 'single' : quotes }],
                           'yaml/spaced-comment': 'error'
                       }
                     : {}),

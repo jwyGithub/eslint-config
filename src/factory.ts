@@ -213,6 +213,7 @@ export function eslint(
     if (enableReact) {
         configs.push(
             react({
+                ...typescriptOptions,
                 overrides: getOverrides(options, 'react'),
                 tsconfigPath
             })
@@ -329,7 +330,7 @@ export function eslint(
 export type ResolvedOptions<T> = T extends boolean ? never : NonNullable<T>;
 
 export function resolveSubOptions<K extends keyof OptionsConfig>(options: OptionsConfig, key: K): ResolvedOptions<OptionsConfig[K]> {
-    return typeof options[key] === 'boolean' ? ({} as any) : options[key] || {};
+    return typeof options[key] === 'boolean' ? ({} as any) : options[key] || ({} as any);
 }
 
 export function getOverrides<K extends keyof OptionsConfig>(options: OptionsConfig, key: K): Partial<Linter.RulesRecord & RuleOptions> {

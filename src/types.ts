@@ -33,7 +33,7 @@ export interface OptionsVue extends OptionsOverrides {
     /**
      * Create virtual files for Vue SFC blocks to enable linting.
      *
-     * @see https://github.com/jiangweiye/eslint-processor-vue-blocks
+     * @see https://github.com/antfu/eslint-processor-vue-blocks
      * @default true
      */
     sfcBlocks?: boolean | VueBlocksOptions;
@@ -228,7 +228,7 @@ export interface OptionsConfig extends OptionsComponentExts, OptionsProjectType 
      *
      * Passing an object to configure the options.
      *
-     * @see https://github.com/jiangweiye/eslint-config-flat-gitignore
+     * @see https://github.com/antfu/eslint-config-flat-gitignore
      * @default true
      */
     gitignore?: boolean | FlatGitignoreOptions;
@@ -237,8 +237,8 @@ export interface OptionsConfig extends OptionsComponentExts, OptionsProjectType 
      * Disable some opinionated rules to Anthony's preference.
      *
      * Including:
-     * - `jiangweiye/top-level-function`
-     * - `jiangweiye/if-newline`
+     * - `antfu/top-level-function`
+     * - `antfu/if-newline`
      *
      * @default false
      */
