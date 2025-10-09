@@ -181,6 +181,7 @@
         "prettier-plugin-astro": "catalog:peer",
         "prettier-plugin-slidev": "catalog:peer",
         "simple-git-hooks": "catalog:dev",
+        "standard-version": "^9.5.0",
         "svelte": "catalog:peer",
         "svelte-eslint-parser": "catalog:peer",
         "tinyglobby": "catalog:dev",
