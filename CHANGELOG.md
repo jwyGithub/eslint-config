@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.15](https://github.com/jwyGithub/eslint-config/compare/v0.1.14...v0.1.15) (2025-10-09)
+
+
+### Bug Fixes
+
+* update eslint configuration and changelog; adjust build script and improve version generation formatting ([62f7fba](https://github.com/jwyGithub/eslint-config/commit/62f7fba8601622fdddea612c175db901e5821706))
+* update package.json, pnpm-lock.yaml, and workspace configuration; migrate from tsup to tsdown, add nextjs and pnpm support, and enhance eslint rules ([ea2e050](https://github.com/jwyGithub/eslint-config/commit/ea2e0505867fff524437f1616c0a6f0aa45a01b8))
+* upgrade deps ([d05d591](https://github.com/jwyGithub/eslint-config/commit/d05d5917bbdce08dca0b48cec9ba9e6fa72f8b2d))
+
 ### [0.1.14](https://github.com/jwyGithub/eslint-config/compare/v0.1.13...v0.1.14) (2025-01-09)
 
 ### [0.1.13](https://github.com/jwyGithub/eslint-config/compare/v0.1.12...v0.1.13) (2024-10-15)
