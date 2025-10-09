@@ -45,16 +45,18 @@ export async function stylistic(options: StylisticOptions = {}): Promise<TypedFl
             },
             rules: {
                 ...config.rules,
-
-                ...(lessOpinionated
-                    ? {
-                          curly: ['error', 'all']
-                      }
-                    : {}),
-
-                'style/generator-star-spacing': ['error', { after: true, before: false }],
-                'style/yield-star-spacing': ['error', { after: true, before: false }],
-
+                ...(lessOpinionated ? { curly: ['error', 'all'] } : { curly: ['error', 'multi-or-nest', 'consistent'] }),
+                curly: ['off', 'multi'],
+                'style/arrow-parens': ['error', 'as-needed'],
+                'style/brace-style': 'error',
+                'style/comma-dangle': ['off'],
+                'style/indent': ['off'],
+                'style/indent-binary-ops': 'off',
+                'style/jsx-quotes': ['error', 'prefer-single'],
+                'style/no-multiple-empty-lines': ['off'],
+                'style/no-tabs': 'off',
+                'style/operator-linebreak': 'off',
+                'style/quote-props': ['error', 'as-needed'],
                 ...overrides
             }
         }

@@ -22,5 +22,5 @@ const versions = Object.fromEntries(
 
 await fs.writeFile(
     new URL('../src/cli/constants-generated.ts', import.meta.url),
-    `export const versionsMap = ${JSON.stringify(versions, null, 2)}`
+    `export const versionsMap = ${JSON.stringify(versions, null, 4)}`
 );

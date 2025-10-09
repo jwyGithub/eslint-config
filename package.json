@@ -32,7 +32,7 @@
         "dist"
     ],
     "scripts": {
-        "build": "pnpm run typegen && tsdown --clean --dts",
+        "build": "pnpm run typegen && pnpm run prettier && tsdown --clean --dts",
         "stub": "tsdown",
         "dev": "npx @eslint/config-inspector --config eslint.config.js",
         "build:inspector": "pnpm build && npx @eslint/config-inspector build",
