@@ -109,6 +109,7 @@ export async function typescript(
                     'error',
                     {
                         disallowTypeAnnotations: false,
+                        fixStyle: 'separate-type-imports',
                         prefer: 'type-imports'
                     }
                 ],

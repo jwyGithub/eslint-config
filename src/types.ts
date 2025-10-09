@@ -8,18 +8,29 @@ import type { VendoredPrettierOptions } from './vender/prettier-types';
 
 export type Awaitable<T> = T | Promise<T>;
 
-export type Rules = RuleOptions;
+export type Rules = Record<string, Linter.RuleEntry<any> | undefined> & RuleOptions;
 
 export type { ConfigNames };
 
-export type TypedFlatConfigItem = Omit<Linter.Config<Linter.RulesRecord & Rules>, 'plugins'> & {
-    // Relax plugins type limitation, as most of the plugins did not have correct type info yet.
+/**
+ * An updated version of ESLint's `Linter.Config`, which provides autocompletion
+ * for `rules` and relaxes type limitations for `plugins` and `rules`, because
+ * many plugins still lack proper type definitions.
+ */
+export type TypedFlatConfigItem = Omit<Linter.Config, 'plugins' | 'rules'> & {
     /**
-     * An object containing a name-value mapping of plugin names to plugin objects. When `files` is specified, these plugins are only available to the matching files.
+     * An object containing a name-value mapping of plugin names to plugin objects.
+     * When `files` is specified, these plugins are only available to the matching files.
      *
      * @see [Using plugins in your configuration](https://eslint.org/docs/latest/user-guide/configuring/configuration-files-new#using-plugins-in-your-configuration)
      */
     plugins?: Record<string, any>;
+
+    /**
+     * An object containing the configured rules. When `files` or `ignores` are
+     * specified, these rule configurations are only available to the matching files.
+     */
+    rules?: Rules;
 };
 
 export interface OptionsFiles {
@@ -33,7 +44,7 @@ export interface OptionsVue extends OptionsOverrides {
     /**
      * Create virtual files for Vue SFC blocks to enable linting.
      *
-     * @see https://github.com/antfu/eslint-processor-vue-blocks
+     * @see https://github.com/jiangweiye/eslint-processor-vue-blocks
      * @default true
      */
     sfcBlocks?: boolean | VueBlocksOptions;
@@ -44,6 +55,31 @@ export interface OptionsVue extends OptionsOverrides {
      * @default 3
      */
     vueVersion?: 2 | 3;
+
+    /**
+     * Vue accessibility plugin. Help check a11y issue in `.vue` files upon enabled
+     *
+     * @see https://vue-a11y.github.io/eslint-plugin-vuejs-accessibility/
+     * @default false
+     */
+    a11y?: boolean;
+}
+
+export interface OptionsJSXA11y extends OptionsOverrides {
+    // Add future a11y-specific options here
+}
+
+export interface OptionsJSX {
+    /**
+     * Enable JSX accessibility rules.
+     *
+     * Requires installing:
+     * - `eslint-plugin-jsx-a11y`
+     *
+     * Can be a boolean or an object for custom options and overrides.
+     * @default false
+     */
+    a11y?: boolean | OptionsJSXA11y;
 }
 
 export type OptionsTypescript = (OptionsTypeScriptWithTypes & OptionsOverrides) | (OptionsTypeScriptParserOptions & OptionsOverrides);
@@ -134,7 +170,7 @@ export interface OptionsComponentExts {
     componentExts?: string[];
 }
 
-export interface OptionsUnicorn {
+export interface OptionsUnicorn extends OptionsOverrides {
     /**
      * Include all rules recommended by `eslint-plugin-unicorn`, instead of only ones picked by Anthony.
      *
@@ -228,7 +264,7 @@ export interface OptionsConfig extends OptionsComponentExts, OptionsProjectType 
      *
      * Passing an object to configure the options.
      *
-     * @see https://github.com/antfu/eslint-config-flat-gitignore
+     * @see https://github.com/jiangweiye/eslint-config-flat-gitignore
      * @default true
      */
     gitignore?: boolean | FlatGitignoreOptions;
@@ -237,8 +273,8 @@ export interface OptionsConfig extends OptionsComponentExts, OptionsProjectType 
      * Disable some opinionated rules to Anthony's preference.
      *
      * Including:
-     * - `antfu/top-level-function`
-     * - `antfu/if-newline`
+     * - `jiangweiye/top-level-function`
+     * - `jiangweiye/if-newline`
      *
      * @default false
      */
@@ -261,11 +297,11 @@ export interface OptionsConfig extends OptionsComponentExts, OptionsProjectType 
     /**
      * Enable JSX related rules.
      *
-     * Currently only stylistic rules are included.
+     * Passing an object to enable JSX accessibility rules.
      *
      * @default true
      */
-    jsx?: boolean;
+    jsx?: boolean | OptionsJSX;
 
     /**
      * Options for eslint-plugin-unicorn.
@@ -273,6 +309,13 @@ export interface OptionsConfig extends OptionsComponentExts, OptionsProjectType 
      * @default true
      */
     unicorn?: boolean | OptionsUnicorn;
+
+    /**
+     * Options for eslint-plugin-import-lite.
+     *
+     * @default true
+     */
+    imports?: boolean | OptionsOverrides;
 
     /**
      * Enable test support.
@@ -358,6 +401,17 @@ export interface OptionsConfig extends OptionsComponentExts, OptionsProjectType 
      * @default false
      */
     react?: boolean | OptionsOverrides;
+
+    /**
+     * Enable nextjs rules.
+     *
+     * Requires installing:
+     * - `@next/eslint-plugin-next`
+     *
+     * @default false
+     */
+    nextjs?: boolean | OptionsOverrides;
+
     /**
      * Enable solid rules.
      *
@@ -376,7 +430,7 @@ export interface OptionsConfig extends OptionsComponentExts, OptionsProjectType 
      *
      * @default false
      */
-    svelte?: boolean;
+    svelte?: boolean | OptionsOverrides;
 
     /**
      * Enable unocss rules.
@@ -387,6 +441,14 @@ export interface OptionsConfig extends OptionsComponentExts, OptionsProjectType 
      * @default false
      */
     unocss?: boolean | OptionsUnoCSS;
+
+    /**
+     * Enable pnpm (workspace/catalogs) support.
+     *
+     * Currently it's disabled by default, as it's still experimental.
+     * In the future it will be smartly enabled based on the project usage.
+     */
+    pnpm?: boolean;
 
     /**
      * Use external formatters to format files.

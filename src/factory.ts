@@ -16,8 +16,10 @@ import {
     jsonc,
     jsx,
     markdown,
+    nextjs,
     node,
     perfectionist,
+    pnpm,
     react,
     solid,
     sortPackageJson,
@@ -33,7 +35,6 @@ import {
     yaml
 } from './configs';
 import { formatters } from './configs/formatters';
-
 import { regexp } from './configs/regexp';
 import { interopDefault, isInEditorEnv } from './utils';
 
@@ -55,11 +56,13 @@ export const defaultPluginRenaming = {
     '@eslint-react/hooks-extra': 'react-hooks-extra',
     '@eslint-react/naming-convention': 'react-naming-convention',
 
+    '@next/next': 'next',
     '@stylistic': 'style',
     '@typescript-eslint': 'ts',
-    'import-x': 'import',
+    'import-lite': 'import',
     n: 'node',
     vitest: 'test',
+
     yml: 'yaml'
 };
 
@@ -82,7 +85,10 @@ export function eslint(
         autoRenamePlugins = true,
         componentExts = [],
         gitignore: enableGitignore = true,
+        imports: enableImports = true,
         jsx: enableJsx = true,
+        nextjs: enableNextjs = false,
+        pnpm: enableCatalogs = false, // TODO: smart detect
         react: enableReact = false,
         regexp: enableRegexp = true,
         solid: enableSolid = false,
@@ -103,7 +109,7 @@ export function eslint(
 
     const stylisticOptions = options.stylistic === false ? false : typeof options.stylistic === 'object' ? options.stylistic : {};
 
-    if (stylisticOptions && !('jsx' in stylisticOptions)) stylisticOptions.jsx = enableJsx;
+    if (stylisticOptions && !('jsx' in stylisticOptions)) stylisticOptions.jsx = typeof enableJsx === 'object' ? true : enableJsx;
 
     const configs: Awaitable<TypedFlatConfigItem[]>[] = [];
 
@@ -153,6 +159,21 @@ export function eslint(
         perfectionist()
     );
 
+    if (enableImports) {
+        configs.push(
+            imports(
+                enableImports === true
+                    ? {
+                          stylistic: stylisticOptions
+                      }
+                    : {
+                          stylistic: stylisticOptions,
+                          ...enableImports
+                      }
+            )
+        );
+    }
+
     if (enableUnicorn) {
         configs.push(unicorn(enableUnicorn === true ? {} : enableUnicorn));
     }
@@ -162,7 +183,7 @@ export function eslint(
     }
 
     if (enableJsx) {
-        configs.push(jsx());
+        configs.push(jsx(enableJsx === true ? {} : enableJsx));
     }
 
     if (enableTypeScript) {
@@ -220,6 +241,14 @@ export function eslint(
         );
     }
 
+    if (enableNextjs) {
+        configs.push(
+            nextjs({
+                overrides: getOverrides(options, 'nextjs')
+            })
+        );
+    }
+
     if (enableSolid) {
         configs.push(
             solid({
@@ -267,6 +296,10 @@ export function eslint(
             sortPackageJson(),
             sortTsconfig()
         );
+    }
+
+    if (enableCatalogs) {
+        configs.push(pnpm());
     }
 
     if (options.yaml ?? true) {
@@ -322,6 +355,12 @@ export function eslint(
 
     if (autoRenamePlugins) {
         composer = composer.renamePlugins(defaultPluginRenaming);
+    }
+
+    if (isInEditor) {
+        composer = composer.disableRulesFix(['unused-imports/no-unused-imports', 'test/no-only-tests', 'prefer-const'], {
+            builtinRules: () => import(['eslint', 'use-at-your-own-risk'].join('/')).then(r => r.builtinRules)
+        });
     }
 
     return composer;

@@ -1,13 +1,10 @@
 import type { ExtraLibrariesOption, FrameworkOption, PromItem } from './types';
 
-import c from 'picocolors';
-import pkgJson from '../../package.json';
-
-export { pkgJson };
+import c from 'ansis';
 
 export const vscodeSettingsString = `
   // Disable the default formatter, use eslint instead
-  "prettier.enable": true,
+  "prettier.enable": false,
   "editor.formatOnSave": false,
 
   // Auto fix
@@ -40,6 +37,7 @@ export const vscodeSettingsString = `
     "html",
     "markdown",
     "json",
+    "json5",
     "jsonc",
     "yaml",
     "toml",
@@ -47,6 +45,7 @@ export const vscodeSettingsString = `
     "gql",
     "graphql",
     "astro",
+    "svelte",
     "css",
     "less",
     "scss",
@@ -100,9 +99,13 @@ export const extra: ExtraLibrariesOption[] = extraOptions.map(({ value }) => val
 
 export const dependenciesMap = {
     astro: ['eslint-plugin-astro', 'astro-eslint-parser'],
+    formatter: ['eslint-plugin-format'],
+    formatterAstro: ['prettier-plugin-astro'],
+    nextjs: ['@next/eslint-plugin-next'],
     react: ['@eslint-react/eslint-plugin', 'eslint-plugin-react-hooks', 'eslint-plugin-react-refresh'],
     slidev: ['prettier-plugin-slidev'],
     solid: ['eslint-plugin-solid'],
     svelte: ['eslint-plugin-svelte', 'svelte-eslint-parser'],
+    unocss: ['@unocss/eslint-plugin'],
     vue: []
 } as const;

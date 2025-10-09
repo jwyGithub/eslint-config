@@ -10,7 +10,7 @@ export async function javascript(options: OptionsIsInEditor & OptionsOverrides =
     return [
         {
             languageOptions: {
-                ecmaVersion: 2022,
+                ecmaVersion: 'latest',
                 globals: {
                     ...globals.browser,
                     ...globals.es2021,
@@ -23,7 +23,7 @@ export async function javascript(options: OptionsIsInEditor & OptionsOverrides =
                     ecmaFeatures: {
                         jsx: true
                     },
-                    ecmaVersion: 2022,
+                    ecmaVersion: 'latest',
                     sourceType: 'module'
                 },
                 sourceType: 'module'
@@ -172,7 +172,7 @@ export async function javascript(options: OptionsIsInEditor & OptionsOverrides =
                     }
                 ],
                 'prefer-const': [
-                    'error',
+                    isInEditor ? 'warn' : 'error',
                     {
                         destructuring: 'all',
                         ignoreReadBeforeAssign: true
@@ -186,7 +186,7 @@ export async function javascript(options: OptionsIsInEditor & OptionsOverrides =
                 'prefer-template': 'error',
                 'symbol-description': 'error',
                 'unicode-bom': ['error', 'never'],
-                'unused-imports/no-unused-imports': isInEditor ? 'off' : 'error',
+                'unused-imports/no-unused-imports': isInEditor ? 'warn' : 'error',
                 'unused-imports/no-unused-vars': [
                     'error',
                     {

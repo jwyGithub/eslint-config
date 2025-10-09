@@ -17,6 +17,7 @@ import {
     GLOB_SVG,
     GLOB_XML
 } from '../globs';
+
 import { ensurePackages, interopDefault, isPackageInScope, parserPlain } from '../utils';
 import { StylisticConfigDefaults } from './stylistic';
 
@@ -65,7 +66,7 @@ export async function formatters(options: OptionsFormatters | true = {}, stylist
             printWidth: DEFAULT_OPTIONS.printWidth,
             semi,
             singleQuote: DEFAULT_OPTIONS.singleQuote,
-            tabWidth: typeof indent === 'number' ? indent : 4,
+            tabWidth: typeof indent === 'number' ? indent : DEFAULT_OPTIONS.tabWidth,
             trailingComma: DEFAULT_OPTIONS.trailingComma,
             useTabs: DEFAULT_OPTIONS.useTabs
         } satisfies VendoredPrettierOptions,

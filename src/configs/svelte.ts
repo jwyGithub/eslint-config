@@ -36,7 +36,6 @@ export async function svelte(
             name: 'jiangweiye/svelte/rules',
             processor: pluginSvelte.processors['.svelte'],
             rules: {
-                'import/no-mutable-exports': 'off',
                 'no-undef': 'off', // incompatible with most recent (attribute-form) generic types RFC
                 'no-unused-vars': [
                     'error',
@@ -55,7 +54,6 @@ export async function svelte(
                 'svelte/no-dupe-else-if-blocks': 'error',
                 'svelte/no-dupe-style-properties': 'error',
                 'svelte/no-dupe-use-directives': 'error',
-                'svelte/no-dynamic-slot-name': 'error',
                 'svelte/no-export-load-in-svelte-module-in-kit-pages': 'error',
                 'svelte/no-inner-declarations': 'error',
                 'svelte/no-not-function-handler': 'error',

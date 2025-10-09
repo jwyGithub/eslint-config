@@ -40,6 +40,7 @@ export async function sortPackageJson(): Promise<TypedFlatConfigItem[]> {
                             'keywords',
                             'categories',
                             'sideEffects',
+                            'imports',
                             'exports',
                             'main',
                             'module',
@@ -78,6 +79,14 @@ export async function sortPackageJson(): Promise<TypedFlatConfigItem[]> {
                         pathPattern: '^(?:resolutions|overrides|pnpm.overrides)$'
                     },
                     {
+                        order: { type: 'asc' },
+                        pathPattern: '^workspaces\\.catalog$'
+                    },
+                    {
+                        order: { type: 'asc' },
+                        pathPattern: '^workspaces\\.catalogs\\.[^.]+$'
+                    },
+                    {
                         order: ['types', 'import', 'require', 'default'],
                         pathPattern: '^exports.*$'
                     },
@@ -111,7 +120,7 @@ export async function sortPackageJson(): Promise<TypedFlatConfigItem[]> {
 export function sortTsconfig(): TypedFlatConfigItem[] {
     return [
         {
-            files: ['**/tsconfig.json', '**/tsconfig.*.json'],
+            files: ['**/[jt]sconfig.json', '**/[jt]sconfig.*.json'],
             name: 'jiangweiye/sort/tsconfig-json',
             rules: {
                 'jsonc/sort-keys': [
@@ -142,6 +151,7 @@ export function sortTsconfig(): TypedFlatConfigItem[] {
                             'useDefineForClassFields',
                             'emitDecoratorMetadata',
                             'experimentalDecorators',
+                            'libReplacement',
                             /* Modules */
                             'baseUrl',
                             'rootDir',
@@ -216,6 +226,7 @@ export function sortTsconfig(): TypedFlatConfigItem[] {
                             'isolatedModules',
                             'preserveSymlinks',
                             'verbatimModuleSyntax',
+                            'erasableSyntaxOnly',
                             /* Completeness */
                             'skipDefaultLibCheck',
                             'skipLibCheck'
