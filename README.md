@@ -1,10 +1,10 @@
-# @jiangweiye/eslint-config
+# @janone/eslint-config
 
-#### jiangweiye eslint config
+#### janone eslint config
 
 <p align="center">
-  <img src="https://img.shields.io/npm/v/@jiangweiye/eslint-config" alt='version'>
-  <img src="https://img.shields.io/npm/dm/@jiangweiye/eslint-config" alt='download'>
+  <img src="https://img.shields.io/npm/v/@janone/eslint-config" alt='version'>
+  <img src="https://img.shields.io/npm/dm/@janone/eslint-config" alt='download'>
   <img src="https://img.shields.io/github/issues/jwyGithub/eslint-config" alt='issues'>
   <img src="https://img.shields.io/github/license/jwyGithub/eslint-config" alt='Vue'>
 </p>
@@ -15,19 +15,19 @@
 #### with pnpm
 
 ```sh
-pnpm add @jiangweiye/eslint-config eslint -D
+pnpm add @janone/eslint-config eslint -D
 ```
 
 #### with yarn
 
 ```sh
-yarn add @jiangweiye/eslint-config eslint -D
+yarn add @janone/eslint-config eslint -D
 ```
 
 #### with npm
 
 ```sh
-npm install @jiangweiye/eslint-config eslint -D
+npm install @janone/eslint-config eslint -D
 ```
 
 ### use
@@ -35,7 +35,7 @@ npm install @jiangweiye/eslint-config eslint -D
 #### eslint.config.js
 
 ```js
-import { eslint } from '@jiangweiye/eslint-config';
+import { eslint } from '@janone/eslint-config';
 export default eslint({
     vue: true,
     typescript: true

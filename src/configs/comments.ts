@@ -5,7 +5,7 @@ import { pluginComments } from '../plugins';
 export async function comments(): Promise<TypedFlatConfigItem[]> {
     return [
         {
-            name: 'jiangweiye/eslint-comments/rules',
+            name: 'janone/eslint-comments/rules',
             plugins: {
                 'eslint-comments': pluginComments
             },

@@ -9,7 +9,7 @@ export async function sortPackageJson(): Promise<TypedFlatConfigItem[]> {
     return [
         {
             files: ['**/package.json'],
-            name: 'jiangweiye/sort/package-json',
+            name: 'janone/sort/package-json',
             rules: {
                 'jsonc/sort-array-values': [
                     'error',
@@ -121,7 +121,7 @@ export function sortTsconfig(): TypedFlatConfigItem[] {
     return [
         {
             files: ['**/[jt]sconfig.json', '**/[jt]sconfig.*.json'],
-            name: 'jiangweiye/sort/tsconfig-json',
+            name: 'janone/sort/tsconfig-json',
             rules: {
                 'jsonc/sort-keys': [
                     'error',

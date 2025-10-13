@@ -51,7 +51,7 @@ export async function react(
 
     return [
         {
-            name: 'jiangweiye/react/setup',
+            name: 'janone/react/setup',
             plugins: {
                 react: plugins['@eslint-react'],
                 'react-dom': plugins['@eslint-react/dom'],
@@ -72,7 +72,7 @@ export async function react(
                 },
                 sourceType: 'module'
             },
-            name: 'jiangweiye/react/rules',
+            name: 'janone/react/rules',
             rules: {
                 // recommended rules from eslint-plugin-react-x https://eslint-react.xyz/docs/rules/overview#core-rules
                 'react/jsx-no-comment-textnodes': 'warn',
@@ -195,7 +195,7 @@ export async function react(
                   {
                       files: filesTypeAware,
                       ignores: ignoresTypeAware,
-                      name: 'jiangweiye/react/type-aware-rules',
+                      name: 'janone/react/type-aware-rules',
                       rules: {
                           ...typeAwareRules
                       }

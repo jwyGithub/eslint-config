@@ -6,7 +6,7 @@ export async function disables(): Promise<TypedFlatConfigItem[]> {
     return [
         {
             files: [`**/scripts/${GLOB_SRC}`],
-            name: 'jiangweiye/disables/scripts',
+            name: 'janone/disables/scripts',
             rules: {
                 'no-console': 'off',
                 'ts/explicit-function-return-type': 'off'
@@ -14,22 +14,22 @@ export async function disables(): Promise<TypedFlatConfigItem[]> {
         },
         {
             files: [`**/cli/${GLOB_SRC}`, `**/cli.${GLOB_SRC_EXT}`],
-            name: 'jiangweiye/disables/cli',
+            name: 'janone/disables/cli',
             rules: {
                 'no-console': 'off'
             }
         },
         {
             files: ['**/bin/**/*', `**/bin.${GLOB_SRC_EXT}`],
-            name: 'jiangweiye/disables/bin',
+            name: 'janone/disables/bin',
             rules: {
-                'jiangweiye/no-import-dist': 'off',
-                'jiangweiye/no-import-node-modules-by-path': 'off'
+                'janone/no-import-dist': 'off',
+                'janone/no-import-node-modules-by-path': 'off'
             }
         },
         {
             files: ['**/*.d.?([cm])ts'],
-            name: 'jiangweiye/disables/dts',
+            name: 'janone/disables/dts',
             rules: {
                 'eslint-comments/no-unlimited-disable': 'off',
                 'no-restricted-syntax': 'off',
@@ -38,14 +38,14 @@ export async function disables(): Promise<TypedFlatConfigItem[]> {
         },
         {
             files: ['**/*.js', '**/*.cjs'],
-            name: 'jiangweiye/disables/cjs',
+            name: 'janone/disables/cjs',
             rules: {
                 'ts/no-require-imports': 'off'
             }
         },
         {
             files: [`**/*.config.${GLOB_SRC_EXT}`, `**/*.config.*.${GLOB_SRC_EXT}`],
-            name: 'jiangweiye/disables/config-files',
+            name: 'janone/disables/config-files',
             rules: {
                 'no-console': 'off',
                 'ts/explicit-function-return-type': 'off'

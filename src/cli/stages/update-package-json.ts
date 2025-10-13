@@ -16,13 +16,13 @@ export async function updatePackageJson(result: PromptResult): Promise<void> {
 
     const pathPackageJSON = path.join(cwd, 'package.json');
 
-    p.log.step(c.cyan`Bumping @jiangweiye/eslint-config to v${version}`);
+    p.log.step(c.cyan`Bumping @janone/eslint-config to v${version}`);
 
     const pkgContent = await fsp.readFile(pathPackageJSON, 'utf-8');
     const pkg: Record<string, any> = JSON.parse(pkgContent);
 
     pkg.devDependencies ??= {};
-    pkg.devDependencies['@jiangweiye/eslint-config'] = `^${version}`;
+    pkg.devDependencies['@janone/eslint-config'] = `^${version}`;
     pkg.devDependencies.eslint ??= versionsMap.eslint;
 
     const addedPackages: string[] = [];

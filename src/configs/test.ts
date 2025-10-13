@@ -26,14 +26,14 @@ export async function test(options: OptionsFiles & OptionsIsInEditor & OptionsOv
 
     return [
         {
-            name: 'jiangweiye/test/setup',
+            name: 'janone/test/setup',
             plugins: {
                 test: _pluginTest
             }
         },
         {
             files,
-            name: 'jiangweiye/test/rules',
+            name: 'janone/test/rules',
             rules: {
                 'test/consistent-test-it': ['error', { fn: 'it', withinDescribe: 'it' }],
                 'test/no-identical-title': 'error',
@@ -45,7 +45,7 @@ export async function test(options: OptionsFiles & OptionsIsInEditor & OptionsOv
 
                 // Disables
                 ...{
-                    'jiangweiye/no-top-level-await': 'off',
+                    'janone/no-top-level-await': 'off',
                     'no-unused-expressions': 'off',
                     'node/prefer-global/process': 'off',
                     'ts/explicit-function-return-type': 'off'

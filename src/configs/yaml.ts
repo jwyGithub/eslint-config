@@ -15,7 +15,7 @@ export async function yaml(options: OptionsOverrides & OptionsStylistic & Option
 
     return [
         {
-            name: 'jiangweiye/yaml/setup',
+            name: 'janone/yaml/setup',
             plugins: {
                 yaml: pluginYaml
             }
@@ -25,7 +25,7 @@ export async function yaml(options: OptionsOverrides & OptionsStylistic & Option
             languageOptions: {
                 parser: parserYaml
             },
-            name: 'jiangweiye/yaml/rules',
+            name: 'janone/yaml/rules',
             rules: {
                 'style/spaced-comment': 'off',
 
@@ -59,7 +59,7 @@ export async function yaml(options: OptionsOverrides & OptionsStylistic & Option
         },
         {
             files: ['pnpm-workspace.yaml'],
-            name: 'jiangweiye/yaml/pnpm-workspace',
+            name: 'janone/yaml/pnpm-workspace',
             rules: {
                 'yaml/sort-keys': [
                     'error',

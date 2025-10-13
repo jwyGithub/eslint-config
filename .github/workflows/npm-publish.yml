@@ -43,22 +43,10 @@ jobs:
                   git config --global user.name "${{ github.actor }}"
                   git config --global user.email "${{ github.actor }}@users.noreply.github.com"
 
-            - name: Get version bump
-              id: bump
-              run: |
-                  LAST_COMMIT_MSG=$(git log -1 --pretty=%B)
-                  if [[ $LAST_COMMIT_MSG == fix:* ]]; then
-                    echo "type=patch" >> $GITHUB_OUTPUT
-                  elif [[ $LAST_COMMIT_MSG == feat:* ]]; then
-                    echo "type=minor" >> $GITHUB_OUTPUT
-                  elif [[ $LAST_COMMIT_MSG == chore:* ]]; then
-                    echo "type=major" >> $GITHUB_OUTPUT
-                  else
-                    echo "type=patch" >> $GITHUB_OUTPUT
-                  fi
-
             - name: Bump version
-              run: pnpm standard-version --release-as ${{ steps.bump.outputs.type }}
+              uses: googleapis/release-please-action@v4
+              with:
+                  release-type: node
 
             - name: Push changes
               run: |

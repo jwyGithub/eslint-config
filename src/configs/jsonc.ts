@@ -15,7 +15,7 @@ export async function jsonc(options: OptionsFiles & OptionsStylistic & OptionsOv
 
     return [
         {
-            name: 'jiangweiye/jsonc/setup',
+            name: 'janone/jsonc/setup',
             plugins: {
                 jsonc: pluginJsonc as any
             }
@@ -25,7 +25,7 @@ export async function jsonc(options: OptionsFiles & OptionsStylistic & OptionsOv
             languageOptions: {
                 parser: parserJsonc
             },
-            name: 'jiangweiye/jsonc/rules',
+            name: 'janone/jsonc/rules',
             rules: {
                 'jsonc/no-bigint-literals': 'error',
                 'jsonc/no-binary-expression': 'error',

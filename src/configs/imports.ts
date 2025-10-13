@@ -6,7 +6,7 @@ export async function imports(options: OptionsOverrides & OptionsStylistic = {})
 
     return [
         {
-            name: 'jiangweiye/imports/rules',
+            name: 'janone/imports/rules',
             plugins: {
                 import: pluginImportLite
             },

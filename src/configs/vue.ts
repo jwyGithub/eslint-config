@@ -46,7 +46,7 @@ export async function vue(
                     watchEffect: 'readonly'
                 }
             },
-            name: 'jiangweiye/vue/setup',
+            name: 'janone/vue/setup',
             plugins: {
                 vue: pluginVue,
                 ...(a11y ? { 'vue-a11y': pluginVueA11y } : {})
@@ -65,7 +65,7 @@ export async function vue(
                     sourceType: 'module'
                 }
             },
-            name: 'jiangweiye/vue/rules',
+            name: 'janone/vue/rules',
             processor:
                 sfcBlocks === false
                     ? pluginVue.processors['.vue']

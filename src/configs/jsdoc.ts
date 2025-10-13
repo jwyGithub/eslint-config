@@ -7,7 +7,7 @@ export async function jsdoc(options: OptionsStylistic = {}): Promise<TypedFlatCo
 
     return [
         {
-            name: 'jiangweiye/jsdoc/rules',
+            name: 'janone/jsdoc/rules',
             plugins: {
                 jsdoc: await interopDefault(import('eslint-plugin-jsdoc'))
             },

@@ -14,7 +14,7 @@ export async function astro(options: OptionsOverrides & OptionsStylistic & Optio
 
     return [
         {
-            name: 'jiangweiye/astro/setup',
+            name: 'janone/astro/setup',
             plugins: {
                 astro: pluginAstro
             }
@@ -30,7 +30,7 @@ export async function astro(options: OptionsOverrides & OptionsStylistic & Optio
                 },
                 sourceType: 'module'
             },
-            name: 'jiangweiye/astro/rules',
+            name: 'janone/astro/rules',
             processor: 'astro/client-side-ts',
             rules: {
                 // use recommended rules

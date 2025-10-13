@@ -104,7 +104,7 @@ export function eslint(
         isInEditor = isInEditorEnv();
         if (isInEditor)
             // eslint-disable-next-line no-console
-            console.log('[@jiangweiye/eslint-config] Detected running in editor, some rules are disabled.');
+            console.log('[@janone/eslint-config] Detected running in editor, some rules are disabled.');
     }
 
     const stylisticOptions = options.stylistic === false ? false : typeof options.stylistic === 'object' ? options.stylistic : {};
@@ -118,7 +118,7 @@ export function eslint(
             configs.push(
                 interopDefault(import('eslint-config-flat-gitignore')).then(r => [
                     r({
-                        name: 'jiangweiye/gitignore',
+                        name: 'janone/gitignore',
                         ...enableGitignore
                     })
                 ])
@@ -127,7 +127,7 @@ export function eslint(
             configs.push(
                 interopDefault(import('eslint-config-flat-gitignore')).then(r => [
                     r({
-                        name: 'jiangweiye/gitignore',
+                        name: 'janone/gitignore',
                         strict: false
                     })
                 ])
@@ -337,7 +337,7 @@ export function eslint(
 
     if ('files' in options) {
         throw new Error(
-            '[@jiangweiye/eslint-config] The first argument should not contain the "files" property as the options are supposed to be global. Place it in the second or later config instead.'
+            '[@janone/eslint-config] The first argument should not contain the "files" property as the options are supposed to be global. Place it in the second or later config instead.'
         );
     }
 

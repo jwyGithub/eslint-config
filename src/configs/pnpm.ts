@@ -15,7 +15,7 @@ export async function pnpm(): Promise<TypedFlatConfigItem[]> {
             languageOptions: {
                 parser: jsoncParser
             },
-            name: 'jiangweiye/pnpm/package-json',
+            name: 'janone/pnpm/package-json',
             plugins: {
                 pnpm: pluginPnpm
             },
@@ -30,7 +30,7 @@ export async function pnpm(): Promise<TypedFlatConfigItem[]> {
             languageOptions: {
                 parser: yamlParser
             },
-            name: 'jiangweiye/pnpm/pnpm-workspace-yaml',
+            name: 'janone/pnpm/pnpm-workspace-yaml',
             plugins: {
                 pnpm: pluginPnpm
             },

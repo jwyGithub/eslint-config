@@ -15,7 +15,7 @@ export async function jsx(options: OptionsJSX = {}): Promise<TypedFlatConfigItem
                 }
             }
         },
-        name: 'jiangweiye/jsx/setup',
+        name: 'janone/jsx/setup',
         plugins: {},
         rules: {}
     };

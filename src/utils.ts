@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url';
 import { isPackageExists } from 'local-pkg';
 
 const scopeUrl = fileURLToPath(new URL('.', import.meta.url));
-const isCwdInScope = isPackageExists('@jiangweiye/eslint-config');
+const isCwdInScope = isPackageExists('@janone/eslint-config');
 
 export const parserPlain = {
     meta: {
@@ -42,7 +42,7 @@ export async function combine(...configs: Awaitable<TypedFlatConfigItem | TypedF
  *
  * @example
  * ```ts
- * import { renameRules } from '@jiangweiye/eslint-config'
+ * import { renameRules } from '@janone/eslint-config'
  *
  * export default [{
  *   rules: renameRules(
@@ -70,7 +70,7 @@ export function renameRules(rules: Record<string, any>, map: Record<string, stri
  *
  * @example
  * ```ts
- * import { renamePluginInConfigs } from '@jiangweiye/eslint-config'
+ * import { renamePluginInConfigs } from '@janone/eslint-config'
  * import someConfigs from './some-configs'
  *
  * export default renamePluginInConfigs(someConfigs, {
@@ -118,7 +118,7 @@ export async function ensurePackages(packages: (string | undefined)[]): Promise<
     const result = await p.confirm({
         message: `${nonExistingPackages.length === 1 ? 'Package is' : 'Packages are'} required for this config: ${nonExistingPackages.join(', ')}. Do you want to install them?`
     });
-    if (result) await import('@jiangweiye/install-pkg').then(i => i.installPackage(nonExistingPackages, { dev: true }));
+    if (result) await import('@janone/install-pkg').then(i => i.installPackage(nonExistingPackages, { dev: true }));
 }
 
 export function isInEditorEnv(): boolean {

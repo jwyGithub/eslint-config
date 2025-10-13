@@ -18,7 +18,7 @@ export async function regexp(options: OptionsRegExp & OptionsOverrides = {}): Pr
     return [
         {
             ...config,
-            name: 'jiangweiye/regexp/rules',
+            name: 'janone/regexp/rules',
             rules: {
                 ...rules,
                 ...options.overrides

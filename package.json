@@ -1,9 +1,9 @@
 {
-    "name": "@jiangweiye/eslint-config",
+    "name": "@janone/eslint-config",
     "type": "module",
-    "version": "0.1.15",
-    "description": "a eslint config for jiangweiye",
-    "author": "jiangweiye <jiangweiye@outlook.com> (https://github.com/jwyGithub)",
+    "version": "0.0.1",
+    "description": "a eslint config for janone",
+    "author": "janone <jiangweiye@outlook.com> (https://github.com/jwyGithub)",
     "license": "SEE LICENSE IN LICENSE.md",
     "homepage": "https://github.com/jwyGithub/eslint-config",
     "publishConfig": {
@@ -11,8 +11,7 @@
     },
     "keywords": [
         "eslint",
-        "eslint-config",
-        "eslint-config-jwy"
+        "eslint-config"
     ],
     "exports": {
         ".": {
@@ -32,7 +31,7 @@
         "dist"
     ],
     "scripts": {
-        "build": "pnpm run typegen && pnpm run prettier && tsdown --clean --dts",
+        "build": "pnpm run typegen && tsdown --clean --dts",
         "stub": "tsdown",
         "dev": "npx @eslint/config-inspector --config eslint.config.js",
         "build:inspector": "pnpm build && npx @eslint/config-inspector build",
@@ -43,8 +42,7 @@
         "test": "vitest",
         "typecheck": "tsc --noEmit",
         "prettier": "pnpx prettier --write .",
-        "lint-staged": "lint-staged",
-        "release": "standard-version"
+        "lint-staged": "lint-staged"
     },
     "peerDependencies": {
         "@eslint-react/eslint-plugin": "^2.0.1",
@@ -119,7 +117,7 @@
         "@clack/prompts": "catalog:prod",
         "@eslint-community/eslint-plugin-eslint-comments": "catalog:prod",
         "@eslint/markdown": "catalog:prod",
-        "@jiangweiye/install-pkg": "catalog:prod",
+        "@janone/eslint-config": "workspace:*",
         "@stylistic/eslint-plugin": "catalog:prod",
         "@typescript-eslint/eslint-plugin": "catalog:prod",
         "@typescript-eslint/parser": "catalog:prod",
@@ -155,7 +153,8 @@
     "devDependencies": {
         "@eslint-react/eslint-plugin": "catalog:peer",
         "@eslint/config-inspector": "catalog:dev",
-        "@jiangweiye/prettier-config": "^0.0.18",
+        "@janone/install-pkg": "catalog:prod",
+        "@janone/prettier-config": "^0.0.1",
         "@next/eslint-plugin-next": "catalog:peer",
         "@prettier/plugin-xml": "catalog:peer",
         "@types/eslint-plugin-jsx-a11y": "catalog:dev",
@@ -181,7 +180,6 @@
         "prettier-plugin-astro": "catalog:peer",
         "prettier-plugin-slidev": "catalog:peer",
         "simple-git-hooks": "catalog:dev",
-        "standard-version": "^9.5.0",
         "svelte": "catalog:peer",
         "svelte-eslint-parser": "catalog:peer",
         "tinyglobby": "catalog:dev",

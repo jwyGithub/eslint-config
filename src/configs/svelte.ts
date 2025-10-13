@@ -19,7 +19,7 @@ export async function svelte(
 
     return [
         {
-            name: 'jiangweiye/svelte/setup',
+            name: 'janone/svelte/setup',
             plugins: {
                 svelte: pluginSvelte
             }
@@ -33,7 +33,7 @@ export async function svelte(
                     parser: options.typescript ? ((await interopDefault(import('@typescript-eslint/parser'))) as any) : null
                 }
             },
-            name: 'jiangweiye/svelte/rules',
+            name: 'janone/svelte/rules',
             processor: pluginSvelte.processors['.svelte'],
             rules: {
                 'no-undef': 'off', // incompatible with most recent (attribute-form) generic types RFC

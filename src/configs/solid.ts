@@ -20,7 +20,7 @@ export async function solid(
 
     return [
         {
-            name: 'jiangweiye/solid/setup',
+            name: 'janone/solid/setup',
             plugins: {
                 solid: pluginSolid
             }
@@ -37,7 +37,7 @@ export async function solid(
                 },
                 sourceType: 'module'
             },
-            name: 'jiangweiye/solid/rules',
+            name: 'janone/solid/rules',
             rules: {
                 // reactivity
                 'solid/components-return-once': 'warn',

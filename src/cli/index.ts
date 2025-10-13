@@ -9,10 +9,10 @@ import { run } from './run';
 
 function header(): void {
     console.log('\n');
-    p.intro(`${c.green`@jiangweiye/eslint-config `}${c.dim`v${version}`}`);
+    p.intro(`${c.green`@janone/eslint-config `}${c.dim`v${version}`}`);
 }
 
-const cli = cac('@jiangweiye/eslint-config');
+const cli = cac('@janone/eslint-config');
 
 cli.command('', 'Run the initialization or migration')
     .option('--yes, -y', 'Skip prompts and use default values', { default: false })

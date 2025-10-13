@@ -1,5 +1,5 @@
 import type { OptionsOverrides, StylisticConfig, TypedFlatConfigItem } from '../types';
-import { DEFAULT_OPTIONS } from '@jiangweiye/prettier-config/options';
+import { DEFAULT_OPTIONS } from '@janone/prettier-config/options';
 
 import { interopDefault } from '../utils';
 
@@ -39,7 +39,7 @@ export async function stylistic(options: StylisticOptions = {}): Promise<TypedFl
 
     return [
         {
-            name: 'jiangweiye/stylistic/rules',
+            name: 'janone/stylistic/rules',
             plugins: {
                 style: pluginStylistic
             },

@@ -12,7 +12,7 @@ export async function markdown(options: OptionsFiles & OptionsComponentExts & Op
 
     return [
         {
-            name: 'jiangweiye/markdown/setup',
+            name: 'janone/markdown/setup',
             plugins: {
                 markdown
             }
@@ -20,7 +20,7 @@ export async function markdown(options: OptionsFiles & OptionsComponentExts & Op
         {
             files,
             ignores: [GLOB_MARKDOWN_IN_MARKDOWN],
-            name: 'jiangweiye/markdown/processor',
+            name: 'janone/markdown/processor',
             // `eslint-plugin-markdown` only creates virtual files for code blocks,
             // but not the markdown file itself. We use `eslint-merge-processors` to
             // add a pass-through processor for the markdown file itself.
@@ -31,7 +31,7 @@ export async function markdown(options: OptionsFiles & OptionsComponentExts & Op
             languageOptions: {
                 parser: parserPlain
             },
-            name: 'jiangweiye/markdown/parser'
+            name: 'janone/markdown/parser'
         },
         {
             files: [GLOB_MARKDOWN_CODE, ...componentExts.map(ext => `${GLOB_MARKDOWN}/**/*.${ext}`)],
@@ -42,7 +42,7 @@ export async function markdown(options: OptionsFiles & OptionsComponentExts & Op
                     }
                 }
             },
-            name: 'jiangweiye/markdown/disables',
+            name: 'janone/markdown/disables',
             rules: {
                 'import/newline-after-import': 'off',
 

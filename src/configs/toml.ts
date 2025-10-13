@@ -15,7 +15,7 @@ export async function toml(options: OptionsOverrides & OptionsStylistic & Option
 
     return [
         {
-            name: 'jiangweiye/toml/setup',
+            name: 'janone/toml/setup',
             plugins: {
                 toml: pluginToml
             }
@@ -25,7 +25,7 @@ export async function toml(options: OptionsOverrides & OptionsStylistic & Option
             languageOptions: {
                 parser: parserToml
             },
-            name: 'jiangweiye/toml/rules',
+            name: 'janone/toml/rules',
             rules: {
                 'style/spaced-comment': 'off',
 

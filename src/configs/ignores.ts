@@ -6,7 +6,7 @@ export async function ignores(userIgnores: string[] = []): Promise<TypedFlatConf
     return [
         {
             ignores: [...GLOB_EXCLUDE, ...userIgnores],
-            name: 'jiangweiye/ignores'
+            name: 'janone/ignores'
         }
     ];
 }

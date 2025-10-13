@@ -1,7 +1,7 @@
 import type { OptionsFormatters, StylisticConfig, TypedFlatConfigItem } from '../types';
 import type { VendoredPrettierOptions, VendoredPrettierRuleOptions } from '../vender/prettier-types';
 
-import { DEFAULT_OPTIONS } from '@jiangweiye/prettier-config/options';
+import { DEFAULT_OPTIONS } from '@janone/prettier-config/options';
 import { isPackageExists } from 'local-pkg';
 
 import {
@@ -93,7 +93,7 @@ export async function formatters(options: OptionsFormatters | true = {}, stylist
 
     const configs: TypedFlatConfigItem[] = [
         {
-            name: 'jiangweiye/formatter/setup',
+            name: 'janone/formatter/setup',
             plugins: {
                 format: pluginFormat
             }
@@ -107,7 +107,7 @@ export async function formatters(options: OptionsFormatters | true = {}, stylist
                 languageOptions: {
                     parser: parserPlain
                 },
-                name: 'jiangweiye/formatter/css',
+                name: 'janone/formatter/css',
                 rules: {
                     'format/prettier': [
                         'error',
@@ -122,7 +122,7 @@ export async function formatters(options: OptionsFormatters | true = {}, stylist
                 languageOptions: {
                     parser: parserPlain
                 },
-                name: 'jiangweiye/formatter/scss',
+                name: 'janone/formatter/scss',
                 rules: {
                     'format/prettier': [
                         'error',
@@ -137,7 +137,7 @@ export async function formatters(options: OptionsFormatters | true = {}, stylist
                 languageOptions: {
                     parser: parserPlain
                 },
-                name: 'jiangweiye/formatter/less',
+                name: 'janone/formatter/less',
                 rules: {
                     'format/prettier': [
                         'error',
@@ -156,7 +156,7 @@ export async function formatters(options: OptionsFormatters | true = {}, stylist
             languageOptions: {
                 parser: parserPlain
             },
-            name: 'jiangweiye/formatter/html',
+            name: 'janone/formatter/html',
             rules: {
                 'format/prettier': [
                     'error',
@@ -174,7 +174,7 @@ export async function formatters(options: OptionsFormatters | true = {}, stylist
             languageOptions: {
                 parser: parserPlain
             },
-            name: 'jiangweiye/formatter/xml',
+            name: 'janone/formatter/xml',
             rules: {
                 'format/prettier': [
                     'error',
@@ -195,7 +195,7 @@ export async function formatters(options: OptionsFormatters | true = {}, stylist
             languageOptions: {
                 parser: parserPlain
             },
-            name: 'jiangweiye/formatter/svg',
+            name: 'janone/formatter/svg',
             rules: {
                 'format/prettier': [
                     'error',
@@ -222,7 +222,7 @@ export async function formatters(options: OptionsFormatters | true = {}, stylist
             languageOptions: {
                 parser: parserPlain
             },
-            name: 'jiangweiye/formatter/markdown',
+            name: 'janone/formatter/markdown',
             rules: {
                 [`format/${formater}`]: [
                     'error',
@@ -245,7 +245,7 @@ export async function formatters(options: OptionsFormatters | true = {}, stylist
                 languageOptions: {
                     parser: parserPlain
                 },
-                name: 'jiangweiye/formatter/slidev',
+                name: 'janone/formatter/slidev',
                 rules: {
                     'format/prettier': [
                         'error',
@@ -266,7 +266,7 @@ export async function formatters(options: OptionsFormatters | true = {}, stylist
             languageOptions: {
                 parser: parserPlain
             },
-            name: 'jiangweiye/formatter/astro',
+            name: 'janone/formatter/astro',
             rules: {
                 'format/prettier': [
                     'error',
@@ -280,7 +280,7 @@ export async function formatters(options: OptionsFormatters | true = {}, stylist
 
         configs.push({
             files: [GLOB_ASTRO, GLOB_ASTRO_TS],
-            name: 'jiangweiye/formatter/astro/disables',
+            name: 'janone/formatter/astro/disables',
             rules: {
                 'style/arrow-parens': 'off',
                 'style/block-spacing': 'off',
@@ -299,7 +299,7 @@ export async function formatters(options: OptionsFormatters | true = {}, stylist
             languageOptions: {
                 parser: parserPlain
             },
-            name: 'jiangweiye/formatter/graphql',
+            name: 'janone/formatter/graphql',
             rules: {
                 'format/prettier': [
                     'error',

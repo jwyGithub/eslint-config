@@ -15,7 +15,7 @@ export async function nextjs(options: OptionsOverrides & OptionsFiles = {}): Pro
 
     return [
         {
-            name: 'jiangweiye/nextjs/setup',
+            name: 'janone/nextjs/setup',
             plugins: {
                 next: pluginNextJS
             }
@@ -30,7 +30,7 @@ export async function nextjs(options: OptionsOverrides & OptionsFiles = {}): Pro
                 },
                 sourceType: 'module'
             },
-            name: 'jiangweiye/nextjs/rules',
+            name: 'janone/nextjs/rules',
             rules: {
                 ...normalizeRules(pluginNextJS.configs.recommended.rules),
                 ...normalizeRules(pluginNextJS.configs['core-web-vitals'].rules),

@@ -1,4 +1,4 @@
-import { eslint } from '@jiangweiye/eslint-config';
+import { eslint } from '@janone/eslint-config';
 
 export default eslint(
     {
