@@ -15,14 +15,14 @@
     ],
     "exports": {
         ".": {
-            "types": "./dist/index.d.ts",
-            "import": "./dist/index.js",
+            "types": "./dist/index.d.mts",
+            "import": "./dist/index.mjs",
             "require": "./dist/index.cjs"
         }
     },
-    "main": "./dist/index.js",
-    "module": "./dist/index.js",
-    "types": "./dist/index.d.ts",
+    "main": "./dist/index.cjs",
+    "module": "./dist/index.mjs",
+    "types": "./dist/index.d.mts",
     "bin": {
         "eslint-config": "bin/index.js"
     },
@@ -154,7 +154,7 @@
         "@eslint-react/eslint-plugin": "catalog:peer",
         "@eslint/config-inspector": "catalog:dev",
         "@janone/install-pkg": "catalog:prod",
-        "@janone/prettier-config": "^0.0.1",
+        "@janone/prettier-config": "catalog:",
         "@next/eslint-plugin-next": "catalog:peer",
         "@prettier/plugin-xml": "catalog:peer",
         "@types/eslint-plugin-jsx-a11y": "catalog:dev",
@@ -178,7 +178,7 @@
         "jiti": "catalog:dev",
         "lint-staged": "catalog:dev",
         "pnpm-workspace-yaml": "catalog:dev",
-        "prettier": "^3.6.2",
+        "prettier": "catalog:",
         "prettier-plugin-astro": "catalog:peer",
         "prettier-plugin-slidev": "catalog:peer",
         "simple-git-hooks": "catalog:dev",
