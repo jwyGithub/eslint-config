@@ -3,6 +3,7 @@ import type { RuleOptions } from './typegen';
 import type { Awaitable, ConfigNames, OptionsConfig, TypedFlatConfigItem } from './types';
 
 import { FlatConfigComposer } from 'eslint-flat-config-utils';
+import { findUpSync } from 'find-up-simple';
 import { isPackageExists } from 'local-pkg';
 import {
     astro,
@@ -77,7 +78,7 @@ export const defaultPluginRenaming = {
  *  The merged ESLint configurations.
  */
 export function eslint(
-    options: OptionsConfig & Omit<TypedFlatConfigItem, 'files'> = {},
+    options: OptionsConfig & Omit<TypedFlatConfigItem, 'files' | 'ignores'> = {},
     ...userConfigs: Awaitable<TypedFlatConfigItem | TypedFlatConfigItem[] | FlatConfigComposer<any, any> | Linter.Config[]>[]
 ): FlatConfigComposer<TypedFlatConfigItem, ConfigNames> {
     const {
@@ -85,10 +86,11 @@ export function eslint(
         autoRenamePlugins = true,
         componentExts = [],
         gitignore: enableGitignore = true,
+        ignores: userIgnores = [],
         imports: enableImports = true,
         jsx: enableJsx = true,
         nextjs: enableNextjs = false,
-        pnpm: enableCatalogs = false, // TODO: smart detect
+        pnpm: enableCatalogs = !!findUpSync('pnpm-workspace.yaml'),
         react: enableReact = false,
         regexp: enableRegexp = true,
         solid: enableSolid = false,
@@ -140,7 +142,7 @@ export function eslint(
 
     // Base configs
     configs.push(
-        ignores(options.ignores),
+        ignores(userIgnores),
         javascript({
             isInEditor,
             overrides: getOverrides(options, 'javascript')
@@ -299,7 +301,11 @@ export function eslint(
     }
 
     if (enableCatalogs) {
-        configs.push(pnpm());
+        configs.push(
+            pnpm({
+                isInEditor
+            })
+        );
     }
 
     if (options.yaml ?? true) {

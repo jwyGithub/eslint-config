@@ -8,6 +8,7 @@ export async function disables(): Promise<TypedFlatConfigItem[]> {
             files: [`**/scripts/${GLOB_SRC}`],
             name: 'janone/disables/scripts',
             rules: {
+                'janone/no-top-level-await': 'off',
                 'no-console': 'off',
                 'ts/explicit-function-return-type': 'off'
             }
@@ -16,6 +17,7 @@ export async function disables(): Promise<TypedFlatConfigItem[]> {
             files: [`**/cli/${GLOB_SRC}`, `**/cli.${GLOB_SRC_EXT}`],
             name: 'janone/disables/cli',
             rules: {
+                'janone/no-top-level-await': 'off',
                 'no-console': 'off'
             }
         },
@@ -47,6 +49,7 @@ export async function disables(): Promise<TypedFlatConfigItem[]> {
             files: [`**/*.config.${GLOB_SRC_EXT}`, `**/*.config.*.${GLOB_SRC_EXT}`],
             name: 'janone/disables/config-files',
             rules: {
+                'janone/no-top-level-await': 'off',
                 'no-console': 'off',
                 'ts/explicit-function-return-type': 'off'
             }

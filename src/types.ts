@@ -82,7 +82,9 @@ export interface OptionsJSX {
     a11y?: boolean | OptionsJSXA11y;
 }
 
-export type OptionsTypescript = (OptionsTypeScriptWithTypes & OptionsOverrides) | (OptionsTypeScriptParserOptions & OptionsOverrides);
+export type OptionsTypescript =
+    | (OptionsTypeScriptWithTypes & OptionsOverrides & OptionsTypeScriptErasableOnly)
+    | (OptionsTypeScriptParserOptions & OptionsOverrides & OptionsTypeScriptErasableOnly);
 
 export interface OptionsFormatters {
     /**
@@ -219,7 +221,7 @@ export interface OptionsStylistic {
     stylistic?: boolean | StylisticConfig;
 }
 
-export interface StylisticConfig extends Pick<StylisticCustomizeOptions, 'indent' | 'quotes' | 'jsx' | 'semi'> {}
+export interface StylisticConfig extends Pick<StylisticCustomizeOptions, 'indent' | 'quotes' | 'jsx' | 'semi' | 'experimental'> {}
 
 export interface OptionsOverrides {
     overrides?: TypedFlatConfigItem['rules'];
@@ -232,6 +234,16 @@ export interface OptionsProjectType {
      * @default 'app'
      */
     type?: 'app' | 'lib';
+}
+
+export interface OptionsTypeScriptErasableOnly {
+    /**
+     * Enable erasable syntax only rules.
+     *
+     * @see https://github.com/JoshuaKGoldberg/eslint-plugin-erasable-syntax-only
+     * @default false
+     */
+    erasableOnly?: boolean;
 }
 
 export interface OptionsRegExp {
@@ -268,6 +280,16 @@ export interface OptionsConfig extends OptionsComponentExts, OptionsProjectType 
      * @default true
      */
     gitignore?: boolean | FlatGitignoreOptions;
+
+    /**
+     * Extend the global ignores.
+     *
+     * Passing an array to extends the ignores.
+     * Passing a function to modify the default ignores.
+     *
+     * @default []
+     */
+    ignores?: string[] | ((originals: string[]) => string[]);
 
     /**
      * Disable some opinionated rules to Anthony's preference.
@@ -447,6 +469,10 @@ export interface OptionsConfig extends OptionsComponentExts, OptionsProjectType 
      *
      * Currently it's disabled by default, as it's still experimental.
      * In the future it will be smartly enabled based on the project usage.
+     *
+     * @see https://github.com/janone/pnpm-workspace-utils
+     * @experimental
+     * @default false
      */
     pnpm?: boolean;
 

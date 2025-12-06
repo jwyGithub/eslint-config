@@ -47,7 +47,7 @@ export async function react(
     const isUsingReactRouter = ReactRouterPackages.some(i => isPackageExists(i));
     const isUsingNext = NextJsPackages.some(i => isPackageExists(i));
 
-    const plugins = pluginReact.configs.all.plugins;
+    const plugins = (pluginReact.configs.all as any).plugins;
 
     return [
         {
@@ -134,8 +134,7 @@ export async function react(
                 'react-dom/no-void-elements-with-children': 'error',
 
                 // recommended rules eslint-plugin-react-hooks https://github.com/facebook/react/tree/main/packages/eslint-plugin-react-hooks/src/rules
-                'react-hooks/exhaustive-deps': 'warn',
-                'react-hooks/rules-of-hooks': 'error',
+                ...pluginReactHooks.configs.recommended.rules,
 
                 // recommended rules from eslint-plugin-react-hooks-extra https://eslint-react.xyz/docs/rules/overview#hooks-extra-rules
                 'react-hooks-extra/no-direct-set-state-in-use-effect': 'warn',
