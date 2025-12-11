@@ -1,10 +1,5 @@
-import type {
-    OptionsFiles,
-    OptionsOverrides,
-    OptionsTypeScriptParserOptions,
-    OptionsTypeScriptWithTypes,
-    TypedFlatConfigItem
-} from '../types';
+
+import type { OptionsFiles, OptionsReact, OptionsTypeScriptParserOptions, OptionsTypeScriptWithTypes, TypedFlatConfigItem } from '../types';
 
 import { isPackageExists } from 'local-pkg';
 import { GLOB_ASTRO_TS, GLOB_MARKDOWN, GLOB_SRC, GLOB_TS, GLOB_TSX } from '../globs';
@@ -16,16 +11,18 @@ const ReactRefreshAllowConstantExportPackages = ['vite'];
 const RemixPackages = ['@remix-run/node', '@remix-run/react', '@remix-run/serve', '@remix-run/dev'];
 const ReactRouterPackages = ['@react-router/node', '@react-router/react', '@react-router/serve', '@react-router/dev'];
 const NextJsPackages = ['next'];
+const ReactCompilerPackages = ['babel-plugin-react-compiler'];
 
 export async function react(
-    options: OptionsTypeScriptParserOptions & OptionsTypeScriptWithTypes & OptionsOverrides & OptionsFiles = {}
+    options: OptionsTypeScriptParserOptions & OptionsTypeScriptWithTypes & OptionsReact & OptionsFiles = {}
 ): Promise<TypedFlatConfigItem[]> {
     const {
         files = [GLOB_SRC],
         filesTypeAware = [GLOB_TS, GLOB_TSX],
         ignoresTypeAware = [`${GLOB_MARKDOWN}/**`, GLOB_ASTRO_TS],
         overrides = {},
-        tsconfigPath
+        tsconfigPath,
+        reactCompiler = ReactCompilerPackages.some(i => isPackageExists(i))
     } = options;
 
     await ensurePackages(['@eslint-react/eslint-plugin', 'eslint-plugin-react-hooks', 'eslint-plugin-react-refresh']);
@@ -133,8 +130,31 @@ export async function react(
                 'react-dom/no-use-form-state': 'error',
                 'react-dom/no-void-elements-with-children': 'error',
 
-                // recommended rules eslint-plugin-react-hooks https://github.com/facebook/react/tree/main/packages/eslint-plugin-react-hooks/src/rules
-                ...pluginReactHooks.configs.recommended.rules,
+                // recommended rules eslint-plugin-react-hooks https://github.com/facebook/react/blob/main/packages/eslint-plugin-react-hooks/README.md
+                // Core hooks rules
+                'react-hooks/rules-of-hooks': 'error',
+                'react-hooks/exhaustive-deps': 'warn',
+
+                // React Compiler rules
+                ...(reactCompiler
+                    ? {
+                          'react-hooks/config': 'error',
+                          'react-hooks/error-boundaries': 'error',
+                          'react-hooks/component-hook-factories': 'error',
+                          'react-hooks/gating': 'error',
+                          'react-hooks/globals': 'error',
+                          'react-hooks/immutability': 'error',
+                          'react-hooks/preserve-manual-memoization': 'error',
+                          'react-hooks/purity': 'error',
+                          'react-hooks/refs': 'error',
+                          'react-hooks/set-state-in-effect': 'error',
+                          'react-hooks/set-state-in-render': 'error',
+                          'react-hooks/static-components': 'error',
+                          'react-hooks/unsupported-syntax': 'warn',
+                          'react-hooks/use-memo': 'error',
+                          'react-hooks/incompatible-library': 'warn'
+                      }
+                    : {}),
 
                 // recommended rules from eslint-plugin-react-hooks-extra https://eslint-react.xyz/docs/rules/overview#hooks-extra-rules
                 'react-hooks-extra/no-direct-set-state-in-use-effect': 'warn',

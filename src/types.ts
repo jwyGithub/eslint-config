@@ -257,6 +257,13 @@ export interface OptionsIsInEditor {
     isInEditor?: boolean;
 }
 
+export interface OptionsPnpm extends OptionsIsInEditor {
+    /**
+     * Requires catalogs usage
+     */
+    catalogs?: boolean;
+}
+
 export interface OptionsUnoCSS extends OptionsOverrides {
     /**
      * Enable attributify support.
@@ -268,6 +275,10 @@ export interface OptionsUnoCSS extends OptionsOverrides {
      * @default false
      */
     strict?: boolean;
+}
+
+export interface OptionsReact extends OptionsOverrides {
+    reactCompiler?: boolean;
 }
 
 export interface OptionsConfig extends OptionsComponentExts, OptionsProjectType {
@@ -422,7 +433,7 @@ export interface OptionsConfig extends OptionsComponentExts, OptionsProjectType 
      *
      * @default false
      */
-    react?: boolean | OptionsOverrides;
+    react?: boolean | OptionsReact;
 
     /**
      * Enable nextjs rules.

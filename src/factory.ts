@@ -237,6 +237,7 @@ export function eslint(
         configs.push(
             react({
                 ...typescriptOptions,
+                ...resolveSubOptions(options, 'react'),
                 overrides: getOverrides(options, 'react'),
                 tsconfigPath
             })
