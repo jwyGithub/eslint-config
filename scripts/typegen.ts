@@ -1,71 +1,46 @@
 import fs from 'node:fs/promises';
 
+import { format } from '@janone/prettier-config';
 import { flatConfigsToRulesDTS } from 'eslint-typegen/core';
 import { builtinRules } from 'eslint/use-at-your-own-risk';
+import { eslint } from '../src/factory';
 
-import {
-    astro,
-    combine,
-    comments,
-    formatters,
-    imports,
-    javascript,
-    jsdoc,
-    jsonc,
-    jsx,
-    markdown,
-    nextjs,
-    node,
-    perfectionist,
-    react,
-    regexp,
-    solid,
-    sortPackageJson,
-    stylistic,
-    svelte,
-    test,
-    toml,
-    typescript,
-    unicorn,
-    unocss,
-    vue,
-    yaml
-} from '../src';
-
-const configs = await combine(
-    {
-        plugins: {
-            '': {
-                rules: Object.fromEntries(builtinRules.entries())
-            }
-        }
+const configs = await eslint({
+    astro: true,
+    formatters: true,
+    imports: true,
+    jsx: {
+        a11y: true
     },
-    astro(),
-    comments(),
-    formatters(),
-    imports(),
-    javascript(),
-    jsx({ a11y: true }),
-    jsdoc(),
-    jsonc(),
-    markdown(),
-    node(),
-    perfectionist(),
-    nextjs(),
-    react(),
-    solid(),
-    sortPackageJson(),
-    stylistic(),
-    svelte(),
-    test(),
-    toml(),
-    regexp(),
-    typescript(),
-    unicorn(),
-    unocss(),
-    vue(),
-    yaml()
-);
+    jsonc: true,
+    markdown: true,
+    nextjs: true,
+    react: true,
+    solid: true,
+    pnpm: true,
+    regexp: true,
+    stylistic: true,
+    gitignore: true,
+    svelte: true,
+    typescript: {
+        tsconfigPath: 'tsconfig.json',
+        erasableOnly: true
+    },
+    unicorn: true,
+    unocss: true,
+    vue: {
+        a11y: true
+    },
+    yaml: true,
+    toml: true,
+    test: true
+}).prepend({
+    plugins: {
+        '': {
+            rules: Object.fromEntries(builtinRules.entries())
+        }
+    }
+});
 
 const configNames = configs.map(i => i.name).filter(Boolean) as string[];
 
@@ -78,4 +53,4 @@ dts += `
 export type ConfigNames = ${configNames.map(i => `'${i}'`).join(' | ')}
 `;
 
-await fs.writeFile('src/typegen.d.ts', dts);
+await fs.writeFile('src/typegen.d.ts', await format(dts, { parser: 'typescript' }));

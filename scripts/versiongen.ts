@@ -1,4 +1,5 @@
 import fs from 'node:fs/promises';
+import { format } from '@janone/prettier-config';
 import { parsePnpmWorkspaceYaml } from 'pnpm-workspace-yaml';
 import { dependenciesMap } from '../src/cli/constants';
 
@@ -22,5 +23,5 @@ const versions = Object.fromEntries(
 
 await fs.writeFile(
     new URL('../src/cli/constants-generated.ts', import.meta.url),
-    `export const versionsMap = ${JSON.stringify(versions, null, 4)}`
+    await format(`export const versionsMap = ${JSON.stringify(versions, null, 4)}`, { parser: 'typescript' })
 );
