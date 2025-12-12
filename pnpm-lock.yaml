@@ -48,7 +48,7 @@ catalogs:
       version: 0.2.15
     tsdown:
       specifier: ^0.17.2
-      version: 0.17.2
+      version: 0.17.3
     typescript:
       specifier: ^5.9.3
       version: 5.9.3
@@ -65,7 +65,7 @@ catalogs:
       version: 2.3.13
     '@next/eslint-plugin-next':
       specifier: ^16.0.8
-      version: 16.0.8
+      version: 16.0.10
     '@prettier/plugin-xml':
       specifier: ^3.4.2
       version: 3.4.2
@@ -110,7 +110,7 @@ catalogs:
       version: 1.0.5
     svelte:
       specifier: ^5.45.8
-      version: 5.45.8
+      version: 5.45.9
     svelte-eslint-parser:
       specifier: ^1.4.1
       version: 1.4.1
@@ -356,7 +356,7 @@ importers:
         version: 0.0.1
       '@next/eslint-plugin-next':
         specifier: catalog:peer
-        version: 16.0.8
+        version: 16.0.10
       '@prettier/plugin-xml':
         specifier: catalog:peer
         version: 3.4.2(prettier@3.7.4)
@@ -401,7 +401,7 @@ importers:
         version: 0.14.5(eslint@9.39.1(jiti@2.6.1))(typescript@5.9.3)
       eslint-plugin-svelte:
         specifier: catalog:peer
-        version: 3.13.1(eslint@9.39.1(jiti@2.6.1))(svelte@5.45.8)
+        version: 3.13.1(eslint@9.39.1(jiti@2.6.1))(svelte@5.45.9)
       eslint-plugin-vuejs-accessibility:
         specifier: catalog:peer
         version: 2.4.1(eslint@9.39.1(jiti@2.6.1))
@@ -437,16 +437,16 @@ importers:
         version: 2.13.1
       svelte:
         specifier: catalog:peer
-        version: 5.45.8
+        version: 5.45.9
       svelte-eslint-parser:
         specifier: catalog:peer
-        version: 1.4.1(svelte@5.45.8)
+        version: 1.4.1(svelte@5.45.9)
       tinyglobby:
         specifier: catalog:dev
         version: 0.2.15
       tsdown:
         specifier: catalog:dev
-        version: 0.17.2(synckit@0.11.11)(typescript@5.9.3)
+        version: 0.17.3(synckit@0.11.11)(typescript@5.9.3)
       tsx:
         specifier: ^4.21.0
         version: 4.21.0
@@ -1042,8 +1042,8 @@ packages:
   '@napi-rs/wasm-runtime@1.1.0':
     resolution: {integrity: sha512-Fq6DJW+Bb5jaWE69/qOE0D1TUN9+6uWhCeZpdnSBk14pjLcCWR7Q8n49PTSPHazM37JqrsdpEthXy2xn6jWWiA==}
 
-  '@next/eslint-plugin-next@16.0.8':
-    resolution: {integrity: sha512-1miV0qXDcLUaOdHridVPCh4i39ElRIAraseVIbb3BEqyZ5ol9sPyjTP/GNTPV5rBxqxjF6/vv5zQTVbhiNaLqA==}
+  '@next/eslint-plugin-next@16.0.10':
+    resolution: {integrity: sha512-b2NlWN70bbPLmfyoLvvidPKWENBYYIe017ZGUpElvQjDytCWgxPJx7L9juxHt0xHvNVA08ZHJdOyhGzon/KJuw==}
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -1883,8 +1883,8 @@ packages:
     resolution: {integrity: sha512-i6UzDscO/XfAcNYD75CfICkmfLedpyPDdozrLMmQc5ORaQcdMoc21OnlEylMIqI7U8eniKrPMxxtj8k0vhmJhA==}
     engines: {node: '>=14'}
 
-  enhanced-resolve@5.18.3:
-    resolution: {integrity: sha512-d4lC8xfavMeBjzGr2vECC3fsGXziXZQyJxD868h2M/mBI3PwAuODxAkLkq5HYuvrPYcUtiLzsTo8U3PgX3Ocww==}
+  enhanced-resolve@5.18.4:
+    resolution: {integrity: sha512-LgQMM4WXU3QI+SYgEc2liRgznaD5ojbmY3sb8LxyguVkIg5FxdpTkvk72te2R38/TGKxH634oLxXRGY6d7AP+Q==}
     engines: {node: '>=10.13.0'}
 
   entities@4.5.0:
@@ -3456,8 +3456,8 @@ packages:
       svelte:
         optional: true
 
-  svelte@5.45.8:
-    resolution: {integrity: sha512-1Jh7FwVh/2Uxg0T7SeE1qFKMhwYH45b2v53bcZpW7qHa6O8iU1ByEj56PF0IQ6dU4HE5gRkic6h+vx+tclHeiw==}
+  svelte@5.45.9:
+    resolution: {integrity: sha512-dehRiT8dmImrEMAx22/h1V54ibH5aEdCH2uywGAw2y2uLMOBhQMBx9KS/9TlfTHIA2/00rHyG/F2IxpLJO9DPQ==}
     engines: {node: '>=18'}
 
   synckit@0.11.11:
@@ -3513,8 +3513,8 @@ packages:
   ts-pattern@5.9.0:
     resolution: {integrity: sha512-6s5V71mX8qBUmlgbrfL33xDUwO0fq48rxAu2LBE11WBeGdpCPOsXksQbZJHvHwhrd3QjUusd3mAOM5Gg0mFBLg==}
 
-  tsdown@0.17.2:
-    resolution: {integrity: sha512-SuU+0CWm/95KfXqojHTVuwcouIsdn7HpYcwDyOdKktJi285NxKwysjFUaxYLxpCNqqPvcFvokXLO4dZThRwzkw==}
+  tsdown@0.17.3:
+    resolution: {integrity: sha512-bgLgTog+oyadDTr9SZ57jZtb+A4aglCjo3xgJrkCDxbzcQl2l2iDDr4b06XHSQHwyDNIhYFDgPRhuu1wL3pNsw==}
     engines: {node: '>=20.19.0'}
     hasBin: true
     peerDependencies:
@@ -4374,7 +4374,7 @@ snapshots:
       '@tybys/wasm-util': 0.10.1
     optional: true
 
-  '@next/eslint-plugin-next@16.0.8':
+  '@next/eslint-plugin-next@16.0.10':
     dependencies:
       fast-glob: 3.3.1
 
@@ -5186,7 +5186,7 @@ snapshots:
 
   empathic@2.0.0: {}
 
-  enhanced-resolve@5.18.3:
+  enhanced-resolve@5.18.4:
     dependencies:
       graceful-fs: 4.2.11
       tapable: 2.3.0
@@ -5495,7 +5495,7 @@ snapshots:
   eslint-plugin-n@17.23.1(eslint@9.39.1(jiti@2.6.1))(typescript@5.9.3):
     dependencies:
       '@eslint-community/eslint-utils': 4.9.0(eslint@9.39.1(jiti@2.6.1))
-      enhanced-resolve: 5.18.3
+      enhanced-resolve: 5.18.4
       eslint: 9.39.1(jiti@2.6.1)
       eslint-plugin-es-x: 7.8.0(eslint@9.39.1(jiti@2.6.1))
       get-tsconfig: 4.13.0
@@ -5661,7 +5661,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-svelte@3.13.1(eslint@9.39.1(jiti@2.6.1))(svelte@5.45.8):
+  eslint-plugin-svelte@3.13.1(eslint@9.39.1(jiti@2.6.1))(svelte@5.45.9):
     dependencies:
       '@eslint-community/eslint-utils': 4.9.0(eslint@9.39.1(jiti@2.6.1))
       '@jridgewell/sourcemap-codec': 1.5.5
@@ -5673,9 +5673,9 @@ snapshots:
       postcss-load-config: 3.1.4(postcss@8.5.6)
       postcss-safe-parser: 7.0.1(postcss@8.5.6)
       semver: 7.7.3
-      svelte-eslint-parser: 1.4.1(svelte@5.45.8)
+      svelte-eslint-parser: 1.4.1(svelte@5.45.9)
     optionalDependencies:
-      svelte: 5.45.8
+      svelte: 5.45.9
     transitivePeerDependencies:
       - ts-node
 
@@ -7250,7 +7250,7 @@ snapshots:
     dependencies:
       has-flag: 4.0.0
 
-  svelte-eslint-parser@1.4.1(svelte@5.45.8):
+  svelte-eslint-parser@1.4.1(svelte@5.45.9):
     dependencies:
       eslint-scope: 8.4.0
       eslint-visitor-keys: 4.2.1
@@ -7259,9 +7259,9 @@ snapshots:
       postcss-scss: 4.0.9(postcss@8.5.6)
       postcss-selector-parser: 7.1.1
     optionalDependencies:
-      svelte: 5.45.8
+      svelte: 5.45.9
 
-  svelte@5.45.8:
+  svelte@5.45.9:
     dependencies:
       '@jridgewell/remapping': 2.3.5
       '@jridgewell/sourcemap-codec': 1.5.5
@@ -7322,10 +7322,11 @@ snapshots:
 
   ts-pattern@5.9.0: {}
 
-  tsdown@0.17.2(synckit@0.11.11)(typescript@5.9.3):
+  tsdown@0.17.3(synckit@0.11.11)(typescript@5.9.3):
     dependencies:
       ansis: 4.2.0
       cac: 6.7.14
+      defu: 6.1.4
       empathic: 2.0.0
       hookable: 5.5.3
       import-without-cache: 0.2.3
