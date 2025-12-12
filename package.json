@@ -15,14 +15,18 @@
     ],
     "exports": {
         ".": {
-            "types": "./dist/index.d.mts",
             "import": "./dist/index.mjs",
             "require": "./dist/index.cjs"
-        }
+        },
+        "./cli": {
+            "import": "./dist/cli.mjs",
+            "require": "./dist/cli.cjs"
+        },
+        "./package.json": "./package.json"
     },
     "main": "./dist/index.cjs",
     "module": "./dist/index.mjs",
-    "types": "./dist/index.d.mts",
+    "types": "./dist/index.d.cts",
     "bin": {
         "eslint-config": "bin/index.mjs"
     },
