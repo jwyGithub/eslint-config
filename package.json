@@ -1,7 +1,7 @@
 {
     "name": "@janone/eslint-config",
     "type": "module",
-    "version": "0.0.4",
+    "version": "0.1.16",
     "description": "a eslint config for janone",
     "author": "janone <jiangweiye@outlook.com> (https://github.com/jwyGithub)",
     "license": "SEE LICENSE IN LICENSE.md",
