@@ -109,7 +109,7 @@ export async function vue(
                 'vue/component-options-name-casing': ['error', 'PascalCase'],
                 // this is deprecated
                 'vue/component-tags-order': 'off',
-                'vue/custom-event-name-casing': ['error', 'camelCase'],
+                'vue/custom-event-name-casing': ['warn', 'kebab-case'],
                 'vue/define-macros-order': [
                     'error',
                     {
@@ -149,6 +149,20 @@ export async function vue(
                 'vue/require-prop-types': 'off',
                 'vue/space-infix-ops': 'error',
                 'vue/space-unary-ops': ['error', { nonwords: false, words: true }],
+                'vue/singleline-html-element-content-newline': ['off'],
+                'vue/order-in-components': 'off',
+                'vue/html-self-closing': [
+                    'warn',
+                    {
+                        html: {
+                            void: 'always',
+                            normal: 'always',
+                            component: 'always'
+                        },
+                        svg: 'always',
+                        math: 'always'
+                    }
+                ],
 
                 ...(stylistic
                     ? {
