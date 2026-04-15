@@ -1,7 +1,7 @@
 {
     "name": "@jawyn/eslint-config",
     "type": "module",
-    "version": "0.1.1",
+    "version": "0.0.1",
     "description": "a eslint config for jawyn",
     "author": "jawyn <jiangweiye@outlook.com> (https://github.com/jwyGithub)",
     "license": "SEE LICENSE IN LICENSE.md",
