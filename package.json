@@ -197,6 +197,13 @@
         "vitest": "catalog:dev",
         "vue": "catalog:peer"
     },
+    "pnpm": {
+        "onlyBuiltDependencies": [
+            "esbuild",
+            "simple-git-hooks",
+            "unrs-resolver"
+        ]
+    },
     "resolutions": {
         "@eslint-community/eslint-utils": "catalog:peer",
         "@typescript-eslint/types": "catalog:peer",

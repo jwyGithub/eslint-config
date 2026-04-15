@@ -13,6 +13,11 @@ export default eslint(
         stylistic: true
     },
     {
+        rules: {
+            'pnpm/json-prefer-workspace-settings': 'off'
+        }
+    },
+    {
         ignores: ['fixtures', '_fixtures']
     }
 );
