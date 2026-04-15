@@ -15,13 +15,13 @@ export async function nextjs(options: OptionsOverrides & OptionsFiles = {}): Pro
 
     function getRules(name: keyof typeof pluginNextJS.configs): Record<string, any> {
         const rules = pluginNextJS.configs?.[name]?.rules;
-        if (!rules) throw new Error(`[@janone/eslint-config] Failed to find config ${name} in @next/eslint-plugin-next`);
+        if (!rules) throw new Error(`[@jawyn/eslint-config] Failed to find config ${name} in @next/eslint-plugin-next`);
         return normalizeRules(rules);
     }
 
     return [
         {
-            name: 'janone/nextjs/setup',
+            name: 'jawyn/nextjs/setup',
             plugins: {
                 next: pluginNextJS
             }
@@ -36,7 +36,7 @@ export async function nextjs(options: OptionsOverrides & OptionsFiles = {}): Pro
                 },
                 sourceType: 'module'
             },
-            name: 'janone/nextjs/rules',
+            name: 'jawyn/nextjs/rules',
             rules: {
                 ...getRules('recommended'),
                 ...getRules('core-web-vitals'),

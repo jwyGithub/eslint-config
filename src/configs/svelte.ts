@@ -8,7 +8,7 @@ export async function svelte(
 ): Promise<TypedFlatConfigItem[]> {
     const { files = [GLOB_SVELTE], overrides = {}, stylistic = true } = options;
 
-    const { indent = 4, quotes = 'single' } = typeof stylistic === 'boolean' ? {} : stylistic;
+    const { indent = 2, quotes = 'single' } = typeof stylistic === 'boolean' ? {} : stylistic;
 
     await ensurePackages(['eslint-plugin-svelte']);
 
@@ -19,7 +19,7 @@ export async function svelte(
 
     return [
         {
-            name: 'janone/svelte/setup',
+            name: 'jawyn/svelte/setup',
             plugins: {
                 svelte: pluginSvelte
             }
@@ -33,7 +33,7 @@ export async function svelte(
                     parser: options.typescript ? ((await interopDefault(import('@typescript-eslint/parser'))) as any) : null
                 }
             },
-            name: 'janone/svelte/rules',
+            name: 'jawyn/svelte/rules',
             processor: pluginSvelte.processors['.svelte'],
             rules: {
                 'no-undef': 'off', // incompatible with most recent (attribute-form) generic types RFC
@@ -85,7 +85,13 @@ export async function svelte(
                           'svelte/derived-has-same-inputs-outputs': 'error',
                           'svelte/html-closing-bracket-spacing': 'error',
                           'svelte/html-quotes': ['error', { prefer: quotes === 'backtick' ? 'double' : quotes }],
-                          'svelte/indent': ['error', { alignAttributesVertically: true, indent }],
+                          'svelte/indent': [
+                              'error',
+                              {
+                                  alignAttributesVertically: true,
+                                  indent: typeof indent === 'number' ? indent : indent === 'tab' ? 'tab' : 2
+                              }
+                          ],
                           'svelte/mustache-spacing': 'error',
                           'svelte/no-spaces-around-equal-signs-in-attribute': 'error',
                           'svelte/no-trailing-spaces': 'error',

@@ -6,12 +6,12 @@ export async function imports(options: OptionsOverrides & OptionsStylistic = {})
 
     return [
         {
-            name: 'janone/imports/rules',
+            name: 'jawyn/imports/rules',
             plugins: {
                 import: pluginImportLite
             },
             rules: {
-                'import/consistent-type-specifier-style': ['error', 'prefer-top-level'],
+                'import/consistent-type-specifier-style': ['error', 'top-level'],
                 'import/first': 'error',
                 'import/no-duplicates': 'error',
                 'import/no-mutable-exports': 'error',

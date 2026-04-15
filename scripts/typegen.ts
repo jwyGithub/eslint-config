@@ -1,40 +1,11 @@
 import fs from 'node:fs/promises';
 
-import { format } from '@janone/prettier-config';
 import { flatConfigsToRulesDTS } from 'eslint-typegen/core';
 import { builtinRules } from 'eslint/use-at-your-own-risk';
+import { CONFIG_PRESET_FULL_ON } from '../src/config-presets';
 import { eslint } from '../src/factory';
 
-const configs = await eslint({
-    astro: true,
-    formatters: true,
-    imports: true,
-    jsx: {
-        a11y: true
-    },
-    jsonc: true,
-    markdown: true,
-    nextjs: true,
-    react: true,
-    solid: true,
-    pnpm: true,
-    regexp: true,
-    stylistic: true,
-    gitignore: true,
-    svelte: true,
-    typescript: {
-        tsconfigPath: 'tsconfig.json',
-        erasableOnly: true
-    },
-    unicorn: true,
-    unocss: true,
-    vue: {
-        a11y: true
-    },
-    yaml: true,
-    toml: true,
-    test: true
-}).prepend({
+const configs = await eslint(CONFIG_PRESET_FULL_ON).prepend({
     plugins: {
         '': {
             rules: Object.fromEntries(builtinRules.entries())
@@ -53,4 +24,4 @@ dts += `
 export type ConfigNames = ${configNames.map(i => `'${i}'`).join(' | ')}
 `;
 
-await fs.writeFile('src/typegen.d.ts', await format(dts, { parser: 'typescript' }));
+await fs.writeFile('src/typegen.d.ts', dts);

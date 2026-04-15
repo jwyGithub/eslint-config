@@ -46,7 +46,7 @@ export async function vue(
                     watchEffect: 'readonly'
                 }
             },
-            name: 'janone/vue/setup',
+            name: 'jawyn/vue/setup',
             plugins: {
                 vue: pluginVue,
                 ...(a11y ? { 'vue-a11y': pluginVueA11y } : {})
@@ -65,7 +65,7 @@ export async function vue(
                     sourceType: 'module'
                 }
             },
-            name: 'janone/vue/rules',
+            name: 'jawyn/vue/rules',
             processor:
                 sfcBlocks === false
                     ? pluginVue.processors['.vue']
@@ -96,20 +96,21 @@ export async function vue(
                           ...(pluginVue.configs['flat/recommended'].map(c => c.rules).reduce((acc, c) => ({ ...acc, ...c }), {}) as any)
                       }),
 
+                'jawyn/no-top-level-await': 'off',
                 'node/prefer-global/process': 'off',
                 'ts/explicit-function-return-type': 'off',
 
                 'vue/block-order': [
                     'error',
                     {
-                        order: ['template', 'script', 'style']
+                        order: ['script', 'template', 'style']
                     }
                 ],
                 'vue/component-name-in-template-casing': ['error', 'PascalCase'],
                 'vue/component-options-name-casing': ['error', 'PascalCase'],
                 // this is deprecated
                 'vue/component-tags-order': 'off',
-                'vue/custom-event-name-casing': ['warn', 'kebab-case'],
+                'vue/custom-event-name-casing': ['error', 'camelCase'],
                 'vue/define-macros-order': [
                     'error',
                     {
@@ -149,20 +150,6 @@ export async function vue(
                 'vue/require-prop-types': 'off',
                 'vue/space-infix-ops': 'error',
                 'vue/space-unary-ops': ['error', { nonwords: false, words: true }],
-                'vue/singleline-html-element-content-newline': ['off'],
-                'vue/order-in-components': 'off',
-                'vue/html-self-closing': [
-                    'warn',
-                    {
-                        html: {
-                            void: 'always',
-                            normal: 'always',
-                            component: 'always'
-                        },
-                        svg: 'always',
-                        math: 'always'
-                    }
-                ],
 
                 ...(stylistic
                     ? {

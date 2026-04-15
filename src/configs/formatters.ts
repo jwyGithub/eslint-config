@@ -1,9 +1,8 @@
 import type { OptionsFormatters, StylisticConfig, TypedFlatConfigItem } from '../types';
 import type { VendoredPrettierOptions, VendoredPrettierRuleOptions } from '../vender/prettier-types';
 
-import { DEFAULT_OPTIONS } from '@janone/prettier-config/options';
+import { DEFAULT_OPTIONS } from '@jawyn/prettier-config/options';
 import { isPackageExists } from 'local-pkg';
-
 import {
     GLOB_ASTRO,
     GLOB_ASTRO_TS,
@@ -21,7 +20,7 @@ import {
 import { ensurePackages, interopDefault, isPackageInScope, parserPlain } from '../utils';
 import { StylisticConfigDefaults } from './stylistic';
 
-function mergePrettierOptions(options: VendoredPrettierOptions, overrides: VendoredPrettierRuleOptions = {}): VendoredPrettierRuleOptions {
+function mergePrettierOptions(options: VendoredPrettierOptions, overrides: VendoredPrettierRuleOptions): VendoredPrettierRuleOptions {
     return {
         ...options,
         ...overrides,
@@ -80,20 +79,20 @@ export async function formatters(options: OptionsFormatters | true = {}, stylist
         xmlWhitespaceSensitivity: 'ignore'
     };
 
-    const dprintOptions = Object.assign(
-        {
-            indentWidth: typeof indent === 'number' ? indent : 4,
-            quoteStyle: quotes === 'single' ? 'preferSingle' : 'preferDouble',
-            useTabs: indent === 'tab'
-        },
-        options.dprintOptions || {}
-    );
+    const dprintOptions = {
+        indentWidth: typeof indent === 'number' ? indent : DEFAULT_OPTIONS.tabWidth,
+        quoteStyle: quotes === 'single' ? 'preferSingle' : 'preferDouble',
+        useTabs: DEFAULT_OPTIONS.useTabs,
+        // TODO: refine the type of `options.dprintOptions` in the future to avoid this ts comment.
+        // @ts-expect-error - `options.dprintOptions` is boolean
+        ...(options.dprintOptions || {})
+    };
 
     const pluginFormat = await interopDefault(import('eslint-plugin-format'));
 
     const configs: TypedFlatConfigItem[] = [
         {
-            name: 'janone/formatter/setup',
+            name: 'jawyn/formatter/setup',
             plugins: {
                 format: pluginFormat
             }
@@ -107,7 +106,7 @@ export async function formatters(options: OptionsFormatters | true = {}, stylist
                 languageOptions: {
                     parser: parserPlain
                 },
-                name: 'janone/formatter/css',
+                name: 'jawyn/formatter/css',
                 rules: {
                     'format/prettier': [
                         'error',
@@ -122,7 +121,7 @@ export async function formatters(options: OptionsFormatters | true = {}, stylist
                 languageOptions: {
                     parser: parserPlain
                 },
-                name: 'janone/formatter/scss',
+                name: 'jawyn/formatter/scss',
                 rules: {
                     'format/prettier': [
                         'error',
@@ -137,7 +136,7 @@ export async function formatters(options: OptionsFormatters | true = {}, stylist
                 languageOptions: {
                     parser: parserPlain
                 },
-                name: 'janone/formatter/less',
+                name: 'jawyn/formatter/less',
                 rules: {
                     'format/prettier': [
                         'error',
@@ -156,7 +155,7 @@ export async function formatters(options: OptionsFormatters | true = {}, stylist
             languageOptions: {
                 parser: parserPlain
             },
-            name: 'janone/formatter/html',
+            name: 'jawyn/formatter/html',
             rules: {
                 'format/prettier': [
                     'error',
@@ -174,7 +173,7 @@ export async function formatters(options: OptionsFormatters | true = {}, stylist
             languageOptions: {
                 parser: parserPlain
             },
-            name: 'janone/formatter/xml',
+            name: 'jawyn/formatter/xml',
             rules: {
                 'format/prettier': [
                     'error',
@@ -195,7 +194,7 @@ export async function formatters(options: OptionsFormatters | true = {}, stylist
             languageOptions: {
                 parser: parserPlain
             },
-            name: 'janone/formatter/svg',
+            name: 'jawyn/formatter/svg',
             rules: {
                 'format/prettier': [
                     'error',
@@ -222,7 +221,7 @@ export async function formatters(options: OptionsFormatters | true = {}, stylist
             languageOptions: {
                 parser: parserPlain
             },
-            name: 'janone/formatter/markdown',
+            name: 'jawyn/formatter/markdown',
             rules: {
                 [`format/${formater}`]: [
                     'error',
@@ -245,7 +244,7 @@ export async function formatters(options: OptionsFormatters | true = {}, stylist
                 languageOptions: {
                     parser: parserPlain
                 },
-                name: 'janone/formatter/slidev',
+                name: 'jawyn/formatter/slidev',
                 rules: {
                     'format/prettier': [
                         'error',
@@ -266,7 +265,7 @@ export async function formatters(options: OptionsFormatters | true = {}, stylist
             languageOptions: {
                 parser: parserPlain
             },
-            name: 'janone/formatter/astro',
+            name: 'jawyn/formatter/astro',
             rules: {
                 'format/prettier': [
                     'error',
@@ -280,7 +279,7 @@ export async function formatters(options: OptionsFormatters | true = {}, stylist
 
         configs.push({
             files: [GLOB_ASTRO, GLOB_ASTRO_TS],
-            name: 'janone/formatter/astro/disables',
+            name: 'jawyn/formatter/astro/disables',
             rules: {
                 'style/arrow-parens': 'off',
                 'style/block-spacing': 'off',
@@ -299,7 +298,7 @@ export async function formatters(options: OptionsFormatters | true = {}, stylist
             languageOptions: {
                 parser: parserPlain
             },
-            name: 'janone/formatter/graphql',
+            name: 'jawyn/formatter/graphql',
             rules: {
                 'format/prettier': [
                     'error',

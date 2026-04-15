@@ -1,5 +1,5 @@
 import fs from 'node:fs/promises';
-import { format } from '@janone/prettier-config';
+import { format } from '@jawyn/prettier-config';
 import { parsePnpmWorkspaceYaml } from 'pnpm-workspace-yaml';
 import { dependenciesMap } from '../src/cli/constants';
 
@@ -12,13 +12,11 @@ const catalogs = Object.values({
 });
 
 const versions = Object.fromEntries(
-    Array.from(names)
-        .map(name => {
-            const version = catalogs.map(c => c[name]).filter(Boolean)[0];
-            if (!version) throw new Error(`Package ${name} not found`);
-            return [name, version];
-        })
-        .sort((a, b) => a[0].localeCompare(b[0]))
+    Array.from(names, name => {
+        const version = catalogs.map(c => c[name]).filter(Boolean)[0];
+        if (!version) throw new Error(`Package ${name} not found`);
+        return [name, version];
+    }).sort((a, b) => a[0].localeCompare(b[0]))
 );
 
 await fs.writeFile(

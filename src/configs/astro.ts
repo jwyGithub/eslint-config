@@ -14,7 +14,7 @@ export async function astro(options: OptionsOverrides & OptionsStylistic & Optio
 
     return [
         {
-            name: 'janone/astro/setup',
+            name: 'jawyn/astro/setup',
             plugins: {
                 astro: pluginAstro
             }
@@ -30,9 +30,13 @@ export async function astro(options: OptionsOverrides & OptionsStylistic & Optio
                 },
                 sourceType: 'module'
             },
-            name: 'janone/astro/rules',
+            name: 'jawyn/astro/rules',
             processor: 'astro/client-side-ts',
             rules: {
+                // Astro uses top level await for e.g. data fetching
+                // https://docs.astro.build/en/guides/data-fetching/#fetch-in-astro
+                'jawyn/no-top-level-await': 'off',
+
                 // use recommended rules
                 'astro/missing-client-only-directive-value': 'error',
                 'astro/no-conflict-set-directives': 'error',

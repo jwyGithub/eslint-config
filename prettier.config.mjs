@@ -1,3 +1,3 @@
-import { prettier } from '@janone/prettier-config';
+import { prettier } from '@jawyn/prettier-config';
 
 export default prettier();

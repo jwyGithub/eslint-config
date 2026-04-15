@@ -5,15 +5,8 @@ name: build and publish
 
 on:
     push:
-        branches:
-            - main
-        paths-ignore:
-            - README.md
-            - packages/**/*.md
-            - LICENSE
-            - .github/**
-            - .vscode/**
-            - .gitignore
+        tags:
+            - '*'
 
 jobs:
     build-and-publish:
@@ -25,44 +18,21 @@ jobs:
                   fetch-depth: 0
 
             - name: Set up Node.js
-              uses: actions/setup-node@v4
+              uses: actions/setup-node@v6
               with:
                   node-version: latest
                   registry-url: 'https://registry.npmjs.org'
 
             - name: Install pnpm
-              uses: pnpm/action-setup@v4
+              uses: pnpm/action-setup@v6
               with:
                   version: latest
 
             - name: Install dependencies
               run: pnpm install --frozen-lockfile
 
-            - name: Configure git
-              run: |
-                  git config --global user.name "${{ github.actor }}"
-                  git config --global user.email "${{ github.actor }}@users.noreply.github.com"
-
-            - name: Bump version
-              uses: googleapis/release-please-action@v4
-              with:
-                  release-type: node
-
-            - name: Push changes
-              run: |
-                  git push --follow-tags origin main
-
             - name: Build
               run: pnpm run build
-
-            - name: Lint fix
-              run: pnpm lint:fix
-
-            - name: Lint
-              run: pnpm lint
-
-            - name: Prettier
-              run: pnpm prettier
 
             - name: Publish to npm
               run: pnpm publish --no-git-checks

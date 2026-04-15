@@ -1,4 +1,4 @@
-import { eslint } from '@janone/eslint-config';
+import { eslint } from '@jawyn/eslint-config';
 
 export default eslint(
     {
@@ -9,7 +9,8 @@ export default eslint(
         astro: true,
         typescript: true,
         formatters: true,
-        pnpm: true
+        pnpm: true,
+        stylistic: true
     },
     {
         ignores: ['fixtures', '_fixtures']

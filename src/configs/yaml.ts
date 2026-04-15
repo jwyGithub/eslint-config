@@ -15,7 +15,7 @@ export async function yaml(options: OptionsOverrides & OptionsStylistic & Option
 
     return [
         {
-            name: 'janone/yaml/setup',
+            name: 'jawyn/yaml/setup',
             plugins: {
                 yaml: pluginYaml
             }
@@ -25,7 +25,7 @@ export async function yaml(options: OptionsOverrides & OptionsStylistic & Option
             languageOptions: {
                 parser: parserYaml
             },
-            name: 'janone/yaml/rules',
+            name: 'jawyn/yaml/rules',
             rules: {
                 'style/spaced-comment': 'off',
 
@@ -46,7 +46,7 @@ export async function yaml(options: OptionsOverrides & OptionsStylistic & Option
                           'yaml/flow-mapping-curly-spacing': 'error',
                           'yaml/flow-sequence-bracket-newline': 'error',
                           'yaml/flow-sequence-bracket-spacing': 'error',
-                          'yaml/indent': ['off', indent === 'tab' ? 4 : indent],
+                          'yaml/indent': ['error', typeof indent === 'number' ? indent : 4, { indicatorValueIndent: 2 }],
                           'yaml/key-spacing': 'error',
                           'yaml/no-tab-indent': 'error',
                           'yaml/quotes': ['error', { avoidEscape: true, prefer: quotes === 'backtick' ? 'single' : quotes }],
@@ -55,42 +55,6 @@ export async function yaml(options: OptionsOverrides & OptionsStylistic & Option
                     : {}),
 
                 ...overrides
-            }
-        },
-        {
-            files: ['pnpm-workspace.yaml'],
-            name: 'janone/yaml/pnpm-workspace',
-            rules: {
-                'yaml/sort-keys': [
-                    'error',
-                    {
-                        order: [
-                            'packages',
-                            'overrides',
-                            'patchedDependencies',
-                            'hoistPattern',
-                            'catalog',
-                            'catalogs',
-
-                            'allowedDeprecatedVersions',
-                            'allowNonAppliedPatches',
-                            'configDependencies',
-                            'ignoredBuiltDependencies',
-                            'ignoredOptionalDependencies',
-                            'neverBuiltDependencies',
-                            'onlyBuiltDependencies',
-                            'onlyBuiltDependenciesFile',
-                            'packageExtensions',
-                            'peerDependencyRules',
-                            'supportedArchitectures'
-                        ],
-                        pathPattern: '^$'
-                    },
-                    {
-                        order: { type: 'asc' },
-                        pathPattern: '.*'
-                    }
-                ]
             }
         }
     ];

@@ -82,14 +82,14 @@ export async function typescript(
                     ...(parserOptions as any)
                 }
             },
-            name: `janone/typescript/${typeAware ? 'type-aware-parser' : 'parser'}`
+            name: `jawyn/typescript/${typeAware ? 'type-aware-parser' : 'parser'}`
         };
     }
 
     return [
         {
             // Install the plugins without globs, so they can be configured separately.
-            name: 'janone/typescript/setup',
+            name: 'jawyn/typescript/setup',
             plugins: {
                 ts: pluginTs as any
             }
@@ -98,7 +98,7 @@ export async function typescript(
         ...(isTypeAware ? [makeParser(false, files), makeParser(true, filesTypeAware, ignoresTypeAware)] : [makeParser(false, files)]),
         {
             files,
-            name: 'janone/typescript/rules',
+            name: 'jawyn/typescript/rules',
             rules: {
                 ...renameRules(pluginTs.configs['eslint-recommended'].overrides![0].rules!, { '@typescript-eslint': 'ts' }),
                 ...renameRules(pluginTs.configs.strict.rules!, { '@typescript-eslint': 'ts' }),
@@ -163,7 +163,7 @@ export async function typescript(
                   {
                       files: filesTypeAware,
                       ignores: ignoresTypeAware,
-                      name: 'janone/typescript/rules-type-aware',
+                      name: 'jawyn/typescript/rules-type-aware',
                       rules: {
                           ...typeAwareRules,
                           ...overridesTypeAware
@@ -174,7 +174,7 @@ export async function typescript(
         ...(erasableOnly
             ? [
                   {
-                      name: 'janone/typescript/erasable-syntax-only',
+                      name: 'jawyn/typescript/erasable-syntax-only',
                       plugins: {
                           'erasable-syntax-only': await interopDefault(import('eslint-plugin-erasable-syntax-only'))
                       },

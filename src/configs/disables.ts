@@ -6,32 +6,32 @@ export async function disables(): Promise<TypedFlatConfigItem[]> {
     return [
         {
             files: [`**/scripts/${GLOB_SRC}`],
-            name: 'janone/disables/scripts',
+            name: 'jawyn/disables/scripts',
             rules: {
-                'janone/no-top-level-await': 'off',
+                'jawyn/no-top-level-await': 'off',
                 'no-console': 'off',
                 'ts/explicit-function-return-type': 'off'
             }
         },
         {
             files: [`**/cli/${GLOB_SRC}`, `**/cli.${GLOB_SRC_EXT}`],
-            name: 'janone/disables/cli',
+            name: 'jawyn/disables/cli',
             rules: {
-                'janone/no-top-level-await': 'off',
+                'jawyn/no-top-level-await': 'off',
                 'no-console': 'off'
             }
         },
         {
             files: ['**/bin/**/*', `**/bin.${GLOB_SRC_EXT}`],
-            name: 'janone/disables/bin',
+            name: 'jawyn/disables/bin',
             rules: {
-                'janone/no-import-dist': 'off',
-                'janone/no-import-node-modules-by-path': 'off'
+                'jawyn/no-import-dist': 'off',
+                'jawyn/no-import-node-modules-by-path': 'off'
             }
         },
         {
             files: ['**/*.d.?([cm])ts'],
-            name: 'janone/disables/dts',
+            name: 'jawyn/disables/dts',
             rules: {
                 'eslint-comments/no-unlimited-disable': 'off',
                 'no-restricted-syntax': 'off',
@@ -40,16 +40,16 @@ export async function disables(): Promise<TypedFlatConfigItem[]> {
         },
         {
             files: ['**/*.js', '**/*.cjs'],
-            name: 'janone/disables/cjs',
+            name: 'jawyn/disables/cjs',
             rules: {
                 'ts/no-require-imports': 'off'
             }
         },
         {
             files: [`**/*.config.${GLOB_SRC_EXT}`, `**/*.config.*.${GLOB_SRC_EXT}`],
-            name: 'janone/disables/config-files',
+            name: 'jawyn/disables/config-files',
             rules: {
-                'janone/no-top-level-await': 'off',
+                'jawyn/no-top-level-await': 'off',
                 'no-console': 'off',
                 'ts/explicit-function-return-type': 'off'
             }

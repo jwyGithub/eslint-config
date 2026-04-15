@@ -20,7 +20,7 @@ export async function solid(
 
     return [
         {
-            name: 'janone/solid/setup',
+            name: 'jawyn/solid/setup',
             plugins: {
                 solid: pluginSolid
             }
@@ -37,7 +37,7 @@ export async function solid(
                 },
                 sourceType: 'module'
             },
-            name: 'janone/solid/rules',
+            name: 'jawyn/solid/rules',
             rules: {
                 // reactivity
                 'solid/components-return-once': 'warn',

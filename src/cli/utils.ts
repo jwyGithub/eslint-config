@@ -11,7 +11,7 @@ export function isGitClean(): boolean {
 
 export function getEslintConfigContent(mainConfig: string, additionalConfigs?: string[]): string {
     return `
-import eslint from '@janone/eslint-config'
+import eslint from '@jawyn/eslint-config'
 
 export default eslint({
 ${mainConfig}

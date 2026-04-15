@@ -1,9 +1,9 @@
 {
-    "name": "@janone/eslint-config",
+    "name": "@jawyn/eslint-config",
     "type": "module",
     "version": "0.1.16",
-    "description": "a eslint config for janone",
-    "author": "janone <jiangweiye@outlook.com> (https://github.com/jwyGithub)",
+    "description": "a eslint config for jawyn",
+    "author": "jawyn <jiangweiye@outlook.com> (https://github.com/jwyGithub)",
     "license": "SEE LICENSE IN LICENSE.md",
     "homepage": "https://github.com/jwyGithub/eslint-config",
     "publishConfig": {
@@ -14,22 +14,12 @@
         "eslint-config"
     ],
     "exports": {
-        ".": {
-            "import": "./dist/index.mjs",
-            "require": "./dist/index.cjs"
-        },
-        "./cli": {
-            "import": "./dist/cli.mjs",
-            "require": "./dist/cli.cjs"
-        },
+        ".": "./dist/index.mjs",
+        "./cli": "./dist/cli.mjs",
         "./package.json": "./package.json"
     },
-    "main": "./dist/index.cjs",
-    "module": "./dist/index.mjs",
-    "types": "./dist/index.d.cts",
-    "bin": {
-        "eslint-config": "bin/index.mjs"
-    },
+    "types": "./dist/index.d.mts",
+    "bin": "./bin/index.mjs",
     "files": [
         "bin",
         "dist"
@@ -43,23 +33,24 @@
         "lint": "eslint",
         "lint:fix": "eslint --fix .",
         "typegen": "tsx scripts/typegen.ts && tsx scripts/versiongen.ts",
-        "test": "vitest",
         "typecheck": "tsc --noEmit",
         "prettier": "pnpx prettier --write .",
         "lint-staged": "lint-staged"
     },
     "peerDependencies": {
-        "@eslint-react/eslint-plugin": "^2.0.1",
-        "@next/eslint-plugin-next": "^15.4.0-canary.115",
+        "@angular-eslint/eslint-plugin": "^21.1.0",
+        "@angular-eslint/eslint-plugin-template": "^21.1.0",
+        "@angular-eslint/template-parser": "^21.1.0",
+        "@eslint-react/eslint-plugin": "^3.0.0",
+        "@next/eslint-plugin-next": ">=15.0.0",
         "@prettier/plugin-xml": "^3.4.1",
         "@unocss/eslint-plugin": ">=0.50.0",
         "astro-eslint-parser": "^1.0.2",
-        "eslint": "^9.10.0",
+        "eslint": "^9.10.0 || ^10.0.0",
         "eslint-plugin-astro": "^1.2.0",
         "eslint-plugin-format": ">=0.1.0",
         "eslint-plugin-jsx-a11y": ">=6.10.2",
-        "eslint-plugin-react-hooks": "^5.2.0",
-        "eslint-plugin-react-refresh": "^0.4.19",
+        "eslint-plugin-react-refresh": "^0.5.0",
         "eslint-plugin-solid": "^0.14.3",
         "eslint-plugin-svelte": ">=2.35.1",
         "eslint-plugin-vuejs-accessibility": "^2.4.1",
@@ -68,6 +59,15 @@
         "svelte-eslint-parser": ">=0.37.0"
     },
     "peerDependenciesMeta": {
+        "@angular-eslint/eslint-plugin": {
+            "optional": true
+        },
+        "@angular-eslint/eslint-plugin-template": {
+            "optional": true
+        },
+        "@angular-eslint/template-parser": {
+            "optional": true
+        },
         "@eslint-react/eslint-plugin": {
             "optional": true
         },
@@ -90,9 +90,6 @@
             "optional": true
         },
         "eslint-plugin-jsx-a11y": {
-            "optional": true
-        },
-        "eslint-plugin-react-hooks": {
             "optional": true
         },
         "eslint-plugin-react-refresh": {
@@ -118,10 +115,11 @@
         }
     },
     "dependencies": {
+        "@antfu/install-pkg": "catalog:prod",
         "@clack/prompts": "catalog:prod",
+        "@e18e/eslint-plugin": "catalog:prod",
         "@eslint-community/eslint-plugin-eslint-comments": "catalog:prod",
         "@eslint/markdown": "catalog:prod",
-        "@janone/eslint-config": "workspace:*",
         "@stylistic/eslint-plugin": "catalog:prod",
         "@typescript-eslint/eslint-plugin": "catalog:prod",
         "@typescript-eslint/parser": "catalog:prod",
@@ -147,7 +145,6 @@
         "eslint-plugin-yml": "catalog:prod",
         "eslint-processor-vue-blocks": "catalog:prod",
         "globals": "catalog:prod",
-        "jsonc-eslint-parser": "catalog:prod",
         "local-pkg": "catalog:prod",
         "parse-gitignore": "catalog:prod",
         "toml-eslint-parser": "catalog:prod",
@@ -155,23 +152,27 @@
         "yaml-eslint-parser": "catalog:prod"
     },
     "devDependencies": {
+        "@angular-eslint/eslint-plugin": "catalog:peer",
+        "@angular-eslint/eslint-plugin-template": "catalog:peer",
+        "@angular-eslint/template-parser": "catalog:peer",
+        "@angular/core": "catalog:dev",
         "@eslint-react/eslint-plugin": "catalog:peer",
         "@eslint/config-inspector": "catalog:dev",
-        "@janone/install-pkg": "catalog:prod",
-        "@janone/prettier-config": "catalog:dev",
+        "@jawyn/eslint-config": "workspace:*",
+        "@jawyn/prettier-config": "catalog:peer",
         "@next/eslint-plugin-next": "catalog:peer",
         "@prettier/plugin-xml": "catalog:peer",
         "@types/eslint-plugin-jsx-a11y": "catalog:dev",
         "@types/node": "catalog:dev",
         "@unocss/eslint-plugin": "catalog:peer",
         "astro-eslint-parser": "catalog:peer",
+        "baseline-browser-mapping": "catalog:dev",
         "bumpp": "catalog:dev",
         "eslint": "catalog:peer",
         "eslint-plugin-astro": "catalog:peer",
         "eslint-plugin-erasable-syntax-only": "catalog:peer",
         "eslint-plugin-format": "catalog:peer",
         "eslint-plugin-jsx-a11y": "catalog:peer",
-        "eslint-plugin-react-hooks": "catalog:peer",
         "eslint-plugin-react-refresh": "catalog:peer",
         "eslint-plugin-solid": "catalog:peer",
         "eslint-plugin-svelte": "catalog:peer",
@@ -190,6 +191,7 @@
         "svelte-eslint-parser": "catalog:peer",
         "tinyglobby": "catalog:dev",
         "tsdown": "catalog:dev",
+        "tsnapi": "catalog:dev",
         "tsx": "catalog:dev",
         "typescript": "catalog:dev",
         "vitest": "catalog:dev",
@@ -201,7 +203,24 @@
         "@typescript-eslint/utils": "catalog:peer",
         "chokidar": "catalog:dev",
         "eslint": "catalog:peer",
+        "semver": "catalog:dev",
+        "synckit": "catalog:dev",
         "tsx": "catalog:dev"
+    },
+    "inlinedDependencies": {
+        "@eslint-community/eslint-utils": "4.9.1",
+        "@jawyn/prettier-config": "0.0.1",
+        "@typescript-eslint/scope-manager": "8.58.2",
+        "@typescript-eslint/types": "8.58.2",
+        "@typescript-eslint/utils": "8.58.2",
+        "@typescript-eslint/visitor-keys": "8.58.2",
+        "cached-factory": "0.1.0",
+        "eslint-plugin-erasable-syntax-only": "0.4.0",
+        "eslint-visitor-keys": [
+            "3.4.3",
+            "5.0.1"
+        ],
+        "find-up-simple": "1.0.1"
     },
     "simple-git-hooks": {
         "pre-commit": "pnpm lint-staged"

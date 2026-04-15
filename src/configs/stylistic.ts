@@ -1,13 +1,15 @@
 import type { OptionsOverrides, StylisticConfig, TypedFlatConfigItem } from '../types';
-import { DEFAULT_OPTIONS } from '@janone/prettier-config/options';
-
 import { interopDefault } from '../utils';
 
 export const StylisticConfigDefaults: StylisticConfig = {
-    indent: DEFAULT_OPTIONS.tabWidth,
+    experimental: false,
+    indent: 4,
     jsx: true,
     quotes: 'single',
-    semi: DEFAULT_OPTIONS.semi
+    semi: true,
+    commaDangle: 'never',
+    quoteProps: 'as-needed',
+    braceStyle: '1tbs'
 };
 
 export interface StylisticOptions extends StylisticConfig, OptionsOverrides {
@@ -16,12 +18,16 @@ export interface StylisticOptions extends StylisticConfig, OptionsOverrides {
 
 export async function stylistic(options: StylisticOptions = {}): Promise<TypedFlatConfigItem[]> {
     const {
+        experimental,
         indent,
         jsx,
         lessOpinionated = false,
         overrides = {},
         quotes,
-        semi
+        semi,
+        commaDangle,
+        quoteProps,
+        braceStyle
     } = {
         ...StylisticConfigDefaults,
         ...options
@@ -30,33 +36,39 @@ export async function stylistic(options: StylisticOptions = {}): Promise<TypedFl
     const pluginStylistic = await interopDefault(import('@stylistic/eslint-plugin'));
 
     const config = pluginStylistic.configs.customize({
+        experimental,
         indent,
         jsx,
         pluginName: 'style',
         quotes,
-        semi
+        semi,
+        commaDangle,
+        quoteProps,
+        braceStyle
     }) as TypedFlatConfigItem;
 
     return [
         {
-            name: 'janone/stylistic/rules',
+            name: 'jawyn/stylistic/rules',
             plugins: {
                 style: pluginStylistic
             },
             rules: {
                 ...config.rules,
-                ...(lessOpinionated ? { curly: ['error', 'all'] } : { curly: ['error', 'multi-or-nest', 'consistent'] }),
-                curly: ['off', 'multi'],
-                'style/arrow-parens': ['error', 'as-needed'],
-                'style/brace-style': 'error',
-                'style/comma-dangle': ['off'],
+
+                ...(lessOpinionated
+                    ? {
+                          curly: ['error', 'all']
+                      }
+                    : {}),
+
+                'style/comma-dangle': ['error', commaDangle],
                 'style/indent': ['off'],
-                'style/indent-binary-ops': 'off',
-                'style/jsx-quotes': ['error', 'prefer-single'],
-                'style/no-multiple-empty-lines': ['off'],
-                'style/no-tabs': 'off',
+                'style/arrow-parens': 'off',
                 'style/operator-linebreak': 'off',
-                'style/quote-props': ['error', 'as-needed'],
+                'style/generator-star-spacing': ['error', { after: true, before: false }],
+                'style/yield-star-spacing': ['error', { after: true, before: false }],
+
                 ...overrides
             }
         }

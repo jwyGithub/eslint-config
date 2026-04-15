@@ -8,24 +8,19 @@ export async function jsonc(options: OptionsFiles & OptionsStylistic & OptionsOv
 
     const { indent = 4 } = typeof stylistic === 'boolean' ? {} : stylistic;
 
-    const [pluginJsonc, parserJsonc] = await Promise.all([
-        interopDefault(import('eslint-plugin-jsonc')),
-        interopDefault(import('jsonc-eslint-parser'))
-    ] as const);
+    const pluginJsonc = await interopDefault(import('eslint-plugin-jsonc'));
 
     return [
         {
-            name: 'janone/jsonc/setup',
+            name: 'jawyn/jsonc/setup',
             plugins: {
                 jsonc: pluginJsonc as any
             }
         },
         {
             files,
-            languageOptions: {
-                parser: parserJsonc
-            },
-            name: 'janone/jsonc/rules',
+            language: 'jsonc/x',
+            name: 'jawyn/jsonc/rules',
             rules: {
                 'jsonc/no-bigint-literals': 'error',
                 'jsonc/no-binary-expression': 'error',

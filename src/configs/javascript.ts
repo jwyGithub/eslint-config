@@ -31,10 +31,10 @@ export async function javascript(options: OptionsIsInEditor & OptionsOverrides =
             linterOptions: {
                 reportUnusedDisableDirectives: true
             },
-            name: 'janone/javascript/setup'
+            name: 'jawyn/javascript/setup'
         },
         {
-            name: 'janone/javascript/rules',
+            name: 'jawyn/javascript/rules',
             plugins: {
                 'unused-imports': pluginUnusedImports
             },

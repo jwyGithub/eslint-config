@@ -102,7 +102,7 @@ export const dependenciesMap = {
     formatter: ['eslint-plugin-format'],
     formatterAstro: ['prettier-plugin-astro'],
     nextjs: ['@next/eslint-plugin-next'],
-    react: ['@eslint-react/eslint-plugin', 'eslint-plugin-react-hooks', 'eslint-plugin-react-refresh'],
+    react: ['@eslint-react/eslint-plugin', 'eslint-plugin-react-refresh'],
     slidev: ['prettier-plugin-slidev'],
     solid: ['eslint-plugin-solid'],
     svelte: ['eslint-plugin-svelte', 'svelte-eslint-parser'],
